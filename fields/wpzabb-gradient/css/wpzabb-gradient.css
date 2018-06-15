@@ -1,0 +1,93 @@
+.wpzabb-gradient-wrapper {
+    position: relative;
+   /* height: 132px;*/
+}
+
+.wpzabb-gradient-wrapper .wpzabb-gradient-item {
+    margin-bottom: 10px;
+}
+
+.wpzabb-gradient-wrapper .wpzabb-gradient-item:last-child {
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+
+.wpzabb-gradient-wrapper.bb-colorpick .wpzabb-gradient-item:last-child {
+    margin-top: 4px;
+    margin-bottom: 0;
+}
+.wpzabb-gradient-wrapper .wp-color-result {
+    margin-bottom: 0;
+}
+
+.wpzabb-gradient-wrapper .wpzabb-gradient-label {
+    display: inline-block;
+    vertical-align: top;
+    width: 50px;
+    margin-right: 15px;
+    padding-top: 5px;
+}
+
+.wpzabb-gradient-wrapper .wp-picker-container,
+.wpzabb-gradient-wrapper .fl-color-picker {
+  /*  display: inline-block;*/
+    vertical-align: top;
+    position: absolute;
+    top: 0;
+    left: 66px;
+}
+
+.wpzabb-gradient-wrapper .wpzabb-gradient-angle-input {
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 4px 0 0 !important;
+    padding: 4px !important;
+}
+
+.wpzabb-gradient-wrapper .wpzabb-gradient-direction-select {
+    margin: 0;
+    padding: 0;
+    height: 24px;
+    box-sizing: border-box;
+}
+
+.wpzabb-gradient-wrapper .wpzabb-gradient-angle .fl-field-description {
+    display: inline-block;
+    padding-top: 5px;
+}
+
+
+.wpzabb-gradient-wrapper .wpzabb-gradient-color-one.wpzabb-color,
+.wpzabb-gradient-wrapper .wpzabb-gradient-color-two.wpzabb-color{
+    min-height: 32px;
+}
+
+.wpzabb-gradient-wrapper .wpzabb-gradient-direction{
+    margin-right: 0px;
+    margin-bottom: 0;
+}
+
+.wpzabb-gradient-wrapper .wpzabb-gradient-direction,
+.wpzabb-gradient-wrapper .wpzabb-gradient-angle {
+    /*display: inline-block;
+    vertical-align: top;*/
+    min-height: 32px;
+}
+
+.wpzabb-gradient-wrapper .wpzabb-gradient-color-one.bb-color,
+.wpzabb-gradient-wrapper .wpzabb-gradient-color-two.bb-color {
+    min-height: 32px;
+}
+.wpzabb-gradient-wrapper .wpzabb-gradient-color-one {
+    position: relative;
+    z-index: 3;
+}
+.wpzabb-gradient-wrapper .wpzabb-gradient-color-two {
+    position: relative;
+    z-index: 2;
+}
+
+.wpzabb-gradient-wrapper .wpzabb-gradient-angle {
+    position: relative;
+    z-index: 1;
+}

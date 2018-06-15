@@ -1,0 +1,124 @@
+.wpzabb-spacing-wrapper .wpzabb-spacing {
+    width: 20%;
+    display: inline-block;
+}
+
+/* Items Wrapper */
+.wpzabb-spacing-wrapper .wpzabb-spacing-items .simplify{
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    color: #ccc;
+}
+
+.wpzabb-spacing-wrapper i.simplify-icon.dashicons.wpzabb-help-tooltip {
+    width: 23px;
+    height: 23px;
+    font-size: 23px;
+    text-align: center;
+    line-height: 23px;
+}
+.wpzabb-spacing-wrapper i.simplify-icon.dashicons.dashicons-no-alt.wpzabb-help-tooltip {
+    transform: rotate(45deg);
+}
+.wpzabb-spacing-wrapper .wpzabb-spacing-items i.dashicons {
+    width: 23px;
+    height: 23px;
+    text-align: center;
+    line-height: 23px;
+}
+
+.wpzabb-spacing-wrapper .spacing-toggle-wrap,
+.wpzabb-spacing-wrapper .wpzabb-spacing-item {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.wpzabb-spacing-wrapper .wpzabb-spacing-item.optional {
+    display: inline-block;
+}
+
+
+.wpzabb-spacing-wrapper .wpzabb-spacing-item input.wpzabb-spacing-input {
+    box-sizing: border-box!important;
+    height: 25px !important;
+    min-height: 25px;
+    margin: 0;
+    width: 50px;
+}
+
+.wpzabb-spacing-wrapper .wpzabb-spacing-size-wrap {
+    display: inline-block;
+}
+
+.wpzabb-spacing-wrapper .wpzabb-size-wrap {
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 5px;
+}
+
+
+
+.wpzabb-spacing-wrapper .wpzabb-spacing-item.desktop {
+    margin: 0;
+}
+.wpzabb-spacing-wrapper span.wpzabb-icon {
+    display: inline-block;
+    position: relative;
+    font-size: 12px;
+    font-weight: 400;
+    text-align: center;
+    text-shadow: 0 1px 0 #fff;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+
+.wpzabb-spacing-wrapper .wpzabb-icon .wpzabb-tooltip,
+.wpzabb-spacing-wrapper .simplify .wpzabb-tooltip {
+    display: none;
+    position: absolute;
+    content: '';
+    color: #fff;
+    top: -35px;
+    left: -5px;
+    text-shadow: none;
+    white-space: nowrap;
+    padding: 3px 10px;
+    border-radius: 5px;
+    font-size: 11px;
+}
+.wpzabb-spacing-wrapper .wpzabb-icon .wpzabb-tooltip{
+	background: #444;
+}
+.wpzabb-spacing-wrapper .simplify .wpzabb-tooltip{
+	background: #00aef0;
+}
+
+.wpzabb-spacing-wrapper .wpzabb-icon .wpzabb-tooltip:before,
+.wpzabb-spacing-wrapper .simplify .wpzabb-tooltip:before {
+    content: "";
+    position: absolute;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    top: 100%;
+    left: 10px;
+}
+
+.wpzabb-spacing-wrapper .wpzabb-icon .wpzabb-tooltip:before{
+	border-top: 5px solid #444;
+}
+.wpzabb-spacing-wrapper .simplify .wpzabb-tooltip:before{
+    border-top: 5px solid #00aef0;
+}
+
+/* Hover Css */
+
+.wpzabb-spacing-wrapper i.wpzabb-help-tooltip:hover ~ div.wpzabb-tooltip {
+    display: block;
+    padding: 7px;
+}
