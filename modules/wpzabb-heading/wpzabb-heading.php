@@ -52,7 +52,7 @@ class WPZABBHeadingModule extends FLBuilderModule {
 				echo '<div class="wpzabb-image-outter-wrap">';
 			}
 
-			FLBuilder::render_module_html( 'image-icon', $imageicon_array );
+			FLBuilder::render_module_html( 'wpzabb-image-icon', $imageicon_array );
 			
 			if( $this->settings->separator_style == 'line_image' ) {
 				echo '</div>';

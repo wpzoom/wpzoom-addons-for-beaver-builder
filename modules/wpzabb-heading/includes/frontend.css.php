@@ -246,7 +246,7 @@
 		);
 		 
 		/* CSS Render Function */ 
-		FLBuilder::render_module_css( 'image-icon', $id, $imageicon_array );
+		FLBuilder::render_module_css( 'wpzabb-image-icon', $id, $imageicon_array );
 
 	?>
 	<?php } ?>

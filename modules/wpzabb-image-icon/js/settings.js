@@ -1,5 +1,5 @@
 (function($){
-	FLBuilder.registerModuleHelper('image-icon', {
+	FLBuilder.registerModuleHelper('wpzabb-image-icon', {
 		
 		init: function()
 		{	

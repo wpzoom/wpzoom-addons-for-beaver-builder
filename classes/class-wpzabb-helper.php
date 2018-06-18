@@ -152,7 +152,7 @@ if( !class_exists( "WPZOOM_BB_Addon_Pack_Helper" ) ) {
 				unset( $wpzabb['all'] );
 			}
 
-			$wpzabb['image-icon'] 				= 'image-icon';
+			$wpzabb['wpzabb-image-icon'] 				= 'wpzabb-image-icon';
 			$wpzabb['wpzabb-separator' ] 		= 'wpzabb-separator';
 			$wpzabb['wpzabb-button' ] 			= 'wpzabb-button';
 
