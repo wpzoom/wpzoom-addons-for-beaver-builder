@@ -112,11 +112,14 @@ if( !class_exists( "WPZOOM_BB_Addon_Pack_Helper" ) ) {
 
 		static public function get_all_modules() {
 			$modules_array = array(
-				'spacer-gap'               	=> 'Spacer / Gap',
+				'wpzabb-spacer-gap'               	=> 'Spacer / Gap',
 				'wpzabb-separator'          => 'Simple Separator',
 				'wpzabb-image-icon'         => 'Image / Icon',
 				'wpzabb-button'             => 'Button',
-				'wpzabb-heading'            => 'Heading'
+				'wpzabb-testimonials'       => 'Testimonials',
+				'wpzabb-team-members'       => 'Team Members',
+				'wpzabb-heading'            => 'Heading',
+				'wpzabb-map'            	=> 'Map'
 			);
 			
 			return $modules_array;
@@ -124,8 +127,8 @@ if( !class_exists( "WPZOOM_BB_Addon_Pack_Helper" ) ) {
 
 		static public function get_builder_wpzabb_modules() {
 			$wpzabb 			= WPZABB_Init::$wpzabb_options['fl_builder_wpzabb_modules'];
-			$all_modules 	= self::get_all_modules();
-			$is_all_modules = true;
+			$all_modules 		= self::get_all_modules();
+			$is_all_modules 	= true;
 
 			/* Delte below after test */
 			//$wpzabb 			= self::get_all_modules();
@@ -133,9 +136,9 @@ if( !class_exists( "WPZOOM_BB_Addon_Pack_Helper" ) ) {
 
 			//	if empty add all defaults
 			if( empty( $wpzabb ) ) {
-				$wpzabb 			= self::get_all_modules();
+				$wpzabb 		= self::get_all_modules();
 				$wpzabb['all'] 	= 'all';
-			}else {
+			} else {
 				if ( !isset( $wpzabb['unset_all'] ) ) {
 					//	add new key
 					foreach( $all_modules as $key => $value ) {
@@ -151,10 +154,6 @@ if( !class_exists( "WPZOOM_BB_Addon_Pack_Helper" ) ) {
 			if ( $is_all_modules == false && isset( $wpzabb['all'] ) ) {
 				unset( $wpzabb['all'] );
 			}
-
-			$wpzabb['wpzabb-image-icon'] 				= 'wpzabb-image-icon';
-			$wpzabb['wpzabb-separator' ] 		= 'wpzabb-separator';
-			$wpzabb['wpzabb-button' ] 			= 'wpzabb-button';
 
 			return apply_filters( 'wpzabb_get_builder_wpzabb_modules', $wpzabb );
 		}

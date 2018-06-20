@@ -437,6 +437,54 @@ FLBuilder::register_module('WPZABBHeadingModule', array(
 							),
 						),
 					),
+					'text_transform' => array(
+						'type'          => 'select',
+						'label'         => __( 'Text Transform', 'wpzabb' ),
+						'default'       => 'none',
+						'options'       => array(
+							'none'			=> __( 'None', 'wpzabb' ),
+							'uppercase'		=> __( 'Uppercase', 'wpzabb' ),
+							'lowercase'		=> __( 'Lowercase', 'wpzabb' ),
+							'capitalize'	=> __( 'Capitalize', 'wpzabb' ),
+						),
+						'preview'      => array(
+							'type'         => 'css',
+							'selector'     => '.wpzabb-heading .wpzabb-heading-text',
+							'property'     => 'text-transform',
+						),
+					),
+					'letter_spacing'     => array(
+						'type'          => 'select',
+						'label'         => __( 'Letter Spacing', 'wpzabb' ),
+						'default'       => 'default',
+						'options'       => array(
+							'default'       => __( 'Default', 'wpzabb' ),
+							'custom'        => __( 'Custom', 'wpzabb' ),
+						),
+						'toggle'        => array(
+							'custom'        => array(
+								'fields'        => array( 'custom_letter_spacing' ),
+							),
+						),
+					),
+		            'custom_letter_spacing' => array(
+		            	'type'          => 'unit',
+		            	'label'         => __( 'Custom Letter Spacing', 'wpzabb' ),
+		            	'description'   => 'px',
+                        'responsive' => array(
+							'placeholder' => array(
+								'default' => '',
+								'medium' => '',
+								'responsive' => '',
+							),
+						),
+		                'preview'         => array(
+                            'type'          => 'css',
+                            'selector'      => '.wpzabb-heading .wpzabb-heading-text',
+                            'property'		=>	'letter-spacing',
+                            'unit'			=> 'px'
+                        )
+		            ),
 					'color'    => array( 
 						'type'       => 'color',
 						'label'         => __('Text Color', 'wpzabb'),
@@ -526,6 +574,54 @@ FLBuilder::register_module('WPZABBHeadingModule', array(
 								'responsive' => '',
 							),
 						),
+		            ),
+					'desc_text_transform' => array(
+						'type'          => 'select',
+						'label'         => __( 'Text Transform', 'wpzabb' ),
+						'default'       => 'none',
+						'options'       => array(
+							'none'			=> __( 'None', 'wpzabb' ),
+							'uppercase'		=> __( 'Uppercase', 'wpzabb' ),
+							'lowercase'		=> __( 'Lowercase', 'wpzabb' ),
+							'capitalize'	=> __( 'Capitalize', 'wpzabb' ),
+						),
+						'preview'      => array(
+							'type'         => 'css',
+							'selector'     => '.fl-module-content.fl-node-content .wpzabb-subheading',
+							'property'     => 'text-transform',
+						),
+					),
+					'desc_letter_spacing'     => array(
+						'type'          => 'select',
+						'label'         => __( 'Letter Spacing', 'wpzabb' ),
+						'default'       => 'default',
+						'options'       => array(
+							'default'       => __( 'Default', 'wpzabb' ),
+							'custom'        => __( 'Custom', 'wpzabb' ),
+						),
+						'toggle'        => array(
+							'custom'        => array(
+								'fields'        => array( 'desc_custom_letter_spacing' ),
+							),
+						),
+					),
+		            'desc_custom_letter_spacing' => array(
+		            	'type'          => 'unit',
+		            	'label'         => __( 'Custom Letter Spacing', 'wpzabb' ),
+		            	'description'   => 'px',
+                        'responsive' => array(
+							'placeholder' => array(
+								'default' => '',
+								'medium' => '',
+								'responsive' => '',
+							),
+						),
+		                'preview'         => array(
+                            'type'          => 'css',
+                            'selector'      => '.fl-module-content.fl-node-content .wpzabb-subheading',
+                            'property'		=>	'letter-spacing',
+                            'unit'			=> 'px'
+                        )
 		            ),
 		            'desc_color'        => array( 
 						'type'       => 'color',

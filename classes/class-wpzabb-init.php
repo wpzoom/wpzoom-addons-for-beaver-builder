@@ -185,7 +185,7 @@ class WPZABB_Init {
 		}
 
 		echo '<div class="notice notice-error">';
-	    echo "<p>The <strong>Ultimate Addon for Beaver Builder</strong> " . __( 'plugin requires', 'wpzabb' )." <strong><a href='".$url."'>Beaver Builder</strong></a>" . __( ' plugin installed & activated.', 'wpzabb' ) . "</p>";
+	    echo "<p>The <strong>WPZOOM Addons Pack for Beaver Builder</strong> " . __( 'plugin requires', 'wpzabb' )." <strong><a href='".$url."'>Beaver Builder</strong></a>" . __( ' plugin installed & activated.', 'wpzabb' ) . "</p>";
 	    echo '</div>';
   	}
 

@@ -56,6 +56,14 @@
 	<?php if( isset( $settings->line_height_unit ) && $settings->line_height_unit != '' ) : ?>
 		line-height: <?php echo $settings->line_height_unit; ?>em;
 	<?php endif; ?>
+
+	<?php if ( ! empty( $settings->text_transform ) ) : ?>
+		text-transform: <?php echo $settings->text_transform; ?>;
+	<?php endif; ?>
+
+	<?php if ( 'custom' == $settings->letter_spacing ) : ?>
+		letter-spacing: <?php echo $settings->custom_letter_spacing; ?>px;
+	<?php endif; ?>
 }
 
 <?php /* Heading's Description Color */ ?>
@@ -76,6 +84,14 @@
 
 	<?php if( isset( $settings->desc_line_height_unit ) && $settings->desc_line_height_unit != '' ) : ?>
 		line-height: <?php echo $settings->desc_line_height_unit; ?>em;
+	<?php endif; ?>
+
+	<?php if ( ! empty( $settings->desc_text_transform ) ) : ?>
+		text-transform: <?php echo $settings->desc_text_transform; ?>;
+	<?php endif; ?>
+
+	<?php if ( 'custom' == $settings->desc_letter_spacing ) : ?>
+		letter-spacing: <?php echo $settings->desc_custom_letter_spacing; ?>px;
 	<?php endif; ?>
 }
 

@@ -2,6 +2,9 @@
 
 class WPZABBSpacerGap extends FLBuilderModule {
 
+    /**
+     * @method __construct
+     */
     public function __construct()
     {
         parent::__construct(array(

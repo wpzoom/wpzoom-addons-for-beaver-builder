@@ -103,6 +103,26 @@ class WPZABBButtonModule extends FLBuilderModule {
 
 		return $classname;
 	}
+
+	/**
+	 * Returns button link rel based on settings
+	 * @method get_rel
+	 */
+	public function get_rel() {
+		$rel = array();
+		if ( '_blank' == $this->settings->link_target ) {
+			$rel[] = 'noopener';
+		}
+		if ( isset( $this->settings->link_nofollow ) && 'yes' == $this->settings->link_nofollow ) {
+			$rel[] = 'nofollow';
+		}
+		$rel = implode( ' ', $rel );
+		if ( $rel ) {
+			$rel = ' rel="' . $rel . '" ';
+		}
+		return $rel;
+	}
+
 	/**
 	 * @method get_button_style
 	 */
@@ -167,16 +187,28 @@ FLBuilder::register_module('WPZABBButtonModule', array(
 					),
 					'link_target'   => array(
 						'type'          => 'select',
-						'label'         => __('Link Target', 'wpzabb'),
+						'label'         => __( 'Link Target', 'wpzabb' ),
 						'default'       => '_self',
 						'options'       => array(
-							'_self'         => __('Same Window', 'wpzabb'),
-							'_blank'        => __('New Window', 'wpzabb')
+							'_self'         => __( 'Same Window', 'wpzabb' ),
+							'_blank'        => __( 'New Window', 'wpzabb' ),
 						),
 						'preview'       => array(
-							'type'          => 'none'
-						)
-					)
+							'type'          => 'none',
+						),
+					),
+					'link_nofollow'          => array(
+						'type'          => 'select',
+						'label'         => __( 'Link No Follow', 'wpzabb' ),
+						'default'       => 'no',
+						'options' 		=> array(
+							'yes' 			=> __( 'Yes', 'wpzabb' ),
+							'no' 			=> __( 'No', 'wpzabb' ),
+						),
+						'preview'       => array(
+							'type'          => 'none',
+						),
+					),
 				)
 			)
 		)
@@ -472,6 +504,54 @@ FLBuilder::register_module('WPZABBButtonModule', array(
                             'selector'        => '.wpzabb-creative-button',
                             'property'		=>	'line-height',
                             'unit'			=> 'em'
+                        )
+		            ),
+		            'text_transform' => array(
+		            	'type'          => 'select',
+		            	'label'         => __( 'Text Transform', 'wpzabb' ),
+		            	'default'       => 'none',
+		            	'options'       => array(
+		            		'none'			=> __( 'None', 'wpzabb' ),
+		            		'uppercase'		=> __( 'Uppercase', 'wpzabb' ),
+		            		'lowercase'		=> __( 'Lowercase', 'wpzabb' ),
+		            		'capitalize'	=> __( 'Capitalize', 'wpzabb' ),
+		            	),
+		            	'preview'      => array(
+		            		'type'         => 'css',
+		            		'selector'     => '.wpzabb-creative-button',
+		            		'property'     => 'text-transform',
+		            	),
+		            ),
+		            'letter_spacing'     => array(
+		            	'type'          => 'select',
+		            	'label'         => __( 'Letter Spacing', 'wpzabb' ),
+		            	'default'       => 'default',
+		            	'options'       => array(
+		            		'default'       => __( 'Default', 'wpzabb' ),
+		            		'custom'        => __( 'Custom', 'wpzabb' ),
+		            	),
+		            	'toggle'        => array(
+		            		'custom'        => array(
+		            			'fields'        => array( 'custom_letter_spacing' ),
+		            		),
+		            	),
+		            ),
+		            'custom_letter_spacing' => array(
+		            	'type'          => 'unit',
+		            	'label'         => __( 'Custom Letter Spacing', 'wpzabb' ),
+		            	'description'   => 'px',
+                        'responsive' => array(
+							'placeholder' => array(
+								'default' => '',
+								'medium' => '',
+								'responsive' => '',
+							),
+						),
+		                'preview'         => array(
+                            'type'          => 'css',
+                            'selector'      => '.wpzabb-creative-button',
+                            'property'		=>	'letter-spacing',
+                            'unit'			=> 'px'
                         )
 		            ),
 		        )
