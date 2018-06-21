@@ -1,4 +1,3 @@
-<?php //echo '<pre>'; print_r($settings); echo "</pre>"; ?>
 <div class="wpzabb-module-content <?php echo $module->get_classname(); ?>">
 	<?php 
 	if ( isset( $settings->threed_button_options ) && ( $settings->threed_button_options == "animate_top" || $settings->threed_button_options == "animate_bottom" || $settings->threed_button_options == "animate_left" || $settings->threed_button_options == "animate_right" ) ) {

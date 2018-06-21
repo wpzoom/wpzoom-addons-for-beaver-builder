@@ -240,6 +240,16 @@ FLBuilder::register_module('WPZABBTeamMembersModule', array(
 							'layout-4-cols'     => __( '4 columns', 'wpzabb' ),
 						),
 					),
+					'content_align'     => array(
+						'type'          => 'select',
+						'label'         => __( 'Content Align', 'wpzabb' ),
+						'default'       => 'center',
+						'options'       => array(
+							'center'	=> __( 'Center', 'wpzabb' ),
+							'left'     	=> __( 'Left', 'wpzabb' ),
+							'right'     => __( 'Right', 'wpzabb' ),
+						),
+					),
 				),
 			),
 		),
@@ -259,6 +269,440 @@ FLBuilder::register_module('WPZABBTeamMembersModule', array(
 					),
 				),
 			),
+		)
+	),
+	'typography'         => array(
+		'title'         => __('Typography', 'wpzabb'),
+		'sections'      => array(
+			'name_typo'     => array(
+				'title'         => __('Name Heading', 'wpzabb'),
+				'fields'        => array(
+					'tag'           => array(
+						'type'          => 'select',
+						'label'         => __( 'HTML Tag', 'wpzabb' ),
+						'default'       => 'h3',
+						'options'       => array(
+							'h1'            =>  'h1',
+							'h2'            =>  'h2',
+							'h3'            =>  'h3',
+							'h4'            =>  'h4',
+							'h5'            =>  'h5',
+							'h6'            =>  'h6'
+						)
+					),
+					'font'          => array(
+						'type'          => 'font',
+						'default'		=> array(
+							'family'		=> 'Default',
+							'weight'		=> 300
+						),
+						'label'         => __('Font', 'wpzabb'),
+						'preview'         => array(
+							'type'            => 'font',
+							'selector'        => '.wpzabb-team-members-wrap .wpzabb-member-name'
+						)
+					),
+					'new_font_size_unit'     => array(
+						'type'          => 'unit',
+						'label'         => __( 'Font Size', 'wpzabb' ),
+						'description'   => 'px',
+						'default'		=> '23',
+						'preview'         => array(
+                            'type'          => 'css',
+                            'selector'      => '.wpzabb-team-members-wrap .wpzabb-member-name',
+                            'property'      => 'font-size',
+                            'unit'			=> 'px'
+                        ),
+                        'responsive' => array(
+							'placeholder' => array(
+								'default' => '23',
+								'medium' => '',
+								'responsive' => '',
+							),
+						),
+					),
+					'line_height_unit'    => array(
+						'type'          => 'unit',
+						'label'         => __( 'Line Height', 'wpzabb' ),
+						'description'   => 'em',
+						'preview'         => array(
+                            'type'          => 'css',
+                            'selector'      => '.wpzabb-team-members-wrap .wpzabb-member-name',
+                            'property'      => 'line-height',
+                            'unit'			=> 'em'
+                        ),
+                        'responsive' => array(
+							'placeholder' => array(
+								'default' => '',
+								'medium' => '',
+								'responsive' => '',
+							),
+						),
+					),
+					'text_transform' => array(
+						'type'          => 'select',
+						'label'         => __( 'Text Transform', 'wpzabb' ),
+						'default'       => 'none',
+						'options'       => array(
+							'none'			=> __( 'None', 'wpzabb' ),
+							'uppercase'		=> __( 'Uppercase', 'wpzabb' ),
+							'lowercase'		=> __( 'Lowercase', 'wpzabb' ),
+							'capitalize'	=> __( 'Capitalize', 'wpzabb' ),
+						),
+						'preview'      => array(
+							'type'         => 'css',
+							'selector'     => '.wpzabb-team-members-wrap .wpzabb-member-name',
+							'property'     => 'text-transform',
+						),
+					),
+					'letter_spacing'     => array(
+						'type'          => 'select',
+						'label'         => __( 'Letter Spacing', 'wpzabb' ),
+						'default'       => 'default',
+						'options'       => array(
+							'default'       => __( 'Default', 'wpzabb' ),
+							'custom'        => __( 'Custom', 'wpzabb' ),
+						),
+						'toggle'        => array(
+							'custom'        => array(
+								'fields'        => array( 'custom_letter_spacing' ),
+							),
+						),
+					),
+		            'custom_letter_spacing' => array(
+		            	'type'          => 'unit',
+		            	'label'         => __( 'Custom Letter Spacing', 'wpzabb' ),
+		            	'description'   => 'px',
+                        'responsive' => array(
+							'placeholder' => array(
+								'default' => '',
+								'medium' => '',
+								'responsive' => '',
+							),
+						),
+		                'preview'         => array(
+                            'type'          => 'css',
+                            'selector'      => '.wpzabb-team-members-wrap .wpzabb-member-name',
+                            'property'		=>	'letter-spacing',
+                            'unit'			=> 'px'
+                        )
+		            ),
+					'color'    => array( 
+						'type'       => 'color',
+						'label'         => __('Text Color', 'wpzabb'),
+						'default'    => '',
+						'show_reset' => true,
+						'preview'		=> array(
+							'type' => 'css',
+							'property' => 'color',
+							'selector' => '.fl-module-content.fl-node-content .wpzabb-team-members-wrap .wpzabb-member-name, .fl-module-content.fl-node-content .wpzabb-team-members-wrap .wpzabb-member-name *'
+						)
+					),
+					'name_margin_top'       => array(
+						'type'          => 'text',
+						'label'         => __('Margin Top', 'wpzabb'),
+						'placeholder'	=> '20',
+						'size'			=> '5',
+						'description'	=> 'px',
+						'preview'		=> array(
+							'type' => 'css',
+							'property' => 'margin-top',
+							'selector' => '.fl-module-content.fl-node-content .wpzabb-team-members-wrap .wpzabb-member-name',
+							'unit'		=> 'px',
+						)
+					),
+					'name_margin_bottom'       => array(
+						'type'          => 'text',
+						'label'         => __('Margin Bottom', 'wpzabb'),
+						'placeholder'	=> '10',
+						'size'			=> '5',
+						'description'	=> 'px',
+						'preview'		=> array(
+							'type' => 'css',
+							'property'	=> 'margin-bottom',
+							'selector'	=> '.fl-module-content.fl-node-content .wpzabb-team-members-wrap .wpzabb-member-name',
+							'unit'		=> 'px',
+						)
+					),
+				)
+			),
+			'position_typo'    =>  array(
+		        'title'		=> __('Position', 'wpzabb'),
+		        'fields'    => array(
+		            'position_font_family'       => array(
+		                'type'          => 'font',
+		                'label'         => __('Font Family', 'wpzabb'),
+		                'default'       => array(
+		                    'family'        => 'Default',
+		                    'weight'        => 'Default'
+		                ),
+						'preview'         => array(
+							'type'            => 'font',
+							'selector'        => '.wpzabb-team-members-wrap .wpzabb-member-position'
+						)
+		            ),
+		            'position_font_size_unit'     => array(
+		                'type'          => 'unit',
+		                'label'         => __( 'Font Size', 'wpzabb' ),
+						'description'   => 'px',
+						'default' 		=> '14',
+		                'preview'		=> array(
+							'type' => 'css',
+							'property'	=> 'font-size',
+							'selector'  => '.wpzabb-team-members-wrap .wpzabb-member-position',
+							'unit'		=> 'px',
+						),
+						'responsive' => array(
+							'placeholder' => array(
+								'default' => '14',
+								'medium' => '',
+								'responsive' => '',
+							),
+						),
+		            ),
+		            'position_line_height_unit'    => array(
+		                'type'          => 'unit',
+		                'label'         => __( 'Line Height', 'wpzabb' ),
+		                'description'   => 'em',
+		                'preview'		=> array(
+							'type' => 'css',
+							'property'	=> 'line-height',
+							'selector'  => '.wpzabb-team-members-wrap .wpzabb-member-position',
+							'unit'		=> 'em',
+						),
+						'responsive' => array(
+							'placeholder' => array(
+								'default' => '',
+								'medium' => '',
+								'responsive' => '',
+							),
+						),
+		            ),
+					'position_text_transform' => array(
+						'type'          => 'select',
+						'label'         => __( 'Text Transform', 'wpzabb' ),
+						'default'       => 'none',
+						'options'       => array(
+							'none'			=> __( 'None', 'wpzabb' ),
+							'uppercase'		=> __( 'Uppercase', 'wpzabb' ),
+							'lowercase'		=> __( 'Lowercase', 'wpzabb' ),
+							'capitalize'	=> __( 'Capitalize', 'wpzabb' ),
+						),
+						'preview'      => array(
+							'type'         => 'css',
+							'selector'     => '.fl-module-content.fl-node-content .wpzabb-team-members-wrap .wpzabb-member-position',
+							'property'     => 'text-transform',
+						),
+					),
+					'position_letter_spacing'     => array(
+						'type'          => 'select',
+						'label'         => __( 'Letter Spacing', 'wpzabb' ),
+						'default'       => 'default',
+						'options'       => array(
+							'default'       => __( 'Default', 'wpzabb' ),
+							'custom'        => __( 'Custom', 'wpzabb' ),
+						),
+						'toggle'        => array(
+							'custom'        => array(
+								'fields'        => array( 'position_custom_letter_spacing' ),
+							),
+						),
+					),
+		            'position_custom_letter_spacing' => array(
+		            	'type'          => 'unit',
+		            	'label'         => __( 'Custom Letter Spacing', 'wpzabb' ),
+		            	'description'   => 'px',
+                        'responsive' => array(
+							'placeholder' => array(
+								'default' => '',
+								'medium' => '',
+								'responsive' => '',
+							),
+						),
+		                'preview'         => array(
+                            'type'          => 'css',
+                            'selector'      => '.fl-module-content.fl-node-content .wpzabb-team-members-wrap .wpzabb-member-position',
+                            'property'		=>	'letter-spacing',
+                            'unit'			=> 'px'
+                        )
+		            ),
+		            'position_color'        => array( 
+						'type'       => 'color',
+						'label'      => __('Color', 'wpzabb'),
+						'default'    => '',
+						'show_reset' => true,
+						'preview'		=> array(
+							'type' => 'css',
+							'property' => 'color',
+							'selector' => '.fl-module-content.fl-node-content .wpzabb-team-members-wrap .wpzabb-member-position'
+						)
+					),
+					'position_margin_top'       => array(
+						'type'          => 'text',
+						'label'         => __('Margin Top', 'wpzabb'),
+						'placeholder'	=> '0',
+						'size'			=> '5',
+						'description'	=> 'px',
+						'preview'		=> array(
+							'type' => 'css',
+							'property' => 'margin-top',
+							'selector' => '.wpzabb-team-members-wrap .wpzabb-member-position',
+							'unit'	=> 'px',
+						)
+					),
+					'position_margin_bottom'       => array(
+						'type'          => 'text',
+						'label'         => __('Margin Bottom', 'wpzabb'),
+						'placeholder'	=> '10',
+						'size'			=> '5',
+						'description'	=> 'px',
+						'preview'		=> array(
+							'type' => 'css',
+							'property' => 'margin-bottom',
+							'selector' => '.wpzabb-team-members-wrap .wpzabb-member-position',
+							'unit'		=> 'px',
+						)
+					),
+		        )
+		    ),
+			'info_typo'    =>  array(
+		        'title'		=> __('Member Info', 'wpzabb'),
+		        'fields'    => array(
+		            'info_font_family'       => array(
+		                'type'          => 'font',
+		                'label'         => __('Font Family', 'wpzabb'),
+		                'default'       => array(
+		                    'family'        => 'Default',
+		                    'weight'        => 'Default'
+		                ),
+						'preview'         => array(
+							'type'            => 'font',
+							'selector'        => '.wpzabb-team-members-wrap .wpzabb-member-info'
+						)
+		            ),
+		            'info_font_size_unit'     => array(
+		                'type'          => 'unit',
+		                'label'         => __( 'Font Size', 'wpzabb' ),
+						'description'   => 'px',
+		                'preview'		=> array(
+							'type' => 'css',
+							'property'	=> 'font-size',
+							'selector'  => '.wpzabb-team-members-wrap .wpzabb-member-info',
+							'unit'		=> 'px',
+						),
+						'responsive' => array(
+							'placeholder' => array(
+								'default' => '',
+								'medium' => '',
+								'responsive' => '',
+							),
+						),
+		            ),
+		            'info_line_height_unit'    => array(
+		                'type'          => 'unit',
+		                'label'         => __( 'Line Height', 'wpzabb' ),
+		                'description'   => 'em',
+		                'preview'		=> array(
+							'type' => 'css',
+							'property'	=> 'line-height',
+							'selector'  => '.wpzabb-team-members-wrap .wpzabb-member-info',
+							'unit'		=> 'em',
+						),
+						'responsive' => array(
+							'placeholder' => array(
+								'default' => '',
+								'medium' => '',
+								'responsive' => '',
+							),
+						),
+		            ),
+					'info_text_transform' => array(
+						'type'          => 'select',
+						'label'         => __( 'Text Transform', 'wpzabb' ),
+						'default'       => 'none',
+						'options'       => array(
+							'none'			=> __( 'None', 'wpzabb' ),
+							'uppercase'		=> __( 'Uppercase', 'wpzabb' ),
+							'lowercase'		=> __( 'Lowercase', 'wpzabb' ),
+							'capitalize'	=> __( 'Capitalize', 'wpzabb' ),
+						),
+						'preview'      => array(
+							'type'         => 'css',
+							'selector'     => '.fl-module-content.fl-node-content .wpzabb-team-members-wrap .wpzabb-member-info',
+							'property'     => 'text-transform',
+						),
+					),
+					'info_letter_spacing'     => array(
+						'type'          => 'select',
+						'label'         => __( 'Letter Spacing', 'wpzabb' ),
+						'default'       => 'default',
+						'options'       => array(
+							'default'       => __( 'Default', 'wpzabb' ),
+							'custom'        => __( 'Custom', 'wpzabb' ),
+						),
+						'toggle'        => array(
+							'custom'        => array(
+								'fields'        => array( 'info_custom_letter_spacing' ),
+							),
+						),
+					),
+		            'info_custom_letter_spacing' => array(
+		            	'type'          => 'unit',
+		            	'label'         => __( 'Custom Letter Spacing', 'wpzabb' ),
+		            	'description'   => 'px',
+                        'responsive' => array(
+							'placeholder' => array(
+								'default' => '',
+								'medium' => '',
+								'responsive' => '',
+							),
+						),
+		                'preview'         => array(
+                            'type'          => 'css',
+                            'selector'      => '.fl-module-content.fl-node-content .wpzabb-team-members-wrap .wpzabb-member-info',
+                            'property'		=>	'letter-spacing',
+                            'unit'			=> 'px'
+                        )
+		            ),
+		            'info_color'        => array( 
+						'type'       => 'color',
+						'label'      => __('Color', 'wpzabb'),
+						'default'    => '',
+						'show_reset' => true,
+						'preview'		=> array(
+							'type' => 'css',
+							'property' => 'color',
+							'selector' => '.fl-module-content.fl-node-content .wpzabb-team-members-wrap .wpzabb-member-info'
+						)
+					),
+					'info_margin_top'       => array(
+						'type'          => 'text',
+						'label'         => __('Margin Top', 'wpzabb'),
+						'placeholder'	=> '0',
+						'size'			=> '5',
+						'description'	=> 'px',
+						'preview'		=> array(
+							'type' => 'css',
+							'property' => 'margin-top',
+							'selector' => '.wpzabb-team-members-wrap .wpzabb-member-info, .wpzabb-team-members-wrap .wpzabb-member-info p',
+							'unit'	=> 'px',
+						)
+					),
+					'info_margin_bottom'       => array(
+						'type'          => 'text',
+						'label'         => __('Margin Bottom', 'wpzabb'),
+						'placeholder'	=> '0',
+						'size'			=> '5',
+						'description'	=> 'px',
+						'preview'		=> array(
+							'type' => 'css',
+							'property' => 'margin-bottom',
+							'selector' => '.wpzabb-team-members-wrap .wpzabb-member-info, .wpzabb-team-members-wrap .wpzabb-member-info p',
+							'unit'		=> 'px',
+						)
+					),
+		        )
+		    ),
 		)
 	)
 ));
@@ -319,7 +763,7 @@ FLBuilder::register_settings_form('member_form', array(
 							'default'         => __('John Doe', 'wpzabb'),
 							'preview'         => array(
 								'type'            => 'text',
-								'selector'        => '.wpzabb-team-members .wpzabb-member-name'
+								'selector'        => '.wpzabb-team-members-wrap .wpzabb-member-name'
 							),
 							'connections'		=> array( 'string', 'html' )
 						),
@@ -349,7 +793,7 @@ FLBuilder::register_settings_form('member_form', array(
 							'default'         => __('Developer', 'wpzabb'),
 							'preview'         => array(
 								'type'            => 'text',
-								'selector'        => '.wpzabb-team-members .wpzabb-member-position'
+								'selector'        => '.wpzabb-team-members-wrap .wpzabb-member-position'
 							),
 							'connections'		=> array( 'string', 'html' )
 						),

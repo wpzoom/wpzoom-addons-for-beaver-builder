@@ -115,6 +115,7 @@ if( !class_exists( "WPZOOM_BB_Addon_Pack_Helper" ) ) {
 				'wpzabb-spacer-gap'               	=> 'Spacer / Gap',
 				'wpzabb-separator'          => 'Simple Separator',
 				'wpzabb-image-icon'         => 'Image / Icon',
+				'wpzabb-image-box'         	=> 'Image Box',
 				'wpzabb-button'             => 'Button',
 				'wpzabb-testimonials'       => 'Testimonials',
 				'wpzabb-team-members'       => 'Team Members',

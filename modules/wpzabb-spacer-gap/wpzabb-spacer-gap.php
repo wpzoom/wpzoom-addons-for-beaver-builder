@@ -11,8 +11,8 @@ class WPZABBSpacerGap extends FLBuilderModule {
             'name'            => __( 'Spacer / Gap', 'wpzabb' ),
             'description'     => __( 'A totally awesome module!', 'wpzabb' ),
             'category'      => WPZOOM_BB_Addon_Pack_Helper::module_cat(),
-            'dir'             => BB_WPZOOM_ADDON_DIR . 'modules/spacer-gap/',
-            'url'             => BB_WPZOOM_ADDON_URL . 'modules/spacer-gap/',
+            'dir'             => BB_WPZOOM_ADDON_DIR . 'modules/wpzabb-spacer-gap/',
+            'url'             => BB_WPZOOM_ADDON_URL . 'modules/wpzabb-spacer-gap/',
             'editor_export'   => true, // Defaults to true and can be omitted.
             'enabled'         => true, // Defaults to true and can be omitted.
             'partial_refresh' => false, // Defaults to false and can be omitted.
