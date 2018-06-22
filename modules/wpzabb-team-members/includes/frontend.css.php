@@ -36,7 +36,7 @@
 }
 .fl-node-<?php echo $id; ?> .wpzabb-team-members-wrap.layout-3-cols .wpzabb-member {
 	width: 31.7%;
-    margin-right: 2.1%;
+    margin-right: 2%;
 }
 .fl-node-<?php echo $id; ?> .wpzabb-team-members-wrap.layout-4-cols .wpzabb-member {
 	width: 23%;
@@ -234,6 +234,14 @@
 				<?php if( isset( $settings->info_line_height_unit_responsive ) && $settings->info_line_height_unit_responsive != '' ) : ?>
 					line-height: <?php echo $settings->info_line_height_unit_responsive; ?>em;
 				<?php endif; ?>
+			}
+
+			<?php /* Grid Layout */ ?>
+			.fl-node-<?php echo $id; ?> .wpzabb-team-members-wrap.layout-2-cols .wpzabb-member,
+			.fl-node-<?php echo $id; ?> .wpzabb-team-members-wrap.layout-3-cols .wpzabb-member,
+			.fl-node-<?php echo $id; ?> .wpzabb-team-members-wrap.layout-4-cols .wpzabb-member {
+				width: 100%;
+				margin-right: 0;
 			}
         }
     <?php

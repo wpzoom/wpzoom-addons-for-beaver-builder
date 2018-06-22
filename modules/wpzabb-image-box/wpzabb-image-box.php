@@ -39,6 +39,8 @@ class WPZABBImageBoxModule extends FLBuilderModule {
 	{
 		$btn_settings = array(
 			'text'             			=> $image->btn_text,
+			'link'             			=> $image->link,
+			'link_target'             	=> $image->link_target,
 			'align'             		=> $this->settings->btn_align,
 			'mob_align'             	=> $this->settings->btn_mob_align,
 			'border_radius'             => $this->settings->btn_border_radius,
@@ -298,6 +300,30 @@ FLBuilder::register_module('WPZABBImageBoxModule', array(
 							'right'     => __( 'Right', 'wpzabb' ),
 						),
 					),
+					'boxes_equal_height' => array(
+						'type'          => 'select',
+						'label'         => __( 'Equalize Boxes Height', 'wpzabb' ),
+						'default'       => 'no',
+						'options'       => array(
+							'no'		=> __( 'No', 'wpzabb' ),
+							'yes'     	=> __( 'Yes', 'wpzabb' ),
+						),
+						'toggle'        => array(
+							'yes'        => array(
+								'fields'        => array( 'boxes_alignment' ),
+							),
+						),
+					),
+					'boxes_alignment' => array(
+						'type'          => 'select',
+						'label'         => __( 'Boxes Alignment', 'wpzabb' ),
+						'default'       => 'center',
+						'options'       => array(
+							'top'		=> __( 'Top', 'wpzabb' ),
+							'center'    => __( 'Center', 'wpzabb' ),
+							'bottom'    => __( 'Bottom', 'wpzabb' ),
+						),
+					),
 				),
 			),
 		),
@@ -354,7 +380,6 @@ FLBuilder::register_module('WPZABBImageBoxModule', array(
 						'type'          => 'unit',
 						'label'         => __( 'Font Size', 'wpzabb' ),
 						'description'   => 'px',
-						'default'		=> '23',
 						'preview'         => array(
                             'type'          => 'css',
                             'selector'      => '.wpzabb-image-box-wrap .wpzabb-image-heading',
@@ -363,7 +388,7 @@ FLBuilder::register_module('WPZABBImageBoxModule', array(
                         ),
                         'responsive' => array(
 							'placeholder' => array(
-								'default' => '23',
+								'default' => '',
 								'medium' => '',
 								'responsive' => '',
 							),
@@ -486,7 +511,7 @@ FLBuilder::register_module('WPZABBImageBoxModule', array(
 		                ),
 						'preview'         => array(
 							'type'            => 'font',
-							'selector'        => '.wpzabb-image-box-wrap .wpzabb-image-description'
+							'selector'        => '.wpzabb-image-box-wrap .wpzabb-image-subheading'
 						)
 		            ),
 		            'subheading_font_size_unit'     => array(
@@ -496,7 +521,7 @@ FLBuilder::register_module('WPZABBImageBoxModule', array(
 		                'preview'		=> array(
 							'type' => 'css',
 							'property'	=> 'font-size',
-							'selector'  => '.wpzabb-image-box-wrap .wpzabb-image-description',
+							'selector'  => '.wpzabb-image-box-wrap .wpzabb-image-subheading',
 							'unit'		=> 'px',
 						),
 						'responsive' => array(
@@ -514,7 +539,7 @@ FLBuilder::register_module('WPZABBImageBoxModule', array(
 		                'preview'		=> array(
 							'type' => 'css',
 							'property'	=> 'line-height',
-							'selector'  => '.wpzabb-image-box-wrap .wpzabb-image-description',
+							'selector'  => '.wpzabb-image-box-wrap .wpzabb-image-subheading',
 							'unit'		=> 'em',
 						),
 						'responsive' => array(
@@ -537,7 +562,7 @@ FLBuilder::register_module('WPZABBImageBoxModule', array(
 						),
 						'preview'      => array(
 							'type'         => 'css',
-							'selector'     => '.fl-module-content.fl-node-content .wpzabb-image-box-wrap .wpzabb-image-description',
+							'selector'     => '.fl-module-content.fl-node-content .wpzabb-image-box-wrap .wpzabb-image-subheading',
 							'property'     => 'text-transform',
 						),
 					),
@@ -568,7 +593,7 @@ FLBuilder::register_module('WPZABBImageBoxModule', array(
 						),
 		                'preview'         => array(
                             'type'          => 'css',
-                            'selector'      => '.fl-module-content.fl-node-content .wpzabb-image-box-wrap .wpzabb-image-description',
+                            'selector'      => '.fl-module-content.fl-node-content .wpzabb-image-box-wrap .wpzabb-image-subheading',
                             'property'		=>	'letter-spacing',
                             'unit'			=> 'px'
                         )
@@ -581,7 +606,7 @@ FLBuilder::register_module('WPZABBImageBoxModule', array(
 						'preview'		=> array(
 							'type' => 'css',
 							'property' => 'color',
-							'selector' => '.fl-module-content.fl-node-content .wpzabb-image-box-wrap .wpzabb-image-description'
+							'selector' => '.fl-module-content.fl-node-content .wpzabb-image-box-wrap .wpzabb-image-subheading'
 						)
 					),
 					'subheading_margin_top'       => array(
@@ -593,20 +618,20 @@ FLBuilder::register_module('WPZABBImageBoxModule', array(
 						'preview'		=> array(
 							'type' => 'css',
 							'property' => 'margin-top',
-							'selector' => '.wpzabb-image-box-wrap .wpzabb-image-description, .wpzabb-image-box-wrap .wpzabb-image-description p',
+							'selector' => '.wpzabb-image-box-wrap .wpzabb-image-subheading',
 							'unit'	=> 'px',
 						)
 					),
 					'subheading_margin_bottom'       => array(
 						'type'          => 'text',
 						'label'         => __('Margin Bottom', 'wpzabb'),
-						'placeholder'	=> '0',
+						'placeholder'	=> '10',
 						'size'			=> '5',
 						'description'	=> 'px',
 						'preview'		=> array(
 							'type' => 'css',
 							'property' => 'margin-bottom',
-							'selector' => '.wpzabb-image-box-wrap .wpzabb-image-description, .wpzabb-image-box-wrap .wpzabb-image-description p',
+							'selector' => '.wpzabb-image-box-wrap .wpzabb-image-subheading',
 							'unit'		=> 'px',
 						)
 					),
@@ -624,23 +649,22 @@ FLBuilder::register_module('WPZABBImageBoxModule', array(
 		                ),
 						'preview'         => array(
 							'type'            => 'font',
-							'selector'        => '.wpzabb-image-box-wrap .wpzabb-image-subheading'
+							'selector'        => '.wpzabb-image-box-wrap .wpzabb-image-description'
 						)
 		            ),
 		            'desc_font_size_unit'     => array(
 		                'type'          => 'unit',
 		                'label'         => __( 'Font Size', 'wpzabb' ),
 						'description'   => 'px',
-						'default' 		=> '14',
 		                'preview'		=> array(
 							'type' => 'css',
 							'property'	=> 'font-size',
-							'selector'  => '.wpzabb-image-box-wrap .wpzabb-image-subheading',
+							'selector'  => '.wpzabb-image-box-wrap .wpzabb-image-description',
 							'unit'		=> 'px',
 						),
 						'responsive' => array(
 							'placeholder' => array(
-								'default' => '14',
+								'default' => '',
 								'medium' => '',
 								'responsive' => '',
 							),
@@ -653,7 +677,7 @@ FLBuilder::register_module('WPZABBImageBoxModule', array(
 		                'preview'		=> array(
 							'type' => 'css',
 							'property'	=> 'line-height',
-							'selector'  => '.wpzabb-image-box-wrap .wpzabb-image-subheading',
+							'selector'  => '.wpzabb-image-box-wrap .wpzabb-image-description',
 							'unit'		=> 'em',
 						),
 						'responsive' => array(
@@ -676,7 +700,7 @@ FLBuilder::register_module('WPZABBImageBoxModule', array(
 						),
 						'preview'      => array(
 							'type'         => 'css',
-							'selector'     => '.fl-module-content.fl-node-content .wpzabb-image-box-wrap .wpzabb-image-subheading',
+							'selector'     => '.fl-module-content.fl-node-content .wpzabb-image-box-wrap .wpzabb-image-description',
 							'property'     => 'text-transform',
 						),
 					),
@@ -707,7 +731,7 @@ FLBuilder::register_module('WPZABBImageBoxModule', array(
 						),
 		                'preview'         => array(
                             'type'          => 'css',
-                            'selector'      => '.fl-module-content.fl-node-content .wpzabb-image-box-wrap .wpzabb-image-subheading',
+                            'selector'      => '.fl-module-content.fl-node-content .wpzabb-image-box-wrap .wpzabb-image-description',
                             'property'		=>	'letter-spacing',
                             'unit'			=> 'px'
                         )
@@ -720,7 +744,7 @@ FLBuilder::register_module('WPZABBImageBoxModule', array(
 						'preview'		=> array(
 							'type' => 'css',
 							'property' => 'color',
-							'selector' => '.fl-module-content.fl-node-content .wpzabb-image-box-wrap .wpzabb-image-subheading'
+							'selector' => '.fl-module-content.fl-node-content .wpzabb-image-box-wrap .wpzabb-image-description'
 						)
 					),
 					'desc_margin_top'       => array(
@@ -732,20 +756,20 @@ FLBuilder::register_module('WPZABBImageBoxModule', array(
 						'preview'		=> array(
 							'type' => 'css',
 							'property' => 'margin-top',
-							'selector' => '.wpzabb-image-box-wrap .wpzabb-image-subheading',
+							'selector' => '.wpzabb-image-box-wrap .wpzabb-image-description, .wpzabb-image-box-wrap .wpzabb-image-description p',
 							'unit'	=> 'px',
 						)
 					),
 					'desc_margin_bottom'       => array(
 						'type'          => 'text',
 						'label'         => __('Margin Bottom', 'wpzabb'),
-						'placeholder'	=> '10',
+						'placeholder'	=> '0',
 						'size'			=> '5',
 						'description'	=> 'px',
 						'preview'		=> array(
 							'type' => 'css',
 							'property' => 'margin-bottom',
-							'selector' => '.wpzabb-image-box-wrap .wpzabb-image-subheading',
+							'selector' => '.wpzabb-image-box-wrap .wpzabb-image-description, .wpzabb-image-box-wrap .wpzabb-image-description p',
 							'unit'		=> 'px',
 						)
 					),
@@ -862,7 +886,7 @@ FLBuilder::register_module('WPZABBImageBoxModule', array(
 				'fields'        => array(
 					'bg_color'        => array( 
 						'type'       => 'color',
-                        'label'         => __('Background Color', 'wpzabb'),
+                        'label'         => __('Background Overlay Color', 'wpzabb'),
 						'default'    => '',
 						'show_reset' => true,
 					),
@@ -876,7 +900,7 @@ FLBuilder::register_module('WPZABBImageBoxModule', array(
 					),
 					'bg_hover_color'        => array( 
 						'type'       => 'color',
-                        'label'      => __('Background Hover Color', 'wpzabb'),
+                        'label'      => __('Background Overlay Hover Color', 'wpzabb'),
 						'default'    => '',
 						'show_reset' => true,
                         'preview'       => array(

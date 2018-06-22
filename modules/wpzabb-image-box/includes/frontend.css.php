@@ -19,10 +19,10 @@
 	$settings->desc_margin_bottom = ( trim($settings->desc_margin_bottom) !== '' ) ? $settings->desc_margin_bottom : '0';
 ?>
 
-.fl-node-<?php echo $id; ?> .wpzabb-image-box-wrap .wpzabb-image-overlay-link::before {
+.fl-node-<?php echo $id; ?> .wpzabb-image-box-wrap .wpzabb-image::before {
 	background-color: <?php echo $settings->bg_color; ?>
 }
-.fl-node-<?php echo $id; ?> .wpzabb-image-box-wrap .wpzabb-image-overlay-link:hover::before {
+.fl-node-<?php echo $id; ?> .wpzabb-image-box-wrap .wpzabb-image:hover::before {
 	background-color: <?php echo $settings->bg_hover_color; ?>
 }
 
@@ -40,7 +40,7 @@
 }
 .fl-node-<?php echo $id; ?> .wpzabb-image-box-wrap.layout-3-cols .wpzabb-image {
 	width: 31.7%;
-    margin-right: 2.1%;
+    margin-right: 2%;
 }
 .fl-node-<?php echo $id; ?> .wpzabb-image-box-wrap.layout-4-cols .wpzabb-image {
 	width: 23%;
@@ -277,6 +277,14 @@
 				<?php if( isset( $settings->desc_line_height_unit_responsive ) && $settings->desc_line_height_unit_responsive != '' ) : ?>
 					line-height: <?php echo $settings->desc_line_height_unit_responsive; ?>em;
 				<?php endif; ?>
+			}
+
+			<?php /* Grid Layout */ ?>
+			.fl-node-<?php echo $id; ?> .wpzabb-image-box-wrap.layout-2-cols .wpzabb-image,
+			.fl-node-<?php echo $id; ?> .wpzabb-image-box-wrap.layout-3-cols .wpzabb-image,
+			.fl-node-<?php echo $id; ?> .wpzabb-image-box-wrap.layout-4-cols .wpzabb-image {
+				width: 100%;
+				margin-right: 0;
 			}
         }
     <?php

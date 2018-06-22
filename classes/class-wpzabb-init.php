@@ -171,6 +171,9 @@ class WPZABB_Init {
 				}
 			}
 		}
+
+		wp_dequeue_style( 'bootstrap-tour' );
+		wp_dequeue_script( 'bootstrap-tour' );
 		
 	}
 

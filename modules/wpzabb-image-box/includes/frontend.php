@@ -1,5 +1,9 @@
 <?php
 	$image_box_class = 'wpzabb-image-box-wrap ' . $settings->layout . ' content-align-'. $settings->content_align;
+
+	if ( 'yes' === $settings->boxes_equal_height ) {
+		$image_box_class .= ' boxes-equal-height boxes-alignment-'. $settings->boxes_alignment;
+	}
 ?>
 <div class="<?php echo $image_box_class; ?>">
 
