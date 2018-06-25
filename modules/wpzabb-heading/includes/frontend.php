@@ -1,4 +1,4 @@
-<div class="wpzabb-module-content wpzabb-heading-wrapper wpzabb-heading-align-<?php echo $settings->alignment; ?> <?php echo ( $settings->separator_style == 'line_text' ) ? $settings->responsive_compatibility : ''; ?>">
+<div class="wpzabb-module-content wpzabb-heading-wrap wpzabb-heading-align-<?php echo $settings->alignment; ?> <?php echo ( $settings->separator_style == 'line_text' ) ? $settings->responsive_compatibility : ''; ?>">
 
 	<?php if( $settings->separator_position == 'top' ) { ?>
 		 <div class="wpzabb-module-content wpzabb-separator-parent">

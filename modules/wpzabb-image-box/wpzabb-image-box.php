@@ -787,7 +787,7 @@ FLBuilder::register_module('WPZABBImageBoxModule', array(
 		                ),
                         'preview'         => array(
                             'type'            => 'font',
-                            'selector'        => '.wpzabb-creative-button'
+                            'selector'        => '.wpzabb-button'
                         )
 		            ),
 		            'btn_font_size_unit'     => array(
@@ -803,7 +803,7 @@ FLBuilder::register_module('WPZABBImageBoxModule', array(
                         ),
 		                'preview'         => array(
                             'type'            => 'css',
-                            'selector'        => '.wpzabb-creative-button',
+                            'selector'        => '.wpzabb-button',
                             'property'		=>	'font-size',
                             'unit'			=> 'px'
                         )
@@ -821,7 +821,7 @@ FLBuilder::register_module('WPZABBImageBoxModule', array(
                         ),
 		                'preview'         => array(
                             'type'            => 'css',
-                            'selector'        => '.wpzabb-creative-button',
+                            'selector'        => '.wpzabb-button',
                             'property'		=>	'line-height',
                             'unit'			=> 'em'
                         )
@@ -838,7 +838,7 @@ FLBuilder::register_module('WPZABBImageBoxModule', array(
 		            	),
 		            	'preview'      => array(
 		            		'type'         => 'css',
-		            		'selector'     => '.wpzabb-creative-button',
+		            		'selector'     => '.wpzabb-button',
 		            		'property'     => 'text-transform',
 		            	),
 		            ),
@@ -869,7 +869,7 @@ FLBuilder::register_module('WPZABBImageBoxModule', array(
 						),
 		                'preview'         => array(
                             'type'          => 'css',
-                            'selector'      => '.wpzabb-creative-button',
+                            'selector'      => '.wpzabb-button',
                             'property'		=>	'letter-spacing',
                             'unit'			=> 'px'
                         )
@@ -1202,7 +1202,7 @@ FLBuilder::register_settings_form('image_box_form', array(
 							'default'       => __('Click Here', 'wpzabb'),
 							'preview'         => array(
 								'type'            => 'text',
-								'selector'        => '.wpzabb-creative-button-text'
+								'selector'        => '.wpzabb-button-text'
 							),
 							'connections'	=> array( 'string', 'html' )
 						),

@@ -57,6 +57,12 @@
     margin-right: 0;
 }
 
+.fl-node-<?php echo $id; ?> .wpzabb-image-box-wrap.layout-2-cols .wpzabb-image:last-child,
+.fl-node-<?php echo $id; ?> .wpzabb-image-box-wrap.layout-3-cols .wpzabb-image:last-child,
+.fl-node-<?php echo $id; ?> .wpzabb-image-box-wrap.layout-4-cols .wpzabb-image:last-child {
+	margin-right: 0;
+}
+
 <?php /* Typography formating */ ?>
 
 .fl-node-<?php echo $id; ?> .wpzabb-image-box-wrap .wpzabb-image-heading {

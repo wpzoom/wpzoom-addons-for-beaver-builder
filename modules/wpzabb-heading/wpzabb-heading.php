@@ -130,7 +130,7 @@ FLBuilder::register_module('WPZABBHeadingModule', array(
 						'help'         => __('This is the overall alignment and would apply to all Heading elements', 'wpzabb'),
 						'preview'         => array(
                             'type'          => 'css',
-                            'selector'      => '.wpzabb-heading-wrapper .wpzabb-heading, .wpzabb-heading-wrapper .wpzabb-subheading *',
+                            'selector'      => '.wpzabb-heading-wrap .wpzabb-heading, .wpzabb-heading-wrap .wpzabb-subheading *',
                             'property'      => 'text-align',
                         )
 					),

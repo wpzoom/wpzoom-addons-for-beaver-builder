@@ -11,14 +11,13 @@ class WPZABBButtonModule extends FLBuilderModule {
 	public function __construct()
 	{
 		parent::__construct(array(
-			'name'          => __('Button', 'wpzabb'),
-			'description'   => __('A simple call to action button.', 'wpzabb'),
-			'category'      => WPZOOM_BB_Addon_Pack_Helper::module_cat(),
-			'dir'           => BB_WPZOOM_ADDON_DIR . 'modules/wpzabb-button/',
-            'url'           => BB_WPZOOM_ADDON_URL . 'modules/wpzabb-button/',
-            'editor_export' => true, // Defaults to true and can be omitted.
-            'enabled'       => true, // Defaults to true and can be omitted.
-            'icon'          => 'button.svg'
+			'name'          	=> __('Button', 'wpzabb'),
+			'description'   	=> __('A simple call to action button.', 'wpzabb'),
+			'category'      	=> WPZOOM_BB_Addon_Pack_Helper::module_cat(),
+			'dir'           	=> BB_WPZOOM_ADDON_DIR . 'modules/wpzabb-button/',
+            'url'           	=> BB_WPZOOM_ADDON_URL . 'modules/wpzabb-button/',
+            'partial_refresh'	=> true,
+            'icon'          	=> 'button.svg'
 		));
 
 		add_filter( 'fl_builder_layout_data', array( $this , 'render_new_data' ), 10, 3 );
@@ -78,27 +77,27 @@ class WPZABBButtonModule extends FLBuilderModule {
 	 */
 	public function get_classname()
 	{
-		$classname = 'wpzabb-button-wrap wpzabb-creative-button-wrap';
+		$classname = 'wpzabb-button-wrap wpzabb-button-wrap';
 
 		if(!empty($this->settings->width)) {
 			$classname .= ' wpzabb-button-width-' . $this->settings->width;
-			$classname .= ' wpzabb-creative-button-width-' . $this->settings->width;
+			$classname .= ' wpzabb-button-width-' . $this->settings->width;
 		}
 		if(!empty($this->settings->align)) {
 			$classname .= ' wpzabb-button-' . $this->settings->align;
-			$classname .= ' wpzabb-creative-button-' . $this->settings->align;
+			$classname .= ' wpzabb-button-' . $this->settings->align;
 		}
 		if(!empty($this->settings->mob_align)) {
 			$classname .= ' wpzabb-button-reponsive-' . $this->settings->mob_align;
-			$classname .= ' wpzabb-creative-button-reponsive-' . $this->settings->mob_align;
+			$classname .= ' wpzabb-button-reponsive-' . $this->settings->mob_align;
 		}
 		if(!empty($this->settings->icon)) {
 			$classname .= ' wpzabb-button-has-icon';
-			$classname .= ' wpzabb-creative-button-has-icon';
+			$classname .= ' wpzabb-button-has-icon';
 		}
 
 		if( empty($this->settings->text) ) {
-			$classname .= ' wpzabb-creative-button-icon-no-text';
+			$classname .= ' wpzabb-button-icon-no-text';
 		}
 
 		return $classname;
@@ -165,7 +164,7 @@ FLBuilder::register_module('WPZABBButtonModule', array(
 						'default'       => __('Click Here', 'wpzabb'),
 						'preview'         => array(
 							'type'            => 'text',
-							'selector'        => '.wpzabb-creative-button-text'
+							'selector'        => '.wpzabb-button-text'
 						),
 						'connections'	=> array( 'string', 'html' )
 					),
@@ -467,7 +466,7 @@ FLBuilder::register_module('WPZABBButtonModule', array(
 		                ),
                         'preview'         => array(
                             'type'            => 'font',
-                            'selector'        => '.wpzabb-creative-button'
+                            'selector'        => '.wpzabb-button'
                         )
 		            ),
 		            'font_size_unit'     => array(
@@ -483,7 +482,7 @@ FLBuilder::register_module('WPZABBButtonModule', array(
                         ),
 		                'preview'         => array(
                             'type'            => 'css',
-                            'selector'        => '.wpzabb-creative-button',
+                            'selector'        => '.wpzabb-button',
                             'property'		=>	'font-size',
                             'unit'			=> 'px'
                         )
@@ -501,7 +500,7 @@ FLBuilder::register_module('WPZABBButtonModule', array(
                         ),
 		                'preview'         => array(
                             'type'            => 'css',
-                            'selector'        => '.wpzabb-creative-button',
+                            'selector'        => '.wpzabb-button',
                             'property'		=>	'line-height',
                             'unit'			=> 'em'
                         )
@@ -518,7 +517,7 @@ FLBuilder::register_module('WPZABBButtonModule', array(
 		            	),
 		            	'preview'      => array(
 		            		'type'         => 'css',
-		            		'selector'     => '.wpzabb-creative-button',
+		            		'selector'     => '.wpzabb-button',
 		            		'property'     => 'text-transform',
 		            	),
 		            ),
@@ -549,7 +548,7 @@ FLBuilder::register_module('WPZABBButtonModule', array(
 						),
 		                'preview'         => array(
                             'type'          => 'css',
-                            'selector'      => '.wpzabb-creative-button',
+                            'selector'      => '.wpzabb-button',
                             'property'		=>	'letter-spacing',
                             'unit'			=> 'px'
                         )

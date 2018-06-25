@@ -4,7 +4,7 @@
  * Plugin Name: WPZOOM Addons Pack for Beaver Builder - Lite
  * Plugin URI: http://www.wpzoom.com/
  * Description: WPZOOM Addons Pack is a free extension for Beaver Builder that adds 10 modules, and works on top of any Beaver Builder Package. (Free, Standard, Pro & Agency) You can use it with on any WordPress theme.
- * Version: 1.0.0
+ * Version: 1.0
  * Author: WPZOOM
  * Author URI: http://www.wpzoom.com
  * Text Domain: bbwpzoom
@@ -15,7 +15,7 @@ if( !class_exists( "WPZOOM_BB_Addon_Pack" ) ) {
 
 	define( 'BB_WPZOOM_ADDON_DIR', plugin_dir_path( __FILE__ ) );
 	define( 'BB_WPZOOM_ADDON_URL', plugins_url( '/', __FILE__ ) );
-	define( 'BB_WPZOOM_ADDON_LITE_VERSION', '1.0.0' );
+	define( 'BB_WPZOOM_ADDON_LITE_VERSION', '1.0' );
 	define( 'WPZOOM_REMOVE_wpzabb_FROM_REGISTRATION_LISTING', true );
 	define( 'BB_WPZOOM_ADDON_FILE', trailingslashit( dirname( __FILE__ ) ) . 'wpzoom-bb-addon-pack.php' );
 	define( 'BB_WPZOOM_ADDON_LITE', true );

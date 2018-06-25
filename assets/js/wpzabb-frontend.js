@@ -566,7 +566,7 @@
       /**
        * Trigger a hook.
        *
-       * @since 1.1.0.3
+       * @since 1.0
        * @method triggerHook
        * @param {String} hook The hook to trigger.
        * @param {Array} args An array of args to pass to the hook.
@@ -579,7 +579,7 @@
       /**
        * Add a hook.
        *
-       * @since 1.1.0.3
+       * @since 1.0
        * @method addHook
        * @param {String} hook The hook to add.
        * @param {Function} callback A function to call when the hook is triggered.
@@ -592,7 +592,7 @@
       /**
        * Remove a hook.
        *
-       * @since 1.1.0.3
+       * @since 1.0
        * @method removeHook
        * @param {String} hook The hook to remove.
        * @param {Function} callback The callback function to remove.

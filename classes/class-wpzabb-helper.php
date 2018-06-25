@@ -14,10 +14,13 @@ if( !class_exists( "WPZOOM_BB_Addon_Pack_Helper" ) ) {
 		function __construct() {
 
 			$this->set_constants();
+
+			add_filter( 'fl_builder_register_settings_form', array( $this, 'set_custom_fields_global_settings' ), 10, 2 );
 		}
 
 		function set_constants() {
 			$branding         = WPZOOM_BB_Addon_Pack_Helper::get_builder_wpzabb_branding();
+			$branding_prefix  = 'wpzabb-';
 			$branding_name    = 'WPZABB';
 			$branding_modules = __('WPZOOM Modules', 'wpzabb');
 
@@ -35,42 +38,13 @@ if( !class_exists( "WPZOOM_BB_Addon_Pack_Helper" ) ) {
 				$branding_modules = sprintf( __( '%s Modules', 'wpzabb' ), $branding_name );
 			}
 
-			define( 'WPZABB_PREFIX', $branding_name );
+			define( 'WPZABB_PREFIX', $branding_prefix );
+			define( 'WPZABB_BRANDNAME', $branding_name );
 			define( 'WPZABB_CAT', $branding_modules );			
 		}
 		
 		static public function module_cat( $cat = '' ) {
 		    return ( class_exists( 'FLBuilderUIContentPanel' ) && ! empty($cat) ) ? $cat : WPZABB_CAT;
-		}
-
-		static public function get_builder_wpzabb() {
-			$wpzabb = WPZABB_Init::$wpzabb_options['fl_builder_wpzabb'];
-
-			$defaults = array(
-				'load_panels'			=> 1,
-				'wpzabb-live-preview'		=> 1,
-				'load_templates' 		=> 1,
-				'wpzabb-google-map-api'	=> '',
-				'wpzabb-colorpicker'		=> 1,
-				'wpzabb-row-separator'    => 1
-			);
-
-			//	if empty add all defaults
-			if( empty( $wpzabb ) ) {
-				$wpzabb = $defaults;
-			} else {
-
-				//	add new key
-				foreach( $defaults as $key => $value ) {
-					if( is_array( $wpzabb ) && !array_key_exists( $key, $wpzabb ) ) {
-						$wpzabb[$key] = $value;
-					} else {
-						$wpzabb = wp_parse_args( $wpzabb, $defaults );
-					}
-				}
-			}
-
-			return apply_filters( 'wpzabb_get_builder_wpzabb', $wpzabb );
 		}
 
 		static public function get_builder_wpzabb_branding( $request_key = '' ) {
@@ -112,115 +86,75 @@ if( !class_exists( "WPZOOM_BB_Addon_Pack_Helper" ) ) {
 
 		static public function get_all_modules() {
 			$modules_array = array(
-				'wpzabb-spacer-gap'               	=> 'Spacer / Gap',
-				'wpzabb-separator'          => 'Simple Separator',
-				'wpzabb-image-icon'         => 'Image / Icon',
-				'wpzabb-image-box'         	=> 'Image Box',
-				'wpzabb-button'             => 'Button',
-				'wpzabb-testimonials'       => 'Testimonials',
-				'wpzabb-team-members'       => 'Team Members',
-				'wpzabb-heading'            => 'Heading',
-				'wpzabb-map'            	=> 'Map'
+				'spacer-gap'		=> 'Spacer / Gap',
+				'separator'         => 'Simple Separator',
+				'image-icon'        => 'Image / Icon',
+				'image-box'         => 'Image Box',
+				'button'            => 'Button',
+				'testimonials'      => 'Testimonials',
+				'team-members'      => 'Team Members',
+				'heading'           => 'Heading',
+				'map'            	=> 'Map'
 			);
 			
-			return $modules_array;
+			return self::prefix_modules( $modules_array );
 		}
 
+		static public function prefix_modules( $modules, $prefix = '' ) {
+			$all_modules = $modules;
+			$prefix 	 = ! empty( $prefix ) ? $prefix : WPZABB_PREFIX;
+
+			// Add dash line after prefix name if not finded
+			if ( ! strpos( $prefix, '-' ) ) {
+				$prefix .= '-';
+			}
+
+			foreach ( $all_modules as $key => $value ) {
+				unset($all_modules[ $key ]);
+				$new_key = $prefix . $key;
+				$all_modules[ $new_key ] = $value;
+			}
+
+			return $all_modules;
+		}
+
+		/**
+		 *	Get builder wpzabb modules
+		 *
+	 	 *  @since 1.0
+		 *	@return array
+		 */
 		static public function get_builder_wpzabb_modules() {
-			$wpzabb 			= WPZABB_Init::$wpzabb_options['fl_builder_wpzabb_modules'];
+			$wpzabb_modules 	= WPZABB_Init::$wpzabb_options['fl_builder_wpzabb_modules'];
 			$all_modules 		= self::get_all_modules();
 			$is_all_modules 	= true;
 
-			/* Delte below after test */
-			//$wpzabb 			= self::get_all_modules();
-			/* Delte above after test */
-
 			//	if empty add all defaults
-			if( empty( $wpzabb ) ) {
-				$wpzabb 		= self::get_all_modules();
-				$wpzabb['all'] 	= 'all';
+			if( empty( $wpzabb_modules ) ) {
+				$wpzabb_modules 		= self::get_all_modules();
+				$wpzabb_modules['all'] 	= 'all';
 			} else {
-				if ( !isset( $wpzabb['unset_all'] ) ) {
+				if ( !isset( $wpzabb_modules['unset_all'] ) ) {
 					//	add new key
 					foreach( $all_modules as $key => $value ) {
-						if( is_array( $wpzabb ) && !array_key_exists( $key, $wpzabb ) ) {
-							$wpzabb[$key] = $key;
-							// $is_all_modules = false;
-							// break;
+						if( is_array( $wpzabb_modules ) && !array_key_exists( $key, $wpzabb_modules ) ) {
+							$wpzabb_modules[ $key ] = $key;
 						}
 					}
 				}
 			}
 
-			if ( $is_all_modules == false && isset( $wpzabb['all'] ) ) {
-				unset( $wpzabb['all'] );
+			if ( $is_all_modules == false && isset( $wpzabb_modules['all'] ) ) {
+				unset( $wpzabb_modules['all'] );
 			}
 
-			return apply_filters( 'wpzabb_get_builder_wpzabb_modules', $wpzabb );
-		}
-		
-		/**
-		 *	Template status
-		 *
-		 *	Return the status of pages, sections, presets or all templates. Default: all
-		 *	@return boolean
-		 */
-		public static function is_templates_exist( $templates_type = 'all' ) {
-
-			$templates       = get_site_option( '_wpzabb_cloud_templats', false );
-			$exist_templates = array(
-				'page-templates' => 0,
-				'sections'       => 0,
-				'presets'        => 0
-			);
-
-			if( is_array( $templates ) && count( $templates ) > 0 ) {
-				foreach( $templates as $type => $type_templates ) {
-
-					//	Individual type array - [page-templates], [layout] or [row]
-					if( $type_templates ) {
-						foreach( $type_templates as $template_id => $template_data ) {
-							
-							/**
-							 *	Check [status] & [dat_url_local] exist
-							 */
-							if(
-								isset( $template_data['status'] ) && $template_data['status'] == true &&
-								isset( $template_data['dat_url_local'] ) && !empty( $template_data['dat_url_local'] )
-							) {
-								$exist_templates[$type] = ( count( $exist_templates[$type] ) + 1 );
-							}
-						}
-					}
-				}
-			}
-
-			switch ( $templates_type ) {
-				case 'page-templates':
-								$_templates_exist = ( $exist_templates['page-templates'] >= 1 ) ? true : false;
-				break;
-
-				case 'sections':
-								$_templates_exist = ( $exist_templates['sections'] >= 1 ) ? true : false;
-				break;
-
-				case 'presets':
-								$_templates_exist = ( $exist_templates['presets'] >= 1 ) ? true : false;
-				break;
-
-				case 'all':
-					default:
-								$_templates_exist = ( $exist_templates['page-templates'] >= 1 || $exist_templates['sections'] >= 1 || $exist_templates['presets'] >= 1 ) ? true : false;
-				break;
-			}
-
-			return $_templates_exist;
+			return apply_filters( 'wpzabb_get_builder_wpzabb_modules', $wpzabb_modules );
 		}
 
 		/**
 		 *	Get link rel attribute
 		 *
-	 	 *  @since 1.6.1
+	 	 *  @since 1.0
 		 *	@return string
 		 */
 		static public function get_link_rel( $target, $is_nofollow = 0, $echo = 0 )  {
@@ -243,6 +177,59 @@ if( !class_exists( "WPZOOM_BB_Addon_Pack_Helper" ) ) {
 				return 'rel="'.$attr.'"';
 			}
 			echo 'rel="'.$attr.'"';
+		}
+
+
+		/**
+		 * Set a custom fields settings form.
+		 *
+		 * @since 1.0
+		 * @param array $form The form data.
+		 * @param string $id The form id.
+		 * @return array
+		 */
+		static public function set_custom_fields_global_settings( $form, $id ) {
+
+			$form = self::set_custom_form_fields( $form, $id );
+
+			return $form;
+		}
+
+		static public function set_custom_form_fields( $form, $type ) {
+
+			$custom_fields = array(
+				'general' => array( // tab id
+					'responsive' => array( // section id
+						'xsmall_breakpoint' => array( // field id
+							'type'              => 'text',
+							'label'             => __( 'Extra Small Device Breakpoint', 'wpzabb' ),
+							'default'           => '480',
+							'maxlength'         => '4',
+							'size'              => '5',
+							'description'       => 'px',
+							'sanitize'			=> 'absint',
+							'help'              => __( 'The browser width at which the layout will adjust for extra small devices such as phones.', 'wpzabb' ),
+						)
+					)
+				)
+			);
+
+			foreach ( $custom_fields as $group => $fields ) {
+				if ( isset($form['tabs'][ $group ]) ) {
+					$sections = $form['tabs'][ $group ]['sections'];
+
+					foreach ( $sections as $section_id => $section ) {
+						if ( isset($fields[ $section_id ]) ) {
+							$sections[ $section_id ]['fields'] = array_merge( $sections[ $section_id ]['fields'], $fields[ $section_id ] );
+						}
+					}
+
+					$form['tabs'][ $group ]['sections'] = $sections;
+				}
+			}
+
+			return $form;
+
 		}
 		
 	}

@@ -1,13 +1,13 @@
-.wpzabb-heading-wrapper .wpzabb-heading {
+.wpzabb-heading-wrap .wpzabb-heading {
 	padding: 0;
 	margin: 0;
 }
 
-.wpzabb-heading-wrapper .wpzabb-heading a {
+.wpzabb-heading-wrap .wpzabb-heading a {
 	text-decoration: none;
 }
 
-.wpzabb-heading-wrapper .wpzabb-subheading * {
+.wpzabb-heading-wrap .wpzabb-subheading * {
 	margin: 0;
 }
 

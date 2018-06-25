@@ -3,7 +3,7 @@
 /**
  * WPZABB initial setup
  *
- * @since 1.1.0.4
+ * @since 1.0
  */
 class WPZABB_Init {
 
@@ -14,8 +14,6 @@ class WPZABB_Init {
 	*/
 
 	public function __construct() {
-
-		//register_activation_hook( __FILE__, array( __CLASS__, '::reset' ) );
 
 		if ( class_exists( 'FLBuilder' ) ) {
 
@@ -57,23 +55,11 @@ class WPZABB_Init {
 	function includes() {
 
 		require_once BB_WPZOOM_ADDON_DIR . 'classes/class-wpzabb-helper.php';
-
- 		require_once BB_WPZOOM_ADDON_DIR . 'classes/class-wpzabb-cloud-templates.php';
-		require_once BB_WPZOOM_ADDON_DIR . 'classes/class-wpzabb-admin-settings.php';
-		require_once BB_WPZOOM_ADDON_DIR . 'classes/class-wpzabb-admin-settings-multisite.php';
-
-		require_once BB_WPZOOM_ADDON_DIR . 'classes/class-wpzabb-global-settings.php';
-
 		require_once BB_WPZOOM_ADDON_DIR . 'classes/wpzabb-global-functions.php';
 
-		// Attachment Fields
-
-		require_once BB_WPZOOM_ADDON_DIR . 'classes/class-wpzabb-attachment.php';
-
-		//	fields
+		// fields
 		require_once BB_WPZOOM_ADDON_DIR . 'fields/_config.php';
 
-		require_once BB_WPZOOM_ADDON_DIR . 'classes/wpzabb-global-settings-form.php';
 		require_once BB_WPZOOM_ADDON_DIR . 'classes/helper.php';
 		require_once BB_WPZOOM_ADDON_DIR . 'classes/class-ui-panel.php';
 
@@ -107,28 +93,8 @@ class WPZABB_Init {
 	}
 
 	function init() {
-		
-		if ( apply_filters( 'wpzabb_global_support', true ) && class_exists( 'FLBuilderAJAX' ) ) {
-			require_once BB_WPZOOM_ADDON_DIR . 'classes/wpzabb-global-settings.php';
-			require_once BB_WPZOOM_ADDON_DIR . 'classes/wpzabb-global-integration.php';
-		}
 
-
-		if ( class_exists( 'FLCustomizer' ) ) {
-			$wpzabb_global_style = WPZABB_Global_Styling::get_wpzabb_global_settings();
-			
-			if ( ( isset( $wpzabb_global_style->enable_global ) && ( $wpzabb_global_style->enable_global == 'no' ) ) ) {
-				require_once BB_WPZOOM_ADDON_DIR . 'classes/wpzabb-bbtheme-global-integration.php';
-			}
-		}
-
-		//	Nested forms
-		require_once BB_WPZOOM_ADDON_DIR . 'objects/fl-nested-form-button.php';
-
-		require_once BB_WPZOOM_ADDON_DIR . 'classes/class-wpzabb-iconfonts.php';
-		//require_once BB_WPZOOM_ADDON_DIR . 'classes/class-wpzabb-model-helper.php';
-
-		// Ultimate Modules
+		// WPZOOM Addons Pack Modules
 		$this->load_modules();
 	}
 
@@ -155,23 +121,6 @@ class WPZABB_Init {
 
 	function load_scripts() {
 
-		if( FLBuilderModel::is_builder_active() ) {
-			
-			wp_enqueue_style( 'wpzabb-builder-css', BB_WPZOOM_ADDON_URL . 'assets/css/wpzabb-builder.css', array() );
-			wp_enqueue_script('wpzabb-builder-js',  BB_WPZOOM_ADDON_URL . 'assets/js/wpzabb-builder.js', array('jquery'), '', true);
-
-			if ( apply_filters( 'wpzabb_global_support', true ) ) {
-				
-				wp_localize_script( 'wpzabb-builder-js', 'wpzabb_global', array( 'show_global_button' => true ) );
-				
-				$wpzabb = WPZABB_Global_Styling::get_wpzabb_global_settings();
-
-				if( isset( $wpzabb->enable_global ) && ( $wpzabb->enable_global == 'no' ) ) {
-					wp_localize_script( 'wpzabb-builder-js', 'wpzabb_presets', array( 'show_presets' => true ) );
-				}
-			}
-		}
-
 		wp_dequeue_style( 'bootstrap-tour' );
 		wp_dequeue_script( 'bootstrap-tour' );
 		
@@ -188,13 +137,14 @@ class WPZABB_Init {
 		}
 
 		echo '<div class="notice notice-error">';
-	    echo "<p>The <strong>WPZOOM Addons Pack for Beaver Builder</strong> " . __( 'plugin requires', 'wpzabb' )." <strong><a href='".$url."'>Beaver Builder</strong></a>" . __( ' plugin installed & activated.', 'wpzabb' ) . "</p>";
+		echo '<p>' . sprintf( __('The %s plugin requires %s plugin installed and activated.', 'wpzabb'), '<strong>WPZOOM Addons Pack for Beaver Builder</strong>', '<strong><a href="' . esc_url($url) . '">Beaver Builder</a></strong>' ) . '</p>';
 	    echo '</div>';
   	}
 
   	function load_modules() {
 
   		$enable_modules = WPZOOM_BB_Addon_Pack_Helper::get_builder_wpzabb_modules();
+
 		foreach ( $enable_modules as $file => $name ) {
 
 			if ( $name == 'false' ) {
