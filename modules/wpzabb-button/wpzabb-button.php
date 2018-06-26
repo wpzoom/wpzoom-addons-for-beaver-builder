@@ -14,8 +14,8 @@ class WPZABBButtonModule extends FLBuilderModule {
 			'name'          	=> __('Button', 'wpzabb'),
 			'description'   	=> __('A simple call to action button.', 'wpzabb'),
 			'category'      	=> WPZOOM_BB_Addon_Pack_Helper::module_cat(),
-			'dir'           	=> BB_WPZOOM_ADDON_DIR . 'modules/wpzabb-button/',
-            'url'           	=> BB_WPZOOM_ADDON_URL . 'modules/wpzabb-button/',
+			'dir'           	=> BB_WPZOOM_ADDON_DIR . 'modules/'. WPZABB_PREFIX .'button/',
+            'url'           	=> BB_WPZOOM_ADDON_URL . 'modules/'. WPZABB_PREFIX .'button/',
             'partial_refresh'	=> true,
             'icon'          	=> 'button.svg'
 		));

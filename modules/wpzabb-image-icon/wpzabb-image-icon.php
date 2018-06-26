@@ -25,8 +25,8 @@ class WPZABBImageIconModule extends FLBuilderModule {
 			'name'          => __('Image / Icon', 'wpzabb'),
 			'description'   => __('Image / Icon with effect', 'wpzabb'),
 			'category'      => WPZOOM_BB_Addon_Pack_Helper::module_cat(),
-			'dir'           	=> BB_WPZOOM_ADDON_DIR . 'modules/wpzabb-image-icon/',
-            'url'           	=> BB_WPZOOM_ADDON_URL . 'modules/wpzabb-image-icon/',
+			'dir'           	=> BB_WPZOOM_ADDON_DIR . 'modules/'. WPZABB_PREFIX .'image-icon/',
+            'url'           	=> BB_WPZOOM_ADDON_URL . 'modules/'. WPZABB_PREFIX .'image-icon/',
             'icon'				=> 'format-image.svg',
 		));
 

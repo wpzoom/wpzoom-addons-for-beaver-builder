@@ -13,8 +13,8 @@ class WPZABBTestimonialsModule extends FLBuilderModule {
 			'name'          	=> __( 'Testimonials', 'wpzabb' ),
 			'description'   	=> __( 'An animated tesimonials area.', 'wpzabb' ),
 			'category'      	=> WPZOOM_BB_Addon_Pack_Helper::module_cat(),
-			'dir'           	=> BB_WPZOOM_ADDON_DIR . 'modules/wpzabb-testimonials/',
-            'url'           	=> BB_WPZOOM_ADDON_URL . 'modules/wpzabb-testimonials/',
+			'dir'           	=> BB_WPZOOM_ADDON_DIR . 'modules/'. WPZABB_PREFIX .'testimonials/',
+            'url'           	=> BB_WPZOOM_ADDON_URL . 'modules/'. WPZABB_PREFIX .'testimonials/',
             'partial_refresh'	=> true,
 			'icon' 				=> 'format-quote.svg',
 		));

@@ -24,8 +24,8 @@ class WPZABBTeamMembersModule extends FLBuilderModule {
 			'name'          	=> __( 'Team Members', 'wpzabb' ),
 			'description'   	=> __( 'Grid with team members.', 'wpzabb' ),
 			'category'      	=> WPZOOM_BB_Addon_Pack_Helper::module_cat(),
-			'dir'           	=> BB_WPZOOM_ADDON_DIR . 'modules/wpzabb-team-members/',
-            'url'           	=> BB_WPZOOM_ADDON_URL . 'modules/wpzabb-team-members/',
+			'dir'           	=> BB_WPZOOM_ADDON_DIR . 'modules/'. WPZABB_PREFIX .'team-members/',
+            'url'           	=> BB_WPZOOM_ADDON_URL . 'modules/'. WPZABB_PREFIX .'team-members/',
             'partial_refresh'	=> true,
 		));
 	}

@@ -13,8 +13,8 @@ class WPZABBMapModule extends FLBuilderModule {
 			'name'          	=> __( 'Map', 'wpzabb' ),
 			'description'   	=> __( 'Display a Google map.', 'wpzabb' ),
 			'category'          => WPZOOM_BB_Addon_Pack_Helper::module_cat(),
-			'dir'           	=> BB_WPZOOM_ADDON_DIR . 'modules/wpzabb-map/',
-            'url'           	=> BB_WPZOOM_ADDON_URL . 'modules/wpzabb-map/',
+			'dir'           	=> BB_WPZOOM_ADDON_DIR . 'modules/'. WPZABB_PREFIX .'map/',
+            'url'           	=> BB_WPZOOM_ADDON_URL . 'modules/'. WPZABB_PREFIX .'map/',
             'partial_refresh'	=> true,
 			'icon'				=> 'location.svg',
 		));

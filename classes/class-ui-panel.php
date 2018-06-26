@@ -21,19 +21,7 @@ class WPZABB_UI_Panels {
 	}
 
 	public function init() {
-		add_filter( 'fl_builder_template_selector_data', array( $this, 'wpzabb_fl_builder_template_selector_data' ), 10, 2 );
-	}
-
-	/**
-	 * 	Filter Templates
-	 * 	Add additional information in templates array
-	 *
-	 * @return array
-	 */
-	function wpzabb_fl_builder_template_selector_data( $template_data, $template ) {
-		$template_data['tags']   = isset( $template->tags ) ? $template->tags : array();
-		$template_data['author'] = isset( $template->author ) ? $template->author : '';
-		return $template_data;
+		
 	}
 
 	/**

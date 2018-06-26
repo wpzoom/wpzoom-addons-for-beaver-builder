@@ -56,10 +56,6 @@ class WPZABB_Init {
 
 		require_once BB_WPZOOM_ADDON_DIR . 'classes/class-wpzabb-helper.php';
 		require_once BB_WPZOOM_ADDON_DIR . 'classes/wpzabb-global-functions.php';
-
-		// fields
-		require_once BB_WPZOOM_ADDON_DIR . 'fields/_config.php';
-
 		require_once BB_WPZOOM_ADDON_DIR . 'classes/helper.php';
 		require_once BB_WPZOOM_ADDON_DIR . 'classes/class-ui-panel.php';
 

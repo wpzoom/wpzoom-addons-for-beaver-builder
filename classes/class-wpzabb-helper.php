@@ -94,7 +94,8 @@ if( !class_exists( "WPZOOM_BB_Addon_Pack_Helper" ) ) {
 				'testimonials'      => 'Testimonials',
 				'team-members'      => 'Team Members',
 				'heading'           => 'Heading',
-				'map'            	=> 'Map'
+				'map'            	=> 'Map',
+				'posts'            	=> 'Posts'
 			);
 			
 			return self::prefix_modules( $modules_array );
@@ -104,7 +105,7 @@ if( !class_exists( "WPZOOM_BB_Addon_Pack_Helper" ) ) {
 			$all_modules = $modules;
 			$prefix 	 = ! empty( $prefix ) ? $prefix : WPZABB_PREFIX;
 
-			// Add dash line after prefix name if not finded
+			// Add dash line after prefix name if not founded
 			if ( ! strpos( $prefix, '-' ) ) {
 				$prefix .= '-';
 			}

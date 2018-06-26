@@ -24,8 +24,8 @@ class WPZABBImageBoxModule extends FLBuilderModule {
 			'name'          	=> __( 'Image Box', 'wpzabb' ),
 			'description'   	=> __( 'Add an image with some text over.', 'wpzabb' ),
 			'category'      	=> WPZOOM_BB_Addon_Pack_Helper::module_cat(),
-			'dir'           	=> BB_WPZOOM_ADDON_DIR . 'modules/wpzabb-image-box/',
-            'url'           	=> BB_WPZOOM_ADDON_URL . 'modules/wpzabb-image-box/',
+			'dir'           	=> BB_WPZOOM_ADDON_DIR . 'modules/'. WPZABB_PREFIX .'image-box/',
+            'url'           	=> BB_WPZOOM_ADDON_URL . 'modules/'. WPZABB_PREFIX .'image-box/',
             'partial_refresh'	=> true,
             'icon'				=> 'format-gallery.svg',
 		));
