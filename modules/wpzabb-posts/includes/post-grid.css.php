@@ -1,8 +1,16 @@
+<?php
+
+$settings->title_margin_top = ( trim($settings->title_margin_top) !== '' ) ? $settings->title_margin_top : '0';
+$settings->title_margin_bottom = ( trim($settings->title_margin_bottom) !== '' ) ? $settings->title_margin_bottom : '15';
+$settings->grid_image_margin_top = ( trim($settings->grid_image_margin_top) !== '' ) ? $settings->grid_image_margin_top : '0';
+$settings->grid_image_margin_bottom = ( trim($settings->grid_image_margin_bottom) !== '' ) ? $settings->grid_image_margin_bottom : '0';
+
+?>
 .fl-node-<?php echo $id; ?> .wpzabb-post-grid-post {
 
 	<?php if ( ! empty( $settings->bg_color ) ) : ?>
 	background-color: #<?php echo $settings->bg_color; ?>;
-	background-color: rgba(<?php echo implode( ',', FLBuilderColor::hex_to_rgb( $settings->bg_color ) ) ?>, <?php echo $settings->bg_opacity / 100; ?>);
+	background-color: <?php WPZABB_Helper::wpzabb_colorpicker( $settings, 'bg_color', true ); ?>;
 	<?php endif; ?>
 
 	<?php if ( 'default' != $settings->border_type && 'none' != $settings->border_type && ! empty( $settings->border_color ) ) : ?>
@@ -18,19 +26,28 @@
 	<?php endif; ?>
 }
 
+.fl-node-<?php echo $id; ?> .wpzabb-post-grid-title {
+	<?php if( !empty($settings->title_font) && $settings->title_font['family'] != 'Default' ) : ?>
+		<?php WPZABB_Helper::wpzabb_font_css( $settings->title_font ); ?>
+	<?php endif; ?>
+
+	<?php if( isset( $settings->title_font_size ) && $settings->title_font_size != '' ) : ?>
+		font-size: <?php echo $settings->title_font_size; ?>px;
+	<?php endif; ?>
+}
+
+.fl-node-<?php echo $id; ?> .wpzabb-post-grid-title {
+	margin-top: <?php echo $settings->title_margin_top; ?>px;
+	margin-bottom: <?php echo $settings->title_margin_bottom; ?>px;
+}
+
 .fl-node-<?php echo $id; ?> .wpzabb-post-grid-text {
 	padding: <?php echo $settings->post_padding; ?>px;
 }
 
 <?php if ( ! empty( $settings->title_color ) ) : ?>
-.fl-node-<?php echo $id; ?> h2.wpzabb-post-grid-title a {
+.fl-node-<?php echo $id; ?> .wpzabb-post-grid-title a {
 	color: #<?php echo $settings->title_color; ?>;
-}
-<?php endif; ?>
-
-<?php if ( ! empty( $settings->title_font_size ) ) : ?>
-.fl-node-<?php echo $id; ?> h2.wpzabb-post-grid-title a {
-	font-size: <?php echo $settings->title_font_size; ?>px;
 }
 <?php endif; ?>
 
@@ -73,6 +90,18 @@
 	color: #<?php echo $settings->link_hover_color; ?>;
 }
 <?php endif; ?>
+
+<?php if ( $settings->show_image && ! empty( $settings->grid_image_margin_top ) ): ?>
+	.fl-node-<?php echo $id; ?> .wpzabb-post-grid-image {
+		margin-top: <?php echo $settings->grid_image_margin_top; ?>px;
+	}
+<?php endif ?>
+
+<?php if ( $settings->show_image && ! empty( $settings->grid_image_margin_bottom ) ): ?>
+	.fl-node-<?php echo $id; ?> .wpzabb-post-grid-image {
+		margin-bottom: <?php echo $settings->grid_image_margin_bottom; ?>px;
+	}
+<?php endif ?>
 
 <?php if ( $settings->show_image && ! empty( $settings->grid_image_spacing ) ) : ?>
 	<?php if ( 'above' == $settings->grid_image_position ) : ?>

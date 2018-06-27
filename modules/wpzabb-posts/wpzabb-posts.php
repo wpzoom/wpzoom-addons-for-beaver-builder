@@ -120,6 +120,77 @@ class WPZABBPostsModule extends FLBuilderModule {
 	}
 
 	/**
+	 * Renders the post meta.
+	 *
+	 * @since 1.0
+	 * @param string|array $position
+	 * @return void
+	 */
+	public function render_meta( $position = 'above' ) {
+		$module   = $this;
+		$settings = $this->settings;
+		$render   = false;
+		$position = ! is_array( $position ) ? array( $position ) : $position;
+		$layout   = $this->get_layout_slug();
+
+		if ( 'list' == $settings->layout && in_array( $settings->info_position, $position ) ) {
+			$render = true;
+		} elseif ( 'grid' == $settings->layout && in_array( $settings->grid_info_position, $position ) ) {
+			$render = true;
+		}
+
+		if ( $render ) {
+			include $this->dir . 'includes/post-meta.php';
+		}
+	}
+
+
+    /**
+     * Renders the load more button.
+     *
+	 * @since 1.0
+	 * @method render_button
+	 * @return void
+	 */
+	public function render_more_button()
+	{
+		$btn_settings = array(
+			'text'             			=> $this->settings->more_btn_text,
+			'link'             			=> '#',
+			'link_target'             	=> '_self',
+			'align'             		=> 'center',
+			'mob_align'             	=> 'center',
+			'border_radius'             => $this->settings->more_btn_border_radius,
+			'width' 					=> $this->settings->more_btn_width,
+			'padding_top_bottom' 		=> $this->settings->more_btn_padding_top_bottom,
+			'padding_left_right' 		=> $this->settings->more_btn_padding_left_right,
+			'font_family'       		=> $this->settings->more_btn_font_family,
+			'font_size_unit'   			=> $this->settings->more_btn_font_size,
+			'line_height_unit' 			=> $this->settings->more_btn_line_height_unit,
+			'letter_spacing' 			=> $this->settings->more_btn_custom_letter_spacing,
+			'text_transform' 			=> $this->settings->more_btn_text_transform,
+			'letter_spacing' 			=> $this->settings->more_btn_letter_spacing,
+			'style' 					=> $this->settings->more_btn_style,
+			'border_size' 				=> $this->settings->more_btn_border_size,
+			'flat_options' 				=> $this->settings->more_btn_flat_options,
+			'icon' 						=> $this->settings->more_btn_icon,
+			'icon_position' 			=> $this->settings->more_btn_icon_position,
+			'text_color' 				=> $this->settings->more_btn_text_color,
+			'text_hover_color' 			=> $this->settings->more_btn_text_hover_color,
+			'bg_color' 					=> $this->settings->more_btn_bg_color,
+			'bg_color_opc' 				=> $this->settings->more_btn_bg_color_opc,
+			'bg_hover_color' 			=> $this->settings->more_btn_bg_hover_color,
+			'bg_hover_color_opc' 		=> $this->settings->more_btn_bg_hover_color_opc,
+			'hover_attribute' 			=> $this->settings->more_btn_hover_attribute,
+		);
+
+		/* Render HTML Function */
+		echo '<div class="wpzabb-builder-pagination-load-more">';
+		FLBuilder::render_module_html( 'wpzabb-button', $btn_settings );
+		echo '</div>';
+	}
+
+	/**
 	 * Checks to see if a featured image exists for a position.
 	 *
 	 * @since 1.0
@@ -313,12 +384,12 @@ FLBuilder::register_module('WPZABBPostsModule', array(
 						),
 						'toggle'        => array(
 							'grid'          => array(
-								'sections'      => array( 'posts', 'image', 'content', 'post_style', 'text_style' ),
-								'fields'        => array( 'match_height', 'post_columns', 'grid_image_position', 'grid_image_spacing', 'show_author', 'grid_show_comments', 'show_terms' ),
+								'sections'      => array( 'posts', 'image', 'info', 'content', 'post_style', 'text_style' ),
+								'fields'        => array( 'match_height', 'post_columns', 'post_spacing', 'post_padding', 'grid_image_position', 'grid_image_spacing', 'grid_image_margin_top', 'grid_image_margin_bottom', 'show_author', 'grid_info_position', 'grid_show_comments', 'show_terms' ),
 							),
 							'list'          => array(
-								'sections'      => array( 'posts', 'image', 'content', 'post_style', 'text_style' ),
-								'fields'        => array( 'image_position', 'image_spacing', 'show_author', 'show_comments', 'show_terms', 'content_type' ),
+								'sections'      => array( 'posts', 'image', 'info', 'content', 'post_style', 'text_style' ),
+								'fields'        => array( 'image_position', 'image_spacing', 'image_margin_top', 'image_margin_bottom', 'list_post_spacing', 'list_post_padding', 'show_author', 'show_comments', 'show_terms', 'info_position', 'content_type' ),
 							),
 						),
 					),
@@ -344,9 +415,46 @@ FLBuilder::register_module('WPZABBPostsModule', array(
 								'default'    => '3',
 								'medium'     => '2',
 								'responsive' => '2',
-								'xsmall' 	 => '1',
 							),
 						),
+					),
+					'post_spacing' => array(
+						'type'          => 'text',
+						'label'         => __( 'Post Spacing', 'wpzabb' ),
+						'default'       => '60',
+						'maxlength'     => '3',
+						'size'          => '4',
+						'description'   => 'px',
+					),
+					'list_post_spacing' => array(
+						'type'          => 'text',
+						'label'         => __( 'Post Spacing', 'wpzabb' ),
+						'default'       => '40',
+						'maxlength'     => '3',
+						'size'          => '4',
+						'description'   => 'px',
+					),
+					'post_padding' => array(
+						'type'          => 'text',
+						'label'         => __( 'Post Padding', 'wpzabb' ),
+						'default'       => '20',
+						'maxlength'     => '3',
+						'size'          => '4',
+						'description'   => 'px',
+						'preview'       => array(
+							'type'			=> 'css',
+							'selector'		=> '.wpzabb-post-grid-text',
+							'property'		=> 'padding',
+							'unit'			=> 'px',
+						),
+					),
+					'list_post_padding' => array(
+						'type'          => 'text',
+						'label'         => __( 'Post Padding', 'wpzabb' ),
+						'default'       => '0',
+						'maxlength'     => '3',
+						'size'          => '4',
+						'description'   => 'px',
 					),
 					'post_align'    => array(
 						'type'          => 'select',
@@ -416,11 +524,77 @@ FLBuilder::register_module('WPZABBPostsModule', array(
 						'size'          => '4',
 						'description'   => 'px',
 					),
+					'image_width'   => array(
+						'type'          => 'text',
+						'label'         => __( 'Image Width', 'wpzabb' ),
+						'default'       => '33',
+						'maxlength'     => '3',
+						'size'          => '4',
+						'description'   => '%',
+					),
+					'grid_image_margin_top' => array(
+						'type'          => 'text',
+						'label'         => __( 'Image Margin Top', 'wpzabb' ),
+						'default'       => '0',
+						'maxlength'     => '3',
+						'size'          => '4',
+						'description'   => 'px',
+					),
+					'grid_image_margin_bottom' => array(
+						'type'          => 'text',
+						'label'         => __( 'Image Margin Bottom', 'wpzabb' ),
+						'default'       => '0',
+						'maxlength'     => '3',
+						'size'          => '4',
+						'description'   => 'px',
+					),
+					'image_spacing' => array(
+						'type'          => 'text',
+						'label'         => __( 'Image Spacing', 'wpzabb' ),
+						'default'       => '0',
+						'maxlength'     => '3',
+						'size'          => '4',
+						'description'   => 'px',
+					),
+					'image_margin_top' => array(
+						'type'          => 'text',
+						'label'         => __( 'Image Margin Top', 'wpzabb' ),
+						'default'       => '0',
+						'maxlength'     => '3',
+						'size'          => '4',
+						'description'   => 'px',
+					),
+					'image_margin_bottom' => array(
+						'type'          => 'text',
+						'label'         => __( 'Image Margin Bottom', 'wpzabb' ),
+						'default'       => '0',
+						'maxlength'     => '3',
+						'size'          => '4',
+						'description'   => 'px',
+					),
 				),
 			),
 			'info'          => array(
 				'title'         => __( 'Post Info', 'wpzabb' ),
 				'fields'        => array(
+					'grid_info_position' => array(
+						'type'          => 'select',
+						'label'         => __( 'Info Meta Position', 'wpzabb' ),
+						'default'       => 'above',
+						'options'       => array(
+							'above-title'   => __( 'Above Title', 'wpzabb' ),
+							'above'         => __( 'Above Content', 'wpzabb' ),
+						),
+					),
+					'info_position' => array(
+						'type'          => 'select',
+						'label'         => __( 'Info Meta Position', 'wpzabb' ),
+						'default'       => 'above',
+						'options'       => array(
+							'above-title'   => __( 'Above Title', 'wpzabb' ),
+							'above'         => __( 'Above Content', 'wpzabb' ),
+						),
+					),
 					'show_author'   => array(
 						'type'          => 'select',
 						'label'         => __( 'Author', 'wpzabb' ),
@@ -539,6 +713,7 @@ FLBuilder::register_module('WPZABBPostsModule', array(
 						'label'         => __( 'Content Length', 'wpzabb' ),
 						'default'       => '',
 						'size'          => '4',
+						'sanitize'		=> 'absint',
 						'description'   => __( 'words', 'wpzabb' ),
 					),
 					'show_more_link' => array(
@@ -575,7 +750,7 @@ FLBuilder::register_module('WPZABBPostsModule', array(
 						'label'         => __( 'Post Background Color', 'wpzabb' ),
 						'show_reset'    => true,
 					),
-					'bg_opacity'    => array(
+					'bg_color_opc'    => array(
 						'type'          => 'text',
 						'label'         => __( 'Post Background Opacity', 'wpzabb' ),
 						'default'       => '100',
@@ -621,6 +796,7 @@ FLBuilder::register_module('WPZABBPostsModule', array(
 						'default'       => '1',
 						'maxlength'     => '3',
 						'size'          => '4',
+						'sanitize'		=> 'absint',
 						'description'   => 'px',
 					),
 				),
@@ -633,6 +809,27 @@ FLBuilder::register_module('WPZABBPostsModule', array(
 						'label'         => __( 'Title Color', 'wpzabb' ),
 						'show_reset'    => true,
 					),
+					'title_tag'           => array(
+						'type'          => 'select',
+						'label'         => __( 'Title HTML Tag', 'wpzabb' ),
+						'default'       => 'h3',
+						'options'       => array(
+							'h1'            =>  'h1',
+							'h2'            =>  'h2',
+							'h3'            =>  'h3',
+							'h4'            =>  'h4',
+							'h5'            =>  'h5',
+							'h6'            =>  'h6'
+						)
+					),
+					'title_font'          => array(
+						'type'          => 'font',
+						'default'		=> array(
+							'family'		=> 'Default',
+							'weight'		=> 600
+						),
+						'label'         => __('Title Font', 'wpzabb'),
+					),
 					'title_font_size' => array(
 						'type'          => 'text',
 						'label'         => __( 'Title Font Size', 'wpzabb' ),
@@ -640,6 +837,32 @@ FLBuilder::register_module('WPZABBPostsModule', array(
 						'maxlength'     => '3',
 						'size'          => '4',
 						'description'   => 'px',
+					),
+					'title_margin_top'       => array(
+						'type'          => 'text',
+						'label'         => __('Margin Top', 'wpzabb'),
+						'placeholder'	=> '0',
+						'size'			=> '5',
+						'description'	=> 'px',
+						'preview'		=> array(
+							'type' => 'css',
+							'property' => 'margin-top',
+							'selector' => '.wpzabb-post-grid-title',
+							'unit'		=> 'px',
+						)
+					),
+					'title_margin_bottom'       => array(
+						'type'          => 'text',
+						'label'         => __('Margin Bottom', 'wpzabb'),
+						'placeholder'	=> '15',
+						'size'			=> '5',
+						'description'	=> 'px',
+						'preview'		=> array(
+							'type' => 'css',
+							'property'	=> 'margin-bottom',
+							'selector'	=> '.wpzabb-post-grid-title',
+							'unit'		=> 'px',
+						)
 					),
 					'info_color'    => array(
 						'type'          => 'color',
@@ -676,32 +899,6 @@ FLBuilder::register_module('WPZABBPostsModule', array(
 						'type'          => 'color',
 						'label'         => __( 'Link Hover Color', 'wpzabb' ),
 						'show_reset'    => true,
-					),
-				),
-			),
-			'overlay_style' => array(
-				'title'         => __( 'Overlay Colors', 'wpzabb' ),
-				'fields'        => array(
-					'text_color'    => array(
-						'type'          => 'color',
-						'label'         => __( 'Overlay Text Color', 'wpzabb' ),
-						'default'       => 'ffffff',
-						'show_reset'    => true,
-					),
-					'text_bg_color' => array(
-						'type'          => 'color',
-						'label'         => __( 'Overlay Background Color', 'wpzabb' ),
-						'default'       => '333333',
-						'help'          => __( 'The color applies to the overlay behind text over the background selections.', 'wpzabb' ),
-						'show_reset'    => true,
-					),
-					'text_bg_opacity' => array(
-						'type'          => 'text',
-						'label'         => __( 'Overlay Background Opacity', 'wpzabb' ),
-						'default'       => '50',
-						'maxlength'     => '3',
-						'size'          => '4',
-						'description'   => '%',
 					),
 				),
 			),
@@ -760,59 +957,98 @@ FLBuilder::register_module('WPZABBPostsModule', array(
 						'label'         => __( 'Button Text', 'wpzabb' ),
 						'default'       => __( 'Load More', 'wpzabb' ),
 					),
-					'more_btn_icon'      => array(
+					'more_btn_style'    => array(
+						'type'          => 'select',
+						'label'         => __('Style', 'wpzabb'),
+						'default'       => 'flat',
+						'class'			=> 'creative_button_styles',
+						'options'       => array(
+							'flat'          => __('Flat', 'wpzabb'),
+							'transparent'   => __('Transparent', 'wpzabb'),
+						),
+					),
+					'more_btn_flat_options'         => array(
+						'type'          => 'select',
+						'label'         => __('Hover Styles', 'wpzabb'),
+						'default'       => 'none',
+						'options'       => array(
+							'none'          => __('None', 'wpzabb'),
+							'animate_to_left'      => __('Appear Icon From Right', 'wpzabb'),
+							'animate_to_right'          => __('Appear Icon From Left', 'wpzabb'),
+							'animate_from_top'      => __('Appear Icon From Top', 'wpzabb'),
+							'animate_from_bottom'     => __('Appear Icon From Bottom', 'wpzabb'),
+						),
+					),
+					'more_btn_icon'     => array(
 						'type'          => 'icon',
-						'label'         => __( 'Button Icon', 'wpzabb' ),
-						'show_remove'   => true,
+						'label'         => __('Icon', 'wpzabb'),
+						'show_remove'   => true
 					),
 					'more_btn_icon_position' => array(
 						'type'          => 'select',
-						'label'         => __( 'Icon Position', 'wpzabb' ),
-						'default'       => 'before',
+						'label'         => __('Icon Position', 'wpzabb'),
+						'default'       => 'after',
 						'options'       => array(
-							'before'        => __( 'Before Text', 'wpzabb' ),
-							'after'         => __( 'After Text', 'wpzabb' ),
-						),
+							'before'        => __('Before Text', 'wpzabb'),
+							'after'         => __('After Text', 'wpzabb')
+						)
 					),
-					'more_btn_icon_animation' => array(
-						'type'          => 'select',
-						'label'         => __( 'Icon Visibility', 'wpzabb' ),
-						'default'       => 'disable',
-						'options'       => array(
-							'disable'        => __( 'Always Visible', 'wpzabb' ),
-							'enable'         => __( 'Fade In On Hover', 'wpzabb' ),
-						),
+					'more_btn_text_color'        => array( 
+						'type'       => 'color',
+                        'label'         => __('Text Color', 'wpzabb'),
+						'default'    => '',
+						'show_reset' => true,
 					),
-					'more_btn_bg_color'  => array(
-						'type'          => 'color',
-						'label'         => __( 'Background Color', 'wpzabb' ),
-						'default'       => '',
-						'show_reset'    => true,
+					'more_btn_text_hover_color'   => array( 
+						'type'       => 'color',
+                        'label'         => __('Text Hover Color', 'wpzabb'),
+						'default'    => '',
+						'show_reset' => true,
+                        'preview'       => array(
+							'type'          => 'none'
+						)
 					),
-					'more_btn_bg_hover_color' => array(
-						'type'          => 'color',
-						'label'         => __( 'Background Hover Color', 'wpzabb' ),
-						'default'       => '',
-						'show_reset'    => true,
-						'preview'       => array(
-							'type'          => 'none',
-						),
+					'more_btn_bg_color'        => array( 
+						'type'       => 'color',
+                        'label'         => __('Background Color', 'wpzabb'),
+						'default'    => '',
+						'show_reset' => true,
 					),
-					'more_btn_text_color' => array(
-						'type'          => 'color',
-						'label'         => __( 'Text Color', 'wpzabb' ),
-						'default'       => '',
-						'show_reset'    => true,
+                    'more_btn_bg_color_opc'    => array( 
+						'type'        => 'text',
+						'label'       => __('Opacity', 'wpzabb'),
+						'default'     => '',
+						'description' => '%',
+						'maxlength'   => '3',
+						'size'        => '5',
 					),
-					'more_btn_text_hover_color' => array(
-						'type'          => 'color',
-						'label'         => __( 'Text Hover Color', 'wpzabb' ),
-						'default'       => '',
-						'show_reset'    => true,
-						'preview'       => array(
-							'type'          => 'none',
-						),
+					'more_btn_bg_hover_color'        => array( 
+						'type'       => 'color',
+                        'label'      => __('Background Hover Color', 'wpzabb'),
+						'default'    => '',
+						'show_reset' => true,
+                        'preview'       => array(
+							'type'          => 'none'
+						)
 					),
+                    'more_btn_bg_hover_color_opc'    => array( 
+						'type'        => 'text',
+						'label'       => __('Opacity', 'wpzabb'),
+						'default'     => '',
+						'description' => '%',
+						'maxlength'   => '3',
+						'size'        => '5',
+					),
+                    'more_btn_hover_attribute' => array(
+                    	'type'          => 'select',
+                        'label'         => __( 'Apply Hover Color To', 'wpzabb' ),
+                        'default'       => 'bg',
+                        'options'       => array(
+                            'border'    => __( 'Border', 'wpzabb' ),
+                            'bg'        => __( 'Background', 'wpzabb' ),
+                        ),
+                        'width'	=> '75px'
+                    ),
 					'more_btn_font_size' => array(
 						'type'          => 'text',
 						'label'         => __( 'Font Size', 'wpzabb' ),
@@ -821,18 +1057,96 @@ FLBuilder::register_module('WPZABBPostsModule', array(
 						'size'          => '4',
 						'description'   => 'px',
 					),
-					'more_btn_padding'   => array(
+		            'more_btn_font_family'       => array(
+		                'type'          => 'font',
+		                'label'         => __('Font Family', 'wpzabb'),
+		                'default'       => array(
+		                    'family'        => 'Default',
+		                    'weight'        => 'Default'
+		                ),
+		            ),
+		            'more_btn_font_size_unit'     => array(
+		                'type'          => 'unit',
+		                'label'         => __( 'Font Size', 'wpzabb' ),
+		                'description'   => 'px',
+		                'responsive' => array(
+                            'placeholder' => array(
+                                'default' => '',
+                                'medium' => '',
+                                'responsive' => '',
+                            ),
+                        ),
+		            ),
+		            'more_btn_line_height_unit'    => array(
+		                'type'          => 'unit',
+		                'label'         => __( 'Line Height', 'wpzabb' ),
+		                'description'   => 'em',
+		                'responsive' => array(
+                            'placeholder' => array(
+                                'default' => '',
+                                'medium' => '',
+                                'responsive' => '',
+                            ),
+                        ),
+		            ),
+					'more_btn_text_transform' => array(
+						'type'          => 'select',
+						'label'         => __( 'Text Transform', 'wpzabb' ),
+						'default'       => 'none',
+						'options'       => array(
+							'none'			=> __( 'None', 'wpzabb' ),
+							'uppercase'		=> __( 'Uppercase', 'wpzabb' ),
+							'lowercase'		=> __( 'Lowercase', 'wpzabb' ),
+							'capitalize'	=> __( 'Capitalize', 'wpzabb' ),
+						),
+					),
+					'more_btn_letter_spacing'     => array(
+						'type'          => 'select',
+						'label'         => __( 'Letter Spacing', 'wpzabb' ),
+						'default'       => 'default',
+						'options'       => array(
+							'default'       => __( 'Default', 'wpzabb' ),
+							'custom'        => __( 'Custom', 'wpzabb' ),
+						),
+						'toggle'        => array(
+							'custom'        => array(
+								'fields'        => array( 'more_btn_custom_letter_spacing' ),
+							),
+						),
+					),
+		            'more_btn_custom_letter_spacing' => array(
+		            	'type'          => 'unit',
+		            	'label'         => __( 'Custom Letter Spacing', 'wpzabb' ),
+		            	'description'   => 'px',
+		            ),
+					'more_btn_padding_top_bottom'   => array(
 						'type'          => 'text',
-						'label'         => __( 'Padding', 'wpzabb' ),
+						'label'         => __( 'Padding Top/Bottom', 'wpzabb' ),
 						'default'       => '10',
 						'maxlength'     => '3',
 						'size'          => '4',
 						'description'   => 'px',
 					),
+					'more_btn_padding_left_right'   => array(
+						'type'          => 'text',
+						'label'         => __( 'Padding Left/Right', 'wpzabb' ),
+						'default'       => '10',
+						'maxlength'     => '3',
+						'size'          => '4',
+						'description'   => 'px',
+					),
+					'more_btn_border_size'   => array(
+						'type'          => 'text',
+						'label'         => __('Border Size', 'wpzabb'),
+						'description'   => 'px',
+						'maxlength'     => '3',
+						'size'          => '5',
+						'placeholder'   => '2'
+					),
 					'more_btn_border_radius' => array(
 						'type'          => 'text',
 						'label'         => __( 'Round Corners', 'wpzabb' ),
-						'default'       => '4',
+						'default'       => '2',
 						'maxlength'     => '3',
 						'size'          => '4',
 						'description'   => 'px',

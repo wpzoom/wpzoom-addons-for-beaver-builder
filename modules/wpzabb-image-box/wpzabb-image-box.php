@@ -57,7 +57,7 @@ class WPZABBImageBoxModule extends FLBuilderModule {
 			'line_height_unit_medium' 	=> $this->settings->btn_line_height_unit_medium,
 			'line_height_unit_responsive' => $this->settings->btn_line_height_unit_responsive,
 			'text_transform' 			=> $this->settings->btn_text_transform,
-			'letter_spacing' 			=> $this->settings->btn_letter_spacing,
+			'letter_spacing' 			=> $this->settings->btn_custom_letter_spacing,
 			'letter_spacing_medium' 	=> $this->settings->btn_custom_letter_spacing_medium,
 			'letter_spacing_responsive' => $this->settings->btn_custom_letter_spacing_responsive,
 			'style' 					=> $this->settings->btn_style,

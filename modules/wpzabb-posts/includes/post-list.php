@@ -1,6 +1,6 @@
-<div <?php $module->render_post_class(); ?> itemscope itemtype="<?php FLPostGridModule::schema_itemtype(); ?>">
+<div <?php $module->render_post_class(); ?> itemscope itemtype="<?php WPZABBPostsModule::schema_itemtype(); ?>">
 
-	<?php FLPostGridModule::schema_meta(); ?>
+	<?php WPZABBPostsModule::schema_meta(); ?>
 	<?php $module->render_featured_image( array( 'above-title', 'beside', 'beside-right' ) ); ?>
 
 	<?php if ( in_array( $settings->image_position, array( 'above-title', 'beside', 'beside-right' ) ) || ! $module->has_featured_image( array( 'beside-content', 'beside-content-right' ) ) ) : ?>
@@ -9,9 +9,9 @@
 
 		<div class="wpzabb-post-list-header">
 
-			<h2 class="wpzabb-post-list-title" itemprop="headline">
+			<<?php echo $settings->title_tag ?> class="wpzabb-post-list-title" itemprop="headline">
 				<a href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a>
-			</h2>
+			</<?php echo $settings->title_tag ?>>
 
 			<?php do_action( 'wpzabb_builder_post_feed_before_meta', $settings, $module ); ?>
 
@@ -22,7 +22,7 @@
 						<?php
 
 						printf(
-							_x( 'By %s', '%s stands for author name.', 'fl-builder' ),
+							_x( 'By %s', '%s stands for author name.', 'wpzabb' ),
 							'<a href="' . get_author_posts_url( get_the_author_meta( 'ID' ) ) . '"><span>' . get_the_author_meta( 'display_name', get_the_author_meta( 'ID' ) ) . '</span></a>'
 						);
 
@@ -30,19 +30,13 @@
 					</span>
 				<?php endif; ?>
 				<?php if ( $settings->show_date ) : ?>
-					<?php if ( $settings->show_author ) : ?>
-						<span class="fl-sep"><?php echo $settings->info_separator; ?></span>
-					<?php endif; ?>
 					<span class="wpzabb-post-list-date">
 						<?php FLBuilderLoop::post_date( $settings->date_format ); ?>
 					</span>
 				<?php endif; ?>
 				<?php if ( $settings->show_comments ) : ?>
-					<?php if ( $settings->show_author || $settings->show_date ) : ?>
-						<span class="fl-sep"><?php echo $settings->info_separator; ?></span>
-					<?php endif; ?>
 					<span class="wpzabb-post-list-comments">
-						<?php comments_popup_link( __( '0 Comments', 'fl-builder' ), __( '1 Comment', 'fl-builder' ), __( '% Comments', 'fl-builder' ) ); ?>
+						<?php comments_popup_link( __( '0 Comments', 'wpzabb' ), __( '1 Comment', 'wpzabb' ), __( '% Comments', 'wpzabb' ) ); ?>
 					</span>
 				<?php endif; ?>
 			</div>

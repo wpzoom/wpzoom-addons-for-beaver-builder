@@ -1,19 +1,13 @@
 (function($) {
 
-	FLBuilderPostGrid = function(settings)
+	WPZABBPostsModule = function(settings)
 	{
 		this.settings    = settings;
 		this.nodeClass   = '.fl-node-' + settings.id;
 		this.matchHeight = settings.matchHeight;
 
-		if ( 'columns' == this.settings.layout ) {
-			this.wrapperClass = this.nodeClass + ' .fl-post-grid';
-			this.postClass    = this.nodeClass + ' .fl-post-column';
-		}
-		else {
-			this.wrapperClass = this.nodeClass + ' .fl-post-' + this.settings.layout;
-			this.postClass    = this.wrapperClass + '-post';
-		}
+		this.wrapperClass = this.nodeClass + ' .wpzabb-post-' + this.settings.layout;
+		this.postClass    = this.nodeClass + ' .wpzabb-post-column';
 
 		if(this._hasPosts()) {
 			this._initLayout();
@@ -21,7 +15,7 @@
 		}
 	};
 
-	FLBuilderPostGrid.prototype = {
+	WPZABBPostsModule.prototype = {
 
 		settings        : {},
 		nodeClass       : '',
@@ -40,31 +34,12 @@
 		{
 			switch(this.settings.layout) {
 
-				case 'columns':
-				this._columnsLayout();
-				break;
-
 				case 'grid':
 				this._gridLayout();
-				break;
-
-				case 'gallery':
-				this._galleryLayout();
 				break;
 			}
 
 			$(this.postClass).css('visibility', 'visible');
-
-			FLBuilderLayout._scrollToElement( $( this.nodeClass + ' .fl-paged-scroll-to' ) );
-		},
-
-		_columnsLayout: function()
-		{
-			$(this.wrapperClass).imagesLoaded( $.proxy( function() {
-				this._gridLayoutMatchHeight();
-			}, this ) );
-
-			$( window ).on( 'resize', $.proxy( this._gridLayoutMatchHeight, this ) );
 		},
 
 		_gridLayout: function()
@@ -72,9 +47,9 @@
 			var wrap = $(this.wrapperClass);
 
 			wrap.masonry({
-				columnWidth         : this.nodeClass + ' .fl-post-grid-sizer',
+				columnWidth         : this.postClass,
 				gutter              : parseInt(this.settings.postSpacing),
-				isFitWidth          : true,
+				isFitWidth          : false,
 				itemSelector        : this.postClass,
 				transitionDuration  : 0,
 				isRTL               : this.settings.isRTL
@@ -84,6 +59,8 @@
 				this._gridLayoutMatchHeight();
 				wrap.masonry();
 			}, this ) );
+
+			$( window ).on( 'resize', $.proxy( this._gridLayoutMatchHeight, this ) );
 		},
 
 		_gridLayoutMatchHeight: function()
@@ -94,29 +71,20 @@
 				return;
 			}
 
-            $(this.nodeClass + ' .fl-post-grid-post').css('height', '').each(function(){
+            $(this.nodeClass + ' .wpzabb-post-grid-post').css('height', '').each(function(){
 
                 if($(this).height() > highestBox) {
                 	highestBox = $(this).height();
                 }
             });
 
-            $(this.nodeClass + ' .fl-post-grid-post').height(highestBox);
-		},
-
-		_galleryLayout: function()
-		{
-			this.gallery = new FLBuilderGalleryGrid({
-				'wrapSelector' : this.wrapperClass,
-				'itemSelector' : '.fl-post-gallery-post',
-				'isRTL'        : this.settings.isRTL
-			});
+            $(this.nodeClass + ' .wpzabb-post-grid-post').height(highestBox);
 		},
 
 		_initInfiniteScroll: function()
 		{
 			var isScroll = 'scroll' == this.settings.pagination || 'load_more' == this.settings.pagination,
-				pages	 = $( this.nodeClass + ' .fl-builder-pagination' ).find( 'li .page-numbers:not(.next)' );
+				pages	 = $( this.nodeClass + ' .wpzabb-builder-pagination' ).find( 'li .page-numbers:not(.next)' );
 
 			if( pages.length > 1) {
 				total = pages.last().text().replace( /\D/g, '' )
@@ -134,12 +102,12 @@
 
 		_infiniteScroll: function(settings)
 		{
-			var path 		= $(this.nodeClass + ' .fl-builder-pagination a.next').attr('href'),
+			var path 		= $(this.nodeClass + ' .wpzabb-builder-pagination a.next').attr('href'),
 				pagePattern = /(.*?(\/|\&|\?)paged-[0-9]{1,}(\/|=))([0-9]{1,})+(.*)/,
 				pageMatched = null,
 				scrollData	= {
-					navSelector     : this.nodeClass + ' .fl-builder-pagination',
-					nextSelector    : this.nodeClass + ' .fl-builder-pagination a.next',
+					navSelector     : this.nodeClass + ' .wpzabb-builder-pagination',
+					nextSelector    : this.nodeClass + ' .wpzabb-builder-pagination a.next',
 					itemSelector    : this.postClass,
 					prefill         : true,
 					bufferPx        : 200,
@@ -173,22 +141,12 @@
 
 			elements = $(elements);
 
-			if(this.settings.layout == 'columns') {
-				wrap.imagesLoaded( $.proxy( function() {
-					this._gridLayoutMatchHeight();
-					elements.css('visibility', 'visible');
-				}, this ) );
-			}
-			else if(this.settings.layout == 'grid') {
+			if(this.settings.layout == 'grid') {
 				wrap.imagesLoaded( $.proxy( function() {
 					this._gridLayoutMatchHeight();
 					wrap.masonry('appended', elements);
 					elements.css('visibility', 'visible');
 				}, this ) );
-			}
-			else if(this.settings.layout == 'gallery') {
-				this.gallery.resize();
-				elements.css('visibility', 'visible');
 			}
 
 			if( 'load_more' == this.settings.pagination ) {
@@ -206,7 +164,7 @@
 
 			$( window ).unbind( '.infscr' );
 
-			$(this.nodeClass + ' .fl-builder-pagination-load-more .fl-button').on( 'click', function(){
+			$(this.nodeClass + ' .wpzabb-builder-pagination-load-more .wpzabb-button').on( 'click', function(){
 				wrap.infinitescroll( 'retrieve' );
 				return false;
 			});
@@ -215,7 +173,7 @@
 		_removeLoadMoreButton: function()
 		{
 			if ( 'load_more' == this.settings.pagination && this.totalPages == this.currPage ) {
-				$( this.nodeClass + ' .fl-builder-pagination-load-more' ).remove();
+				$( this.nodeClass + ' .wpzabb-builder-pagination-load-more' ).remove();
 			}
 		}
 	};
