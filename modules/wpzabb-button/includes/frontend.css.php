@@ -1,9 +1,5 @@
 <?php
 
-echo '<pre>';
-print_r($settings);
-echo '</pre>';
-
 $settings->bg_color = wpzabb_theme_button_bg_color( $settings->bg_color );
 $settings->bg_hover_color = wpzabb_theme_button_bg_hover_color( $settings->bg_hover_color );
 $settings->text_color = wpzabb_theme_button_text_color( $settings->text_color );
