@@ -13,12 +13,12 @@
 		mode : '<?php echo $settings->transition; ?>',
 		autoDirection: '<?php echo $settings->direction; ?>',
 		speed : <?php echo $settings->speed * 1000;  ?>,
-		pager : <?php echo ( 'wide' == $settings->layout ) ? $settings->dots : 0; ?>,
+		pager : <?php echo $settings->dots; ?>,
 		nextSelector : '.fl-node-<?php echo $id; ?> .fl-slider-next',
 		prevSelector : '.fl-node-<?php echo $id; ?> .fl-slider-prev',
 		nextText: '<i class="fas fa-chevron-circle-right"></i>',
 		prevText: '<i class="fas fa-chevron-circle-left"></i>',
-		controls : <?php echo ( 'compact' == $settings->layout ) ? $settings->arrows : 0; ?>,
+		controls : <?php echo $settings->arrows; ?>,
 		onSliderLoad: function() {
 			$('.fl-node-<?php echo $id; ?> .wpzabb-testimonials').addClass('wpzabb-testimonials-loaded');
 		},

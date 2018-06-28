@@ -181,6 +181,7 @@ class WPZABBPostsModule extends FLBuilderModule {
 			'bg_color_opc' 				=> $this->settings->more_btn_bg_color_opc,
 			'bg_hover_color' 			=> $this->settings->more_btn_bg_hover_color,
 			'bg_hover_color_opc' 		=> $this->settings->more_btn_bg_hover_color_opc,
+			'transparent_button_options' => 'none',
 			'hover_attribute' 			=> $this->settings->more_btn_hover_attribute,
 		);
 

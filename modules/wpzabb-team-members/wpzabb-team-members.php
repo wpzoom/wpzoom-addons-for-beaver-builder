@@ -749,14 +749,6 @@ FLBuilder::register_settings_form('member_form', array(
 							'placeholder'   => 'http://www.example.com/my-avatar.jpg',
 							'connections'	=> array( 'url' )
 						),
-						'img_size'     => array(
-							'type'          => 'text',
-							'label'         => __('Size', 'wpzabb'),
-							'placeholder'   => 'auto',
-							'maxlength'     => '5',
-							'size'          => '6',
-							'description'   => 'px',
-						),
 						'name'        => array(
 							'type'            => 'text',
 							'label'           => __('Name', 'wpzabb'),

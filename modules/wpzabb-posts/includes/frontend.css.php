@@ -40,6 +40,7 @@ if ( 'load_more' == $settings->pagination ) {
 		'bg_color_opc' 				=> $settings->more_btn_bg_color_opc,
 		'bg_hover_color' 			=> $settings->more_btn_bg_hover_color,
 		'bg_hover_color_opc' 		=> $settings->more_btn_bg_hover_color_opc,
+		'transparent_button_options' => 'none',
 		'hover_attribute' 			=> $settings->more_btn_hover_attribute,
 	);
 
