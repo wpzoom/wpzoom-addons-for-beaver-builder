@@ -84,7 +84,7 @@
 		_initInfiniteScroll: function()
 		{
 			var isScroll = 'scroll' == this.settings.pagination || 'load_more' == this.settings.pagination,
-				pages	 = $( this.nodeClass + ' .wpzabb-builder-pagination' ).find( 'li .page-numbers:not(.next)' );
+				pages	 = $( this.nodeClass + ' .fl-builder-pagination' ).find( 'li .page-numbers:not(.next)' );
 
 			if( pages.length > 1) {
 				total = pages.last().text().replace( /\D/g, '' )
@@ -102,12 +102,12 @@
 
 		_infiniteScroll: function(settings)
 		{
-			var path 		= $(this.nodeClass + ' .wpzabb-builder-pagination a.next').attr('href'),
+			var path 		= $(this.nodeClass + ' .fl-builder-pagination a.next').attr('href'),
 				pagePattern = /(.*?(\/|\&|\?)paged-[0-9]{1,}(\/|=))([0-9]{1,})+(.*)/,
 				pageMatched = null,
 				scrollData	= {
-					navSelector     : this.nodeClass + ' .wpzabb-builder-pagination',
-					nextSelector    : this.nodeClass + ' .wpzabb-builder-pagination a.next',
+					navSelector     : this.nodeClass + ' .fl-builder-pagination',
+					nextSelector    : this.nodeClass + ' .fl-builder-pagination a.next',
 					itemSelector    : this.postClass,
 					prefill         : true,
 					bufferPx        : 200,
@@ -164,7 +164,7 @@
 
 			$( window ).unbind( '.infscr' );
 
-			$(this.nodeClass + ' .wpzabb-builder-pagination-load-more .wpzabb-button').on( 'click', function(){
+			$(this.nodeClass + ' .fl-builder-pagination-load-more .wpzabb-button').on( 'click', function(){
 				wrap.infinitescroll( 'retrieve' );
 				return false;
 			});
@@ -173,7 +173,7 @@
 		_removeLoadMoreButton: function()
 		{
 			if ( 'load_more' == this.settings.pagination && this.totalPages == this.currPage ) {
-				$( this.nodeClass + ' .wpzabb-builder-pagination-load-more' ).remove();
+				$( this.nodeClass + ' .fl-builder-pagination-load-more' ).remove();
 			}
 		}
 	};

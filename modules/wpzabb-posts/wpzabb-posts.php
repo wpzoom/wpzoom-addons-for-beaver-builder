@@ -185,7 +185,7 @@ class WPZABBPostsModule extends FLBuilderModule {
 		);
 
 		/* Render HTML Function */
-		echo '<div class="wpzabb-builder-pagination-load-more">';
+		echo '<div class="fl-builder-pagination-load-more">';
 		FLBuilder::render_module_html( 'wpzabb-button', $btn_settings );
 		echo '</div>';
 	}
@@ -385,11 +385,11 @@ FLBuilder::register_module('WPZABBPostsModule', array(
 						'toggle'        => array(
 							'grid'          => array(
 								'sections'      => array( 'posts', 'image', 'info', 'content', 'post_style', 'text_style' ),
-								'fields'        => array( 'match_height', 'post_columns', 'post_spacing', 'post_padding', 'grid_image_position', 'grid_image_spacing', 'grid_image_margin_top', 'grid_image_margin_bottom', 'show_author', 'grid_info_position', 'grid_show_comments', 'show_terms' ),
+								'fields'        => array( 'match_height', 'post_columns', 'post_spacing', 'post_padding', 'grid_image_position', 'grid_image_spacing', 'grid_image_margin_top', 'grid_image_margin_bottom', 'show_author', 'grid_info_position', 'grid_show_comments', 'info_separator', 'show_terms' ),
 							),
 							'list'          => array(
 								'sections'      => array( 'posts', 'image', 'info', 'content', 'post_style', 'text_style' ),
-								'fields'        => array( 'image_position', 'image_spacing', 'image_margin_top', 'image_margin_bottom', 'list_post_spacing', 'list_post_padding', 'show_author', 'show_comments', 'show_terms', 'info_position', 'content_type' ),
+								'fields'        => array( 'image_position', 'image_spacing', 'image_width', 'image_margin_top', 'image_margin_bottom', 'list_post_spacing', 'list_post_padding', 'show_author', 'show_comments', 'info_separator', 'show_terms', 'info_position', 'content_type' ),
 							),
 						),
 					),
@@ -516,22 +516,6 @@ FLBuilder::register_module('WPZABBPostsModule', array(
 						'size'          => '4',
 						'description'   => 'px',
 					),
-					'image_spacing' => array(
-						'type'          => 'text',
-						'label'         => __( 'Image Spacing', 'wpzabb' ),
-						'default'       => '0',
-						'maxlength'     => '3',
-						'size'          => '4',
-						'description'   => 'px',
-					),
-					'image_width'   => array(
-						'type'          => 'text',
-						'label'         => __( 'Image Width', 'wpzabb' ),
-						'default'       => '33',
-						'maxlength'     => '3',
-						'size'          => '4',
-						'description'   => '%',
-					),
 					'grid_image_margin_top' => array(
 						'type'          => 'text',
 						'label'         => __( 'Image Margin Top', 'wpzabb' ),
@@ -547,6 +531,14 @@ FLBuilder::register_module('WPZABBPostsModule', array(
 						'maxlength'     => '3',
 						'size'          => '4',
 						'description'   => 'px',
+					),
+					'image_width'   => array(
+						'type'          => 'text',
+						'label'         => __( 'Image Width', 'wpzabb' ),
+						'default'       => '33',
+						'maxlength'     => '3',
+						'size'          => '4',
+						'description'   => '%',
 					),
 					'image_spacing' => array(
 						'type'          => 'text',
@@ -650,6 +642,16 @@ FLBuilder::register_module('WPZABBPostsModule', array(
 						'options'       => array(
 							'1'             => __( 'Show', 'wpzabb' ),
 							'0'             => __( 'Hide', 'wpzabb' ),
+						),
+					),
+					'info_separator' => array(
+						'type'          => 'text',
+						'label'         => __( 'Separator', 'wpzabb' ),
+						'default'       => ' / ',
+						'size'          => '4',
+						'preview'       => array(
+							'type'			=> 'text',
+							'selector'		=> '.fl-sep',
 						),
 					),
 					'show_terms'        => array(
@@ -809,6 +811,11 @@ FLBuilder::register_module('WPZABBPostsModule', array(
 						'label'         => __( 'Title Color', 'wpzabb' ),
 						'show_reset'    => true,
 					),
+					'title_hover_color'   => array(
+						'type'          => 'color',
+						'label'         => __( 'Title Hover Color', 'wpzabb' ),
+						'show_reset'    => true,
+					),
 					'title_tag'           => array(
 						'type'          => 'select',
 						'label'         => __( 'Title HTML Tag', 'wpzabb' ),
@@ -869,6 +876,16 @@ FLBuilder::register_module('WPZABBPostsModule', array(
 						'label'         => __( 'Post Info Color', 'wpzabb' ),
 						'show_reset'    => true,
 					),
+					'info_link_color'    => array(
+						'type'          => 'color',
+						'label'         => __( 'Post Info Link Color', 'wpzabb' ),
+						'show_reset'    => true,
+					),
+					'info_link_hover_color'    => array(
+						'type'          => 'color',
+						'label'         => __( 'Post Info Link Hover Color', 'wpzabb' ),
+						'show_reset'    => true,
+					),
 					'info_font_size' => array(
 						'type'          => 'text',
 						'label'         => __( 'Post Info Font Size', 'wpzabb' ),
@@ -876,6 +893,32 @@ FLBuilder::register_module('WPZABBPostsModule', array(
 						'maxlength'     => '3',
 						'size'          => '4',
 						'description'   => 'px',
+					),
+					'info_margin_top'       => array(
+						'type'          => 'text',
+						'label'         => __('Post Info Margin Top', 'wpzabb'),
+						'placeholder'	=> '0',
+						'size'			=> '5',
+						'description'	=> 'px',
+						'preview'		=> array(
+							'type' => 'css',
+							'property' => 'margin-top',
+							'selector' => '.wpzabb-post-grid-meta, .wpzabb-post-list-meta',
+							'unit'		=> 'px',
+						)
+					),
+					'info_margin_bottom'       => array(
+						'type'          => 'text',
+						'label'         => __('Post Info Margin Bottom', 'wpzabb'),
+						'placeholder'	=> '15',
+						'size'			=> '5',
+						'description'	=> 'px',
+						'preview'		=> array(
+							'type' => 'css',
+							'property'	=> 'margin-bottom',
+							'selector'	=> '.wpzabb-post-grid-meta, .wpzabb-post-list-meta',
+							'unit'		=> 'px',
+						)
 					),
 					'content_color' => array(
 						'type'          => 'color',

@@ -4,17 +4,29 @@ $settings->title_margin_top = ( trim($settings->title_margin_top) !== '' ) ? $se
 $settings->title_margin_bottom = ( trim($settings->title_margin_bottom) !== '' ) ? $settings->title_margin_bottom : '15';
 $settings->grid_image_margin_top = ( trim($settings->grid_image_margin_top) !== '' ) ? $settings->grid_image_margin_top : '0';
 $settings->grid_image_margin_bottom = ( trim($settings->grid_image_margin_bottom) !== '' ) ? $settings->grid_image_margin_bottom : '0';
+$settings->info_margin_top = ( trim($settings->info_margin_top) !== '' ) ? $settings->info_margin_top : '0';
+$settings->info_margin_bottom = ( trim($settings->info_margin_bottom) !== '' ) ? $settings->info_margin_bottom : '15';
+
+$settings->bg_color = WPZABB_Helper::wpzabb_colorpicker( $settings, 'bg_color', true );
+$settings->border_color = WPZABB_Helper::wpzabb_colorpicker( $settings, 'border_color' );
+$settings->title_color = WPZABB_Helper::wpzabb_colorpicker( $settings, 'title_color' );
+$settings->title_hover_color = WPZABB_Helper::wpzabb_colorpicker( $settings, 'title_hover_color' );
+$settings->info_color = WPZABB_Helper::wpzabb_colorpicker( $settings, 'info_color' );
+$settings->info_link_color = WPZABB_Helper::wpzabb_colorpicker( $settings, 'info_link_color' );
+$settings->info_link_hover_color = WPZABB_Helper::wpzabb_colorpicker( $settings, 'info_link_hover_color' );
+$settings->content_color = WPZABB_Helper::wpzabb_colorpicker( $settings, 'content_color' );
+$settings->link_color = WPZABB_Helper::wpzabb_colorpicker( $settings, 'link_color' );
+$settings->link_hover_color = WPZABB_Helper::wpzabb_colorpicker( $settings, 'link_hover_color' );
 
 ?>
 .fl-node-<?php echo $id; ?> .wpzabb-post-grid-post {
 
 	<?php if ( ! empty( $settings->bg_color ) ) : ?>
-	background-color: #<?php echo $settings->bg_color; ?>;
-	background-color: <?php WPZABB_Helper::wpzabb_colorpicker( $settings, 'bg_color', true ); ?>;
+	background-color: <?php echo $settings->bg_color; ?>;
 	<?php endif; ?>
 
 	<?php if ( 'default' != $settings->border_type && 'none' != $settings->border_type && ! empty( $settings->border_color ) ) : ?>
-	border: <?php echo $settings->border_size; ?>px <?php echo $settings->border_type; ?> #<?php echo $settings->border_color; ?>;
+	border: <?php echo $settings->border_size; ?>px <?php echo $settings->border_type; ?> <?php echo $settings->border_color; ?>;
 	<?php endif; ?>
 
 	<?php if ( 'none' == $settings->border_type ) : ?>
@@ -47,14 +59,32 @@ $settings->grid_image_margin_bottom = ( trim($settings->grid_image_margin_bottom
 
 <?php if ( ! empty( $settings->title_color ) ) : ?>
 .fl-node-<?php echo $id; ?> .wpzabb-post-grid-title a {
-	color: #<?php echo $settings->title_color; ?>;
+	color: <?php echo $settings->title_color; ?>;
+}
+<?php endif; ?>
+
+<?php if ( ! empty( $settings->title_hover_color ) ) : ?>
+.fl-node-<?php echo $id; ?> .wpzabb-post-grid-title a:hover {
+	color: <?php echo $settings->title_hover_color; ?>;
 }
 <?php endif; ?>
 
 <?php if ( ! empty( $settings->info_color ) ) : ?>
 .fl-node-<?php echo $id; ?> .wpzabb-post-grid-meta,
 .fl-node-<?php echo $id; ?> .wpzabb-post-grid-meta a {
-	color: #<?php echo $settings->info_color; ?>;
+	color: <?php echo $settings->info_color; ?>;
+}
+<?php endif; ?>
+
+<?php if ( ! empty( $settings->info_link_color ) ) : ?>
+.fl-node-<?php echo $id; ?> .wpzabb-post-grid-meta a {
+	color: <?php echo $settings->info_link_color; ?>;
+}
+<?php endif; ?>
+
+<?php if ( ! empty( $settings->info_link_hover_color ) ) : ?>
+.fl-node-<?php echo $id; ?> .wpzabb-post-grid-meta a:hover {
+	color: <?php echo $settings->info_link_hover_color; ?>;
 }
 <?php endif; ?>
 
@@ -65,10 +95,15 @@ $settings->grid_image_margin_bottom = ( trim($settings->grid_image_margin_bottom
 }
 <?php endif; ?>
 
+.fl-node-<?php echo $id; ?> .wpzabb-post-grid-meta {
+	margin-top: <?php echo $settings->info_margin_top; ?>px;
+	margin-bottom: <?php echo $settings->info_margin_bottom; ?>px;
+}
+
 <?php if ( ! empty( $settings->content_color ) ) : ?>
 .fl-node-<?php echo $id; ?> .wpzabb-post-grid-content,
 .fl-node-<?php echo $id; ?> .wpzabb-post-grid-content p {
-	color: #<?php echo $settings->content_color; ?>;
+	color: <?php echo $settings->content_color; ?>;
 }
 <?php endif; ?>
 
@@ -81,13 +116,13 @@ $settings->grid_image_margin_bottom = ( trim($settings->grid_image_margin_bottom
 
 <?php if ( ! empty( $settings->link_color ) ) : ?>
 .fl-node-<?php echo $id; ?> .wpzabb-post-grid-content a {
-	color: #<?php echo $settings->link_color; ?>;
+	color: <?php echo $settings->link_color; ?>;
 }
 <?php endif; ?>
 
 <?php if ( ! empty( $settings->link_hover_color ) ) : ?>
 .fl-node-<?php echo $id; ?> .wpzabb-post-grid-content a:hover {
-	color: #<?php echo $settings->link_hover_color; ?>;
+	color: <?php echo $settings->link_hover_color; ?>;
 }
 <?php endif; ?>
 

@@ -33,7 +33,7 @@ do_action( 'wpzabb_builder_posts_module_after_posts', $settings, $query );
 
 // Render the pagination.
 if ( 'none' != $settings->pagination && $query->have_posts() && $query->max_num_pages > 1 ) : ?>
-	<div class="wpzabb-builder-pagination"<?php if ( in_array( $settings->pagination, array( 'scroll', 'load_more' ) ) ) { echo ' style="display:none;"';} ?>>
+	<div class="fl-builder-pagination"<?php if ( in_array( $settings->pagination, array( 'scroll', 'load_more' ) ) ) { echo ' style="display:none;"';} ?>>
 		<?php FLBuilderLoop::pagination( $query ); ?>
 	</div>
 	<?php if ( 'load_more' == $settings->pagination && $query->max_num_pages > 1 ) : ?>
