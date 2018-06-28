@@ -1,6 +1,6 @@
 <?php
 
-$testimonials_class = 'wpzabb-testimonials-wrap wpzabb-testimonials-align-' . $settings->layout;
+$testimonials_class = 'wpzabb-testimonials-wrap wpzabb-testimonials-align-' . $settings->content_align;
 ?>
 <div class="<?php echo $testimonials_class; ?>">
 

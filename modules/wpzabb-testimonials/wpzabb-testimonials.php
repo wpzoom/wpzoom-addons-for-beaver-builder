@@ -244,7 +244,7 @@ FLBuilder::register_module('WPZABBTestimonialsModule', array(
 			'general'       => array( // Section
 				'title'         => 'Layout', // Section Title
 				'fields'        => array( // Section Fields
-					'layout'       => array(
+					'content_align'       => array(
 						'type'          => 'select',
 						'label'         => __( 'Content Alignment', 'wpzabb' ),
 						'default'       => 'center',
