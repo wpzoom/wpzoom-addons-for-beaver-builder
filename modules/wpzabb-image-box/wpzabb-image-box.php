@@ -33,14 +33,13 @@ class WPZABBImageBoxModule extends FLBuilderModule {
 
     /**
 	 * @method render_button
-	 * @param $image {object}
 	 */
-	public function render_button( $image )
+	public function render_button()
 	{
 		$btn_settings = array(
-			'text'             			=> $image->btn_text,
-			'link'             			=> $image->link,
-			'link_target'             	=> $image->link_target,
+			'text'             			=> $this->settings->btn_text,
+			'link'             			=> $this->settings->link,
+			'link_target'             	=> $this->settings->link_target,
 			'align'             		=> $this->settings->btn_align,
 			'mob_align'             	=> $this->settings->btn_mob_align,
 			'border_radius'             => $this->settings->btn_border_radius,
@@ -87,15 +86,13 @@ class WPZABBImageBoxModule extends FLBuilderModule {
 	 */
 	public function update( $settings )
 	{
-		$image = $settings->images[0];
-
 		// Make sure we have a image_src property.
 		if(!isset($settings->image_src)) {
 			$settings->image_src = '';
 		}
 
 		// Cache the attachment data.
-		$data = FLBuilderPhoto::get_attachment_data($image->image);
+		$data = FLBuilderPhoto::get_attachment_data($settings->image);
 
 		if($data) {
 			$settings->data = $data;
@@ -106,31 +103,30 @@ class WPZABBImageBoxModule extends FLBuilderModule {
 
 	/**
 	 * @method get_data
-	 * @param $image {object}
 	 */
-	public function get_data( $image )
+	public function get_data()
 	{
 		if(!$this->data) {
 
 			// Photo source is set to "url".
-			if($image->image_source == 'url') {
+			if($this->settings->image_source == 'url') {
 				$this->data = new stdClass();
 
-				$this->data->url = $image->image_url;
-				$image->image_src = $image->image_url;
+				$this->data->url = $this->settings->image_url;
+				$this->settings->image_src = $this->settings->image_url;
 			}
 
 			// Photo source is set to "library".
-			else if(is_object($image->image)) {
-				$this->data = $image->image;
+			else if(is_object($this->settings->image)) {
+				$this->data = $this->settings->image;
 			}
 			else {
-				$this->data = FLBuilderPhoto::get_attachment_data($image->image);
+				$this->data = FLBuilderPhoto::get_attachment_data($this->settings->image);
 			}
 
 			// Data object is empty, use the settings cache.
-			if(!$this->data && isset($image->data)) {
-				$this->data = $image->data;
+			if(!$this->data && isset($this->settings->data)) {
+				$this->data = $this->settings->data;
 			}
 		}
 
@@ -139,17 +135,16 @@ class WPZABBImageBoxModule extends FLBuilderModule {
 
 	/**
 	 * @method get_classes
-	 * @param $image {object}
 	 */
-	public function get_classes( $image )
+	public function get_classes()
 	{
 		$classes = array( 'wpzabb-photo-img' );
 		
-		if ( $image->image_source == 'library' ) {
+		if ( $this->settings->image_source == 'library' ) {
 			
-			if ( ! empty( $image->image ) ) {
+			if ( ! empty( $this->settings->image ) ) {
 				
-				$data = self::get_data( $image );
+				$data = self::get_data();
 				
 				if ( is_object( $data ) ) {
 					$classes[] = 'wp-image-' . $data->id;
@@ -158,7 +153,7 @@ class WPZABBImageBoxModule extends FLBuilderModule {
 
 						foreach ( $data->sizes as $key => $size ) {
 							
-							if ( $size->url == $image->image_src ) {
+							if ( $size->url == $this->settings->image_src ) {
 								$classes[] = 'size-' . $key;
 								break;
 							}
@@ -174,11 +169,10 @@ class WPZABBImageBoxModule extends FLBuilderModule {
 
 	/**
 	 * @method get_src
-	 * @param $image {object}
 	 */
-	public function get_src( $image )
+	public function get_src()
 	{
-		$src = $this->_get_uncropped_url( $image );
+		$src = $this->_get_uncropped_url();
 
 		return $src;
 	}
@@ -186,11 +180,10 @@ class WPZABBImageBoxModule extends FLBuilderModule {
 
 	/**
 	 * @method get_alt
-	 * @param $image {object}
 	 */
-	public function get_alt( $image )
+	public function get_alt()
 	{
-		$photo = $this->get_data( $image );
+		$photo = $this->get_data();
 
 		if(!empty($photo->alt)) {
 			return htmlspecialchars($photo->alt);
@@ -209,15 +202,14 @@ class WPZABBImageBoxModule extends FLBuilderModule {
 
 	/**
 	 * @method _has_source
-	 * @param $image {object}
 	 * @protected
 	 */
-	protected function _has_source( $image )
+	protected function _has_source()
 	{
-		if($image->image_source == 'url' && !empty($image->image_url)) {
+		if($this->settings->image_source == 'url' && !empty($this->settings->image_url)) {
 			return true;
 		}
-		else if($image->image_source == 'library' && !empty($image->image_src)) {
+		else if($this->settings->image_source == 'library' && !empty($this->settings->image_src)) {
 			return true;
 		}
 
@@ -230,18 +222,16 @@ class WPZABBImageBoxModule extends FLBuilderModule {
 	 */
 	protected function _get_editor()
 	{
-		foreach ( $settings->members as $i => $image ) {
-			if($this->_has_source( $image ) && $this->_editor === null) {
+		if($this->_has_source() && $this->_editor === null) {
 
-				$url_path  = $this->_get_uncropped_url( $image );
-				$file_path = str_ireplace(home_url(), ABSPATH, $url_path);
+			$url_path  = $this->_get_uncropped_url();
+			$file_path = str_ireplace(home_url(), ABSPATH, $url_path);
 
-				if(file_exists($file_path)) {
-					$this->_editor = wp_get_image_editor($file_path);
-				}
-				else {
-					$this->_editor = wp_get_image_editor($url_path);
-				}
+			if(file_exists($file_path)) {
+				$this->_editor = wp_get_image_editor($file_path);
+			}
+			else {
+				$this->_editor = wp_get_image_editor($url_path);
 			}
 		}
 
@@ -250,16 +240,15 @@ class WPZABBImageBoxModule extends FLBuilderModule {
 
 	/**
 	 * @method _get_uncropped_url
-	 * @param $image {object}
 	 * @protected
 	 */
-	protected function _get_uncropped_url( $image )
+	protected function _get_uncropped_url()
 	{
-		if($image->image_source == 'url') {
-			$url = $image->image_url;
+		if($this->settings->image_source == 'url') {
+			$url = $this->settings->image_url;
 		}
-		else if(!empty($image->image_src)) {
-			$url = $image->image_src;
+		else if(!empty($this->settings->image_src)) {
+			$url = $this->settings->image_src;
 		}
 		else {
 			$url = '';
@@ -279,71 +268,92 @@ FLBuilder::register_module('WPZABBImageBoxModule', array(
 			'general'       => array( // Section
 				'title'         => '', // Section Title
 				'fields'        => array( // Section Fields
-					'layout'       => array(
+					'image_source'  => array(
 						'type'          => 'select',
-						'label'         => __( 'Layout Columns', 'wpzabb' ),
-						'default'       => 'layout-3-cols',
+						'label'         => __('Image Source', 'wpzabb'),
+						'default'       => 'library',
 						'options'       => array(
-							'layout-1-col'		=> __( '1 column', 'wpzabb' ),
-							'layout-2-cols'     => __( '2 columns', 'wpzabb' ),
-							'layout-3-cols'     => __( '3 columns', 'wpzabb' ),
-							'layout-4-cols'     => __( '4 columns', 'wpzabb' ),
-						),
-					),
-					'content_align'     => array(
-						'type'          => 'select',
-						'label'         => __( 'Content Align', 'wpzabb' ),
-						'default'       => 'center',
-						'options'       => array(
-							'center'	=> __( 'Center', 'wpzabb' ),
-							'left'     	=> __( 'Left', 'wpzabb' ),
-							'right'     => __( 'Right', 'wpzabb' ),
-						),
-					),
-					'boxes_equal_height' => array(
-						'type'          => 'select',
-						'label'         => __( 'Equalize Boxes Height', 'wpzabb' ),
-						'default'       => 'no',
-						'options'       => array(
-							'no'		=> __( 'No', 'wpzabb' ),
-							'yes'     	=> __( 'Yes', 'wpzabb' ),
+							'library'       => __('Media Library', 'wpzabb'),
+							'url'           => __('URL', 'wpzabb')
 						),
 						'toggle'        => array(
-							'yes'        => array(
-								'fields'        => array( 'boxes_alignment' ),
+							'library'       => array(
+								'fields'        => array('image')
 							),
-						),
+							'url'           => array(
+								'fields'        => array('image_url' )
+							)
+						)
 					),
-					'boxes_alignment' => array(
-						'type'          => 'select',
-						'label'         => __( 'Boxes Alignment', 'wpzabb' ),
-						'default'       => 'center',
-						'options'       => array(
-							'top'		=> __( 'Top', 'wpzabb' ),
-							'center'    => __( 'Center', 'wpzabb' ),
-							'bottom'    => __( 'Bottom', 'wpzabb' ),
+					'image'         => array(
+						'type'          => 'photo',
+						'label'         => __('Image', 'wpzabb'),
+						'show_remove'	=> true,
+						'connections'   => array( 'photo' )
+					),
+					'image_url'     => array(
+						'type'          => 'text',
+						'label'         => __('Image URL', 'wpzabb'),
+						'placeholder'   => 'http://www.example.com/my-image.jpg',
+						'connections'	=> array( 'url' )
+					),
+					'heading'        => array(
+						'type'            => 'text',
+						'label'           => __('Heading', 'wpzabb'),
+						'default'         => '',
+						'preview'         => array(
+							'type'            => 'text',
+							'selector'        => '.wpzabb-image-box-wrap .wpzabb-image-heading'
 						),
+						'connections'		=> array( 'string', 'html' )
+					),
+					'subheading'        => array(
+						'type'            => 'text',
+						'label'           => __('Subheading', 'wpzabb'),
+						'default'         => '',
+						'preview'         => array(
+							'type'            => 'text',
+							'selector'        => '.wpzabb-image-box-wrap .wpzabb-image-subheading'
+						),
+						'connections'		=> array( 'string', 'html' )
+					),
+					'description'          => array(
+						'type'          => 'editor',
+						'label'         => __('Description', 'wpzabb'),
+					),
+					'btn_text'          => array(
+						'type'          => 'text',
+						'label'         => __('Button Label', 'wpzabb'),
+						'default'       => __('Click Here', 'wpzabb'),
+						'preview'         => array(
+							'type'            => 'text',
+							'selector'        => '.wpzabb-button-text'
+						),
+						'connections'	=> array( 'string', 'html' )
+					),
+					'link'          => array(
+						'type'          => 'link',
+						'label'         => __('Link', 'wpzabb'),
+						'preview'         => array(
+							'type'            => 'none'
+						),
+						'connections'		=> array( 'url' )
+					),
+					'link_target'   => array(
+						'type'          => 'select',
+						'label'         => __('Link Target', 'wpzabb'),
+						'default'       => '_self',
+						'options'       => array(
+							'_self'         => __('Same Window', 'wpzabb'),
+							'_blank'        => __('New Window', 'wpzabb')
+						),
+						'preview'         => array(
+							'type'            => 'none'
+						)
 					),
 				),
 			),
 		),
-	),
-	'images' 		=> array(
-		'title'		=> __( 'Images Boxes', 'wpzabb' ),
-		'sections'	=> array(
-			'general'       => array( // Section
-				'title'         => '', // Section Title
-				'fields'        => array( // Section Fields
-					'images'     => array(
-						'type'          => 'form',
-						'label'         => __( 'Image Box', 'wpzabb' ),
-						'form'          => 'image_box_form', // ID from registered form below
-						'preview_text'  => 'heading', // Name of a field to use for the preview text
-						'multiple'      => true,
-					),
-				),
-			),
-		)
 	),
 	'typography'         => array(
 		'title'         => __('Typography', 'wpzabb'),
@@ -388,7 +398,7 @@ FLBuilder::register_module('WPZABBImageBoxModule', array(
                         ),
                         'responsive' => array(
 							'placeholder' => array(
-								'default' => '',
+								'default' => '26',
 								'medium' => '',
 								'responsive' => '',
 							),
@@ -406,7 +416,7 @@ FLBuilder::register_module('WPZABBImageBoxModule', array(
                         ),
                         'responsive' => array(
 							'placeholder' => array(
-								'default' => '',
+								'default' => '1.1',
 								'medium' => '',
 								'responsive' => '',
 							),
@@ -463,7 +473,7 @@ FLBuilder::register_module('WPZABBImageBoxModule', array(
 					'color'    => array( 
 						'type'       => 'color',
 						'label'         => __('Text Color', 'wpzabb'),
-						'default'    => '',
+						'default'    => '#ffffff',
 						'show_reset' => true,
 						'preview'		=> array(
 							'type' => 'css',
@@ -526,7 +536,7 @@ FLBuilder::register_module('WPZABBImageBoxModule', array(
 						),
 						'responsive' => array(
 							'placeholder' => array(
-								'default' => '',
+								'default' => '14',
 								'medium' => '',
 								'responsive' => '',
 							),
@@ -544,7 +554,7 @@ FLBuilder::register_module('WPZABBImageBoxModule', array(
 						),
 						'responsive' => array(
 							'placeholder' => array(
-								'default' => '',
+								'default' => '1.8',
 								'medium' => '',
 								'responsive' => '',
 							),
@@ -553,7 +563,7 @@ FLBuilder::register_module('WPZABBImageBoxModule', array(
 					'subheading_text_transform' => array(
 						'type'          => 'select',
 						'label'         => __( 'Text Transform', 'wpzabb' ),
-						'default'       => 'none',
+						'default'       => 'uppercase',
 						'options'       => array(
 							'none'			=> __( 'None', 'wpzabb' ),
 							'uppercase'		=> __( 'Uppercase', 'wpzabb' ),
@@ -601,7 +611,7 @@ FLBuilder::register_module('WPZABBImageBoxModule', array(
 		            'subheading_color'        => array( 
 						'type'       => 'color',
 						'label'      => __('Color', 'wpzabb'),
-						'default'    => '',
+						'default'    => '#ededed',
 						'show_reset' => true,
 						'preview'		=> array(
 							'type' => 'css',
@@ -664,7 +674,7 @@ FLBuilder::register_module('WPZABBImageBoxModule', array(
 						),
 						'responsive' => array(
 							'placeholder' => array(
-								'default' => '',
+								'default' => '16',
 								'medium' => '',
 								'responsive' => '',
 							),
@@ -682,7 +692,7 @@ FLBuilder::register_module('WPZABBImageBoxModule', array(
 						),
 						'responsive' => array(
 							'placeholder' => array(
-								'default' => '',
+								'default' => '1.8',
 								'medium' => '',
 								'responsive' => '',
 							),
@@ -739,7 +749,7 @@ FLBuilder::register_module('WPZABBImageBoxModule', array(
 		            'desc_color'        => array( 
 						'type'       => 'color',
 						'label'      => __('Color', 'wpzabb'),
-						'default'    => '',
+						'default'    => '#ffffff',
 						'show_reset' => true,
 						'preview'		=> array(
 							'type' => 'css',
@@ -763,7 +773,7 @@ FLBuilder::register_module('WPZABBImageBoxModule', array(
 					'desc_margin_bottom'       => array(
 						'type'          => 'text',
 						'label'         => __('Margin Bottom', 'wpzabb'),
-						'placeholder'	=> '0',
+						'placeholder'	=> '20',
 						'size'			=> '5',
 						'description'	=> 'px',
 						'preview'		=> array(
@@ -796,7 +806,7 @@ FLBuilder::register_module('WPZABBImageBoxModule', array(
 		                'description'   => 'px',
 		                'responsive' => array(
                             'placeholder' => array(
-                                'default' => '',
+                                'default' => '14',
                                 'medium' => '',
                                 'responsive' => '',
                             ),
@@ -814,7 +824,7 @@ FLBuilder::register_module('WPZABBImageBoxModule', array(
 		                'description'   => 'em',
 		                'responsive' => array(
                             'placeholder' => array(
-                                'default' => '',
+                                'default' => '1.4',
                                 'medium' => '',
                                 'responsive' => '',
                             ),
@@ -829,7 +839,7 @@ FLBuilder::register_module('WPZABBImageBoxModule', array(
 		            'btn_text_transform' => array(
 		            	'type'          => 'select',
 		            	'label'         => __( 'Text Transform', 'wpzabb' ),
-		            	'default'       => 'none',
+		            	'default'       => 'uppercase',
 		            	'options'       => array(
 		            		'none'			=> __( 'None', 'wpzabb' ),
 		            		'uppercase'		=> __( 'Uppercase', 'wpzabb' ),
@@ -887,13 +897,13 @@ FLBuilder::register_module('WPZABBImageBoxModule', array(
 					'bg_color'        => array( 
 						'type'       => 'color',
                         'label'         => __('Background Overlay Color', 'wpzabb'),
-						'default'    => '',
+						'default'    => '#000000',
 						'show_reset' => true,
 					),
                     'bg_color_opc'    => array( 
 						'type'        => 'text',
 						'label'       => __('Opacity', 'wpzabb'),
-						'default'     => '',
+						'default'     => '30',
 						'description' => '%',
 						'maxlength'   => '3',
 						'size'        => '5',
@@ -901,7 +911,7 @@ FLBuilder::register_module('WPZABBImageBoxModule', array(
 					'bg_hover_color'        => array( 
 						'type'       => 'color',
                         'label'      => __('Background Overlay Hover Color', 'wpzabb'),
-						'default'    => '',
+						'default'    => '#000000',
 						'show_reset' => true,
                         'preview'       => array(
 							'type'          => 'none'
@@ -910,7 +920,7 @@ FLBuilder::register_module('WPZABBImageBoxModule', array(
                     'bg_hover_color_opc'    => array( 
 						'type'        => 'text',
 						'label'       => __('Opacity', 'wpzabb'),
-						'default'     => '',
+						'default'     => '40',
 						'description' => '%',
 						'maxlength'   => '3',
 						'size'        => '5',
@@ -1119,116 +1129,5 @@ FLBuilder::register_module('WPZABBImageBoxModule', array(
 				)
 			)
 		)
-	),
-));
-
-
-/**
- * Register a settings form to use in the "form" field type above.
- */
-FLBuilder::register_settings_form('image_box_form', array(
-	'title' => __( 'Add Image Box', 'wpzabb' ),
-	'tabs'  => array(
-		'general'      => array( // Tab
-			'title'         => __( 'General', 'wpzabb' ), // Tab title
-			'sections'      => array( // Tab Sections
-				'general'       => array( // Section
-					'title'         => '', // Section Title
-					'fields'        => array( // Section Fields
-						'image_source'  => array(
-							'type'          => 'select',
-							'label'         => __('Image Source', 'wpzabb'),
-							'default'       => 'library',
-							'options'       => array(
-								'library'       => __('Media Library', 'wpzabb'),
-								'url'           => __('URL', 'wpzabb')
-							),
-							'toggle'        => array(
-								'library'       => array(
-									'fields'        => array('image')
-								),
-								'url'           => array(
-									'fields'        => array('image_url' )
-								)
-							)
-						),
-						'image'         => array(
-							'type'          => 'photo',
-							'label'         => __('Image', 'wpzabb'),
-							'show_remove'	=> true,
-							'connections'   => array( 'photo' )
-						),
-						'image_url'     => array(
-							'type'          => 'text',
-							'label'         => __('Image URL', 'wpzabb'),
-							'placeholder'   => 'http://www.example.com/my-image.jpg',
-							'connections'	=> array( 'url' )
-						),
-						'img_size'     => array(
-							'type'          => 'text',
-							'label'         => __('Size', 'wpzabb'),
-							'placeholder'   => 'auto',
-							'maxlength'     => '5',
-							'size'          => '6',
-							'description'   => 'px',
-						),
-						'heading'        => array(
-							'type'            => 'text',
-							'label'           => __('Heading', 'wpzabb'),
-							'default'         => '',
-							'preview'         => array(
-								'type'            => 'text',
-								'selector'        => '.wpzabb-image-box-wrap .wpzabb-image-heading'
-							),
-							'connections'		=> array( 'string', 'html' )
-						),
-						'subheading'        => array(
-							'type'            => 'text',
-							'label'           => __('Subheading', 'wpzabb'),
-							'default'         => '',
-							'preview'         => array(
-								'type'            => 'text',
-								'selector'        => '.wpzabb-image-box-wrap .wpzabb-image-subheading'
-							),
-							'connections'		=> array( 'string', 'html' )
-						),
-						'description'          => array(
-							'type'          => 'editor',
-							'label'         => __('Description', 'wpzabb'),
-						),
-						'btn_text'          => array(
-							'type'          => 'text',
-							'label'         => __('Button Label', 'wpzabb'),
-							'default'       => __('Click Here', 'wpzabb'),
-							'preview'         => array(
-								'type'            => 'text',
-								'selector'        => '.wpzabb-button-text'
-							),
-							'connections'	=> array( 'string', 'html' )
-						),
-						'link'          => array(
-							'type'          => 'link',
-							'label'         => __('Link', 'wpzabb'),
-							'preview'         => array(
-								'type'            => 'none'
-							),
-							'connections'		=> array( 'url' )
-						),
-						'link_target'   => array(
-							'type'          => 'select',
-							'label'         => __('Link Target', 'wpzabb'),
-							'default'       => '_self',
-							'options'       => array(
-								'_self'         => __('Same Window', 'wpzabb'),
-								'_blank'        => __('New Window', 'wpzabb')
-							),
-							'preview'         => array(
-								'type'            => 'none'
-							)
-						),
-					),
-				),
-			),
-		),
 	),
 ));

@@ -16,7 +16,7 @@
 	// Description
 	$settings->desc_color = WPZABB_Helper::wpzabb_colorpicker( $settings, 'desc_color' );
 	$settings->desc_margin_top = ( trim($settings->desc_margin_top) !== '' ) ? $settings->desc_margin_top : '0';
-	$settings->desc_margin_bottom = ( trim($settings->desc_margin_bottom) !== '' ) ? $settings->desc_margin_bottom : '0';
+	$settings->desc_margin_bottom = ( trim($settings->desc_margin_bottom) !== '' ) ? $settings->desc_margin_bottom : '20';
 ?>
 
 .fl-node-<?php echo $id; ?> .wpzabb-image-box-wrap .wpzabb-image::before {
@@ -24,12 +24,6 @@
 }
 .fl-node-<?php echo $id; ?> .wpzabb-image-box-wrap .wpzabb-image:hover::before {
 	background-color: <?php echo $settings->bg_hover_color; ?>
-}
-
-<?php /* Content Align */ ?>
-
-.fl-node-<?php echo $id; ?> .wpzabb-image-box-wrap.content-align-<?php echo $settings->content_align; ?> .wpzabb-image {
-	text-align: <?php echo $settings->content_align; ?>
 }
 
 <?php /* Grid Layout */ ?>

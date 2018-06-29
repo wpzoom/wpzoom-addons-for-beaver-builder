@@ -133,12 +133,6 @@ if ( ! empty( $settings->bg_hover_color ) ) {
 	<?php if ( ! empty( $settings->bg_color ) ) : ?>
 	background: <?php echo $settings->bg_color; ?>;
 	border: <?php echo $border_size; ?>px solid <?php echo $border_color; ?>;
-	
-		<?php if ( 'transparent' == $settings->style ) : // Transparent 
-//background-color: rgba(<?php echo implode( ',', "#" . FLBuilderColor::hex_to_rgb( $settings->bg_color ) ) , 0);
-		?>
-			background: none;
-		<?php endif; ?>
 
 		<?php if( 'gradient' == $settings->style ) : // Gradient ?>
 		background: -moz-linear-gradient(top,  <?php echo $bg_grad_start; ?> 0%, <?php echo $settings->bg_color; ?> 100%); /* FF3.6+ */
@@ -150,6 +144,10 @@ if ( ! empty( $settings->bg_hover_color ) ) {
 		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='<?php echo $bg_grad_start; ?>', endColorstr='<?php echo $settings->bg_color; ?>',GradientType=0 ); /* IE6-9 */
 		<?php endif; ?>
 	
+	<?php endif; ?>
+
+	<?php if ( 'transparent' == $settings->style ) : // Transparent ?>
+		background: none;
 	<?php endif; ?>
 }
 
