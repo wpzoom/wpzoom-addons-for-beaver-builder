@@ -1,6 +1,6 @@
 (function($){
 
-	FLBuilder.registerModuleHelper('map', {
+	FLBuilder.registerModuleHelper('wpzabb-map', {
 
 		init: function()
 		{
