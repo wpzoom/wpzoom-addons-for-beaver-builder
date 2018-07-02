@@ -7,7 +7,7 @@
  * Version: 1.0
  * Author: WPZOOM
  * Author URI: http://www.wpzoom.com
- * Text Domain: bbwpzoom
+ * Text Domain: wpzabb
  */
 
 
