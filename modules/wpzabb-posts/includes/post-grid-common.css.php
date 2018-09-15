@@ -10,7 +10,6 @@
 	padding-left: <?php echo $settings->post_spacing / 2; ?>px;
 	padding-right: <?php echo $settings->post_spacing / 2; ?>px;
 	width: <?php echo 100 / $settings->post_columns; ?>%;
-	<!-- float: left; -->
 }
 .fl-node-<?php echo $id; ?> .wpzabb-post-column:nth-child(<?php echo $settings->post_columns; ?>n + 1) {
 	clear: both;

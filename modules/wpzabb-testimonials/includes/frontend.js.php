@@ -16,8 +16,8 @@
 		pager : <?php echo $settings->dots; ?>,
 		nextSelector : '.fl-node-<?php echo $id; ?> .fl-slider-next',
 		prevSelector : '.fl-node-<?php echo $id; ?> .fl-slider-prev',
-		nextText: '<i class="fas fa-chevron-circle-right"></i>',
-		prevText: '<i class="fas fa-chevron-circle-left"></i>',
+		nextText: '<i class="fa fa-angle-right"></i>',
+		prevText: '<i class="fa fa-angle-left"></i>',
 		controls : <?php echo $settings->arrows; ?>,
 		onSliderLoad: function() {
 			$('.fl-node-<?php echo $id; ?> .wpzabb-testimonials').addClass('wpzabb-testimonials-loaded');

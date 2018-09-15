@@ -16,6 +16,7 @@ body.rtl .wpzabb-testimonials-wrap .wpzabb-testimonial {
 
 .fl-module-wpzabb-testimonials .bx-wrapper {
 	margin: 0 auto 35px;
+	padding: 0 50px;
 }
 .wpzabb-testimonials-wrap { 
 	position: relative; 
@@ -69,7 +70,7 @@ body.rtl .wpzabb-testimonials-wrap .wpzabb-testimonial {
 	visibility: visible;
 }
 .wpzabb-testimonials-wrap .fa {
-	opacity: 0.8;
+	opacity: 0.7;
 	-webkit-transition: opacity 0.2s;
 	-moz-transition: opacity 0.2s;
 	-o-transition: opacity 0.2s;
@@ -82,14 +83,16 @@ body.rtl .wpzabb-testimonials-wrap .wpzabb-testimonial {
 .wpzabb-testimonials-wrap .fl-slider-next,
 .wpzabb-testimonials-wrap .fl-slider-prev {
 	position: absolute;
-	top: 9px;
-	right: 0;
+	top: 50%;
+	transform: translateY(-50%);
+	left: 0;
 }
 .wpzabb-testimonials-wrap .fa {
-	font-size: 17px;
+	font-size: 50px;
 }
-.wpzabb-testimonials-wrap .fl-slider-prev {
-	right: 18px !important;
+.wpzabb-testimonials-wrap .fl-slider-next {
+	left: auto;
+	right: 0;
 }
 
 /* Navigation Fixes */

@@ -257,10 +257,10 @@ FLBuilder::register_module('WPZABBTestimonialsModule', array(
 					'img_size'     => array(
 						'type'          => 'text',
 						'label'         => __('Author Image Size', 'wpzabb'),
-						'placeholder'   => 'auto',
 						'maxlength'     => '5',
 						'size'          => '6',
 						'description'   => 'px',
+						'default'		=> '100'
 					),
 				),
 			),

@@ -139,6 +139,8 @@ class WPZABBPostsModule extends FLBuilderModule {
 			$render = true;
 		}
 
+		$settings->show_comments = ( 'grid' == $settings->layout ) ? $settings->grid_show_comments : $settings->show_comments;
+
 		if ( $render ) {
 			include $this->dir . 'includes/post-meta.php';
 		}
