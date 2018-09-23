@@ -476,6 +476,7 @@ FLBuilder::register_module('WPZABBImageIconModule', array(
 						'maxlength'     => '5',
 						'size'          => '6',
 						'description'   => 'px',
+						'default'		=> '400'
 					),
 					'img_align'         => array(
 						'type'          => 'select',

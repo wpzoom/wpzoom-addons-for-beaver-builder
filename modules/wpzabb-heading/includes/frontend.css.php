@@ -10,7 +10,7 @@
     $settings->separator_line_color = WPZABB_Helper::wpzabb_colorpicker( $settings, 'separator_line_color' );
     $settings->separator_text_color = WPZABB_Helper::wpzabb_colorpicker( $settings, 'separator_text_color' );
     $settings->color = WPZABB_Helper::wpzabb_colorpicker( $settings, 'color' );
-    $settings->img_size = ( trim( $settings->img_size ) !== '' ) ? $settings->img_size : '50';       
+    $settings->responsive_img_size = ( trim( $settings->responsive_img_size ) !== '' ) ? $settings->responsive_img_size : '50';       
     $settings->separator_line_height = ( trim( $settings->separator_line_height ) !== '' ) ? $settings->separator_line_height : '1';
     $settings->separator_line_width = ( trim( $settings->separator_line_width ) !== '' ) ? $settings->separator_line_width : '30';
 

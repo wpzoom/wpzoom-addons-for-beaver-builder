@@ -272,7 +272,8 @@ FLBuilder::register_module('WPZABBHeadingModule', array(
 		                'maxlength'     => '5',
 		                'size'          => '6',
 		                'description'   => 'px',
-						'placeholder' => '50'
+						'placeholder' 	=> '50',
+						'default'		=> '50'
 		            ),
 					'responsive_img_size'     => array(
 						'type'          => 'text',

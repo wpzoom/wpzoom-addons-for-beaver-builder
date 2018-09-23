@@ -16,6 +16,8 @@ if( $settings->image_type != 'none' ) : // Condition contain whole Style
     $settings->img_border_color        = WPZABB_Helper::wpzabb_colorpicker( $settings, 'img_border_color' );
     $settings->img_border_hover_color  = WPZABB_Helper::wpzabb_colorpicker( $settings, 'img_border_hover_color' );
 
+    $settings->img_size = ( trim($settings->img_size) !== '' ) ? $settings->img_size : '400';
+
     $settings->icon_size = ( trim($settings->icon_size) !== '' ) ? $settings->icon_size : '30';
     $settings->icon_bg_size = ( trim($settings->icon_bg_size) !== '' ) ? $settings->icon_bg_size : '30';
     $settings->icon_border_width = ( trim($settings->icon_border_width) !== '' ) ? $settings->icon_border_width : '1';
@@ -183,9 +185,7 @@ if( $settings->image_type != 'none' ) : // Condition contain whole Style
     elseif ( $settings->image_type == 'photo') { ?>
 
         .fl-node-<?php echo $id; ?> .wpzabb-image .wpzabb-photo-img {
-            <?php if( $settings->img_size !== '' ) : ?>
-                width: <?php echo $settings->img_size; ?>px;
-            <?php endif; ?>
+            width: <?php echo (int)$settings->img_size; ?>px;
             <?php if( $settings->image_style == 'custom' && $settings->img_bg_size !== '' ): ?>
                 padding: <?php echo $settings->img_bg_size; ?>px;
             <?php endif; ?>

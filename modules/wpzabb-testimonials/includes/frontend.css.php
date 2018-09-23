@@ -2,6 +2,7 @@
 
 $settings->dot_color = WPZABB_Helper::wpzabb_colorpicker( $settings, 'dot_color' );
 $settings->arrow_color = WPZABB_Helper::wpzabb_colorpicker( $settings, 'arrow_color' );
+$settings->img_size = ( trim($settings->img_size) !== '' ) ? $settings->img_size : '100';
 
 ?>
 
@@ -19,8 +20,6 @@ $settings->arrow_color = WPZABB_Helper::wpzabb_colorpicker( $settings, 'arrow_co
 	color: <?php echo $settings->arrow_color; ?>;
 }
 
-<?php if ( $settings->img_size != '' ): ?>
-	.fl-node-<?php echo $id; ?> .wpzabb-testimonial-author-avatar img {
-		width: <?php echo $settings->img_size; ?>px;
-	}
-<?php endif ?>
+.fl-node-<?php echo $id; ?> .wpzabb-testimonial-author-avatar img {
+	width: <?php echo (int)$settings->img_size; ?>px;
+}
