@@ -16,10 +16,9 @@ body.rtl .wpzabb-testimonials-wrap .wpzabb-testimonial {
 
 .fl-module-wpzabb-testimonials .bx-wrapper {
 	margin: 0 auto 35px;
-	padding: 0 50px;
 }
-.wpzabb-testimonials-wrap { 
-	position: relative; 
+.wpzabb-testimonials-wrap {
+	position: relative;
 }
 .wpzabb-testimonials {
 	text-align: center;
@@ -49,6 +48,8 @@ body.rtl .wpzabb-testimonials-wrap .wpzabb-testimonial {
 }
 .wpzabb-testimonials-wrap .wpzabb-testimonial-author img {
 	border-radius: 50%;
+    max-width: 100px;
+    height: auto;
 }
 .wpzabb-testimonials-wrap .wpzabb-testimonial-author-info {
 	display: inline-block;
