@@ -29,7 +29,7 @@ class WPZABBHeadingModule extends FLBuilderModule {
 
 		if( $this->settings->separator_style == 'line_image' || $this->settings->separator_style == 'line_icon' ) {
 			$imageicon_array = array(
-	 
+
 				/* General Section */
 				'image_type' => ( $this->settings->separator_style == 'line_image' ) ? 'photo' : ( ( $this->settings->separator_style == 'line_icon' ) ? 'icon' : '' ),
 
@@ -45,7 +45,7 @@ class WPZABBHeadingModule extends FLBuilderModule {
 				'img_size' => $this->settings->img_size,
 				'img_align' => 'center',
 				'photo_src' => ( isset( $this->settings->photo_src ) ) ? $this->settings->photo_src : '' ,
-			); 
+			);
 
 			/* Render HTML Function */
 			if( $this->settings->separator_style == 'line_image' ) {
@@ -53,7 +53,7 @@ class WPZABBHeadingModule extends FLBuilderModule {
 			}
 
 			FLBuilder::render_module_html( 'wpzabb-image-icon', $imageicon_array );
-			
+
 			if( $this->settings->separator_style == 'line_image' ) {
 				echo '</div>';
 			}
@@ -74,7 +74,7 @@ FLBuilder::register_module('WPZABBHeadingModule', array(
 					'heading'        => array(
 						'type'            => 'text',
 						'label'           => __('Heading', 'wpzabb'),
-						'default'         => __('Design is a funny word', 'wpzabb'),
+						'default'         => __('Enter your title here', 'wpzabb'),
 						'preview'         => array(
 							'type'            => 'text',
 							'selector'        => '.wpzabb-heading-text'
@@ -103,7 +103,7 @@ FLBuilder::register_module('WPZABBHeadingModule', array(
 					)
 				)
 			),
-			'description'	=> array( 
+			'description'	=> array(
 				'title'  		=> __( 'Description', 'wpzabb' ),
 				'fields' 		=> array(
 					'description'	=> array(
@@ -200,9 +200,9 @@ FLBuilder::register_module('WPZABBHeadingModule', array(
 					),
 				)
 			),
-			'separator_icon_basic' 	=> 	array( 
-		        'title'         => __('Icon Basics','wpzabb'), 
-		        'fields'        => array( 
+			'separator_icon_basic' 	=> 	array(
+		        'title'         => __('Icon Basics','wpzabb'),
+		        'fields'        => array(
 		            'icon'          => array(
 		                'type'          => 'icon',
 		                'label'         => __('Icon', 'wpzabb'),
@@ -222,7 +222,7 @@ FLBuilder::register_module('WPZABBHeadingModule', array(
                             'unit'		=> 'px'
                         ),
 		            ),
-					'separator_icon_color' => array( 
+					'separator_icon_color' => array(
 						'type'       => 'color',
 						'label'         => __('Icon Color', 'wpzabb'),
 						'default'    => '',
@@ -235,9 +235,9 @@ FLBuilder::register_module('WPZABBHeadingModule', array(
 					),
 		        )
 		    ),
-			'separator_img_basic' 	=> array( 
-		        'title'         => __('Image Basics','wpzabb'), 
-		        'fields'        => array( 
+			'separator_img_basic' 	=> array(
+		        'title'         => __('Image Basics','wpzabb'),
+		        'fields'        => array(
 		            'photo_source'  => array(
 		                'type'          => 'select',
 		                'label'         => __('Photo Source', 'wpzabb'),
@@ -314,7 +314,7 @@ FLBuilder::register_module('WPZABBHeadingModule', array(
 				)
 			),
 			'separator_line'	=> array(
-				'title'		=> __('Line Style', 'wpzabb'), 
+				'title'		=> __('Line Style', 'wpzabb'),
 				'fields'	=> array(
 					'separator_line_style'		=> array(
 						'type'          => 'select',
@@ -333,7 +333,7 @@ FLBuilder::register_module('WPZABBHeadingModule', array(
                             'property'      => 'border-top-style',
                         )
 					),
-					'separator_line_color' => array( 
+					'separator_line_color' => array(
 						'type'       => 'color',
 						'label'      => __('Color', 'wpzabb'),
 						'default'    => '',
@@ -486,7 +486,7 @@ FLBuilder::register_module('WPZABBHeadingModule', array(
                             'unit'			=> 'px'
                         )
 		            ),
-					'color'    => array( 
+					'color'    => array(
 						'type'       => 'color',
 						'label'         => __('Text Color', 'wpzabb'),
 						'default'    => '',
@@ -624,7 +624,7 @@ FLBuilder::register_module('WPZABBHeadingModule', array(
                             'unit'			=> 'px'
                         )
 		            ),
-		            'desc_color'        => array( 
+		            'desc_color'        => array(
 						'type'       => 'color',
 						'label'      => __('Color', 'wpzabb'),
 						'default'    => '',
@@ -730,7 +730,7 @@ FLBuilder::register_module('WPZABBHeadingModule', array(
 							),
 						),
 		            ),
-		            'separator_text_color' => array( 
+		            'separator_text_color' => array(
 						'type'       => 'color',
 						'label'      => __('Text Color', 'wpzabb'),
 						'default'    => '',
