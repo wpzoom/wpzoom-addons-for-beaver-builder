@@ -1,13 +1,16 @@
 <?php
 
 /**
- * Plugin Name: WPZOOM Addons Pack for Beaver Builder - Lite
- * Plugin URI: http://www.wpzoom.com/
- * Description: WPZOOM Addons Pack is a free extension for Beaver Builder that adds 10 modules, and works on top of any Beaver Builder Package. (Free, Standard, Pro & Agency) You can use it with on any WordPress theme.
+ * Plugin Name: WPZOOM Addons for Beaver Builder
+ * Plugin URI: https://www.wpzoom.com/
+ * Description: WPZOOM Addons will extend Beaver Builder with several useful extensions that are missing in the Lite version.
  * Version: 1.0
  * Author: WPZOOM
- * Author URI: http://www.wpzoom.com
+ * Author URI: https://www.wpzoom.com
+ * Copyright: (c) 2018 WPZOOM
+ * License: GPLv2 or later
  * Text Domain: wpzabb
+ * Domain Path: /languages
  */
 
 
@@ -44,7 +47,7 @@ if( !class_exists( "WPZOOM_BB_Addon_Pack" ) ) {
 			// Stop process when allocated memory is exhausted
 			if( $no_memory == true && ! defined( 'WP_CLI' ) ) {
 
-				$msg  = sprintf( __('Unfortunately, plugin could not be activated as the memory allocated by your host has almost exhausted. WPZABB plugin recommends that your site should have 15M PHP memory remaining. <br/><br/><a class="button button-primary" href="%s">Return to Plugins Page</a>', 'wpzabb'), network_admin_url( 'plugins.php' ) );
+				$msg  = sprintf( __('Unfortunately, the plugin could not be activated as the memory allocated by your host has almost exhausted. WPZOOM Addons for Beaver Builder plugin recommends that your site should have 15M PHP memory remaining. <br/><br/><a class="button button-primary" href="%s">Return to Plugins Page</a>', 'wpzabb'), network_admin_url( 'plugins.php' ) );
 
 				deactivate_plugins( plugin_basename( __FILE__ ) );
 				wp_die( $msg );
@@ -95,21 +98,21 @@ if( !class_exists( "WPZOOM_BB_Addon_Pack" ) ) {
 
 	function admin_notices() {
 		$deactivate_url = admin_url( 'plugins.php' );
-		if ( is_plugin_active_for_network( 'wpzoom-addons-pack-for-beaver-builder-lite/wpzoom-bb-addon-pack.php' ) ) {
+		if ( is_plugin_active_for_network( 'wpzoom-addons-for-beaver-builder/wpzoom-bb-addon-pack.php' ) ) {
 			$deactivate_url = network_admin_url( 'plugins.php' );
 		}
 		$slug = 'wpzoom-bb-addon-pack';
 		$deactivate_url = add_query_arg(
 			array(
 				'action'        => 'deactivate',
-				'plugin'        => rawurlencode( 'wpzoom-addons-pack-for-beaver-builder-lite/' . $slug . '.php' ),
+				'plugin'        => rawurlencode( 'wpzoom-addons-for-beaver-builder/' . $slug . '.php' ),
 				'plugin_status' => 'all',
 				'paged'         => '1',
-				'_wpnonce'      => wp_create_nonce( 'deactivate-plugin_wpzoom-addons-pack-for-beaver-builder-lite/' . $slug . '.php' ),
+				'_wpnonce'      => wp_create_nonce( 'deactivate-plugin_wpzoom-addons-for-beaver-builder/' . $slug . '.php' ),
 			), $deactivate_url
 		);
 		echo '<div class="notice notice-error"><p>';
-		echo sprintf( __( "You currently have two versions of <strong>Ultimate Addon for Beaver Builder</strong> active on this site. Please <a href='%s'>deactivate one</a> before continuing.", 'wpzabb' ), $deactivate_url );
+		echo sprintf( __( "You currently have two versions of <strong>WPZOOM Addons for Beaver Builder</strong> active on this site. Please <a href='%s'>deactivate one</a> before continuing.", 'wpzabb' ), $deactivate_url );
 		echo '</p></div>';
 
 	}
