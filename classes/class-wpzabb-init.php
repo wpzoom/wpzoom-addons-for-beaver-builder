@@ -134,14 +134,6 @@ class WPZABB_Init {
 			BB_WPZOOM_ADDON_LITE_VERSION,
 			true
 		);
-
-		wp_enqueue_script(
-			'wpzabb-scripts',
-			BB_WPZOOM_ADDON_URL . 'assets/js/wpzabb-scripts.js',
-			array(),
-			BB_WPZOOM_ADDON_LITE_VERSION,
-			true
-		);
 		
 	}
 

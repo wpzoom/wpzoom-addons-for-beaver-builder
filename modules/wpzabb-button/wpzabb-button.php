@@ -118,14 +118,16 @@ class WPZABBButtonModule extends FLBuilderModule {
 			$attributes['class'][] = $this->get_button_style();
 		}
 
-		if ( 'lightbox' === $this->settings->click_action ) {
-			$attributes['data-popup-type'] = 'iframe';
-			$attributes['href'] = $this->settings->lightbox_video_link;
-			$attributes['class'][] = 'wpzabb-button-popup-video';
-		}
-
 		if ( ! empty( $this->get_rel() ) ) {
 			$attributes['rel'] = $this->get_rel();
+		}
+
+		if ( 'lightbox' === $this->settings->click_action ) {
+			$attributes['data-popup-type'] 	= 'iframe';
+			$attributes['href'] 			= $this->settings->lightbox_video_link;
+			$attributes['target'] 			= '_self';
+			$attributes['rel'] 				= '';
+			$attributes['class'][] 			= 'wpzabb-button-popup-video';
 		}
 
 		if ( ! empty( $this->settings->a_class ) ) {
@@ -139,9 +141,9 @@ class WPZABBButtonModule extends FLBuilderModule {
 		foreach ( $attributes as $attribute => $value ) {
 			if ( is_array( $value ) ) {
 				$implode = implode( ' ', $value );
-				$output .= " $attribute=\"$implode\"";
+				$output .= ! empty( $implode ) ? " $attribute=\"$implode\"" : '';
 			} else {
-				$output .= " $attribute=\"$value\"";
+				$output .= ! empty( $value ) ? " $attribute=\"$value\"" : '';
 			}
 		}
 
