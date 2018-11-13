@@ -6,8 +6,8 @@
 	<?php
 	}
 	?>
-	
-		<a href="<?php echo $settings->link; ?>" target="<?php echo $settings->link_target; ?>" class="wpzabb-button wpzabb-button <?php echo 'wpzabb-creative-'.$settings->style.'-btn' ?> <?php echo $module->get_button_style(); ?> <?php echo ( isset( $settings->a_class ) ) ? $settings->a_class : '' ; ?> " <?php echo ( isset( $settings->a_data ) ) ? $settings->a_data : '' ; ?> role="button"<?php echo $module->get_rel(); ?>>
+
+		<a <?php echo $module->get_button_attributes(); ?>>
 			<?php if ( ! empty( $settings->icon ) && ( 'before' == $settings->icon_position || ! isset( $settings->icon_position ) ) ) : 
 
 			if ( $settings->style == 'flat' && isset( $settings->flat_button_options ) && ( $settings->flat_button_options == "animate_to_right" || $settings->flat_button_options == "animate_to_left" || $settings->flat_button_options == "animate_from_top" || $settings->flat_button_options == "animate_from_bottom" ) ) {

@@ -119,6 +119,29 @@ class WPZABB_Init {
 
 		wp_dequeue_style( 'bootstrap-tour' );
 		wp_dequeue_script( 'bootstrap-tour' );
+
+		wp_enqueue_style(
+			'magnificPopup',
+			BB_WPZOOM_ADDON_URL . 'assets/css/magnific-popup.css',
+			array(),
+			BB_WPZOOM_ADDON_LITE_VERSION
+		);
+
+		wp_enqueue_script(
+			'magnificPopup',
+			BB_WPZOOM_ADDON_URL . 'assets/js/jquery.magnific-popup.min.js',
+			array(),
+			BB_WPZOOM_ADDON_LITE_VERSION,
+			true
+		);
+
+		wp_enqueue_script(
+			'wpzabb-scripts',
+			BB_WPZOOM_ADDON_URL . 'assets/js/wpzabb-scripts.js',
+			array(),
+			BB_WPZOOM_ADDON_LITE_VERSION,
+			true
+		);
 		
 	}
 

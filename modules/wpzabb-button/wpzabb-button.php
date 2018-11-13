@@ -77,22 +77,18 @@ class WPZABBButtonModule extends FLBuilderModule {
 	 */
 	public function get_classname()
 	{
-		$classname = 'wpzabb-button-wrap wpzabb-button-wrap';
+		$classname = 'wpzabb-button-wrap';
 
 		if(!empty($this->settings->width)) {
-			$classname .= ' wpzabb-button-width-' . $this->settings->width;
 			$classname .= ' wpzabb-button-width-' . $this->settings->width;
 		}
 		if(!empty($this->settings->align)) {
 			$classname .= ' wpzabb-button-' . $this->settings->align;
-			$classname .= ' wpzabb-button-' . $this->settings->align;
 		}
 		if(!empty($this->settings->mob_align)) {
 			$classname .= ' wpzabb-button-reponsive-' . $this->settings->mob_align;
-			$classname .= ' wpzabb-button-reponsive-' . $this->settings->mob_align;
 		}
 		if(!empty($this->settings->icon)) {
-			$classname .= ' wpzabb-button-has-icon';
 			$classname .= ' wpzabb-button-has-icon';
 		}
 
@@ -101,6 +97,55 @@ class WPZABBButtonModule extends FLBuilderModule {
 		}
 
 		return $classname;
+	}
+
+	/**
+	 * Returns button button attributes based on settings
+	 * @method get_button_attributes
+	 */
+	public function get_button_attributes() {
+		$attributes = array();
+		$output = '';
+
+		$attributes['href'] 	= $this->settings->link;
+		$attributes['target'] 	= $this->settings->link_target;
+		$attributes['role'] 	= 'button';
+
+		$attributes['class'][] = 'wpzabb-button';
+		$attributes['class'][] = 'wpzabb-creative-'. $this->settings->style .'-btn';
+
+		if ( ! empty( $this->get_button_style() ) ) {
+			$attributes['class'][] = $this->get_button_style();
+		}
+
+		if ( 'lightbox' === $this->settings->click_action ) {
+			$attributes['data-popup-type'] = 'iframe';
+			$attributes['href'] = $this->settings->lightbox_video_link;
+			$attributes['class'][] = 'wpzabb-button-popup-video';
+		}
+
+		if ( ! empty( $this->get_rel() ) ) {
+			$attributes['rel'] = $this->get_rel();
+		}
+
+		if ( ! empty( $this->settings->a_class ) ) {
+			$attributes['class'][] = $this->settings->a_class;
+		}
+
+		if ( ! empty( $this->settings->a_data ) ) {
+			$attributes[] = $this->settings->a_data;
+		}
+
+		foreach ( $attributes as $attribute => $value ) {
+			if ( is_array( $value ) ) {
+				$implode = implode( ' ', $value );
+				$output .= " $attribute=\"$implode\"";
+			} else {
+				$output .= " $attribute=\"$value\"";
+			}
+		}
+
+		return $output;
 	}
 
 	/**
@@ -116,9 +161,7 @@ class WPZABBButtonModule extends FLBuilderModule {
 			$rel[] = 'nofollow';
 		}
 		$rel = implode( ' ', $rel );
-		if ( $rel ) {
-			$rel = ' rel="' . $rel . '" ';
-		}
+
 		return $rel;
 	}
 
@@ -168,7 +211,38 @@ FLBuilder::register_module('WPZABBButtonModule', array(
 						),
 						'connections'	=> array( 'string', 'html' )
 					),
-
+					'click_action'   => array(
+						'type'          => 'select',
+						'label'         => __( 'Click Action', 'wpzabb' ),
+						'default'       => 'link',
+						'options'       => array(
+							'link'         => __( 'Link', 'wpzabb' ),
+							'lightbox'     => __( 'Lightbox', 'wpzabb' ),
+						),
+						'toggle'        => array(
+							'link'          => array(
+								'sections'        => array('link' )
+							),
+							'lightbox'          => array(
+								'sections'        => array('lightbox_content' )
+							),
+						)
+					),
+				)
+			),
+			'lightbox_content'  => array(
+				'title'         => __('Lightbox Content', 'wpzabb'),
+				'fields'        => array(
+					'lightbox_video_link' => array(
+						'type'          => 'text',
+						'label'         => __('Video Link', 'wpzabb'),
+						'placeholder'   => 'http://www.example.com',
+						'default'		=> '',
+						'preview'       => array(
+							'type'          => 'none'
+						),
+						'connections'	=> array( 'url' )
+					),
 				)
 			),
 			'link'          => array(
