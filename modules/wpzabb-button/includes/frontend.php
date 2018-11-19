@@ -1,12 +1,14 @@
 <div class="wpzabb-module-content <?php echo $module->get_classname(); ?>">
-	<?php 
+	<?php
+
+	echo $module->get_self_hosted_HTML();
+
 	if ( isset( $settings->threed_button_options ) && ( $settings->threed_button_options == "animate_top" || $settings->threed_button_options == "animate_bottom" || $settings->threed_button_options == "animate_left" || $settings->threed_button_options == "animate_right" ) ) {
 	?>
 		<p class="perspective">
 	<?php
 	}
 	?>
-
 		<a <?php echo $module->get_button_attributes(); ?>>
 			<?php if ( ! empty( $settings->icon ) && ( 'before' == $settings->icon_position || ! isset( $settings->icon_position ) ) ) : 
 

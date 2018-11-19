@@ -243,3 +243,22 @@
     width: auto !important;
     height: auto !important;
 }
+
+
+/***********************************************************************************
+
+Animations
+
+************************************************************************************/
+.animated {
+  -webkit-animation-duration: .5s;
+  -o-animation-duration: .5s;
+  animation-duration: .5s;
+  -webkit-animation-fill-mode: both;
+  -o-animation-fill-mode: both;
+  animation-fill-mode: both; }
+
+.animated.slow {
+  -webkit-animation-duration: 2s;
+  -o-animation-duration: 2s;
+  animation-duration: 2s; }

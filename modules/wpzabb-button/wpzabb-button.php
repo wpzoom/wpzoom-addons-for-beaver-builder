@@ -6,6 +6,11 @@
 class WPZABBButtonModule extends FLBuilderModule {
 
 	/**
+	 * WP_Object Post.
+	 */
+	public $post;
+
+	/**
 	 * @method __construct
 	 */
 	public function __construct()
@@ -19,6 +24,8 @@ class WPZABBButtonModule extends FLBuilderModule {
             'partial_refresh'	=> true,
             'icon'          	=> 'button.svg'
 		));
+
+		$this->post = get_post();
 
 		add_filter( 'fl_builder_layout_data', array( $this , 'render_new_data' ), 10, 3 );
 	}
@@ -123,11 +130,20 @@ class WPZABBButtonModule extends FLBuilderModule {
 		}
 
 		if ( 'lightbox' === $this->settings->click_action ) {
-			$attributes['data-popup-type'] 	= 'iframe';
-			$attributes['href'] 			= $this->settings->lightbox_video_link;
-			$attributes['target'] 			= '_self';
-			$attributes['rel'] 				= '';
-			$attributes['class'][] 			= 'wpzabb-button-popup-video';
+			if ( 'external_link' === $this->settings->lightbox_video_type ) {
+				$attributes['data-popup-type'] 	= 'iframe';
+				$attributes['href'] 			= $this->settings->lightbox_video_link;
+				$attributes['target'] 			= '_self';
+				$attributes['rel'] 				= '';
+				$attributes['class'][] 			= 'wpzabb-button-popup-video';
+			}
+			elseif ( 'self_hosted' === $this->settings->lightbox_video_type ) {
+				$attributes['data-popup-type'] 	= 'inline';
+				$attributes['href'] 			= "#zoom-popup-{$this->post->ID}";
+				$attributes['target'] 			= '_self';
+				$attributes['rel'] 				= '';
+				$attributes['class'][] 			= 'wpzabb-button-popup-video';
+			}
 		}
 
 		if ( ! empty( $this->settings->a_class ) ) {
@@ -145,6 +161,28 @@ class WPZABBButtonModule extends FLBuilderModule {
 			} else {
 				$output .= ! empty( $value ) ? " $attribute=\"$value\"" : '';
 			}
+		}
+
+		return $output;
+	}
+
+	public function get_self_hosted_HTML() {
+		$output = '';
+
+		if ( 'self_hosted' === $this->settings->lightbox_video_type ) {
+			$output = "<div id=\"zoom-popup-{$this->post->ID}\" class=\"animated slow mfp-hide\" data-src=\"{$this->settings->lightbox_video_self_link}\">
+
+			    <div class=\"mfp-iframe-scaler\">" .
+			        wp_video_shortcode(
+			            array(
+			                'src' => $this->settings->lightbox_video_self_link,
+			                'preload' => 'none',
+			                //'loop' => 'on',
+			                //'autoplay' => 'on'
+			        	)
+			        )
+			    . "</div>
+			</div>";
 		}
 
 		return $output;
@@ -235,9 +273,36 @@ FLBuilder::register_module('WPZABBButtonModule', array(
 			'lightbox_content'  => array(
 				'title'         => __('Lightbox Content', 'wpzabb'),
 				'fields'        => array(
+					'lightbox_video_type'   => array(
+						'type'          => 'select',
+						'label'         => __( 'Video Type', 'wpzabb' ),
+						'default'       => 'external_link',
+						'options'       => array(
+							'external_link' => __( 'External link', 'wpzabb' ),
+							'self_hosted'   => __( 'Self hosted', 'wpzabb' ),
+						),
+						'toggle'        => array(
+							'external_link'	=> array(
+								'fields'    => array( 'lightbox_video_link' )
+							),
+							'self_hosted'   => array(
+								'fields'  	=> array( 'lightbox_video_self_link' )
+							),
+						)
+					),
 					'lightbox_video_link' => array(
 						'type'          => 'text',
 						'label'         => __('Video Link', 'wpzabb'),
+						'placeholder'   => 'http://www.example.com',
+						'default'		=> '',
+						'preview'       => array(
+							'type'          => 'none'
+						),
+						'connections'	=> array( 'url' )
+					),
+					'lightbox_video_self_link' => array(
+						'type'          => 'text',
+						'label'         => __('Self Hosted Video Link', 'wpzabb'),
 						'placeholder'   => 'http://www.example.com',
 						'default'		=> '',
 						'preview'       => array(
