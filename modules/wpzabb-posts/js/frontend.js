@@ -68,7 +68,7 @@
 			var highestBox = 0;
 
 			if ( 0 === this.matchHeight ) {
-				return;
+				highestBox = 'auto';
 			}
 
             $(this.nodeClass + ' .wpzabb-post-grid-post').css('height', '').each(function(){
