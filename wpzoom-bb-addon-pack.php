@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Plugin Name: WPZOOM Addons for Beaver Builder
+ * Plugin Name: Beaver Builder Addons by WPZOOM
  * Plugin URI: https://www.wpzoom.com/
  * Description: WPZOOM Addons will extend Beaver Builder with several useful extensions that are missing in the Lite version.
  * Version: 1.0.1

@@ -1,4 +1,4 @@
-=== WPZOOM Addons for Beaver Builder ===
+=== Beaver Builder Addons by WPZOOM ===
 Contributors: WPZOOM
 Donate link: https://www.wpzoom.com/
 Tags: wpzoom, beaver builder
@@ -18,9 +18,9 @@ WPZOOM Addons will extend Beaver Builder with several useful extensions that are
 
 == Installation ==
 
-1. Install WPZOOM Addons for Beaver Builder either via the WordPress plugin directory or by uploading the files to your server at wp-content/plugins.
+1. Install Beaver Builder Addons by WPZOOM either via the Plugins > Add New page in your WordPress Dashboard, or by downloading the plugin and uploading the file in Plugins > Add New.
 
-2. After activating WPZOOM Addons for Beaver Builder, several new widgets will be available in the Page Builder.
+2. After activating Beaver Builder Addons by WPZOOM, several new widgets will be available in the Page Builder.
 
 
 == Changelog ==
