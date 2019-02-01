@@ -33,7 +33,7 @@ class WPZABBButtonModule extends FLBuilderModule {
     function render_new_data( $data ) {
 
         foreach ( $data as &$node ) {
-            
+
             if ( isset( $node->settings->type ) && 'wpzabb-button' === $node->settings->type ) {
 
                 if ( isset( $node->settings->font_size['small']) && !isset( $node->settings->font_size_unit_responsive ) ) {
@@ -253,11 +253,11 @@ FLBuilder::register_module('WPZABBButtonModule', array(
 					),
 					'click_action'   => array(
 						'type'          => 'select',
-						'label'         => __( 'Click Action', 'wpzabb' ),
+						'label'         => __( 'Button Type', 'wpzabb' ),
 						'default'       => 'link',
 						'options'       => array(
 							'link'         => __( 'Link', 'wpzabb' ),
-							'lightbox'     => __( 'Lightbox', 'wpzabb' ),
+							'lightbox'     => __( 'Video Lightbox', 'wpzabb' ),
 						),
 						'toggle'        => array(
 							'link'          => array(
@@ -278,8 +278,8 @@ FLBuilder::register_module('WPZABBButtonModule', array(
 						'label'         => __( 'Video Type', 'wpzabb' ),
 						'default'       => 'external_link',
 						'options'       => array(
-							'external_link' => __( 'External link', 'wpzabb' ),
-							'self_hosted'   => __( 'Self hosted', 'wpzabb' ),
+							'external_link' => __( 'YouTube / Vimeo', 'wpzabb' ),
+							'self_hosted'   => __( 'Self-Hosted File (MP4)', 'wpzabb' ),
 						),
 						'toggle'        => array(
 							'external_link'	=> array(
@@ -293,7 +293,8 @@ FLBuilder::register_module('WPZABBButtonModule', array(
 					'lightbox_video_link' => array(
 						'type'          => 'text',
 						'label'         => __('Video Link', 'wpzabb'),
-						'placeholder'   => 'http://www.example.com',
+						'placeholder'   => 'https://vimeo.com/295116835',
+                        'description'   => 'Make sure your YouTube video link doesn\'t include any additional parameters. <br/><br/>It should look in this format:<br/><em>https://www.youtube.com/watch?v=jqxENMKaeCU</em>',
 						'default'		=> '',
 						'preview'       => array(
 							'type'          => 'none'
@@ -303,7 +304,8 @@ FLBuilder::register_module('WPZABBButtonModule', array(
 					'lightbox_video_self_link' => array(
 						'type'          => 'text',
 						'label'         => __('Self Hosted Video Link', 'wpzabb'),
-						'placeholder'   => 'http://www.example.com',
+                        'placeholder'   => 'http://www.example.com/video.mp4',
+						'description'   => __('Your MP4 videos must have the H.264 encoding.', 'wpzabb'),
 						'default'		=> '',
 						'preview'       => array(
 							'type'          => 'none'
@@ -446,13 +448,13 @@ FLBuilder::register_module('WPZABBButtonModule', array(
 			'colors'        => array(
 				'title'         => __('Colors', 'wpzabb'),
 				'fields'        => array(
-					'text_color'        => array( 
+					'text_color'        => array(
 						'type'       => 'color',
                         'label'         => __('Text Color', 'wpzabb'),
 						'default'    => '',
 						'show_reset' => true,
 					),
-					'text_hover_color'   => array( 
+					'text_hover_color'   => array(
 						'type'       => 'color',
                         'label'         => __('Text Hover Color', 'wpzabb'),
 						'default'    => '',
@@ -461,13 +463,13 @@ FLBuilder::register_module('WPZABBButtonModule', array(
 							'type'          => 'none'
 						)
 					),
-					'bg_color'        => array( 
+					'bg_color'        => array(
 						'type'       => 'color',
                         'label'         => __('Background Color', 'wpzabb'),
 						'default'    => '',
 						'show_reset' => true,
 					),
-                    'bg_color_opc'    => array( 
+                    'bg_color_opc'    => array(
 						'type'        => 'text',
 						'label'       => __('Opacity', 'wpzabb'),
 						'default'     => '',
@@ -475,7 +477,7 @@ FLBuilder::register_module('WPZABBButtonModule', array(
 						'maxlength'   => '3',
 						'size'        => '5',
 					),
-					'bg_hover_color'        => array( 
+					'bg_hover_color'        => array(
 						'type'       => 'color',
                         'label'      => __('Background Hover Color', 'wpzabb'),
 						'default'    => '',
@@ -484,7 +486,7 @@ FLBuilder::register_module('WPZABBButtonModule', array(
 							'type'          => 'none'
 						)
 					),
-                    'bg_hover_color_opc'    => array( 
+                    'bg_hover_color_opc'    => array(
 						'type'        => 'text',
 						'label'       => __('Opacity', 'wpzabb'),
 						'default'     => '',

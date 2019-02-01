@@ -4,7 +4,7 @@ Donate link: https://www.wpzoom.com/
 Tags: wpzoom, beaver builder
 Requires at least: 4.6
 Requires PHP: 5.6
-Tested up to: 4.9.8
+Tested up to: 5.0
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -25,6 +25,10 @@ WPZOOM Addons will extend Beaver Builder with several useful extensions that are
 
 == Changelog ==
 
+
+= 1.0.1 =
+* Minor fixes with Posts module
+* Added new type for buttons: Video Lightbox
 
 = 1.0 =
 * Initial release
