@@ -13,8 +13,22 @@ A suite of useful addons for Beaver Builder for WPZOOM themes.
 
 == Description ==
 
-WPZOOM Addons will extend Beaver Builder with several useful extensions that are missing in the Lite version.
+This plugin will extend [Beaver Builder](https://www.wpbeaverbuilder.com/?fla=463) with several useful extensions that are missing in the Lite version.
 
+== Included modules: ==
+
+* **Team Members**
+* Testimonials
+* Buttons
+* Latest Posts
+* Maps
+* Separator, spacer
+* Image Box
+* Special Heading
+
+== VIEW DEMO ==
+
+You can see multiple pages created using **Beaver Builder** and our **Inspiro** theme [here](https://www.wpzoom.com/themes/inspiro/)
 
 == Installation ==
 
@@ -23,8 +37,11 @@ WPZOOM Addons will extend Beaver Builder with several useful extensions that are
 2. After activating Beaver Builder Addons by WPZOOM, several new widgets will be available in the Page Builder.
 
 
-== Changelog ==
+== Screenshots ==
 
+1. Included modules
+
+== Changelog ==
 
 = 1.0.1 =
 * Minor fixes with Posts module
