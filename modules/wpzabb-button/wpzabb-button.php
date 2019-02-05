@@ -121,11 +121,14 @@ class WPZABBButtonModule extends FLBuilderModule {
 		$attributes['class'][] = 'wpzabb-button';
 		$attributes['class'][] = 'wpzabb-creative-'. $this->settings->style .'-btn';
 
-		if ( ! empty( $this->get_button_style() ) ) {
+		$button_style = $this->get_button_style();
+		$rel = $this->get_rel();
+
+		if ( ! empty( $button_style ) ) {
 			$attributes['class'][] = $this->get_button_style();
 		}
 
-		if ( ! empty( $this->get_rel() ) ) {
+		if ( ! empty( $rel ) ) {
 			$attributes['rel'] = $this->get_rel();
 		}
 
