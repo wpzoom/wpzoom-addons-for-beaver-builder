@@ -125,11 +125,11 @@ class WPZABBButtonModule extends FLBuilderModule {
 		$rel = $this->get_rel();
 
 		if ( ! empty( $button_style ) ) {
-			$attributes['class'][] = $this->get_button_style();
+			$attributes['class'][] = $button_style;
 		}
 
 		if ( ! empty( $rel ) ) {
-			$attributes['rel'] = $this->get_rel();
+			$attributes['rel'] = $rel;
 		}
 
 		if ( 'lightbox' === $this->settings->click_action ) {
