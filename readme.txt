@@ -25,6 +25,7 @@ This plugin will extend [Beaver Builder](https://www.wpbeaverbuilder.com/?fla=46
 * Separator, spacer
 * Image Box
 * Special Heading
+* Clients
 
 == VIEW DEMO ==
 
