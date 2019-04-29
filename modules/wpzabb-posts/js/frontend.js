@@ -4,7 +4,6 @@
 	{
 		this.settings    = settings;
 		this.nodeClass   = '.fl-node-' + settings.id;
-		this.matchHeight = settings.matchHeight;
 
 		this.wrapperClass = this.nodeClass + ' .wpzabb-post-' + this.settings.layout;
 		this.postClass    = this.nodeClass + ' .wpzabb-post-column';
@@ -40,45 +39,6 @@
 			}
 
 			$(this.postClass).css('visibility', 'visible');
-		},
-
-		_gridLayout: function()
-		{
-			var wrap = $(this.wrapperClass);
-
-			wrap.masonry({
-				columnWidth         : this.postClass,
-				gutter              : parseInt(this.settings.postSpacing),
-				isFitWidth          : false,
-				itemSelector        : this.postClass,
-				transitionDuration  : 0,
-				isRTL               : this.settings.isRTL
-			});
-
-			wrap.imagesLoaded( $.proxy( function() {
-				this._gridLayoutMatchHeight();
-				wrap.masonry();
-			}, this ) );
-
-			$( window ).on( 'resize', $.proxy( this._gridLayoutMatchHeight, this ) );
-		},
-
-		_gridLayoutMatchHeight: function()
-		{
-			var highestBox = 0;
-
-			if ( 0 === this.matchHeight ) {
-				highestBox = 'auto';
-			}
-
-            $(this.nodeClass + ' .wpzabb-post-grid-post').css('height', '').each(function(){
-
-                if($(this).height() > highestBox) {
-                	highestBox = $(this).height();
-                }
-            });
-
-            $(this.nodeClass + ' .wpzabb-post-grid-post').height(highestBox);
 		},
 
 		_initInfiniteScroll: function()

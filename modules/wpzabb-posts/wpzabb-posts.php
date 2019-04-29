@@ -388,7 +388,7 @@ FLBuilder::register_module('WPZABBPostsModule', array(
 						'toggle'        => array(
 							'grid'          => array(
 								'sections'      => array( 'posts', 'image', 'info', 'content', 'post_style', 'text_style' ),
-								'fields'        => array( 'match_height', 'post_columns', 'post_spacing', 'post_padding', 'grid_image_position', 'grid_image_spacing', 'grid_image_margin_top', 'grid_image_margin_bottom', 'show_author', 'grid_info_position', 'grid_show_comments', 'info_separator', 'show_terms' ),
+								'fields'        => array( 'post_columns', 'post_spacing', 'post_padding', 'grid_image_position', 'grid_image_spacing', 'grid_image_margin_top', 'grid_image_margin_bottom', 'show_author', 'grid_info_position', 'grid_show_comments', 'info_separator', 'show_terms' ),
 							),
 							'list'          => array(
 								'sections'      => array( 'posts', 'image', 'info', 'content', 'post_style', 'text_style' ),
@@ -401,15 +401,6 @@ FLBuilder::register_module('WPZABBPostsModule', array(
 			'posts'         => array(
 				'title'         => __( 'Posts', 'wpzabb' ),
 				'fields'        => array(
-					'match_height'  => array(
-						'type'          => 'select',
-						'label'         => __( 'Equal Heights', 'wpzabb' ),
-						'default'       => '0',
-						'options'       => array(
-							'1'             => __( 'Yes', 'wpzabb' ),
-							'0'             => __( 'No', 'wpzabb' ),
-						),
-					),
 					'post_columns'  => array(
 						'type'          => 'unit',
 						'label'         => __( 'Columns', 'wpzabb' ),
