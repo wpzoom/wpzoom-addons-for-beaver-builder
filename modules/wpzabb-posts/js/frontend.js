@@ -31,13 +31,6 @@
 
 		_initLayout: function()
 		{
-			switch(this.settings.layout) {
-
-				case 'grid':
-				this._gridLayout();
-				break;
-			}
-
 			$(this.postClass).css('visibility', 'visible');
 		},
 
@@ -103,7 +96,6 @@
 
 			if(this.settings.layout == 'grid') {
 				wrap.imagesLoaded( $.proxy( function() {
-					this._gridLayoutMatchHeight();
 					wrap.masonry('appended', elements);
 					elements.css('visibility', 'visible');
 				}, this ) );
