@@ -338,7 +338,7 @@ FLBuilder::register_module('WPZABBClientsModule', array(
 						'show_reset'    => true,
 						'preview'       => array(
 							'type'          => 'css',
-							'selector'      => '.wpzabb-testimonials-wrap .fa',
+							'selector'      => '.wpzabb-clients-wrap .fa',
 							'property'      => 'color',
 						),
 					),
