@@ -6,7 +6,7 @@
 		this.nodeClass   = '.fl-node-' + settings.id;
 
 		this.wrapperClass = this.nodeClass + ' .wpzabb-post-' + this.settings.layout;
-		this.postClass    = this.nodeClass + ' .wpzabb-post-column';
+		this.postClass    = this.nodeClass + ' .wpzabb-post-column, ' + this.nodeClass + ' .wpzabb-post-list-post';
 
 		if(this._hasPosts()) {
 			this._initLayout();
