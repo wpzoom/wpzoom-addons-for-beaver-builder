@@ -18,7 +18,7 @@
 		maxSlides: 4,
 		slideWidth: 258,
 		slideMargin: 20,
-		infiniteLoop: false,
+		infiniteLoop: true,
 		shrinkItems: true,
 		nextSelector : '.fl-node-<?php echo $id; ?> .fl-slider-next',
 		prevSelector : '.fl-node-<?php echo $id; ?> .fl-slider-prev',

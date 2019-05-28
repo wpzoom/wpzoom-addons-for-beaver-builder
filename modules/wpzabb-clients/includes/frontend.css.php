@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 $settings->dot_color = WPZABB_Helper::wpzabb_colorpicker( $settings, 'dot_color' );
 $settings->arrow_color = WPZABB_Helper::wpzabb_colorpicker( $settings, 'arrow_color' );
@@ -44,7 +44,6 @@ $settings->arrow_color = WPZABB_Helper::wpzabb_colorpicker( $settings, 'arrow_co
 	left: 0;
 	right: 0;
 	bottom: 0;
-	box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1);
 }
 
 .wpzabb-client-image {
@@ -56,7 +55,7 @@ $settings->arrow_color = WPZABB_Helper::wpzabb_colorpicker( $settings, 'arrow_co
 }
 
 <?php /* Global Setting If started */ ?>
-<?php if($global_settings->responsive_enabled) { ?> 
+<?php if($global_settings->responsive_enabled) { ?>
         <?php /* Small Breakpoint media query */ ?>
         @media ( max-width: <?php echo $global_settings->responsive_breakpoint .'px'; ?> ) {
         	<?php /* For Small Device */ ?>
