@@ -4,7 +4,7 @@ Donate link: https://www.wpzoom.com/
 Tags: wpzoom, beaver builder
 Requires at least: 4.6
 Requires PHP: 5.6
-Tested up to: 5.0
+Tested up to: 5.2
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -42,6 +42,9 @@ You can see multiple pages created using **Beaver Builder** and our **Inspiro** 
 1. Included modules
 
 == Changelog ==
+
+= 1.0.2 =
+* Fixed a bug caused by previous update
 
 = 1.0.1 =
 * Minor fixes with Posts module

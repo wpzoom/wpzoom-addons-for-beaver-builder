@@ -17,6 +17,11 @@ body.rtl .wpzabb-testimonials-wrap .wpzabb-testimonial {
 .fl-module-wpzabb-testimonials .bx-wrapper {
 	margin: 0 auto 35px;
 }
+.wpzabb-testimonials-wrap .bx-viewport {
+    margin: 0 3%;
+    max-width: 94%;
+}
+
 .wpzabb-testimonials-wrap {
 	position: relative;
 }
@@ -45,11 +50,22 @@ body.rtl .wpzabb-testimonials-wrap .wpzabb-testimonial {
 	margin: 0 20px 0 0;
 	display: inline-block;
 	vertical-align: middle;
+
+    position:relative;
+    overflow:hidden;
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
 }
 .wpzabb-testimonials-wrap .wpzabb-testimonial-author img {
-	border-radius: 50%;
-    max-width: 100px;
+
+    position:absolute;
     height: auto;
+    width: auto;
+    max-width:100%;
+
+    top:50%;
+    transform:translateY(-50%);
 }
 .wpzabb-testimonials-wrap .wpzabb-testimonial-author-info {
 	display: inline-block;

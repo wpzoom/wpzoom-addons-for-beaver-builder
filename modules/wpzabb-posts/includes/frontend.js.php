@@ -6,7 +6,6 @@
 			id: '<?php echo $id ?>',
 			layout: '<?php echo $settings->layout; ?>',
 			pagination: '<?php echo $settings->pagination; ?>',
-			matchHeight: <?php echo $settings->match_height; ?>,
 			isRTL: <?php echo is_rtl() ? 'true' : 'false'; ?>
 		});
 	});

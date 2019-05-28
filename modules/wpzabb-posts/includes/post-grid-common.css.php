@@ -6,7 +6,6 @@
 	margin-right: -<?php echo $settings->post_spacing / 2; ?>px;
 }
 .fl-node-<?php echo $id; ?> .wpzabb-post-column {
-	<!-- padding-bottom: <?php echo $settings->post_spacing; ?>px; -->
 	padding-left: <?php echo $settings->post_spacing / 2; ?>px;
 	padding-right: <?php echo $settings->post_spacing / 2; ?>px;
 	width: <?php echo 100 / $settings->post_columns; ?>%;

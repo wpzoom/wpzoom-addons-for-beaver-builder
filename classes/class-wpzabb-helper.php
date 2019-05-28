@@ -95,7 +95,8 @@ if( !class_exists( "WPZOOM_BB_Addon_Pack_Helper" ) ) {
 				'team-members'      => 'Team Members',
 				'heading'           => 'Heading',
 				'map'            	=> 'Map',
-				'posts'            	=> 'Posts'
+				'posts'            	=> 'Posts',
+				'clients'           => 'Clients'
 			);
 			
 			return self::prefix_modules( $modules_array );
