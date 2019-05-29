@@ -46,6 +46,16 @@ class WPZABBButtonModule extends FLBuilderModule {
                     $node->settings->font_size_unit = $node->settings->font_size['desktop'];
                 }
 
+                if ( isset( $node->settings->font_size['small']) && !isset( $node->settings->icon_size_unit_responsive ) ) {
+                    $node->settings->icon_size_unit_responsive = $node->settings->font_size['small'];
+                }
+                if( isset( $node->settings->font_size['medium']) && !isset( $node->settings->icon_size_unit_medium ) ) {
+                    $node->settings->icon_size_unit_medium = $node->settings->font_size['medium'];
+                }
+                if( isset( $node->settings->font_size['desktop']) && !isset( $node->settings->icon_size_unit ) ) {
+                    $node->settings->icon_size_unit = $node->settings->font_size['desktop'];
+                }
+
                 if ( isset( $node->settings->line_height['small']) && isset( $node->settings->font_size['small']) && $node->settings->font_size['small'] != 0 && !isset( $node->settings->line_height_unit_responsive ) ) {
                 	if( is_numeric( $node->settings->line_height['small']) && is_numeric( $node->settings->font_size['small']) )
                     $node->settings->line_height_unit_responsive = round( $node->settings->line_height['small'] / $node->settings->font_size['small'], 2 );
@@ -376,14 +386,18 @@ FLBuilder::register_module('WPZABBButtonModule', array(
 							'threed'          => __('3D', 'wpzabb'),
 						),
 					),
-					'border_size'   => array(
-						'type'          => 'text',
-						'label'         => __('Border Size', 'wpzabb'),
-						'description'   => 'px',
-						'maxlength'     => '3',
-						'size'          => '5',
-						'placeholder'   => '2'
-					),
+		            'border_size' => array(
+		                'type'          => 'unit',
+		                'label'         => __( 'Border Size', 'wpzabb' ),
+		                'description'   => 'px',
+		                'default' 		=> 1,
+		                'preview' => array(
+                            'type'          => 'css',
+                            'selector'      => '.wpzabb-button',
+                            'property'		=> 'border-width',
+                            'unit'			=> 'px'
+                        )
+		            ),
 					'transparent_button_options'         => array(
 						'type'          => 'select',
 						'label'         => __('Hover Styles', 'wpzabb'),
@@ -445,7 +459,26 @@ FLBuilder::register_module('WPZABBButtonModule', array(
 							'before'        => __('Before Text', 'wpzabb'),
 							'after'         => __('After Text', 'wpzabb')
 						)
-					)
+					),
+		            'icon_size_unit' => array(
+		                'type'          => 'unit',
+		                'label'         => __( 'Icon Size', 'wpzabb' ),
+		                'description'   => 'px',
+		                'default' 		=> 16,
+		                'responsive' => array(
+                            'placeholder' => array(
+                                'default' 	 => 16,
+                                'medium'  	 => '',
+                                'responsive' => '',
+                            ),
+                        ),
+		                'preview' => array(
+                            'type'          => 'css',
+                            'selector'      => '.wpzabb-button .wpzabb-button-icon',
+                            'property'		=> 'font-size',
+                            'unit'			=> 'px'
+                        )
+		            ),
 				)
 			),
 			'colors'        => array(
@@ -666,6 +699,32 @@ FLBuilder::register_module('WPZABBButtonModule', array(
 		            		'selector'     => '.wpzabb-button',
 		            		'property'     => 'text-transform',
 		            	),
+		            ),
+		            'text_decoration' => array(
+		            	'type'          => 'select',
+		            	'label'         => __( 'Text Decoration', 'wpzabb' ),
+		            	'default'       => 'none',
+		            	'options'       => array(
+		            		'none'					=> __( 'None', 'wpzabb' ),
+		            		'underline'				=> __( 'Underline', 'wpzabb' ),
+		            		'overline'				=> __( 'Overline', 'wpzabb' ),
+		            		'line-through'			=> __( 'Line Through', 'wpzabb' ),
+		            		'underline-overline'	=> __( 'Underline + Overline', 'wpzabb' ),
+		            	),
+		            	'preview'      => array(
+		            		'type'         => 'css',
+		            		'selector'     => '.wpzabb-button .wpzabb-button-text',
+		            		'property'     => 'text-decoration',
+		            	),
+		            ),
+		            'text_decoration_on_hover' => array(
+		            	'type'          => 'select',
+		            	'label'         => __( 'Apply Text Decoration on Hover', 'wpzabb' ),
+		            	'default'       => 'no',
+		            	'options'       => array(
+		            		'no'		=> __( 'No', 'wpzabb' ),
+		            		'yes'		=> __( 'Yes', 'wpzabb' ),
+		            	)
 		            ),
 		            'letter_spacing'     => array(
 		            	'type'          => 'select',

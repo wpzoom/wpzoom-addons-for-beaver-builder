@@ -10,13 +10,6 @@ $settings->bg_hover_color 	= WPZABB_Helper::wpzabb_colorpicker( $settings, 'bg_h
 $settings->text_color 		= WPZABB_Helper::wpzabb_colorpicker( $settings, 'text_color');
 $settings->text_hover_color = WPZABB_Helper::wpzabb_colorpicker( $settings, 'text_hover_color');
 
-// Border Size
-if ( 'transparent' == $settings->style ) {
-	$border_size = ( trim( $settings->border_size ) !== '' ) ? $settings->border_size : '2';
-}
-else {
-	$border_size = 1;
-}
 // Border Color
 if ( ! empty( $settings->bg_color ) ) {
 	$border_color = $settings->bg_color;
@@ -132,7 +125,7 @@ if ( ! empty( $settings->bg_hover_color ) ) {
 
 	<?php if ( ! empty( $settings->bg_color ) ) : ?>
 	background: <?php echo $settings->bg_color; ?>;
-	border: <?php echo $border_size; ?>px solid <?php echo $border_color; ?>;
+	border: <?php echo $settings->border_size; ?>px solid <?php echo $border_color; ?>;
 
 		<?php if( 'gradient' == $settings->style ) : // Gradient ?>
 		background: -moz-linear-gradient(top,  <?php echo $bg_grad_start; ?> 0%, <?php echo $settings->bg_color; ?> 100%); /* FF3.6+ */
@@ -150,6 +143,14 @@ if ( ! empty( $settings->bg_hover_color ) ) {
 		background: none;
 	<?php endif; ?>
 }
+
+<?php if ( $settings->icon != '' ): ?>
+	.fl-node-<?php echo $id; ?> .wpzabb-button-has-icon .wpzabb-button-icon {
+		<?php if( isset( $settings->icon_size_unit ) && $settings->icon_size_unit != '' ) : ?>
+			font-size: <?php echo $settings->icon_size_unit; ?>px;
+		<?php endif; ?>
+	}
+<?php endif ?>
 
 <?php if ( 'custom' == $settings->width && $settings->custom_height != '' && ( $settings->line_height->desktop == '' || ( intval($settings->custom_height) > intval($settings->line_height->desktop) ) ) ) : ?>
 html.internet-explorer .fl-node-<?php echo $id; ?> .wpzabb-button-wrap a,
@@ -192,7 +193,7 @@ html.internet-explorer .fl-node-<?php echo $id; ?> .wpzabb-button-wrap a:visited
 	<?php if( $settings->style != "transparent" && $settings->style != "gradient"  ){ ?>
 		background: <?php echo $settings->bg_hover_color; ?>;
 	<?php } ?>
-	border: <?php echo $border_size; ?>px solid <?php echo $border_hover_color; ?>;
+	border: <?php echo $settings->border_size; ?>px solid <?php echo $border_hover_color; ?>;
 	
 	<?php /*if ( 'transparent' == $settings->style ) : // Transparent ?>
 	background-color: rgba(<?php echo implode( ',', FLBuilderColor::hex_to_rgb( $settings->bg_hover_color ) ) ?>, 1 );
@@ -216,6 +217,20 @@ html.internet-explorer .fl-node-<?php echo $id; ?> .wpzabb-button-wrap a:visited
 	color: <?php echo $settings->text_hover_color; ?>;
 }
 <?php endif; ?>
+
+<?php if ( 'yes' == $settings->text_decoration_on_hover ): ?>
+	.fl-node-<?php echo $id; ?> .wpzabb-button-wrap a:hover .wpzabb-button-text {
+		<?php if( 'transparent' == $settings->style && 'none' != $settings->text_decoration ){ ?>
+			text-decoration: <?php echo $settings->text_decoration ?>;
+		<?php } ?>
+	}
+<?php else: ?>
+	.fl-node-<?php echo $id; ?> .wpzabb-button-wrap a .wpzabb-button-text {
+		<?php if( 'transparent' == $settings->style && 'none' != $settings->text_decoration ){ ?>
+			text-decoration: <?php echo $settings->text_decoration ?>;
+		<?php } ?>
+	}
+<?php endif ?>
 
 <?php 
 // Responsive button Alignment
@@ -409,8 +424,8 @@ if( !empty( $settings->style ) && $settings->style == "transparent" ) {
 	/*transparent-fill-center*/
 	.fl-node-<?php echo $id; ?> a.wpzabb-creative-transparent-btn.wpzabb-transparent-fill-center-btn:hover:after{
 		background: <?php echo wpzabb_theme_base_color( $settings->bg_hover_color ); ?>;
-	    height: calc( 100% + <?php echo $border_size."px";?> );
-	    width: calc( 100% + <?php echo $border_size."px";?> );
+	    height: calc( 100% + <?php echo $settings->border_size."px";?> );
+	    width: calc( 100% + <?php echo $settings->border_size."px";?> );
 	}
 
 	/* transparent-fill-diagonal */
@@ -422,8 +437,8 @@ if( !empty( $settings->style ) && $settings->style == "transparent" ) {
 	/*transparent-fill-horizontal*/
 	.fl-node-<?php echo $id; ?> a.wpzabb-creative-transparent-btn.wpzabb-transparent-fill-horizontal-btn:hover:after{
 		background: <?php echo wpzabb_theme_base_color( $settings->bg_hover_color ); ?>;
-	    height: calc( 100% + <?php echo $border_size."px";?> );
-	    width: calc( 100% + <?php echo $border_size."px";?> );
+	    height: calc( 100% + <?php echo $settings->border_size."px";?> );
+	    width: calc( 100% + <?php echo $settings->border_size."px";?> );
 	}
 
 
