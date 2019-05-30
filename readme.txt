@@ -1,7 +1,7 @@
 === Beaver Builder Addons by WPZOOM ===
 Contributors: WPZOOM
-Donate link: https://www.wpzoom.com/
-Tags: wpzoom, beaver builder
+Donate link: http://paypal.me/wpzm/10usd
+Tags: wpzoom, beaver builder, inspiro, video, posts, clients, testimonials
 Requires at least: 4.6
 Requires PHP: 5.6
 Tested up to: 5.2
@@ -18,6 +18,7 @@ This plugin will extend [Beaver Builder](https://www.wpbeaverbuilder.com/?fla=46
 == Included modules: ==
 
 * **Team Members**
+* Clients
 * Testimonials
 * Buttons
 * Latest Posts
@@ -25,6 +26,7 @@ This plugin will extend [Beaver Builder](https://www.wpbeaverbuilder.com/?fla=46
 * Separator, spacer
 * Image Box
 * Special Heading
+
 
 == VIEW DEMO ==
 
@@ -42,6 +44,10 @@ You can see multiple pages created using **Beaver Builder** and our **Inspiro** 
 1. Included modules
 
 == Changelog ==
+
+= 1.1.0 =
+* New Module: Clients
+* Multiple bug fixes, improvements to the Posts module
 
 = 1.0.2 =
 * Fixed a bug caused by previous update
