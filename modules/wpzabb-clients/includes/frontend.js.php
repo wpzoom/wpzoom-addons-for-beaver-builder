@@ -15,7 +15,7 @@
 		speed : <?php echo $settings->speed * 1000;  ?>,
 		pager : <?php echo $settings->dots; ?>,
 		minSlides: 1,
-		maxSlides: 4,
+		maxSlides: 5,
 		slideWidth: 258,
 		slideMargin: 20,
 		infiniteLoop: true,

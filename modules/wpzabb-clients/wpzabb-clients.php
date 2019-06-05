@@ -106,20 +106,20 @@ class WPZABBClientsModule extends FLBuilderModule {
 	public function get_classes( $client )
 	{
 		$classes = array( 'wpzabb-photo-img' );
-		
+
 		if ( $client->image_source == 'library' ) {
-			
+
 			if ( ! empty( $client->image ) ) {
-				
+
 				$data = self::get_data( $client );
-				
+
 				if ( is_object( $data ) ) {
 					$classes[] = 'wp-image-' . $data->id;
 
 					if ( isset( $data->sizes ) ) {
 
 						foreach ( $data->sizes as $key => $size ) {
-							
+
 							if ( $size->url == $client->image_src ) {
 								$classes[] = 'size-' . $key;
 								break;
@@ -128,9 +128,9 @@ class WPZABBClientsModule extends FLBuilderModule {
 					}
 				}
 			}
-			
+
 		}
-		
+
 		return implode( ' ', $classes );
 	}
 
@@ -250,6 +250,7 @@ FLBuilder::register_module('WPZABBClientsModule', array(
 							'layout-2-cols'     => __( '2 columns', 'wpzabb' ),
 							'layout-3-cols'     => __( '3 columns', 'wpzabb' ),
 							'layout-4-cols'     => __( '4 columns', 'wpzabb' ),
+                            'layout-5-cols'     => __( '5 columns', 'wpzabb' ),
 						),
 					),
 					'content_align'     => array(

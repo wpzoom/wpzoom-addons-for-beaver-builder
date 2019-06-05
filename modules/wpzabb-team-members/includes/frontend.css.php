@@ -1,9 +1,9 @@
-<?php 
+<?php
 	// Name Heading
 	$settings->name_color = WPZABB_Helper::wpzabb_colorpicker( $settings, 'color' );
 	$settings->name_margin_top = ( trim($settings->name_margin_top) !== '' ) ? $settings->name_margin_top : '20';
 	$settings->name_margin_bottom = ( trim($settings->name_margin_bottom) !== '' ) ? $settings->name_margin_bottom : '10';
-	
+
 	// Position
 	$settings->position_color = WPZABB_Helper::wpzabb_colorpicker( $settings, 'position_color' );
 	$settings->position_margin_top = ( trim($settings->position_margin_top) !== '' ) ? $settings->position_margin_top : '0';
@@ -86,7 +86,7 @@
 <?php /* Name font settings */ ?>
 .fl-node-<?php echo $id; ?> .wpzabb-team-members-wrap .wpzabb-member-name,
 .fl-node-<?php echo $id; ?> .wpzabb-team-members-wrap .wpzabb-member-name * {
-	
+
 	<?php if( !empty($settings->font) && $settings->font['family'] != 'Default' ) : ?>
 		<?php WPZABB_Helper::wpzabb_font_css( $settings->font ); ?>
 	<?php endif; ?>
@@ -110,7 +110,7 @@
 
 <?php /* Position font settings */ ?>
 .fl-node-<?php echo $id; ?> .wpzabb-team-members-wrap .wpzabb-member-position {
-	
+
 	<?php if( !empty($settings->position_font_family) && $settings->position_font_family['family'] != 'Default' ) : ?>
 		<?php WPZABB_Helper::wpzabb_font_css( $settings->position_font_family ); ?>
 	<?php endif; ?>
@@ -134,7 +134,7 @@
 
 <?php /* Info font settings */ ?>
 .fl-node-<?php echo $id; ?> .wpzabb-team-members-wrap .wpzabb-member-info {
-	
+
 	<?php if( !empty($settings->info_font) && $settings->info_font['family'] != 'Default' ) : ?>
 		<?php WPZABB_Helper::wpzabb_font_css( $settings->finfo_ont ); ?>
 	<?php endif; ?>
@@ -158,8 +158,8 @@
 
 
 <?php /* Global Setting If started */ ?>
-<?php if($global_settings->responsive_enabled) { ?> 
-    
+<?php if($global_settings->responsive_enabled) { ?>
+
         <?php /* Medium Breakpoint media query */  ?>
         @media ( max-width: <?php echo $global_settings->medium_breakpoint .'px'; ?> ) {
 
@@ -197,7 +197,7 @@
 				<?php endif; ?>
 			}
         }
-    
+
         <?php /* Small Breakpoint media query */ ?>
         @media ( max-width: <?php echo $global_settings->responsive_breakpoint .'px'; ?> ) {
 
@@ -205,8 +205,8 @@
             .fl-node-<?php echo $id; ?> .wpzabb-team-members-wrap .wpzabb-member-name,
             .fl-node-<?php echo $id; ?> .wpzabb-team-members-wrap .wpzabb-member-name * {
 
-				<?php if( isset( $settings->new_font_size_unit_responsible ) && $settings->new_font_size_unit_responsible != '' ) : ?>
-					font-size: <?php echo $settings->new_font_size_unit_responsible; ?>px;
+				<?php if( isset( $settings->new_font_size_unit_responsive ) && $settings->new_font_size_unit_responsive != '' ) : ?>
+					font-size: <?php echo $settings->new_font_size_unit_responsive; ?>px;
 				<?php endif; ?>
 
 				<?php if( isset( $settings->line_height_unit_responsive ) && $settings->line_height_unit_responsive != '' ) : ?>

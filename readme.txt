@@ -45,6 +45,9 @@ You can see multiple pages created using **Beaver Builder** and our **Inspiro** 
 
 == Changelog ==
 
+= 1.1.1 =
+* Minor bug fix with font size for Heading module on mobile devices
+
 = 1.1.0 =
 * New Module: Clients
 * Multiple bug fixes, improvements to the Posts module

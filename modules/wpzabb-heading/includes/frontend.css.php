@@ -1,4 +1,4 @@
-<?php 
+<?php
     $settings->title_color = WPZABB_Helper::wpzabb_colorpicker( $settings, 'color' );
     $settings->desc_color = WPZABB_Helper::wpzabb_colorpicker( $settings, 'desc_color' );
 
@@ -10,12 +10,12 @@
     $settings->separator_line_color = WPZABB_Helper::wpzabb_colorpicker( $settings, 'separator_line_color' );
     $settings->separator_text_color = WPZABB_Helper::wpzabb_colorpicker( $settings, 'separator_text_color' );
     $settings->color = WPZABB_Helper::wpzabb_colorpicker( $settings, 'color' );
-    $settings->responsive_img_size = ( trim( $settings->responsive_img_size ) !== '' ) ? $settings->responsive_img_size : '50';       
+    $settings->responsive_img_size = ( trim( $settings->responsive_img_size ) !== '' ) ? $settings->responsive_img_size : '50';
     $settings->separator_line_height = ( trim( $settings->separator_line_height ) !== '' ) ? $settings->separator_line_height : '1';
     $settings->separator_line_width = ( trim( $settings->separator_line_width ) !== '' ) ? $settings->separator_line_width : '30';
 
     if( $settings->separator_style != 'none' ) {
-    	
+
     	$position = '0';
 		if( $settings->alignment == 'center' ) {
 			$position = '50';
@@ -44,7 +44,7 @@
 
 .fl-node-<?php echo $id; ?> .wpzabb-heading,
 .fl-node-<?php echo $id; ?> .wpzabb-heading * {
-	
+
 	<?php if( !empty($settings->font) && $settings->font['family'] != 'Default' ) : ?>
 		<?php WPZABB_Helper::wpzabb_font_css( $settings->font ); ?>
 	<?php endif; ?>
@@ -73,7 +73,7 @@
 
 <?php /* Heading's Description Typography */ ?>
 .fl-node-<?php echo $id; ?> .wpzabb-text-editor {
-	
+
 	<?php if( !empty($settings->desc_font_family) && $settings->desc_font_family['family'] != 'Default' ) : ?>
 		<?php WPZABB_Helper::wpzabb_font_css( $settings->desc_font_family ); ?>
 	<?php endif; ?>
@@ -96,8 +96,8 @@
 }
 
 <?php /* Global Setting If started */ ?>
-<?php if($global_settings->responsive_enabled) { ?> 
-    
+<?php if($global_settings->responsive_enabled) { ?>
+
         <?php /* Medium Breakpoint media query */  ?>
         @media ( max-width: <?php echo $global_settings->medium_breakpoint .'px'; ?> ) {
 
@@ -112,7 +112,7 @@
 			}
 
             .fl-node-<?php echo $id; ?> .wpzabb-heading,
-            .fl-node-<?php echo $id; ?> .wpzabb-heading * { 
+            .fl-node-<?php echo $id; ?> .wpzabb-heading * {
 
 				<?php if( isset( $settings->new_font_size_unit_medium ) && $settings->new_font_size_unit_medium != '' ) : ?>
 					font-size: <?php echo $settings->new_font_size_unit_medium; ?>px;
@@ -134,7 +134,7 @@
 				<?php endif; ?>
 			}
         }
-    
+
         <?php /* Small Breakpoint media query */ ?>
         @media ( max-width: <?php echo $global_settings->responsive_breakpoint .'px'; ?> ) {
 
@@ -149,12 +149,12 @@
 			.fl-node-<?php echo $id; ?> .wpzabb-responsive-mobile .wpzabb-divider-content <?php echo $settings->separator_text_tag_selection; ?> {
 			    white-space: normal;
 			}
-        	
-            .fl-node-<?php echo $id; ?> .wpzabb-heading,
-            .fl-node-<?php echo $id; ?> .wpzabb-heading * { 
 
-				<?php if( isset( $settings->new_font_size_unit_responsible ) && $settings->new_font_size_unit_responsible != '' ) : ?>
-					font-size: <?php echo $settings->new_font_size_unit_responsible; ?>px;
+            .fl-node-<?php echo $id; ?> .wpzabb-heading,
+            .fl-node-<?php echo $id; ?> .wpzabb-heading * {
+
+				<?php if( isset( $settings->new_font_size_unit_responsive ) && $settings->new_font_size_unit_responsive != '' ) : ?>
+					font-size: <?php echo $settings->new_font_size_unit_responsive; ?>px;
 				<?php endif; ?>
 
 				<?php if( isset( $settings->line_height_unit_responsive ) && $settings->line_height_unit_responsive != '' ) : ?>
@@ -183,7 +183,7 @@
 				$r_position = '0';
 				if( $settings->r_custom_alignment == 'center' ) {
 					$r_position = '50'; ?>
-				
+
 					.fl-node-<?php echo $id; ?> .wpzabb-separator-wrap.wpzabb-separator-<?php echo $settings->alignment; ?> {
 						margin-left: auto;
 						margin-right: auto;
@@ -191,14 +191,14 @@
 
 				<?php } elseif( $settings->r_custom_alignment == 'right' ) {
 					$r_position = '100'; ?>
-					
+
 					.fl-node-<?php echo $id; ?> .wpzabb-separator-wrap.wpzabb-separator-<?php echo $settings->alignment; ?> {
 						margin-left: auto;
 						margin-right: 0;
 					}
 
 				<?php } else { ?>
-					
+
 					.fl-node-<?php echo $id; ?> .wpzabb-separator-wrap.wpzabb-separator-<?php echo $settings->alignment; ?> {
 						margin-left: 0;
 						margin-right: auto;
@@ -228,7 +228,7 @@
 	width: <?php echo (int)$settings->img_size; ?>px;
 }
 
-<?php if( $settings->separator_style == 'line' || $settings->separator_style == 'line_text' ) { ?> 
+<?php if( $settings->separator_style == 'line' || $settings->separator_style == 'line_text' ) { ?>
 	.fl-node-<?php echo $id; ?> .wpzabb-separator {
 		border-top:<?php echo $settings->separator_line_height; ?>px <?php echo $settings->separator_line_style; ?> <?php echo wpzabb_theme_base_color( $settings->separator_line_color ); ?>;
 		width: <?php echo $settings->separator_line_width; ?>%;
@@ -260,8 +260,8 @@
             /* Icon color */
 			'icon_color' => $settings->separator_icon_color,
 		);
-		 
-		/* CSS Render Function */ 
+
+		/* CSS Render Function */
 		FLBuilder::render_module_css( 'wpzabb-image-icon', $id, $imageicon_array );
 
 	?>
@@ -357,7 +357,7 @@ if( $settings->separator_style == 'line_text' || $settings->separator_style == '
 
 	if( $global_settings->responsive_enabled ) { // Global Setting If started ?>
 	    @media ( max-width: <?php echo $global_settings->medium_breakpoint; ?>px ) {
-	    	
+
 
 	     	.fl-node-<?php echo $id; ?> <?php echo $settings->separator_text_tag_selection; ?>.wpzabb-divider-text {
 				<?php if( isset( $settings->separator_text_font_size_unit_medium ) && $settings->separator_text_font_size_unit_medium != '' ) : ?>
@@ -371,17 +371,17 @@ if( $settings->separator_style == 'line_text' || $settings->separator_style == '
 
 			<?php /* For Medium Device */ ?>
 			.fl-node-<?php echo $id; ?> .wpzabb-responsive-medsmall .wpzabb-side-left {
-				  width: <?php echo ( $position * 40 /100 ); ?>%; 
+				  width: <?php echo ( $position * 40 /100 ); ?>%;
 			}
 			.fl-node-<?php echo $id; ?> .wpzabb-responsive-medsmall .wpzabb-side-right {
-				 width: <?php echo 40 - ( $position * 40 /100 ); ?>%; 
+				 width: <?php echo 40 - ( $position * 40 /100 ); ?>%;
 			}
 
 			.fl-node-<?php echo $id; ?> .wpzabb-responsive-medsmall .wpzabb-divider-content <?php echo $settings->separator_text_tag_selection; ?> {
 			    white-space: normal;
 			}
 	    }
-	 
+
 	     @media ( max-width: <?php echo $global_settings->responsive_breakpoint; ?>px ) {
 
 	     	.fl-node-<?php echo $id; ?> <?php echo $settings->separator_text_tag_selection; ?>.wpzabb-divider-text {
@@ -404,11 +404,11 @@ if( $settings->separator_style == 'line_text' || $settings->separator_style == '
 			<?php /* For Small Device */ ?>
 			.fl-node-<?php echo $id; ?> .wpzabb-responsive-mobile .wpzabb-side-left,
 			.fl-node-<?php echo $id; ?> .wpzabb-responsive-medsmall .wpzabb-side-left {
-				width: <?php echo ( $position * 20 /100 ); ?>%; 
+				width: <?php echo ( $position * 20 /100 ); ?>%;
 			}
 			.fl-node-<?php echo $id; ?> .wpzabb-responsive-mobile .wpzabb-side-right,
 			.fl-node-<?php echo $id; ?> .wpzabb-responsive-medsmall .wpzabb-side-right {
-				width: <?php echo 20 - ( $position * 20 /100 ); ?>%; 
+				width: <?php echo 20 - ( $position * 20 /100 ); ?>%;
 			}
 
 			.fl-node-<?php echo $id; ?> .wpzabb-responsive-mobile .wpzabb-divider-content <?php echo $settings->separator_text_tag_selection; ?> {

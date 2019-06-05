@@ -62,7 +62,8 @@ $settings->arrow_color = WPZABB_Helper::wpzabb_colorpicker( $settings, 'arrow_co
 			<?php /* Grid Layout */ ?>
 			.fl-node-<?php echo $id; ?> .wpzabb-clients-wrap.layout-2-cols .wpzabb-client,
 			.fl-node-<?php echo $id; ?> .wpzabb-clients-wrap.layout-3-cols .wpzabb-client,
-			.fl-node-<?php echo $id; ?> .wpzabb-clients-wrap.layout-4-cols .wpzabb-client {
+			.fl-node-<?php echo $id; ?> .wpzabb-clients-wrap.layout-4-cols .wpzabb-client,
+            .fl-node-<?php echo $id; ?> .wpzabb-clients-wrap.layout-5-cols .wpzabb-client {
 				width: 100%;
 				margin-right: 0;
 			}
