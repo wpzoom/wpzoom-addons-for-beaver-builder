@@ -941,6 +941,10 @@ FLBuilder::register_module('WPZABBPostsModule', array(
 			),
 		),
 	),
+	'filter' => array(
+		'title' => __( 'Filter', 'wpzabb' ),
+		'file'  => FL_BUILDER_DIR . 'includes/loop-settings.php'
+	),
 	'pagination' => array(
 		'title'      => __( 'Pagination', 'wpzabb' ),
 		'sections'   => array(
