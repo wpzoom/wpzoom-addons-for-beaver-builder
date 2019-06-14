@@ -43,3 +43,21 @@
 	border-bottom-left-radius: 4px !important;
 	border-bottom-right-radius: 0 !important;
 }
+
+#fl-field-image_source td {
+	padding-bottom: 0;
+}
+
+#fl-field-image td,
+#fl-field-image_url td {
+	padding-top: 0;
+}
+
+#fl-field-item_image_align .fl-button-group-field-option {
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+#fl-field-item_image_align .fl-button-group-field-option img {
+	margin: 0 10px 0 0;
+}

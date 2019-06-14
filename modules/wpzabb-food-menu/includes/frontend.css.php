@@ -37,6 +37,10 @@ function maybe_prepend_hash( $string )
 	border-bottom: <?php echo $settings->item_separator_size . $settings->item_separator_size_unit; ?> <?php echo $settings->item_separator_style; ?> <?php echo maybe_prepend_hash( $settings->item_separator_color ); ?>;
 }
 
+.fl-node-<?php echo $id; ?> .wpzabb-food-menu-wrap .wpzabb-food-menu-items .wpzabb-food-menu-item .wpzabb-food-menu-item-image {
+	flex-basis: <?php echo maybe_prepend_hash( $settings->item_image_size ); ?>%;
+}
+
 <?php echo FLBuilderCSS::typography_field_rule( array( 'settings' => $settings, 'setting_name' => 'item_name_font', 'selector' => ".fl-node-$id .wpzabb-food-menu-wrap .wpzabb-food-menu-items .wpzabb-food-menu-item .wpzabb-food-menu-item-name" ) ); ?>
 
 .fl-node-<?php echo $id; ?> .wpzabb-food-menu-wrap .wpzabb-food-menu-items .wpzabb-food-menu-item .wpzabb-food-menu-item-name {

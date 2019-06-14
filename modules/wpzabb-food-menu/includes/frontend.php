@@ -2,7 +2,7 @@
 
 	<h3 class="wpzabb-food-menu-title"><?php echo $settings->menu_title; ?></h3>
 
-	<ul class="wpzabb-food-menu-items">
+	<ul class="wpzabb-food-menu-items align-<?php echo $settings->item_image_align; ?>">
 		<?php
 
 		for ( $i = 0; $i < count( $settings->menu_items ); $i++ ) :
@@ -12,37 +12,53 @@
 			}
 
 			$menu_item = $settings->menu_items[ $i ];
+			$classes   = $module->get_classes( $menu_item );
+			$src       = trim( $module->get_src( $menu_item ) );
+			$alt       = $module->get_alt( $menu_item );
 
 		?>
 		<li id="wpzabb-food-menu-item-<?php echo $i ?>" class="wpzabb-food-menu-item">
-			<div class="wpzabb-food-menu-item-wrap">
+			<div class="wpzabb-food-menu-item-outer-wrap">
 
-				<h4 class="wpzabb-food-menu-item-name">
+				<?php if( !empty( $src ) ) : ?>
+					<div class="wpzabb-food-menu-item-image" itemscope itemtype="http://schema.org/ImageObject">
+						<img class="<?php echo esc_attr( $classes ); ?>" src="<?php echo esc_url( $src ); ?>" alt="<?php echo esc_attr( $alt ); ?>" itemprop="image" />
+					</div>
+				<?php endif; ?>
 
-					<?php if( !empty( $menu_item->link ) ) : ?>
-						<a href="<?php echo esc_url( $menu_item->link ); ?>" title="<?php echo esc_attr( $menu_item->name ); ?>" target="<?php echo $menu_item->link_target; ?>" <?php WPZOOM_BB_Addon_Pack_Helper::get_link_rel( $menu_item->link_target, $menu_item->link_nofollow, 1 ); ?>>
-					<?php endif; ?>
+				<div class="wpzabb-food-menu-item-details">
 
-					<?php echo $menu_item->name; ?>
+					<div class="wpzabb-food-menu-item-wrap">
 
-					<?php if( !empty( $menu_item->link ) ) : ?>
-						</a>
-					<?php endif; ?>
+						<h4 class="wpzabb-food-menu-item-name">
 
-				</h4>
+							<?php if( !empty( $menu_item->link ) ) : ?>
+								<a href="<?php echo esc_url( $menu_item->link ); ?>" title="<?php echo esc_attr( $menu_item->name ); ?>" target="<?php echo $menu_item->link_target; ?>" <?php WPZOOM_BB_Addon_Pack_Helper::get_link_rel( $menu_item->link_target, $menu_item->link_nofollow, 1 ); ?>>
+							<?php endif; ?>
 
-				<div class="wpzabb-food-menu-item-price">
+							<?php echo $menu_item->name; ?>
 
-					<?php echo preg_replace( '/[^$¢£€¥]/i', '', $menu_item->price_unit ); ?>
-					<?php echo filter_var( $menu_item->price, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION ); ?>
+							<?php if( !empty( $menu_item->link ) ) : ?>
+								</a>
+							<?php endif; ?>
+
+						</h4>
+
+						<div class="wpzabb-food-menu-item-price">
+
+							<?php echo preg_replace( '/[^$¢£€¥]/i', '', $menu_item->price_unit ) . filter_var( $menu_item->price, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION ); ?>
+
+						</div>
+
+					</div>
+
+					<div class="wpzabb-food-menu-item-description">
+
+						<?php echo $menu_item->description; ?>
+
+					</div>
 
 				</div>
-
-			</div>
-
-			<div class="wpzabb-food-menu-item-description">
-
-				<?php echo $menu_item->description; ?>
 
 			</div>
 		</li>

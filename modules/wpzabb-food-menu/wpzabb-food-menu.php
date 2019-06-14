@@ -3,7 +3,19 @@
 /**
  * @class WPZABBFoodMenuModule
  */
-class WPZABBFoodMenuModule extends FLBuilderModule {
+class WPZABBFoodMenuModule extends FLBuilderModule
+{
+	/**
+	 * @property $data
+	 */
+	public $data = null;
+
+	/**
+	 * @property $_editor
+	 * @protected
+	 */
+	protected $_editor = null;
+
 	/**
 	 * @method __construct
 	 */
@@ -12,11 +24,211 @@ class WPZABBFoodMenuModule extends FLBuilderModule {
 			'name'          	=> __( 'Food Menu', 'wpzabb' ),
 			'description'   	=> __( 'A menu of food items.', 'wpzabb' ),
 			'category'      	=> WPZOOM_BB_Addon_Pack_Helper::module_cat(),
-			'dir'           	=> BB_WPZOOM_ADDON_DIR . 'modules/'. WPZABB_PREFIX .'food-menu/',
-            'url'           	=> BB_WPZOOM_ADDON_URL . 'modules/'. WPZABB_PREFIX .'food-menu/',
-            'partial_refresh'	=> true,
-			'icon' 				=> 'hamburger-menu.svg'
+			'dir'           	=> BB_WPZOOM_ADDON_DIR . 'modules/' . WPZABB_PREFIX . 'food-menu/',
+            'url'           	=> BB_WPZOOM_ADDON_URL . 'modules/' . WPZABB_PREFIX . 'food-menu/',
+            'partial_refresh'	=> true
 		) );
+	}
+
+	/**
+	 * @method update
+	 * @param $settings {object}
+	 */
+	public function update( $settings )
+	{
+		$menu_item = $settings->menu_items[0];
+
+		// Make sure we have a image_src property.
+		if ( !isset( $settings->image_src ) )
+		{
+			$settings->image_src = '';
+		}
+
+		// Cache the attachment data.
+		$data = FLBuilderPhoto::get_attachment_data( $menu_item->image );
+
+		if ( $data )
+		{
+			$settings->data = $data;
+		}
+
+		return $settings;
+	}
+
+	/**
+	 * @method get_data
+	 * @param $menu_item {object}
+	 */
+	public function get_data( $menu_item )
+	{
+		if ( !$this->data )
+		{
+			// Photo source is set to "url".
+			if ( $menu_item->image_source == 'url' )
+			{
+				$this->data = new stdClass();
+				$this->data->url = $menu_item->image_url;
+				$menu_item->image_src = $menu_item->image_url;
+			}
+			else if ( is_object( $menu_item->image ) ) // Photo source is set to "library".
+			{
+				$this->data = $menu_item->image;
+			}
+			else
+			{
+				$this->data = FLBuilderPhoto::get_attachment_data( $menu_item->image );
+			}
+
+			// Data object is empty, use the settings cache.
+			if ( !$this->data && isset( $menu_item->data ) )
+			{
+				$this->data = $menu_item->data;
+			}
+		}
+
+		return $this->data;
+	}
+
+	/**
+	 * @method get_classes
+	 * @param $menu_item {object}
+	 */
+	public function get_classes( $menu_item )
+	{
+		$classes = array( 'wpzabb-photo-img' );
+		
+		if ( $menu_item->image_source == 'library' )
+		{
+			if ( ! empty( $menu_item->image ) )
+			{
+				$data = self::get_data( $menu_item );
+				
+				if ( is_object( $data ) )
+				{
+					$classes[] = 'wp-image-' . $data->id;
+
+					if ( isset( $data->sizes ) )
+					{
+						foreach ( $data->sizes as $key => $size )
+						{
+							if ( $size->url == $menu_item->image_src )
+							{
+								$classes[] = 'size-' . $key;
+								break;
+							}
+						}
+					}
+				}
+			}
+		}
+		
+		return implode( ' ', $classes );
+	}
+
+	/**
+	 * @method get_src
+	 * @param $menu_item {object}
+	 */
+	public function get_src( $menu_item )
+	{
+		$src = $this->_get_uncropped_url( $menu_item );
+
+		return $src;
+	}
+
+	/**
+	 * @method get_alt
+	 * @param $menu_item {object}
+	 */
+	public function get_alt( $menu_item )
+	{
+		$photo = $this->get_data( $menu_item );
+
+		if ( !empty( $photo->alt ) )
+		{
+			return htmlspecialchars( $photo->alt );
+		}
+		else if ( !empty( $photo->description ) )
+		{
+			return htmlspecialchars( $photo->description );
+		}
+		else if ( !empty( $photo->caption ) )
+		{
+			return htmlspecialchars( $photo->caption );
+		}
+		else if( !empty( $photo->title ) )
+		{
+			return htmlspecialchars( $photo->title );
+		}
+	}
+
+	/**
+	 * @method _has_source
+	 * @param $menu_item {object}
+	 * @protected
+	 */
+	protected function _has_source( $menu_item )
+	{
+		if ( $menu_item->image_source == 'url' && !empty( $menu_item->image_url ) )
+		{
+			return true;
+		}
+		else if ( $menu_item->image_source == 'library' && !empty( $menu_item->image_src ) )
+		{
+			return true;
+		}
+
+		return false;
+	}
+
+	/**
+	 * @method _get_editor
+	 * @protected
+	 */
+	protected function _get_editor()
+	{
+		foreach ( $settings->menu_items as $i => $menu_item )
+		{
+			if ( $this->_has_source( $menu_item ) && $this->_editor === null )
+			{
+				$url_path  = $this->_get_uncropped_url( $menu_item );
+				$file_path = str_ireplace( home_url(), ABSPATH, $url_path );
+
+				if ( file_exists( $file_path ) )
+				{
+					$this->_editor = wp_get_image_editor( $file_path );
+				}
+				else
+				{
+					$this->_editor = wp_get_image_editor( $url_path );
+				}
+			}
+		}
+
+		return $this->_editor;
+	}
+
+	/**
+	 * @method _get_uncropped_url
+	 * @param $menu_item {object}
+	 * @protected
+	 */
+	protected function _get_uncropped_url( $menu_item )
+	{
+		if ( $menu_item->image_source == 'url' )
+		{
+			$url = $menu_item->image_url;
+		}
+		else if( !empty( $menu_item->image_src ) )
+		{
+			$url = $menu_item->image_src;
+		}
+		else
+		{
+			$url = '';
+		}
+
+		return $url;
 	}
 }
 
@@ -339,6 +551,57 @@ FLBuilder::register_module( 'WPZABBFoodMenuModule', array(
 					)
 				)
 			),
+			'style_item_image' => array( // Section
+				'title'     => __( 'Menu Item Image', 'wpzabb' ), // Section Title
+				'collapsed' => true,
+				'fields'    => array( // Section Fields
+					'item_image_align'       => array(
+						'type'          => 'button-group',
+						'label'         => __( 'Alignment', 'wpzabb' ),
+						'default'       => 'left',
+						'options'       => array(
+							'top'             => '<img src="' . BB_WPZOOM_ADDON_URL . 'modules/' . WPZABB_PREFIX . 'food-menu/align-top.svg" height="20" width="20" /> ' . __( 'Top', 'wpzabb' ),
+							'left'            => '<img src="' . BB_WPZOOM_ADDON_URL . 'modules/' . WPZABB_PREFIX . 'food-menu/align-left.svg" height="20" width="20" /> ' . __( 'Left', 'wpzabb' ),
+							'right'           => '<img src="' . BB_WPZOOM_ADDON_URL . 'modules/' . WPZABB_PREFIX . 'food-menu/align-right.svg" height="20" width="20" /> ' . __( 'Right', 'wpzabb' ),
+							'bottom'          => '<img src="' . BB_WPZOOM_ADDON_URL . 'modules/' . WPZABB_PREFIX . 'food-menu/align-bottom.svg" height="20" width="20" /> ' . __( 'Bottom', 'wpzabb' )
+						),
+						'toggle'        => array(
+							'top'             => array(),
+							'left'            => array(
+								'fields'     => array( 'item_image_size' )
+							),
+							'right'           => array(
+								'fields'     => array( 'item_image_size' )
+							),
+							'bottom'          => array()
+						),
+						'preview'       => array(
+							'type'            => 'callback',
+							'callback'        => 'setAlignmentClass'
+						)
+					),
+					'item_image_size'        => array(
+						'type'          => 'unit',
+						'label'         => __( 'Size', 'wpzabb' ),
+						'description'   => __( 'Percent of menu item width', 'wpzabb' ),
+						'default'       => '20',
+						'units'         => array( '%' ),
+						'default_unit'  => '%',
+						'responsive'    => true,
+						'slider'        => array(
+							'min'             => 0,
+							'max'             => 100,
+							'step'            => 1
+						),
+						'preview'       => array(
+							'type'            => 'css',
+							'selector'        => '.wpzabb-food-menu-wrap .wpzabb-food-menu-items .wpzabb-food-menu-item .wpzabb-food-menu-item-image',
+							'property'        => 'flex-basis',
+							'unit'            => '%'
+						)
+					)
+				)
+			),
 			'style_item_separator'   => array( // Section
 				'title'     => __( 'Menu Item Separator', 'wpzabb' ), // Section Title
 				'collapsed' => true,
@@ -374,7 +637,7 @@ FLBuilder::register_module( 'WPZABBFoodMenuModule', array(
 						'default'       => '1',
 						'units'         => array( 'px', 'vw', '%' ),
 						'default_unit'  => 'px',
-						'slider' => array(
+						'slider'        => array(
 							'px'              => array(
 								'min'        => 0,
 								'max'        => 1000,
@@ -582,6 +845,38 @@ FLBuilder::register_settings_form( 'food_menu_form', array(
 							'default'       => '',
 							'rows'          => 4,
 							'connections'   => array( 'string', 'html' )
+						),
+						'image_source' => array(
+							'type'          => 'select',
+							'label'         => __( 'Image', 'wpzabb' ),
+							'default'       => 'library',
+							'options'       => array(
+								'library'     => __( 'From Media Library', 'wpzabb' ),
+								'url'         => __( 'From URL', 'wpzabb' )
+							),
+							'toggle'        => array(
+								'library'     => array(
+									'fields' => array( 'image' )
+								),
+								'url'         => array(
+									'fields' => array( 'image_url' )
+								)
+							)
+						),
+						'image'       => array(
+							'type'          => 'photo',
+							'label'         => '',
+							'show_remove'	=> true,
+							'connections'   => array( 'photo' )
+						),
+						'image_url'   => array(
+							'type'          => 'link',
+							'label'         => '',
+							'placeholder'   => 'http://www.example.com/my-image.jpg',
+							'preview'       => array( 'type' => 'none' ),
+							'connections'	=> array( 'url' ),
+							'show_target'   => true,
+							'show_nofollow'	=> true
 						)
 					)
 				)

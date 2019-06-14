@@ -61,9 +61,56 @@
 	border-bottom: 1px dashed #ecd4c0;
 }
 
+.wpzabb-food-menu-wrap .wpzabb-food-menu-items .wpzabb-food-menu-item .wpzabb-food-menu-item-outer-wrap {
+	display: flex;
+	flex-wrap: nowrap;
+	margin: 0;
+}
+
+.wpzabb-food-menu-wrap .wpzabb-food-menu-items.align-top .wpzabb-food-menu-item .wpzabb-food-menu-item-outer-wrap,
+.wpzabb-food-menu-wrap .wpzabb-food-menu-items.align-bottom .wpzabb-food-menu-item .wpzabb-food-menu-item-outer-wrap {
+	flex-wrap: wrap;
+}
+
 .wpzabb-food-menu-wrap .wpzabb-food-menu-items .wpzabb-food-menu-item .wpzabb-food-menu-item-wrap {
 	display: flex;
 	margin: 0 0 15px;
+}
+
+.wpzabb-food-menu-wrap .wpzabb-food-menu-items .wpzabb-food-menu-item .wpzabb-food-menu-item-image {
+	flex-basis: 20%;
+	flex-grow: 0;
+	order: 1;
+	margin: 0;
+}
+
+.wpzabb-food-menu-wrap .wpzabb-food-menu-items.align-top .wpzabb-food-menu-item .wpzabb-food-menu-item-image {
+	flex-basis: 100% !important;
+	flex-grow: 1;
+	order: 1;
+	margin: 0 0 25px 0;
+}
+
+.wpzabb-food-menu-wrap .wpzabb-food-menu-items.align-left .wpzabb-food-menu-item .wpzabb-food-menu-item-image {
+	order: 1;
+	margin: 0 25px 0 0;
+}
+
+.wpzabb-food-menu-wrap .wpzabb-food-menu-items.align-right .wpzabb-food-menu-item .wpzabb-food-menu-item-image {
+	order: 3;
+	margin: 0 0 0 25px;
+}
+
+.wpzabb-food-menu-wrap .wpzabb-food-menu-items.align-bottom .wpzabb-food-menu-item .wpzabb-food-menu-item-image {
+	flex-basis: 100% !important;
+	flex-grow: 1;
+	order: 3;
+	margin: 25px 0 0 0;
+}
+
+.wpzabb-food-menu-wrap .wpzabb-food-menu-items .wpzabb-food-menu-item .wpzabb-food-menu-item-details {
+	flex-grow: 1;
+	order: 2;
 }
 
 .wpzabb-food-menu-wrap .wpzabb-food-menu-items .wpzabb-food-menu-item .wpzabb-food-menu-item-name {
