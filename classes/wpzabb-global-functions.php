@@ -489,3 +489,33 @@ function wpzabb_parse_color_to_hex( $code = '' ) {
 	//var_dump($hex); die;
 	return $color;
 }
+
+/**
+ * Function that return an array of categories by post_type.
+ *
+ * @return array - array of available categories
+ */
+function wpzabb_get_category_term_list( $post_type = 'post' ) {
+
+    $args   = array(
+        'hide_empty' => true,
+        'taxonomy'   => 'category'
+    );
+
+    if ( $post_type === 'portfolio' ) {
+        $args   = array(
+            'hide_empty' => true,
+            'taxonomy'   => 'portfolio'
+        );
+    } elseif ( $post_type === 'product' ) {
+        $args   = array(
+            'hide_empty' => true,
+            'taxonomy'   => 'product_cat'
+        );
+    }
+
+    $terms  = get_terms( $args );
+    $result = wp_list_pluck( $terms, 'name', 'term_id' );
+
+    return array( 0 => esc_html__( 'All Categories', 'fw' ) ) + $result;
+}
