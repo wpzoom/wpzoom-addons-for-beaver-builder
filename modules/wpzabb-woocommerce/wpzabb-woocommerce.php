@@ -9,8 +9,7 @@ class WPZABBWooCommerceModule extends FLBuilderModule {
 	/**
 	 * @method __construct
 	 */
-	public function __construct()
-	{
+	public function __construct() {
 		parent::__construct( array(
 			'name'              => __( 'WooCommerce', 'wpzabb' ),
 			'description'       => __( 'Displays a selection of WooCommerce products.', 'wpzabb' ),
@@ -41,7 +40,21 @@ FLBuilder::register_module( 'WPZABBWooCommerceModule', array(
 					'count'         => array(
 						'type'      => 'unit',
 						'label'     => __( 'Number of Products', 'wpzabb' ),
-						'default'   => '8'
+						'default'   => '8',
+						'slider'     => array(
+							'min'  	 => 1,
+							'max'  	 => 1000,
+							'step' 	 => 1
+						)
+					),
+					'featured'      => array(
+						'type'      => 'button-group',
+						'label'     => __( 'Only Include Featured Products', 'wpzabb' ),
+						'default'   => 'no',
+						'options'   => array(
+							'yes'  => __( 'Yes', 'wpzabb' ),
+							'no' => __( 'No', 'wpzabb' )
+						)
 					),
 					'orderby'       => array(
 						'type'      => 'button-group',
@@ -79,6 +92,33 @@ FLBuilder::register_module( 'WPZABBWooCommerceModule', array(
 						'options'   => array(
 							'true'  => __( 'Show', 'wpzabb' ),
 							'false' => __( 'Hide', 'wpzabb' )
+						)
+					)
+				)
+			)
+		)
+	),
+	'layout' => array(
+		'title' => __( 'Layout', 'wpzabb' ),
+		'sections' => array(
+			'style' => array(
+				'title'  => '',
+				'fields' => array(
+					'columns'        => array(
+						'type'       => 'unit',
+						'label'      => __( 'Amount of Columns', 'wpzabb' ),
+						'default'    => 4,
+						'slider'     => array(
+							'min'  	 => 1,
+							'max'  	 => 10,
+							'step' 	 => 1
+						),
+						'responsive' => array(
+							'default' => array(
+								'default'    =>  4,
+								'medium'     =>  2,
+								'responsive' =>  1
+							)
 						)
 					)
 				)

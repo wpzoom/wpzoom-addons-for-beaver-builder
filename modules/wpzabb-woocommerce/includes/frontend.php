@@ -1,31 +1,37 @@
 <?php
 if ( post_type_exists( 'product' ) ) {
-	$args = new stdClass();
-	$args->post_type = 'product';
-	$args->posts_per_page = (int)$settings->count > 0 ? (int)$settings->count : -1;
-	$args->order = $settings->orderdir;
-	$args->orderby = $settings->orderby == 'price' || $settings->orderby == 'sales' ? 'meta_value_num' : ( $settings->orderby == 'rand' ? 'rand' : 'date' );
-	if ( $settings->orderby == 'price' || $settings->orderby == 'sales' ) $args->meta_key = $settings->orderby == 'price' ? '_price' : 'total_sales';
-	if ( (int)$settings->category > 0 ) $args->tax_query = array( array( 'taxonomy' => 'product_cat', 'field' => 'id', 'terms' => (int)$settings->category ) );
-	$query = FLBuilderLoop::query( $args );
+	$args = array(
+		'limit' => ( (int)$settings->count > 0 ? (int)$settings->count : -1 ),
+		'order' => $settings->orderdir,
+		'orderby' => ( $settings->orderby == 'price' || $settings->orderby == 'sales' ? 'meta_value_num' : ( $settings->orderby == 'rand' ? 'rand' : 'date' ) ),
+		'return' => 'objects'
+	);
+	if ( $settings->category != '0' ) $args['category'] = array( $settings->category );
+	if ( $settings->featured == 'yes' ) $args['include'] = wc_get_featured_product_ids();
+	if ( $settings->orderby == 'price' || $settings->orderby == 'sales' ) $args['meta_key'] = $settings->orderby == 'price' ? '_price' : 'total_sales';
 
-	if ( $query->have_posts() ) :
+	$products = wc_get_products( $args );
+
+	if ( count( $products ) > 0 ) :
 
 ?><div class="wpzabb-woocommerce-products">
 
 	<?php
+	wc_setup_loop();
+
+	if ( isset( $GLOBALS['woocommerce_loop'], $GLOBALS['woocommerce_loop']['columns'] ) ) {
+		$previous_columns = $GLOBALS['woocommerce_loop']['columns'];
+		$GLOBALS['woocommerce_loop']['columns'] = min( max( (int)$settings->columns, 1 ), 10 );
+	}
+
 	woocommerce_product_loop_start();
 
-	while ( $query->have_posts() ) {
-		$query->the_post();
-		$_product;
-		if ( function_exists( 'wc_get_product' ) ) {
-			$_product = wc_get_product( $query->post->ID );
-		} else {
-			$_product = new WC_Product( $query->post->ID );
-		}
+	foreach ( $products as $product ) {
+		$post_object = get_post( $product->get_id() );
+		setup_postdata( $GLOBALS['post'] =& $post_object );
+		$GLOBALS['product'] = $product;
 
-		?><li <?php post_class(); ?>>
+		?><li <?php wc_product_class( '', $product ); ?>>
 			<?php
 			/**
 			 * woocommerce_before_shop_loop_item hook.
@@ -72,7 +78,13 @@ if ( post_type_exists( 'product' ) ) {
 		</li><?php
 	}
 
+	wp_reset_postdata();
+
 	woocommerce_product_loop_end();
+
+	if ( isset( $GLOBALS['woocommerce_loop'], $GLOBALS['woocommerce_loop']['columns'], $previous_columns ) ) {
+		$GLOBALS['woocommerce_loop']['columns'] = $previous_columns;
+	}
 	?>
 
 </div><?php
