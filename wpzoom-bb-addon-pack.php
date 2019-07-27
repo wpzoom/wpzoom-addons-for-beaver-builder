@@ -64,25 +64,35 @@ if( !class_exists( "WPZOOM_BB_Addon_Pack" ) ) {
 		* @Since 1.0
 		*/
 		function check_memory_limit() {
+			$memory_limit  = ini_get( 'memory_limit' );       	// Total Memory.
+            $peak_memory   = memory_get_peak_usage( true );   	// Available Memory.
+            $uabb_required = 14999999;                      	// Required Memory for UABB.
 
-			$memory_limit  = ini_get('memory_limit'); 		//	Total Memory
-			$peak_memory   = memory_get_peak_usage(true);	//	Available Memory
-			$wpzabb_required = 14999999;					//	Required Memory for WPZABB
+            if ( '-1' !== $memory_limit ) {
+                if ( preg_match( '/^(\d+)(.)$/', $memory_limit, $matches ) ) {
 
-			if( preg_match('/^(\d+)(.)$/', $memory_limit, $matches ) ) {
+                    switch ( $matches[2] ) {
+                        case 'K':
+                        case 'k':
+                            $memory_limit = $matches[1] * 1024;
+                            break;
+                        case 'M':
+                        case 'm':
+                            $memory_limit = $matches[1] * 1024 * 1024;
+                            break;
+                        case 'G':
+                        case 'g':
+                            $memory_limit = $matches[1] * 1024 * 1024 * 1024;
+                            break;
+                    }
+                }
 
-			    switch( $matches[2] ) {
-			    	case 'K': 	$memory_limit = $matches[1] * 1024; 				break;
-			    	case 'M': 	$memory_limit = $matches[1] * 1024 * 1024; 			break;
-			    	case 'G': 	$memory_limit = $matches[1] * 1024 * 1024 * 1024; 	break;
-			    }
-			}
-
-			if( $memory_limit - $peak_memory <= $wpzabb_required ) {
-				return true;
-			} else {
-				return false;
-			}
+                if ( $memory_limit - $peak_memory <= $uabb_required ) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
 		}
 	}
 
