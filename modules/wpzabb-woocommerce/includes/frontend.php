@@ -13,16 +13,14 @@ if ( post_type_exists( 'product' ) ) {
 	$products = wc_get_products( $args );
 
 	if ( count( $products ) > 0 ) :
+		$colsdsk = min( max( (int)$settings->columns, 1 ), 10 );
+		$colstab = min( max( (int)$settings->columns_medium, 1 ), 10 );
+		$colspho = min( max( (int)$settings->columns_responsive, 1 ), 10 );
 
-?><div class="wpzabb-woocommerce-products">
+?><div class="wpzabb-woocommerce-products columns-desktop-<?php echo $colsdsk; ?> columns-tablet-<?php echo $colstab; ?> columns-phone-<?php echo $colspho; ?>">
 
 	<?php
 	wc_setup_loop();
-
-	if ( isset( $GLOBALS['woocommerce_loop'], $GLOBALS['woocommerce_loop']['columns'] ) ) {
-		$previous_columns = $GLOBALS['woocommerce_loop']['columns'];
-		$GLOBALS['woocommerce_loop']['columns'] = min( max( (int)$settings->columns, 1 ), 10 );
-	}
 
 	woocommerce_product_loop_start();
 
@@ -81,10 +79,6 @@ if ( post_type_exists( 'product' ) ) {
 	wp_reset_postdata();
 
 	woocommerce_product_loop_end();
-
-	if ( isset( $GLOBALS['woocommerce_loop'], $GLOBALS['woocommerce_loop']['columns'], $previous_columns ) ) {
-		$GLOBALS['woocommerce_loop']['columns'] = $previous_columns;
-	}
 	?>
 
 </div><?php
