@@ -1,0 +1,68 @@
+#fl-field-image_source th,
+#fl-field-image_source td,
+#fl-field-video_source th,
+#fl-field-video_source td {
+	padding-bottom: 0 !important;
+}
+
+#fl-field-image th,
+#fl-field-image_url th,
+#fl-field-video th,
+#fl-field-video_url th {
+	height: 0;
+}
+
+#fl-field-image_source select,
+#fl-field-video_source select {
+	width: 100%;
+}
+
+#fl-field-image th,
+#fl-field-image td,
+#fl-field-image_url th,
+#fl-field-image_url td,
+#fl-field-video th,
+#fl-field-video td,
+#fl-field-video_url th,
+#fl-field-video_url td {
+	padding-top: 0 !important;
+}
+
+#fl-field-image_url .fl-link-field-select,
+#fl-field-video_url .fl-link-field-select {
+	display: none;
+}
+
+.fl-builder-settings[data-form-id="slides_form"] #fl-field-content .wp-editor-tools,
+/*.fl-builder-settings[data-form-id="slides_form"] #fl-field-content .mce-tinymce,*/
+.fl-builder-settings[data-form-id="slides_form"] #fl-field-content .mce-statusbar/*,
+.fl-builder-settings[data-form-id="slides_form"] #fl-field-content .quicktags-toolbar .ed_button[value="img"],
+.fl-builder-settings[data-form-id="slides_form"] #fl-field-content .quicktags-toolbar .ed_button[value="more"]*/ {
+	display: none !important;
+}
+
+.fl-builder-settings[data-form-id="slides_form"] #fl-field-content .mce-btn[aria-label="Fullscreen"],
+.fl-builder-settings[data-form-id="slides_form"] #fl-field-content .mce-btn-group:not(:first-child) {
+	display: none !important;
+}
+
+.fl-builder-settings[data-form-id="slides_form"] #fl-field-content .fl-editor-field {
+	border-radius: 4px;
+	overflow: hidden;
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12);
+}
+
+.fl-builder-settings[data-form-id="slides_form"] #fl-field-content iframe {
+	height: 120px !important;
+}
+
+/*.fl-builder-settings[data-form-id="slides_form"] #fl-field-content .wp-editor-area,
+.fl-builder-settings[data-form-id="slides_form"] #fl-field-content .quicktags-toolbar {
+	display: block !important;
+	height: auto !important;
+}*/
+
+.fl-lightbox-width-slim .fl-builder-settings[data-form-id="slides_form"] #fl-field-content .fl-field-control-wrapper {
+	margin-left: 0;
+	margin-right: 0;
+}
