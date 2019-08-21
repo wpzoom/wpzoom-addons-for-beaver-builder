@@ -1,10 +1,8 @@
 <?php
-
 /**
  * @class WPZABBSlideshowModule
  */
-class WPZABBSlideshowModule extends FLBuilderModule
-{
+class WPZABBSlideshowModule extends FLBuilderModule {
 	/**
 	 * @property $data
 	 */
@@ -30,28 +28,27 @@ class WPZABBSlideshowModule extends FLBuilderModule
             'icon'              => 'slides.svg'
 		) );
 
-		$this->add_js( 'jquery-flexslider' );
+		$this->add_css( 'dashicons' );
+		$this->add_css( 'jquery-flexslider', $this->url . 'css/jquery.flexslider.css', array( 'dashicons' ), '1.0' );
+		$this->add_js( 'jquery-flexslider', $this->url . 'js/jquery.flexslider-min.js', array( 'jquery' ), '1.0' );
 	}
 
 	/**
 	 * @method update
 	 * @param $settings {object}
 	 */
-	public function update( $settings )
-	{
+	public function update( $settings ) {
 		$slide = $settings->slides[0];
 
 		// Make sure we have a image_src property.
-		if ( !isset( $settings->image_src ) )
-		{
+		if ( !isset( $settings->image_src ) ) {
 			$settings->image_src = '';
 		}
 
 		// Cache the attachment data.
 		$data = FLBuilderPhoto::get_attachment_data( $slide->image );
 
-		if ( $data )
-		{
+		if ( $data ) {
 			$settings->data = $data;
 		}
 
@@ -62,29 +59,21 @@ class WPZABBSlideshowModule extends FLBuilderModule
 	 * @method get_data
 	 * @param $slide {object}
 	 */
-	public function get_data( $slide )
-	{
-		if ( !$this->data )
-		{
+	public function get_data( $slide ) {
+		if ( !$this->data ) {
 			// Photo source is set to "url".
-			if ( $slide->image_source == 'url' )
-			{
+			if ( $slide->image_source == 'url' ) {
 				$this->data = new stdClass();
 				$this->data->url = $slide->image_url;
 				$slide->image_src = $slide->image_url;
-			}
-			else if ( is_object( $slide->image ) ) // Photo source is set to "library".
-			{
+			} else if ( is_object( $slide->image ) ) { // Photo source is set to "library".
 				$this->data = $slide->image;
-			}
-			else
-			{
+			} else {
 				$this->data = FLBuilderPhoto::get_attachment_data( $slide->image );
 			}
 
 			// Data object is empty, use the settings cache.
-			if ( !$this->data && isset( $slide->data ) )
-			{
+			if ( !$this->data && isset( $slide->data ) ) {
 				$this->data = $slide->data;
 			}
 		}
@@ -96,26 +85,19 @@ class WPZABBSlideshowModule extends FLBuilderModule
 	 * @method get_classes
 	 * @param $slide {object}
 	 */
-	public function get_classes( $slide )
-	{
+	public function get_classes( $slide ) {
 		$classes = array( 'wpzabb-photo-img' );
 		
-		if ( $slide->image_source == 'library' )
-		{
-			if ( ! empty( $slide->image ) )
-			{
+		if ( $slide->image_source == 'library' ) {
+			if ( ! empty( $slide->image ) ) {
 				$data = self::get_data( $slide );
 				
-				if ( is_object( $data ) )
-				{
+				if ( is_object( $data ) ) {
 					$classes[] = 'wp-image-' . $data->id;
 
-					if ( isset( $data->sizes ) )
-					{
-						foreach ( $data->sizes as $key => $size )
-						{
-							if ( $size->url == $slide->image_src )
-							{
+					if ( isset( $data->sizes ) ) {
+						foreach ( $data->sizes as $key => $size ) {
+							if ( $size->url == $slide->image_src ) {
 								$classes[] = 'size-' . $key;
 								break;
 							}
@@ -132,37 +114,10 @@ class WPZABBSlideshowModule extends FLBuilderModule
 	 * @method get_src
 	 * @param $slide {object}
 	 */
-	public function get_src( $slide )
-	{
+	public function get_src( $slide ) {
 		$src = $this->_get_uncropped_url( $slide );
 
 		return $src;
-	}
-
-	/**
-	 * @method get_alt
-	 * @param $slide {object}
-	 */
-	public function get_alt( $slide )
-	{
-		$photo = $this->get_data( $slide );
-
-		if ( !empty( $photo->alt ) )
-		{
-			return htmlspecialchars( $photo->alt );
-		}
-		else if ( !empty( $photo->description ) )
-		{
-			return htmlspecialchars( $photo->description );
-		}
-		else if ( !empty( $photo->caption ) )
-		{
-			return htmlspecialchars( $photo->caption );
-		}
-		else if( !empty( $photo->title ) )
-		{
-			return htmlspecialchars( $photo->title );
-		}
 	}
 
 	/**
@@ -170,14 +125,10 @@ class WPZABBSlideshowModule extends FLBuilderModule
 	 * @param $slide {object}
 	 * @protected
 	 */
-	protected function _has_source( $slide )
-	{
-		if ( $slide->image_source == 'url' && !empty( $slide->image_url ) )
-		{
+	protected function _has_source( $slide ) {
+		if ( $slide->image_source == 'url' && !empty( $slide->image_url ) ) {
 			return true;
-		}
-		else if ( $slide->image_source == 'library' && !empty( $slide->image_src ) )
-		{
+		} else if ( $slide->image_source == 'library' && !empty( $slide->image_src ) ) {
 			return true;
 		}
 
@@ -188,21 +139,15 @@ class WPZABBSlideshowModule extends FLBuilderModule
 	 * @method _get_editor
 	 * @protected
 	 */
-	protected function _get_editor()
-	{
-		foreach ( $settings->slides as $i => $slide )
-		{
-			if ( $this->_has_source( $slide ) && $this->_editor === null )
-			{
+	protected function _get_editor() {
+		foreach ( $settings->slides as $i => $slide ) {
+			if ( $this->_has_source( $slide ) && $this->_editor === null ) {
 				$url_path  = $this->_get_uncropped_url( $slide );
 				$file_path = str_ireplace( home_url(), ABSPATH, $url_path );
 
-				if ( file_exists( $file_path ) )
-				{
+				if ( file_exists( $file_path ) ) {
 					$this->_editor = wp_get_image_editor( $file_path );
-				}
-				else
-				{
+				} else {
 					$this->_editor = wp_get_image_editor( $url_path );
 				}
 			}
@@ -216,22 +161,58 @@ class WPZABBSlideshowModule extends FLBuilderModule
 	 * @param $slide {object}
 	 * @protected
 	 */
-	protected function _get_uncropped_url( $slide )
-	{
-		if ( $slide->image_source == 'url' )
-		{
+	protected function _get_uncropped_url( $slide ) {
+		if ( $slide->image_source == 'url' ) {
 			$url = $slide->image_url;
-		}
-		else if( !empty( $slide->image_src ) )
-		{
+		} else if( !empty( $slide->image_src ) ) {
 			$url = $slide->image_src;
-		}
-		else
-		{
+		} else {
 			$url = '';
 		}
 
 		return $url;
+	}
+
+	/**
+	 * @method get_video_embed
+	 * @param $slide {object}
+	 */
+	public function get_video_embed( $slide ) {
+		if ( 'library' == $slide->video_source ) {
+			$url = wp_get_attachment_url( $slide->video );
+
+			return false !== $url && !empty( $url ) ? do_shortcode( '[video src="' . $url . '"]' ) : false;
+		} elseif ( 'url' == $slide->video_source ) {
+			$url = trim( $slide->video_url );
+
+			return !empty( $url ) ? $this->_try_get_embed( $url, $slide ) : false;
+		} else {
+			return false;
+		}
+	}
+
+	/**
+	 * @method _try_get_embed
+	 * @param $url {string}
+	 * @param $options {object}
+	 * @protected
+	 */
+	protected function _try_get_embed( $url, $options ) {
+		$autoplay = $options->autoplay == 'yes' ? 'true' : 'false';
+		$loop = $options->loop == 'yes' ? 'true' : 'false';
+		$startmuted = $options->startmuted == 'yes' ? 'true' : 'false';
+
+		if ( preg_match( '%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url, $match ) ) {
+			$id = $match[ 1 ];
+
+			return '<div class="video-embed" data-type="youtube" data-id="' . $id . '" data-autoplay="' . $autoplay . '" data-loop="' . $loop . '" data-startmuted="' . $startmuted . '"></div>';
+		} elseif ( preg_match( '/(https?:\/\/)?(www\.)?(player\.)?vimeo\.com\/([a-z]*\/)*([0-9]{6,11})[?]?.*/', $url, $match ) ) {
+			$id = $match[ 5 ];
+
+			return '<div class="video-embed" data-type="vimeo" data-id="' . $id . '" data-autoplay="' . $autoplay . '" data-loop="' . $loop . '" data-startmuted="' . $startmuted . '"></div>';
+		} else {
+			return '<iframe src="' . esc_url( $url ) . '" frameborder="0"></iframe>';
+		}
 	}
 }
 
@@ -387,23 +368,6 @@ FLBuilder::register_module( 'WPZABBSlideshowModule', array(
 							'default'         => array(
 								'default'    => 'yes',
 								'medium'     => 'yes',
-								'responsive' => 'no'
-							)
-						),
-						'options'       => array(
-							'yes'             => __( 'Yes', 'wpzabb' ),
-							'no'              => __( 'No', 'wpzabb' )
-						)
-					),
-					'slideshow_smootheight'  => array(
-						'type'          => 'button-group',
-						'label'         => __( 'Smooth Height', 'wpzabb' ),
-						'help'          => __( 'Whether the slideshow should adjust its height dynamically based on the height of each slide. Otherwise it uses a static height.', 'wpzabb' ),
-						'default'       => 'no',
-						'responsive'    => array(
-							'default'         => array(
-								'default'    => 'no',
-								'medium'     => 'no',
 								'responsive' => 'no'
 							)
 						),
