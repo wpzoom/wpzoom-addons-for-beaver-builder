@@ -17,7 +17,7 @@ if ( post_type_exists( 'product' ) ) {
 		$colstab = min( max( (int)$settings->columns_medium, 1 ), 10 );
 		$colspho = min( max( (int)$settings->columns_responsive, 1 ), 10 );
 
-?><div class="wpzabb-woocommerce-products columns-desktop-<?php echo $colsdsk; ?> columns-tablet-<?php echo $colstab; ?> columns-phone-<?php echo $colspho; ?>">
+?><div class="wpzabb-woocommerce-products woocommerce columns-desktop-<?php echo $colsdsk; ?> columns-tablet-<?php echo $colstab; ?> columns-phone-<?php echo $colspho; ?>">
 
 	<?php
 	wc_setup_loop();

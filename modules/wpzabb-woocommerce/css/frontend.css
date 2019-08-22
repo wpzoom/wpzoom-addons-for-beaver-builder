@@ -78,20 +78,15 @@
 
 .wpzabb-woocommerce-products .products .button {
 	display: inline-block;
-	font-size: 16px;
-	font-weight: bold;
 	letter-spacing: normal;
 	line-height: 1;
 	overflow-wrap: break-word;
 	word-wrap: break-word;
 	word-break: break-all;
 	white-space: normal;
-	color: #fff;
-	background: #222;
 	padding: 12px 25px;
 	margin: 10px 0 0;
 }
 
 .wpzabb-woocommerce-products .products .button:hover {
-	background: #555;
 }
