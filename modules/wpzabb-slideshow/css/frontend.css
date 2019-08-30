@@ -74,10 +74,47 @@
 	display: none;
 }
 
-.wpzabb-slideshow .wpzabb-slideshow-slide-video iframe {
+.wpzabb-slideshow .wpzabb-slideshow-slide-video .video-embed,
+.wpzabb-slideshow .wpzabb-slideshow-slide-video iframe,
+.wpzabb-slideshow .wpzabb-slideshow-slide-video video {
 	height: 100%;
 	width: 100%;
 	border: 0;
+	margin: 0;
+}
+
+.wpzabb-slideshow .wpzabb-slideshow-slide-video .wpzabb-slideshow-slide-video-controls {
+	position: absolute;
+	right: 10px;
+	bottom: 10px;
+	z-index: 5;
+	display: flex;
+}
+
+.wpzabb-slideshow .wpzabb-slideshow-slide-video .wpzabb-slideshow-slide-video-controls a {
+	display: block;
+	cursor: pointer;
+	font: normal 400 1.5em/1 dashicons;
+	text-decoration: none !important;
+	-webkit-text-stroke: 2px rgba(0, 0, 0, 0.5);
+	text-stroke: 2px rgba(0, 0, 0, 0.5);
+	paint-order: stroke fill;
+	color: #fff;
+	height: auto;
+	width: auto;
+	opacity: 0.5;
+	box-shadow: none !important;
+	margin: 0 3px 0;
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-ms-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+}
+
+.wpzabb-slideshow .wpzabb-slideshow-slide-video .wpzabb-slideshow-slide-video-controls a:hover,
+.wpzabb-slideshow .wpzabb-slideshow-slide-video .wpzabb-slideshow-slide-video-controls a:active {
+	opacity: 1;
 }
 
 .wpzabb-slideshow .wpzabb-slideshow-slide-details {
@@ -159,6 +196,12 @@
 	height: auto;
 	width: auto;
 	opacity: 0.5;
+	box-shadow: none !important;
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-ms-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
 }
 
 .wpzabb-slideshow .flex-direction-nav a.flex-prev {
@@ -178,6 +221,11 @@
 	text-stroke: 2px rgba(0, 0, 0, 0.5);
 	paint-order: stroke fill;
 	color: #fff;
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-ms-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
 }
 
 .wpzabb-slideshow .flex-direction-nav a.flex-prev::before {
@@ -234,6 +282,7 @@
 
 .wpzabb-slideshow .flex-control-nav.flex-control-thumbs {
 	display: flex;
+	align-items: center;
 	overflow: visible;
 }
 

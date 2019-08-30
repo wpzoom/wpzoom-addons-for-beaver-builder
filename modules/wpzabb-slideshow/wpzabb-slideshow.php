@@ -29,8 +29,11 @@ class WPZABBSlideshowModule extends FLBuilderModule {
 		) );
 
 		$this->add_css( 'dashicons' );
+		$this->add_js( 'vimeo-api', 'https://player.vimeo.com/api/player.js' );
+		$this->add_js( 'touch-events',  $this->url . 'js/touchevents.polyfill.js', array( 'jquery' ), '1.0' );
 		$this->add_css( 'jquery-flexslider', $this->url . 'css/jquery.flexslider.css', array( 'dashicons' ), '1.0' );
-		$this->add_js( 'jquery-flexslider', $this->url . 'js/jquery.flexslider-min.js', array( 'jquery' ), '1.0' );
+		//$this->add_js( 'jquery-flexslider', $this->url . 'js/jquery.flexslider-min.js', array( 'jquery', 'vimeo-api' ), '1.0' );
+		$this->add_js( 'jquery-flexslider', $this->url . 'js/jquery.flexslider.js', array( 'jquery', 'touch-events', 'vimeo-api' ), '1.0' );
 	}
 
 	/**
@@ -174,6 +177,73 @@ class WPZABBSlideshowModule extends FLBuilderModule {
 	}
 
 	/**
+	 * @method get_video_type
+	 * @param $slide {object}
+	 */
+	public function get_video_type( $slide ) {
+		$url = trim( $slide->video_url );
+
+		if ( 'library' == $slide->video_source ) {
+			return 'html';
+		} elseif ( preg_match( '%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url ) ) {
+			return 'youtube';
+		} elseif ( preg_match( '/(https?:\/\/)?(www\.)?(player\.)?vimeo\.com\/([a-z]*\/)*([0-9]{6,11})[?]?.*/', $url ) ) {
+			return 'vimeo';
+		} else {
+			return 'unknown';
+		}
+	}
+
+	/**
+	 * @method get_video_url
+	 * @param $slide {object}
+	 */
+	public function get_video_url( $slide ) {
+		if ( 'library' == $slide->video_source ) {
+			$url = wp_get_attachment_url( $slide->video );
+
+			return false !== $url && !empty( $url ) ? trim( $url ) : '';
+		} elseif ( 'url' == $slide->video_source ) {
+			$url = trim( $slide->video_url );
+
+			return !empty( $url ) ? $url : '';
+		} else {
+			return '';
+		}
+	}
+
+	/**
+	 * @method get_video_id
+	 * @param $slide {object}
+	 */
+	public function get_video_id( $slide ) {
+		if ( 'library' == $slide->video_source ) {
+			return $slide->video;
+		} elseif ( 'url' == $slide->video_source ) {
+			$url = trim( $slide->video_url );
+
+			return !empty( $url ) ? $this->_try_get_id( $url ) : -1;
+		} else {
+			return -1;
+		}
+	}
+
+	/**
+	 * @method _try_get_id
+	 * @param $url {string}
+	 * @protected
+	 */
+	protected function _try_get_id( $url ) {
+		if ( preg_match( '%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url, $match ) ) {
+			return $match[ 1 ];
+		} elseif ( preg_match( '/(https?:\/\/)?(www\.)?(player\.)?vimeo\.com\/([a-z]*\/)*([0-9]{6,11})[?]?.*/', $url, $match ) ) {
+			return $match[ 5 ];
+		} else {
+			return $url;
+		}
+	}
+
+	/**
 	 * @method get_video_embed
 	 * @param $slide {object}
 	 */
@@ -181,11 +251,11 @@ class WPZABBSlideshowModule extends FLBuilderModule {
 		if ( 'library' == $slide->video_source ) {
 			$url = wp_get_attachment_url( $slide->video );
 
-			return false !== $url && !empty( $url ) ? do_shortcode( '[video src="' . $url . '"]' ) : false;
+			return false !== $url && !empty( $url ) ? '<div class="video-embed">' . do_shortcode( '[video src="' . $url . '"]' ) . '</div>' : false;
 		} elseif ( 'url' == $slide->video_source ) {
 			$url = trim( $slide->video_url );
 
-			return !empty( $url ) ? $this->_try_get_embed( $url, $slide ) : false;
+			return !empty( $url ) ? $this->_try_get_embed( $url ) : false;
 		} else {
 			return false;
 		}
@@ -194,24 +264,14 @@ class WPZABBSlideshowModule extends FLBuilderModule {
 	/**
 	 * @method _try_get_embed
 	 * @param $url {string}
-	 * @param $options {object}
 	 * @protected
 	 */
-	protected function _try_get_embed( $url, $options ) {
-		$autoplay = $options->autoplay == 'yes' ? 'true' : 'false';
-		$loop = $options->loop == 'yes' ? 'true' : 'false';
-		$startmuted = $options->startmuted == 'yes' ? 'true' : 'false';
-
-		if ( preg_match( '%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url, $match ) ) {
-			$id = $match[ 1 ];
-
-			return '<div class="video-embed" data-type="youtube" data-id="' . $id . '" data-autoplay="' . $autoplay . '" data-loop="' . $loop . '" data-startmuted="' . $startmuted . '"></div>';
-		} elseif ( preg_match( '/(https?:\/\/)?(www\.)?(player\.)?vimeo\.com\/([a-z]*\/)*([0-9]{6,11})[?]?.*/', $url, $match ) ) {
-			$id = $match[ 5 ];
-
-			return '<div class="video-embed" data-type="vimeo" data-id="' . $id . '" data-autoplay="' . $autoplay . '" data-loop="' . $loop . '" data-startmuted="' . $startmuted . '"></div>';
+	protected function _try_get_embed( $url ) {
+		if ( preg_match( '%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url ) ||
+		     preg_match( '/(https?:\/\/)?(www\.)?(player\.)?vimeo\.com\/([a-z]*\/)*([0-9]{6,11})[?]?.*/', $url ) ) {
+			return '<div class="video-embed"></div>';
 		} else {
-			return '<iframe src="' . esc_url( $url ) . '" frameborder="0"></iframe>';
+			return '<iframe src="' . esc_url( $url ) . '" class="video-embed" frameborder="0"></iframe>';
 		}
 	}
 }
