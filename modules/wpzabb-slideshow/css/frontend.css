@@ -2,6 +2,10 @@
 	position: relative;
 }
 
+.wpzabb-slideshow .wpzabb-slideshow-slides {
+	margin: 0;
+}
+
 .wpzabb-slideshow .wpzabb-slideshow-slide {
 	display: flex !important;
 	align-items: stretch;
@@ -215,7 +219,7 @@
 .wpzabb-slideshow .flex-direction-nav a::before {
 	content: ' ';
 	display: block;
-	font: normal 400 2.5em/1 dashicons;
+	font: normal 400 3.5em/1 dashicons;
 	text-decoration: none !important;
 	-webkit-text-stroke: 2px rgba(0, 0, 0, 0.5);
 	text-stroke: 2px rgba(0, 0, 0, 0.5);

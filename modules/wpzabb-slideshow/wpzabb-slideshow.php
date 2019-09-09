@@ -32,8 +32,9 @@ class WPZABBSlideshowModule extends FLBuilderModule {
 		$this->add_js( 'vimeo-api', 'https://player.vimeo.com/api/player.js' );
 		$this->add_js( 'touch-events',  $this->url . 'js/touchevents.polyfill.js', array( 'jquery' ), '1.0' );
 		$this->add_css( 'jquery-flexslider', $this->url . 'css/jquery.flexslider.css', array( 'dashicons' ), '1.0' );
-		//$this->add_js( 'jquery-flexslider', $this->url . 'js/jquery.flexslider-min.js', array( 'jquery', 'vimeo-api' ), '1.0' );
 		$this->add_js( 'jquery-flexslider', $this->url . 'js/jquery.flexslider.js', array( 'jquery', 'touch-events', 'vimeo-api' ), '1.0' );
+
+		FLBuilderAJAX::add_action( 'wpzabb_slideshow_get_thumb', array( $this, 'ajax_get_thumbnail' ), array( 'post_id', 'source', 'dat', 'element_num' ) );
 	}
 
 	/**
@@ -274,6 +275,59 @@ class WPZABBSlideshowModule extends FLBuilderModule {
 			return '<iframe src="' . esc_url( $url ) . '" class="video-embed" frameborder="0"></iframe>';
 		}
 	}
+
+	/**
+	 * AJAX callback to return the thumbnail of a given video or image URL.
+	 *
+	 * @param  string       $post_id     The ID of the post this AJAX request came from.
+	 * @param  string       $source      The source of the video or image (either library, url, or image).
+	 * @param  string       $dat         The URL (for videos/images hosted elsewhere) or ID (for videos/images from the local media library) of the video/image.
+	 * @param  string       $element_num The element number for use on the JS side.
+	 * @return string|false              The URL of the thumbnail, or false othewrwise.
+	 */
+	public function ajax_get_thumbnail( $post_id, $source, $dat, $element_num ) {
+		if ( 'library' == $source || 'library-image' == $source ) {
+			$url = wp_get_attachment_url( $dat );
+
+			return false !== $url ? array( 'type' => $source, 'url' => $url, 'element_num' => intval( $element_num ) ) : false;
+		} elseif ( 'url' == $source ) {
+			$url = $this->fetch_video_thumbnail( $dat );
+
+			return false !== $url ? array( 'type' => $source, 'url' => $url, 'element_num' => intval( $element_num ) ) : false;
+		} elseif ( 'url-image' == $source ) {
+			return array( 'type' => $source, 'url' => $dat, 'element_num' => intval( $element_num ) );
+		} else {
+			return false;
+		}
+	}
+
+	/**
+	 * Attempts to fetch the thumbnail URL of a given video URL using oEmbed.
+	 *
+	 * @param  string       $url The URL of the video to fetch the thumbnail of.
+	 * @return string|false      URL for the thumbnail of the given video URL, or false otherwise.
+	 */
+	public function fetch_video_thumbnail( $url ) {
+		$url = trim( $url );
+
+		if ( !empty( $url ) && false !== filter_var( $url, FILTER_VALIDATE_URL ) ) {
+			require_once( ABSPATH . WPINC . '/class-oembed.php' );
+
+			$oembed = _wp_oembed_get_object();
+
+			$provider = $oembed->get_provider( $url );
+
+			if ( $provider ) {
+				$data = $oembed->fetch( $provider, $url );
+
+				if ( $data ) {
+					return isset( $data->thumbnail_url ) && !empty( $data->thumbnail_url ) ? $data->thumbnail_url : false;
+				}
+			}
+		}
+
+		return false;
+	}
 }
 
 /**
@@ -436,6 +490,69 @@ FLBuilder::register_module( 'WPZABBSlideshowModule', array(
 							'no'              => __( 'No', 'wpzabb' )
 						)
 					),
+					'slideshow_autoheight' => array(
+						'type'          => 'button-group',
+						'label'         => __( 'Automatic Height', 'wpzabb' ),
+						'help'          => __( 'Whether the slideshow should have an automatic height based on the browser/viewport height.', 'wpzabb' ),
+						'default'       => 'no',
+						'responsive'    => array(
+							'default'         => array(
+								'default'    => 'no',
+								'medium'     => 'no',
+								'responsive' => 'no'
+							)
+						),
+						'options'       => array(
+							'yes'             => __( 'Yes', 'wpzabb' ),
+							'no'              => __( 'No', 'wpzabb' )
+						),
+						'toggle'        => array(
+							'yes'             => array(
+								'fields'   => array( 'slideshow_autoheight_size', 'slideshow_autoheight_max' )
+							),
+							'no'              => array()
+						)
+					),
+					'slideshow_autoheight_size' => array(
+						'type'          => 'unit',
+						'label'         => __( 'Automatic Height Size', 'wpzabb' ),
+						'help'          => __( 'The height (in percents) relative to the browser/viewport the slideshow should maintain.', 'wpzabb' ),
+						'default'       => 100,
+						'responsive'    => array(
+							'default'         => array(
+								'default'    => 100,
+								'medium'     => 100,
+								'responsive' => 100
+							)
+						),
+						'units'         => array( '%' ),
+						'default_unit'  => '%',
+						'slider'        => array(
+							'min'             => 0,
+							'max'             => 100,
+							'step'            => 1
+						)
+					),
+					'slideshow_autoheight_max' => array(
+						'type'          => 'unit',
+						'label'         => __( 'Automatic Height Max', 'wpzabb' ),
+						'help'          => __( 'The maximum height (in pixels) the slideshow should ever be allowed to grow to.', 'wpzabb' ),
+						'default'       => 800,
+						'responsive'    => array(
+							'default'         => array(
+								'default'    => 800,
+								'medium'     => 800,
+								'responsive' => 800
+							)
+						),
+						'units'         => array( 'px' ),
+						'default_unit'  => 'px',
+						'slider'        => array(
+							'min'             => 0,
+							'max'             => 5000,
+							'step'            => 1
+						)
+					),
 					'slideshow_arrows'       => array(
 						'type'          => 'button-group',
 						'label'         => __( 'Display Navigation Arrows', 'wpzabb' ),
@@ -494,7 +611,26 @@ FLBuilder::register_module( 'WPZABBSlideshowModule', array(
 	'style'      => array( // Tab
 		'title'    => __( 'Style', 'wpzabb' ), // Tab title
 		'sections' => array( // Tab Sections
-			'style_background'       => array( // Section
+			/*
+			- Slide Background Color
+			- Slide Overlay Gradient
+			- Slide Title Font
+			- Slide Title Color
+			- Slide Description Font
+			- Slide Description Color
+			- Slide Button Border
+			- Slide Button Font
+			- Slide Button Color
+			- Slide Button Hover Border
+			- Slide Button Hover Font
+			- Slide Button Hover Color
+			- Slide Navigation Color
+			- Slide Navigation Hover Color
+			- Slide Play/Pause/Mute/Unmute Color
+			- Slide Play/Pause/Mute/Unmute Hover Color
+			*/
+
+			/*'style_background'       => array( // Section
 				'title'     => __( 'Menu Background', 'wpzabb' ), // Section Title
 				'collapsed' => true,
 				'fields'    => array( // Section Fields
@@ -990,7 +1126,7 @@ FLBuilder::register_module( 'WPZABBSlideshowModule', array(
 						)
 					)
 				)
-			)
+			)*/
 		)
 	)
 ) );

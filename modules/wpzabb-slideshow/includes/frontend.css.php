@@ -1,4 +1,22 @@
 <?php
+$auto_height = $settings->slideshow_autoheight == 'yes';
+$auto_height_size = intval( $settings->slideshow_autoheight_size );
+$auto_height_max = intval( $settings->slideshow_autoheight_max );
+?>
+
+<?php if ( $auto_height ) : ?>
+	.fl-node-<?php echo $id; ?> .wpzabb-slideshow .flex-viewport,
+	.fl-node-<?php echo $id; ?> .wpzabb-slideshow .wpzabb-slideshow-slides,
+	.fl-node-<?php echo $id; ?> .wpzabb-slideshow .wpzabb-slideshow-slide {
+		height: <?php echo $auto_height_size; ?>vh;
+		max-height: <?php echo $auto_height_max; ?>px;
+	}
+<?php endif; ?>
+
+
+
+
+<?php /*
 function is_hex_color( $string )
 {
 	$color = ltrim( $string, '#' );
@@ -80,4 +98,4 @@ function maybe_prepend_hash( $string )
 .fl-node-<?php echo $id; ?> .wpzabb-food-menu-wrap .wpzabb-food-menu-button a:hover,
 .fl-node-<?php echo $id; ?> .wpzabb-food-menu-wrap .wpzabb-food-menu-button a:active {
 	color: <?php echo maybe_prepend_hash( $settings->button_hover_color); ?>;
-}
+}<?php */ ?>
