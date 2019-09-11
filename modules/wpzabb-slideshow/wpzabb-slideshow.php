@@ -611,70 +611,61 @@ FLBuilder::register_module( 'WPZABBSlideshowModule', array(
 	'style'      => array( // Tab
 		'title'    => __( 'Style', 'wpzabb' ), // Tab title
 		'sections' => array( // Tab Sections
-			/*
-			- Slide Background Color
-			- Slide Overlay Gradient
-			- Slide Title Font
-			- Slide Title Color
-			- Slide Description Font
-			- Slide Description Color
-			- Slide Button Border
-			- Slide Button Font
-			- Slide Button Color
-			- Slide Button Hover Border
-			- Slide Button Hover Font
-			- Slide Button Hover Color
-			- Slide Navigation Color
-			- Slide Navigation Hover Color
-			- Slide Play/Pause/Mute/Unmute Color
-			- Slide Play/Pause/Mute/Unmute Hover Color
-			*/
-
-			/*'style_background'       => array( // Section
-				'title'     => __( 'Menu Background', 'wpzabb' ), // Section Title
+			'style_slide_background' => array( // Section
+				'title'     => __( 'Slide Background', 'wpzabb' ), // Section Title
 				'collapsed' => true,
 				'fields'    => array( // Section Fields
-					'background_color'       => array(
+					'slide_background_color' => array(
 						'type'          => 'color',
-						'label'         => __( 'Background Color', 'wpzabb' ),
-						'default'       => 'ffffff',
+						'label'         => '',
+						'default'       => '000000',
 						'show_alpha'    => true,
 						'preview'       => array(
 							'type'            => 'css',
-							'selector'        => '.wpzabb-food-menu-wrap',
+							'selector'        => '.wpzabb-slideshow .wpzabb-slideshow-slide',
 							'property'        => 'background-color'
-						)
-					),
-					'outline_color'          => array(
-						'type'          => 'color',
-						'label'         => __( 'Outline Color', 'wpzabb' ),
-						'default'       => 'e9e4e2',
-						'show_alpha'    => true,
-						'preview'       => array(
-							'type'            => 'css',
-							'selector'        => '.wpzabb-food-menu-wrap::before',
-							'property'        => 'border-color'
 						)
 					)
 				)
 			),
-			'style_title'            => array( // Section
-				'title'     => __( 'Menu Title', 'wpzabb' ), // Section Title
+			'style_slide_overlay' => array( // Section
+				'title'     => __( 'Slide Overlay', 'wpzabb' ), // Section Title
 				'collapsed' => true,
 				'fields'    => array( // Section Fields
-					'title_font'             => array(
+					'slide_overlay_gradient' => array(
+						'type'          => 'gradient',
+						'label'         => '',
+						'default'       => array(
+							'type'            => 'linear',
+							'colors'          => array( 'rgba(0, 0, 0, 0.9)', 'rgba(0, 0, 0, 0)' ),
+							'stops'           => array( 40, 100 ),
+							'angle'           => 0
+						),
+						'preview'       => array(
+							'type'            => 'css',
+							'selector'        => '.wpzabb-slideshow .wpzabb-slideshow-slide-image::after, .wpzabb-slideshow .wpzabb-slideshow-slide-video::after',
+							'property'        => 'background-image'
+						)
+					)
+				)
+			),
+			'style_slide_title'   => array( // Section
+				'title'     => __( 'Slide Title', 'wpzabb' ), // Section Title
+				'collapsed' => true,
+				'fields'    => array( // Section Fields
+					'slide_title_font'       => array(
 						'type'          => 'typography',
 						'label'         => __( 'Font', 'wpzabb' ),
 						'default'       => array(
-							'font_family'     => 'Playfair Display',
-							'font_weight'     => 400,
+							'font_family'     => 'Roboto',
+							'font_weight'     => 700,
 							'font_size'       => array(
-								'length'     => '28',
+								'length'     => '30',
 								'unit'       => 'px'
 							),
 							'line_height'     => array(
-								'length'     => '1.3',
-								'unit'       => 'em'
+								'length'     => '1.5',
+								'unit'       => ''
 							),
 							'text_align'      => 'center',
 							'letter_spacing'  => array(
@@ -683,7 +674,7 @@ FLBuilder::register_module( 'WPZABBSlideshowModule', array(
 							),
 							'text_transform'  => 'none',
 							'text_decoration' => 'none',
-							'font_style'      => 'italic',
+							'font_style'      => 'normal',
 							'font_variant'    => 'normal',
 							'text_shadow'     => array(
 								'color'      => '',
@@ -695,358 +686,49 @@ FLBuilder::register_module( 'WPZABBSlideshowModule', array(
 						'responsive'    => true,
 						'preview'       => array(
 							'type'            => 'css',
-							'selector'        => '.wpzabb-food-menu-wrap .wpzabb-food-menu-title'
+							'selector'        => '.wpzabb-slideshow .wpzabb-slideshow-slide-details .wpzabb-slideshow-slide-title'
 						)
 					),
-					'title_color'            => array(
+					'slide_title_color'      => array(
 						'type'          => 'color',
 						'label'         => __( 'Color', 'wpzabb' ),
-						'default'       => '333333',
+						'default'       => 'ffffff',
 						'show_alpha'    => true,
 						'preview'       => array(
 							'type'            => 'css',
-							'selector'        => '.wpzabb-food-menu-wrap .wpzabb-food-menu-title',
+							'selector'        => '.wpzabb-slideshow .wpzabb-slideshow-slide-details .wpzabb-slideshow-slide-title, .wpzabb-slideshow .wpzabb-slideshow-slide-details .wpzabb-slideshow-slide-title a',
+							'property'        => 'color'
+						)
+					),
+					'slide_title_hover_color' => array(
+						'type'          => 'color',
+						'label'         => __( 'Hover Color', 'wpzabb' ),
+						'default'       => 'cccccc',
+						'show_alpha'    => true,
+						'preview'       => array(
+							'type'            => 'css',
+							'selector'        => '.wpzabb-slideshow .wpzabb-slideshow-slide-details .wpzabb-slideshow-slide-title a:hover',
 							'property'        => 'color'
 						)
 					)
 				)
 			),
-			'style_item_name'        => array( // Section
-				'title'     => __( 'Menu Item Name', 'wpzabb' ), // Section Title
+			'style_slide_content'   => array( // Section
+				'title'     => __( 'Slide Content', 'wpzabb' ), // Section Title
 				'collapsed' => true,
 				'fields'    => array( // Section Fields
-					'item_name_font'         => array(
+					'slide_content_font'       => array(
 						'type'          => 'typography',
 						'label'         => __( 'Font', 'wpzabb' ),
 						'default'       => array(
-							'font_family'     => 'Playfair Display',
-							'font_weight'     => 700,
+							'font_family'     => 'Roboto',
+							'font_weight'     => 400,
 							'font_size'       => array(
 								'length'     => '20',
 								'unit'       => 'px'
 							),
 							'line_height'     => array(
-								'length'     => '1.1',
-								'unit'       => ''
-							),
-							'text_align'      => 'left',
-							'letter_spacing'  => array(
-								'length'     => '0',
-								'unit'       => 'px'
-							),
-							'text_transform'  => 'uppercase',
-							'text_decoration' => 'none',
-							'font_style'      => 'normal',
-							'font_variant'    => 'normal',
-							'text_shadow'     => array(
-								'color'      => '',
-								'horizontal' => 0,
-								'vertical'   => 0,
-								'blur'       => 0
-							)
-						),
-						'responsive'    => true,
-						'preview'       => array(
-							'type'            => 'css',
-							'selector'        => '.wpzabb-food-menu-wrap .wpzabb-food-menu-items .wpzabb-food-menu-item .wpzabb-food-menu-item-name'
-						)
-					),
-					'item_name_color'        => array(
-						'type'          => 'color',
-						'label'         => __( 'Color', 'wpzabb' ),
-						'default'       => '222222',
-						'show_alpha'    => true,
-						'preview'       => array(
-							'type'            => 'css',
-							'selector'        => '.wpzabb-food-menu-wrap .wpzabb-food-menu-items .wpzabb-food-menu-item .wpzabb-food-menu-item-name, .wpzabb-food-menu-wrap .wpzabb-food-menu-items .wpzabb-food-menu-item .wpzabb-food-menu-item-name a',
-							'property'        => 'color'
-						)
-					),
-					'item_name_hover_color'  => array(
-						'type'          => 'color',
-						'label'         => __( 'Hover Color', 'wpzabb' ),
-						'default'       => 'c16f2d',
-						'show_alpha'    => true,
-						'preview'       => array(
-							'type'            => 'css',
-							'selector'        => '.wpzabb-food-menu-wrap .wpzabb-food-menu-items .wpzabb-food-menu-item .wpzabb-food-menu-item-name a:hover',
-							'property'        => 'color'
-						)
-					)
-				)
-			),
-			'style_item_price'       => array( // Section
-				'title'     => __( 'Menu Item Price', 'wpzabb' ), // Section Title
-				'collapsed' => true,
-				'fields'    => array( // Section Fields
-					'item_price_font'        => array(
-						'type'          => 'typography',
-						'label'         => __( 'Font', 'wpzabb' ),
-						'default'       => array(
-							'font_family'     => 'PT Serif',
-							'font_weight'     => 400,
-							'font_size'       => array(
-								'length'     => '18',
-								'unit'       => 'px'
-							),
-							'line_height'     => array(
-								'length'     => '1.1',
-								'unit'       => ''
-							),
-							'text_align'      => 'right',
-							'letter_spacing'  => array(
-								'length'     => '0',
-								'unit'       => 'px'
-							),
-							'text_transform'  => 'none',
-							'text_decoration' => 'none',
-							'font_style'      => 'normal',
-							'font_variant'    => 'normal',
-							'text_shadow'     => array(
-								'color'      => '',
-								'horizontal' => 0,
-								'vertical'   => 0,
-								'blur'       => 0
-							)
-						),
-						'responsive'    => true,
-						'preview'       => array(
-							'type'            => 'css',
-							'selector'        => '.wpzabb-food-menu-wrap .wpzabb-food-menu-items .wpzabb-food-menu-item .wpzabb-food-menu-item-price'
-						)
-					),
-					'item_price_color'       => array(
-						'type'          => 'color',
-						'label'         => __( 'Color', 'wpzabb' ),
-						'default'       => '222222',
-						'show_alpha'    => true,
-						'preview'       => array(
-							'type'            => 'css',
-							'selector'        => '.wpzabb-food-menu-wrap .wpzabb-food-menu-items .wpzabb-food-menu-item .wpzabb-food-menu-item-price',
-							'property'        => 'color'
-						)
-					)
-				)
-			),
-			'style_item_description' => array( // Section
-				'title'     => __( 'Menu Item Description', 'wpzabb' ), // Section Title
-				'collapsed' => true,
-				'fields'    => array( // Section Fields
-					'item_description_font'  => array(
-						'type'          => 'typography',
-						'label'         => __( 'Font', 'wpzabb' ),
-						'default'       => array(
-							'font_family'     => 'PT Serif',
-							'font_weight'     => 400,
-							'font_size'       => array(
-								'length'     => '16',
-								'unit'       => 'px'
-							),
-							'line_height'     => array(
-								'length'     => '1.6',
-								'unit'       => ''
-							),
-							'text_align'      => 'left',
-							'letter_spacing'  => array(
-								'length'     => '0',
-								'unit'       => 'px'
-							),
-							'text_transform'  => 'none',
-							'text_decoration' => 'none',
-							'font_style'      => 'normal',
-							'font_variant'    => 'normal',
-							'text_shadow'     => array(
-								'color'      => '',
-								'horizontal' => 0,
-								'vertical'   => 0,
-								'blur'       => 0
-							)
-						),
-						'responsive'    => true,
-						'preview'       => array(
-							'type'            => 'css',
-							'selector'        => '.wpzabb-food-menu-wrap .wpzabb-food-menu-items .wpzabb-food-menu-item .wpzabb-food-menu-item-description'
-						)
-					),
-					'item_description_color' => array(
-						'type'          => 'color',
-						'label'         => __( 'Color', 'wpzabb' ),
-						'default'       => 'a5908d',
-						'show_alpha'    => true,
-						'preview'       => array(
-							'type'            => 'css',
-							'selector'        => '.wpzabb-food-menu-wrap .wpzabb-food-menu-items .wpzabb-food-menu-item .wpzabb-food-menu-item-description',
-							'property'        => 'color'
-						)
-					)
-				)
-			),
-			'style_item_image' => array( // Section
-				'title'     => __( 'Menu Item Image', 'wpzabb' ), // Section Title
-				'collapsed' => true,
-				'fields'    => array( // Section Fields
-					'item_image_align'       => array(
-						'type'          => 'button-group',
-						'label'         => __( 'Alignment', 'wpzabb' ),
-						'default'       => 'left',
-						'options'       => array(
-							'top'             => '<img src="' . BB_WPZOOM_ADDON_URL . 'modules/' . WPZABB_PREFIX . 'food-menu/align-top.svg" height="20" width="20" /> ' . __( 'Top', 'wpzabb' ),
-							'left'            => '<img src="' . BB_WPZOOM_ADDON_URL . 'modules/' . WPZABB_PREFIX . 'food-menu/align-left.svg" height="20" width="20" /> ' . __( 'Left', 'wpzabb' ),
-							'right'           => '<img src="' . BB_WPZOOM_ADDON_URL . 'modules/' . WPZABB_PREFIX . 'food-menu/align-right.svg" height="20" width="20" /> ' . __( 'Right', 'wpzabb' ),
-							'bottom'          => '<img src="' . BB_WPZOOM_ADDON_URL . 'modules/' . WPZABB_PREFIX . 'food-menu/align-bottom.svg" height="20" width="20" /> ' . __( 'Bottom', 'wpzabb' )
-						),
-						'toggle'        => array(
-							'top'             => array(),
-							'left'            => array(
-								'fields'     => array( 'item_image_size' )
-							),
-							'right'           => array(
-								'fields'     => array( 'item_image_size' )
-							),
-							'bottom'          => array()
-						),
-						'preview'       => array(
-							'type'            => 'callback',
-							'callback'        => 'setAlignmentClass'
-						)
-					),
-					'item_image_size'        => array(
-						'type'          => 'unit',
-						'label'         => __( 'Size', 'wpzabb' ),
-						'description'   => __( 'Percent of menu item width', 'wpzabb' ),
-						'default'       => '20',
-						'units'         => array( '%' ),
-						'default_unit'  => '%',
-						'responsive'    => true,
-						'slider'        => array(
-							'min'             => 0,
-							'max'             => 100,
-							'step'            => 1
-						),
-						'preview'       => array(
-							'type'            => 'css',
-							'selector'        => '.wpzabb-food-menu-wrap .wpzabb-food-menu-items .wpzabb-food-menu-item .wpzabb-food-menu-item-image',
-							'property'        => 'flex-basis',
-							'unit'            => '%'
-						)
-					)
-				)
-			),
-			'style_item_separator'   => array( // Section
-				'title'     => __( 'Menu Item Separator', 'wpzabb' ), // Section Title
-				'collapsed' => true,
-				'fields'    => array( // Section Fields
-					'item_separator_style'   => array(
-						'type'          => 'select',
-						'label'         => __( 'Style', 'wpzabb' ),
-						'default'       => 'dashed',
-						'options'       => array(
-							'none'            => __( 'None', 'wpzabb' ),
-							'solid'           => __( 'Solid', 'wpzabb' ),
-							'dashed'          => __( 'Dashed', 'wpzabb' ),
-							'dotted'          => __( 'Dotted', 'wpzabb' ),
-							'double'          => __( 'Double', 'wpzabb' )
-						),
-						'preview'       => array(
-							'type'            => 'css',
-							'rules'           => array(
-								array(
-									'selector' => '.wpzabb-food-menu-wrap .wpzabb-food-menu-items .wpzabb-food-menu-item, .wpzabb-food-menu-wrap.with-button .wpzabb-food-menu-items .wpzabb-food-menu-item:last-child',
-									'property' => 'border-bottom-style'
-								),
-								array(
-									'selector' => '.wpzabb-food-menu-wrap .wpzabb-food-menu-items .wpzabb-food-menu-item:first-child',
-									'property' => 'border-top-style'
-								)    
-							)
-						)
-					),
-					'item_separator_size'    => array(
-						'type'          => 'unit',
-						'label'         => __( 'Size', 'wpzabb' ),
-						'default'       => '1',
-						'units'         => array( 'px', 'vw', '%' ),
-						'default_unit'  => 'px',
-						'slider'        => array(
-							'px'              => array(
-								'min'        => 0,
-								'max'        => 1000,
-								'step'       => 1
-							),
-							'vw'              => array(
-								'min'        => 0,
-								'max'        => 100,
-								'step'       => 1
-							),
-							'%'               => array(
-								'min'        => 0,
-								'max'        => 100,
-								'step'       => 1
-							)
-						),
-						'responsive'    => true,
-						'preview'       => array(
-							'type'            => 'css',
-							'rules'           => array(
-								array(
-									'selector' => '.wpzabb-food-menu-wrap .wpzabb-food-menu-items .wpzabb-food-menu-item, .wpzabb-food-menu-wrap.with-button .wpzabb-food-menu-items .wpzabb-food-menu-item:last-child',
-									'property' => 'border-bottom-width'
-								),
-								array(
-									'selector' => '.wpzabb-food-menu-wrap .wpzabb-food-menu-items .wpzabb-food-menu-item:first-child',
-									'property' => 'border-top-width'
-								)    
-							)
-						)
-					),
-					'item_separator_color'   => array(
-						'type'          => 'color',
-						'label'         => __( 'Color', 'wpzabb' ),
-						'default'       => 'ecd4c0',
-						'show_alpha'    => true,
-						'preview'       => array(
-							'type'            => 'css',
-							'rules'           => array(
-								array(
-									'selector' => '.wpzabb-food-menu-wrap .wpzabb-food-menu-items .wpzabb-food-menu-item, .wpzabb-food-menu-wrap.with-button .wpzabb-food-menu-items .wpzabb-food-menu-item:last-child',
-									'property' => 'border-bottom-color'
-								),
-								array(
-									'selector' => '.wpzabb-food-menu-wrap .wpzabb-food-menu-items .wpzabb-food-menu-item:first-child',
-									'property' => 'border-top-color'
-								)    
-							)
-						)
-					)
-				)
-			),
-			'style_button'           => array( // Section
-				'title'     => __( 'Menu Button', 'wpzabb' ), // Section Title
-				'collapsed' => true,
-				'fields'    => array( // Section Fields
-					'button_background'      => array(
-						'type'          => 'color',
-						'label'         => __( 'Background Color', 'wpzabb' ),
-						'default'       => 'ffffff',
-						'show_alpha'    => true,
-						'preview'       => array(
-							'type'            => 'css',
-							'selector'        => '.wpzabb-food-menu-wrap .wpzabb-food-menu-button a',
-							'property'        => 'background-color'
-						)
-					),
-					'button_font'            => array(
-						'type'          => 'typography',
-						'label'         => __( 'Font', 'wpzabb' ),
-						'default'       => array(
-							'font_family'     => 'Playfair Display',
-							'font_weight'     => 700,
-							'font_size'       => array(
-								'length'     => '16',
-								'unit'       => 'px'
-							),
-							'line_height'     => array(
-								'length'     => '1',
+								'length'     => '1.5',
 								'unit'       => ''
 							),
 							'text_align'      => 'center',
@@ -1054,7 +736,7 @@ FLBuilder::register_module( 'WPZABBSlideshowModule', array(
 								'length'     => '0',
 								'unit'       => 'px'
 							),
-							'text_transform'  => 'uppercase',
+							'text_transform'  => 'none',
 							'text_decoration' => 'none',
 							'font_style'      => 'normal',
 							'font_variant'    => 'normal',
@@ -1068,42 +750,48 @@ FLBuilder::register_module( 'WPZABBSlideshowModule', array(
 						'responsive'    => true,
 						'preview'       => array(
 							'type'            => 'css',
-							'selector'        => '.wpzabb-food-menu-wrap .wpzabb-food-menu-button a'
+							'selector'        => '.wpzabb-slideshow .wpzabb-slideshow-slide-details .wpzabb-slideshow-slide-content'
 						)
 					),
-					'button_color'           => array(
+					'slide_content_color'      => array(
 						'type'          => 'color',
 						'label'         => __( 'Color', 'wpzabb' ),
-						'default'       => 'c16f2d',
+						'default'       => 'ffffff',
 						'show_alpha'    => true,
 						'preview'       => array(
 							'type'            => 'css',
-							'selector'        => '.wpzabb-food-menu-wrap .wpzabb-food-menu-button a',
+							'selector'        => '.wpzabb-slideshow .wpzabb-slideshow-slide-details .wpzabb-slideshow-slide-content',
 							'property'        => 'color'
 						)
-					),
-					'button_hover_color'     => array(
+					)
+				)
+			),
+			'style_slide_button' => array( // Section
+				'title'     => __( 'Slide Button', 'wpzabb' ), // Section Title
+				'collapsed' => true,
+				'fields'    => array( // Section Fields
+					'slide_button_background_color' => array(
 						'type'          => 'color',
-						'label'         => __( 'Hover Color', 'wpzabb' ),
-						'default'       => '000000',
+						'label'         => __( 'Background Color', 'wpzabb' ),
+						'default'       => 'rgba(255, 255, 255, 0.3)',
 						'show_alpha'    => true,
 						'preview'       => array(
 							'type'            => 'css',
-							'selector'        => '.wpzabb-food-menu-wrap .wpzabb-food-menu-button a:hover',
-							'property'        => 'color'
+							'selector'        => '.wpzabb-slideshow .wpzabb-slideshow-slide-details .wpzabb-slideshow-slide-button a',
+							'property'        => 'background-color'
 						)
 					),
-					'button_border'          => array(
+					'slide_button_border'    => array(
 						'type'          => 'border',
 						'label'         => __( 'Border', 'wpzabb' ),
 						'default'       => array(
 							'style'           => 'solid',
-							'color'           => 'c16f2d',
+							'color'           => 'ffffff',
 							'width'           => array(
-								'top'          => 2,
-								'left'         => 2,
-								'right'        => 2,
-								'bottom'       => 2
+								'top'          => 0,
+								'left'         => 0,
+								'right'        => 0,
+								'bottom'       => 0
 							),
 							'radius'          => array(
 								'top_left'     => 0,
@@ -1122,11 +810,204 @@ FLBuilder::register_module( 'WPZABBSlideshowModule', array(
 						'responsive'    => true,
 						'preview'       => array(
 							'type'            => 'css',
-							'selector'        => '.wpzabb-food-menu-wrap .wpzabb-food-menu-button a'
+							'selector'        => '.wpzabb-slideshow .wpzabb-slideshow-slide-details .wpzabb-slideshow-slide-button a'
+						)
+					),
+					'slide_button_font'      => array(
+						'type'          => 'typography',
+						'label'         => __( 'Font', 'wpzabb' ),
+						'default'       => array(
+							'font_family'     => 'Roboto',
+							'font_weight'     => 400,
+							'font_size'       => array(
+								'length'     => '20',
+								'unit'       => 'px'
+							),
+							'line_height'     => array(
+								'length'     => '1',
+								'unit'       => ''
+							),
+							'text_align'      => 'center',
+							'letter_spacing'  => array(
+								'length'     => '0',
+								'unit'       => 'px'
+							),
+							'text_transform'  => 'none',
+							'text_decoration' => 'none',
+							'font_style'      => 'normal',
+							'font_variant'    => 'normal',
+							'text_shadow'     => array(
+								'color'      => '',
+								'horizontal' => 0,
+								'vertical'   => 0,
+								'blur'       => 0
+							)
+						),
+						'responsive'    => true,
+						'preview'       => array(
+							'type'            => 'css',
+							'selector'        => '.wpzabb-slideshow .wpzabb-slideshow-slide-details .wpzabb-slideshow-slide-button a'
+						)
+					),
+					'slide_button_color'     => array(
+						'type'          => 'color',
+						'label'         => __( 'Font Color', 'wpzabb' ),
+						'default'       => 'ffffff',
+						'show_alpha'    => true,
+						'preview'       => array(
+							'type'            => 'css',
+							'selector'        => '.wpzabb-slideshow .wpzabb-slideshow-slide-details .wpzabb-slideshow-slide-button a',
+							'property'        => 'color'
+						)
+					),
+					'slide_button_hover_background_color' => array(
+						'type'          => 'color',
+						'label'         => __( 'Hover Background Color', 'wpzabb' ),
+						'default'       => 'rgba(255, 255, 255, 1)',
+						'show_alpha'    => true,
+						'preview'       => array(
+							'type'            => 'css',
+							'selector'        => '.wpzabb-slideshow .wpzabb-slideshow-slide-details .wpzabb-slideshow-slide-button a:hover',
+							'property'        => 'background-color'
+						)
+					),
+					'slide_button_hover_border' => array(
+						'type'          => 'border',
+						'label'         => __( 'Hover Border', 'wpzabb' ),
+						'default'       => array(
+							'style'           => 'solid',
+							'color'           => 'ffffff',
+							'width'           => array(
+								'top'          => 0,
+								'left'         => 0,
+								'right'        => 0,
+								'bottom'       => 0
+							),
+							'radius'          => array(
+								'top_left'     => 0,
+								'top_right'    => 0,
+								'bottom_left'  => 0,
+								'bottom_right' => 0
+							),
+							'shadow'          => array(
+								'color'        => '',
+								'horizontal'   => 0,
+								'vertical'     => 0,
+								'blur'         => 0,
+								'spread'       => 0
+							)
+						),
+						'responsive'    => true,
+						'preview'       => array(
+							'type'            => 'css',
+							'selector'        => '.wpzabb-slideshow .wpzabb-slideshow-slide-details .wpzabb-slideshow-slide-button a:hover'
+						)
+					),
+					'slide_button_hover_font' => array(
+						'type'          => 'typography',
+						'label'         => __( 'Hover Font', 'wpzabb' ),
+						'default'       => array(
+							'font_family'     => 'Roboto',
+							'font_weight'     => 400,
+							'font_size'       => array(
+								'length'     => '20',
+								'unit'       => 'px'
+							),
+							'line_height'     => array(
+								'length'     => '1',
+								'unit'       => ''
+							),
+							'text_align'      => 'center',
+							'letter_spacing'  => array(
+								'length'     => '0',
+								'unit'       => 'px'
+							),
+							'text_transform'  => 'none',
+							'text_decoration' => 'none',
+							'font_style'      => 'normal',
+							'font_variant'    => 'normal',
+							'text_shadow'     => array(
+								'color'      => '',
+								'horizontal' => 0,
+								'vertical'   => 0,
+								'blur'       => 0
+							)
+						),
+						'responsive'    => true,
+						'preview'       => array(
+							'type'            => 'css',
+							'selector'        => '.wpzabb-slideshow .wpzabb-slideshow-slide-details .wpzabb-slideshow-slide-button a:hover'
+						)
+					),
+					'slide_button_hover_color' => array(
+						'type'          => 'color',
+						'label'         => __( 'Hover Font Color', 'wpzabb' ),
+						'default'       => '000000',
+						'show_alpha'    => true,
+						'preview'       => array(
+							'type'            => 'css',
+							'selector'        => '.wpzabb-slideshow .wpzabb-slideshow-slide-details .wpzabb-slideshow-slide-button a:hover',
+							'property'        => 'color'
 						)
 					)
 				)
-			)*/
+			),
+			'style_slide_navigation'   => array( // Section
+				'title'     => __( 'Slide Navigation', 'wpzabb' ), // Section Title
+				'collapsed' => true,
+				'fields'    => array( // Section Fields
+					'slide_navigation_color'      => array(
+						'type'          => 'color',
+						'label'         => __( 'Color', 'wpzabb' ),
+						'default'       => 'rgba(255, 255, 255, 0.5)',
+						'show_alpha'    => true,
+						'preview'       => array(
+							'type'            => 'css',
+							'selector'        => '.wpzabb-slideshow .flex-direction-nav a, .wpzabb-slideshow .flex-direction-nav a::before',
+							'property'        => 'color'
+						)
+					),
+					'slide_navigation_hover_color' => array(
+						'type'          => 'color',
+						'label'         => __( 'Hover Color', 'wpzabb' ),
+						'default'       => 'ffffff',
+						'show_alpha'    => true,
+						'preview'       => array(
+							'type'            => 'css',
+							'selector'        => '.wpzabb-slideshow .flex-direction-nav a:hover, .wpzabb-slideshow .flex-direction-nav a:active, .wpzabb-slideshow .flex-direction-nav a:hover::before, .wpzabb-slideshow .flex-direction-nav a:active::before',
+							'property'        => 'color'
+						)
+					)
+				)
+			),
+			'style_slide_video_controls' => array( // Section
+				'title'     => __( 'Slide Video Controls', 'wpzabb' ), // Section Title
+				'collapsed' => true,
+				'fields'    => array( // Section Fields
+					'slide_video_controls_color' => array(
+						'type'          => 'color',
+						'label'         => __( 'Color', 'wpzabb' ),
+						'default'       => 'rgba(255, 255, 255, 0.5)',
+						'show_alpha'    => true,
+						'preview'       => array(
+							'type'            => 'css',
+							'selector'        => '.wpzabb-slideshow .wpzabb-slideshow-slide-video .wpzabb-slideshow-slide-video-controls a',
+							'property'        => 'color'
+						)
+					),
+					'slide_video_controls_hover_color' => array(
+						'type'          => 'color',
+						'label'         => __( 'Hover Color', 'wpzabb' ),
+						'default'       => 'ffffff',
+						'show_alpha'    => true,
+						'preview'       => array(
+							'type'            => 'css',
+							'selector'        => '.wpzabb-slideshow .wpzabb-slideshow-slide-video .wpzabb-slideshow-slide-video-controls a:hover',
+							'property'        => 'color'
+						)
+					)
+				)
+			)
 		)
 	)
 ) );

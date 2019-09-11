@@ -103,10 +103,9 @@
 	-webkit-text-stroke: 2px rgba(0, 0, 0, 0.5);
 	text-stroke: 2px rgba(0, 0, 0, 0.5);
 	paint-order: stroke fill;
-	color: #fff;
+	color: rgba(255, 255, 255, 0.5);
 	height: auto;
 	width: auto;
-	opacity: 0.5;
 	box-shadow: none !important;
 	margin: 0 3px 0;
 	-webkit-transition: all 0.3s ease-in-out;
@@ -118,7 +117,7 @@
 
 .wpzabb-slideshow .wpzabb-slideshow-slide-video .wpzabb-slideshow-slide-video-controls a:hover,
 .wpzabb-slideshow .wpzabb-slideshow-slide-video .wpzabb-slideshow-slide-video-controls a:active {
-	opacity: 1;
+	color: #fff;
 }
 
 .wpzabb-slideshow .wpzabb-slideshow-slide-details {
@@ -197,9 +196,10 @@
 	display: block;
 	font: normal 400 1em/1 dashicons;
 	text-decoration: none !important;
+	color: rgba(255, 255, 255, 0.5);
 	height: auto;
 	width: auto;
-	opacity: 0.5;
+	opacity: 1;
 	box-shadow: none !important;
 	-webkit-transition: all 0.3s ease-in-out;
 	-moz-transition: all 0.3s ease-in-out;
@@ -223,8 +223,9 @@
 	text-decoration: none !important;
 	-webkit-text-stroke: 2px rgba(0, 0, 0, 0.5);
 	text-stroke: 2px rgba(0, 0, 0, 0.5);
+	color: rgba(255, 255, 255, 0.5);
+	opacity: 1;
 	paint-order: stroke fill;
-	color: #fff;
 	-webkit-transition: all 0.3s ease-in-out;
 	-moz-transition: all 0.3s ease-in-out;
 	-ms-transition: all 0.3s ease-in-out;
@@ -241,8 +242,10 @@
 }
 
 .wpzabb-slideshow .flex-direction-nav a:hover,
-.wpzabb-slideshow .flex-direction-nav a:active {
-	opacity: 1;
+.wpzabb-slideshow .flex-direction-nav a:active,
+.wpzabb-slideshow .flex-direction-nav a:hover::before,
+.wpzabb-slideshow .flex-direction-nav a:active::before {
+	color: #fff;
 }
 
 .wpzabb-slideshow .flex-direction-nav a:focus {
