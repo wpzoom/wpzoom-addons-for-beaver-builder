@@ -66,3 +66,8 @@
 	margin-left: 0;
 	margin-right: 0;
 }
+
+.fl-builder-settings[data-form-id="slides_form"] #fl-field-link .fl-link-field-select::after,
+.fl-builder-settings[data-form-id="slides_form"] #fl-field-button_url .fl-link-field-select::after {
+	content: ' Post';
+}

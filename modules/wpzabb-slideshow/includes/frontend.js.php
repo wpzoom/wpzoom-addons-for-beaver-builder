@@ -25,7 +25,8 @@
 		} );
 
 		function onSlideshowStart( slider ) {
-			var slides = $( '.fl-node-<?php echo $id; ?> .wpzabb-slideshow .wpzabb-slideshow-slides > .wpzabb-slideshow-slide' ),
+			var viewport = $( '.fl-node-<?php echo $id; ?> .wpzabb-slideshow .flex-viewport' ),
+			    slides = viewport.find( '.wpzabb-slideshow-slides > .wpzabb-slideshow-slide' ),
 			    slideVideoControls = slider.slides.find( '.wpzabb-slideshow-slide-video .wpzabb-slideshow-slide-video-controls' ),
 			    heights = slides.map( function() { return $( this ).height(); } ).get(),
 			    maxHeight = Math.max.apply( null, heights );
@@ -33,6 +34,12 @@
 			slides.css( 'min-height', maxHeight + 'px' );
 
 			$( '.fl-node-<?php echo $id; ?> .wpzabb-slideshow .flex-direction-nav' ).height( maxHeight + 'px' );
+
+			if ( slider.vars.desktopTouch ) {
+				viewport.css( 'cursor', 'grab' );
+				viewport.on( 'mousedown', function() { $( this ).css( 'cursor', 'grabbing' ); } );
+				viewport.on( 'mouseup', function() { $( this ).css( 'cursor', 'grab' ); } );
+			}
 
 			slideVideoControls.find( '.play-video' ).on( 'click', playVideo );
 			slideVideoControls.find( '.pause-video' ).on( 'click', pauseVideo );
@@ -82,31 +89,33 @@
 		function playVideo( event ) {
 			var target = $( event.target ).closest( '.wpzabb-slideshow-slide-video' );
 
-			if ( 'youtube' == target.data( 'type' ) ) {
-				var vid = target.find( '.video-embed' );
+			if ( ! videoIsPlaying( target ) ) {
+				if ( 'youtube' == target.data( 'type' ) ) {
+					var vid = target.find( '.video-embed' );
 
-				if ( vid.length > 0 ) {
-					var playr = YT.get( vid.attr( 'id' ) );
-					
-					if ( typeof playr !== 'undefined' ) {
-						playr.playVideo();
+					if ( vid.length > 0 ) {
+						var playr = YT.get( vid.attr( 'id' ) );
+						
+						if ( typeof playr !== 'undefined' ) {
+							playr.playVideo();
+						}
 					}
-				}
-			} else if ( 'vimeo' == target.data( 'type' ) ) {
-				var vid = target.find( '.video-embed > iframe' );
+				} else if ( 'vimeo' == target.data( 'type' ) ) {
+					var vid = target.find( '.video-embed > iframe' );
 
-				if ( vid.length > 0 ) {
-					var playr = new Vimeo.Player( vid );
-					
-					if ( typeof playr !== 'undefined' ) {
-						playr.play();
+					if ( vid.length > 0 ) {
+						var playr = new Vimeo.Player( vid );
+						
+						if ( typeof playr !== 'undefined' ) {
+							playr.play();
+						}
 					}
-				}
-			} else if ( 'html' == target.data( 'type' ) ) {
-				var vid = target.find( '.wp-video-shortcode' ).closest( 'mediaelementwrapper' );
+				} else if ( 'html' == target.data( 'type' ) ) {
+					var vid = target.find( '.wp-video-shortcode' ).closest( 'mediaelementwrapper' );
 
-				if ( vid.length > 0 ) {
-					vid[ 0 ].play();
+					if ( vid.length > 0 ) {
+						vid[ 0 ].play();
+					}
 				}
 			}
 		}
@@ -118,31 +127,33 @@
 		function pauseVideo( event ) {
 			var target = $( event.target ).closest( '.wpzabb-slideshow-slide-video' );
 
-			if ( 'youtube' == target.data( 'type' ) ) {
-				var vid = target.find( '.video-embed' );
+			if ( videoIsPlaying( target ) ) {
+				if ( 'youtube' == target.data( 'type' ) ) {
+					var vid = target.find( '.video-embed' );
 
-				if ( vid.length > 0 ) {
-					var playr = YT.get( vid.attr( 'id' ) );
-					
-					if ( typeof playr !== 'undefined' ) {
-						playr.pauseVideo();
+					if ( vid.length > 0 ) {
+						var playr = YT.get( vid.attr( 'id' ) );
+						
+						if ( typeof playr !== 'undefined' ) {
+							playr.pauseVideo();
+						}
 					}
-				}
-			} else if ( 'vimeo' == target.data( 'type' ) ) {
-				var vid = target.find( '.video-embed > iframe' );
+				} else if ( 'vimeo' == target.data( 'type' ) ) {
+					var vid = target.find( '.video-embed > iframe' );
 
-				if ( vid.length > 0 ) {
-					var playr = new Vimeo.Player( vid );
-					
-					if ( typeof playr !== 'undefined' ) {
-						playr.pause();
+					if ( vid.length > 0 ) {
+						var playr = new Vimeo.Player( vid );
+						
+						if ( typeof playr !== 'undefined' ) {
+							playr.pause();
+						}
 					}
-				}
-			} else if ( 'html' == target.data( 'type' ) ) {
-				var vid = target.find( '.wp-video-shortcode' ).closest( 'mediaelementwrapper' );
+				} else if ( 'html' == target.data( 'type' ) ) {
+					var vid = target.find( '.wp-video-shortcode' ).closest( 'mediaelementwrapper' );
 
-				if ( vid.length > 0 ) {
-					vid[ 0 ].pause();
+					if ( vid.length > 0 ) {
+						vid[ 0 ].pause();
+					}
 				}
 			}
 		}

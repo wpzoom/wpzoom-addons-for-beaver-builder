@@ -334,6 +334,22 @@ class WPZABBSlideshowModule extends FLBuilderModule {
  * Register the module and its form settings.
  */
 FLBuilder::register_module( 'WPZABBSlideshowModule', array(
+	'slides' => array( // Tab
+		'title'    => __( 'Slides', 'wpzabb' ), // Tab title
+		'sections' => array( // Tab Sections
+			'items'                  => array( // Section
+				'title'     => '', // Section Title
+				'fields'    => array( // Section Fields
+					'slides'             => array(
+						'type'          => 'form',
+						'label'         => __( 'Slide', 'wpzabb' ),
+						'form'          => 'slides_form', // ID from registered form below
+						'multiple'      => true
+					)
+				)
+			)
+		)
+	),
 	'general'    => array( // Tab
 		'title'    => __( 'General', 'wpzabb' ), // Tab title
 		'sections' => array( // Tab Sections
@@ -344,12 +360,12 @@ FLBuilder::register_module( 'WPZABBSlideshowModule', array(
 						'type'          => 'button-group',
 						'label'         => __( 'Autoplay Slideshow', 'wpzabb' ),
 						'help'          => __( 'Whether the slideshow should automatically rotate through each slide on an interval.', 'wpzabb' ),
-						'default'       => 'yes',
+						'default'       => 'no',
 						'responsive'    => array(
 							'default'         => array(
-								'default'    => 'yes',
-								'medium'     => 'yes',
-								'responsive' => 'yes'
+								'default'    => 'no',
+								'medium'     => 'no',
+								'responsive' => 'no'
 							)
 						),
 						'options'       => array(
@@ -367,19 +383,19 @@ FLBuilder::register_module( 'WPZABBSlideshowModule', array(
 						'type'          => 'unit',
 						'label'         => __( 'Autoplay Interval', 'wpzabb' ),
 						'help'          => __( 'The interval (in miliseconds) at which the slideshow should automatically rotate.', 'wpzabb' ),
-						'default'       => 3000,
+						'default'       => 10000,
 						'responsive'    => array(
 							'default'         => array(
-								'default'    => 3000,
-								'medium'     => 3000,
-								'responsive' => 3000
+								'default'    => 10000,
+								'medium'     => 10000,
+								'responsive' => 10000
 							)
 						),
 						'units'         => array( 'ms' ),
 						'default_unit'  => 'ms',
 						'slider'        => array(
 							'min'             => 0,
-							'max'             => 60000,
+							'max'             => 600000,
 							'step'            => 1
 						)
 					),
@@ -587,22 +603,6 @@ FLBuilder::register_module( 'WPZABBSlideshowModule', array(
 							'dots'             => __( 'Dots', 'wpzabb' ),
 							'thumbs'           => __( 'Thumbnails', 'wpzabb' )
 						)
-					)
-				)
-			)
-		)
-	),
-	'slides' => array( // Tab
-		'title'    => __( 'Slides', 'wpzabb' ), // Tab title
-		'sections' => array( // Tab Sections
-			'items'                  => array( // Section
-				'title'     => '', // Section Title
-				'fields'    => array( // Section Fields
-					'slides'             => array(
-						'type'          => 'form',
-						'label'         => __( 'Slide', 'wpzabb' ),
-						'form'          => 'slides_form', // ID from registered form below
-						'multiple'      => true,
 					)
 				)
 			)
@@ -1058,6 +1058,9 @@ FLBuilder::register_settings_form( 'slides_form', array(
 									'medium'     => '',
 									'responsive' => ''
 								)
+							),
+							'preview'       => array(
+								'type'           => 'none'
 							)
 						),
 						'button'            => array(

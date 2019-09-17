@@ -2,10 +2,21 @@
 	FLBuilder.registerModuleHelper( 'wpzabb-slideshow', {
 		init: function() {
 			$( 'body' ).delegate( '.fl-builder-settings-tabs a', 'click', this.onTabClick );
+
+			setTimeout( this.onTabClick, 500 );
+
+			$( document ).on( 'classAdded', '.fl-builder-settings[data-form-id="slides_form"]', function( event, className ) {
+				var vid_src_mob = $( '.fl-builder-settings[data-form-id="slides_form"] select[name="video_source_responsive"]' ),
+				    vid_src_med = $( '.fl-builder-settings[data-form-id="slides_form"] select[name="video_source_medium"]' ),
+				    vid_src_des = $( '.fl-builder-settings[data-form-id="slides_form"] select[name="video_source"]' ),
+				    video_source = vid_src_mob.is( ':visible' ) ? vid_src_mob : ( vid_src_med.is( ':visible' ) ? vid_src_med : vid_src_des );
+
+				video_source.trigger( 'change' );
+			} );
 		},
 
 		onTabClick: function() {
-			var tab  = $( this ),
+			var tab  = $( '.fl-builder-settings-tabs a.fl-active' ),
 			    id   = tab.attr( 'href' ).split( '#' ).pop(),
 			    form = $( '#' + id );
 
@@ -96,5 +107,47 @@
 				form.addClass( 'initd' );
 			}
 		}
-	});
+	} );
+
+	( function( func ) {
+		$.fn.addClass = function( n ) { // replace the existing function on $.fn
+			this.each( function( i ) { // for each element in the collection
+				var $this = $( this ), // 'this' is DOM element in this context
+				    prevClasses = this.getAttribute( 'class' ), // note its original classes
+				    classNames = $.isFunction( n ) ? n( i, prevClasses ) : n.toString(); // retain function-type argument support
+
+				$.each( classNames.split( /\s+/ ), function( index, className ) { // allow for multiple classes being added
+					if( !$this.hasClass( className ) ) { // only when the class is not already present
+						func.call( $this, className ); // invoke the original function to add the class
+						$this.trigger( 'classAdded', className ); // trigger a classAdded event
+					}
+				} );
+
+				prevClasses != this.getAttribute( 'class' ) && $this.trigger( 'classChanged' ); // trigger the classChanged event
+			} );
+
+			return this; // retain jQuery chainability
+		}
+	} )( $.fn.addClass ); // pass the original function as an argument
+
+	( function( func ) {
+		$.fn.removeClass = function( n ) {
+			this.each( function( i ) {
+				var $this = $( this ),
+				    prevClasses = this.getAttribute( 'class' ),
+				    classNames = $.isFunction( n ) ? n( i, prevClasses ) : n.toString();
+
+				$.each( classNames.split( /\s+/ ), function( index, className ) {
+					if( $this.hasClass( className ) ) {
+						func.call( $this, className );
+						$this.trigger( 'classRemoved', className );
+					}
+				} );
+
+				prevClasses != this.getAttribute( 'class' ) && $this.trigger( 'classChanged' );
+			} );
+
+			return this;
+		}
+	} )( $.fn.removeClass );
 } )( jQuery );
