@@ -156,7 +156,6 @@ if( !class_exists( 'WPZABB_Helper' ) ) {
 		 * @return  $rgba       Return RGBA if opacity is set. Default return RGB.
 		 * @since 	1.0
 		 */
-
 		static public function wpzabb_gradient_css( $gradient ){
 			$gradient_angle = intval( $gradient['angle'] );
 			$direction      = $gradient['direction'];
@@ -203,6 +202,29 @@ if( !class_exists( 'WPZABB_Helper' ) ) {
 				$css .= 'background: linear-gradient('.$angle.'deg, '.$color1.' 0%, '.$color2.' 100%);';			
 			}
 			echo $css;
+		}
+
+		/**
+		 * Check is valid hex color code
+		 * 
+		 * @param $string  The string to check
+		 * @since 1.1.1
+		 * @return boolean
+		 */
+		static public function is_hex_color( $string ) {
+			$color = ltrim( $string, '#' );
+			return !empty( $color ) && ctype_xdigit( $color ) && ( strlen( $color ) == 6 || strlen( $color ) == 3 );
+		}
+
+		/**
+		 * If $string is hex code, then we need to prepend #
+		 * 
+		 * @param $string  The string to check
+		 * @since 1.1.1
+		 * @return $string
+		 */
+		static public function maybe_prepend_hash( $string ) {
+			return ( self::is_hex_color( $string ) ? '#' : '' ) . $string;
 		}
 	}
 }
