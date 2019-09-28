@@ -13,6 +13,7 @@
 	text-align: center;
 	list-style: none;
 	margin: 0 15px 50px !important;
+    float: none !important;
 }
 
 .wpzabb-woocommerce-products .products.columns-1 li { width: calc(100% - 30px); }
@@ -89,4 +90,13 @@
 }
 
 .wpzabb-woocommerce-products .products .button:hover {
+}
+
+
+@media ( max-width: 768px) {
+
+    /*.wpzabb-woocommerce-products.columns-phone-1 .products li { width: calc(100% - 30px); }*/
+    .wpzabb-woocommerce-products.woocommerce ul.products[class*=columns-] li.product,
+    .woocommerce-page ul.products[class*=columns-] li.product { }
+
 }
