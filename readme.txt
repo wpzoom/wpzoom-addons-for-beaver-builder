@@ -18,8 +18,10 @@ This plugin will extend [Beaver Builder](https://www.wpbeaverbuilder.com/?fla=46
 == Included modules: ==
 
 * **Team Members**
-* Clients
+* **Clients**
 * Testimonials
+* **Food Menu** - *NEW*
+* **WooCommerce Products** - *NEW*
 * Buttons
 * Latest Posts
 * Maps
@@ -44,6 +46,13 @@ You can see multiple pages created using **Beaver Builder** and our **Inspiro** 
 1. Included modules
 
 == Changelog ==
+
+= 1.2.0 =
+* New Module: Food Menu
+* New Module: WooCommerce Products
+
+= 1.1.2 =
+* Minor bug fix
 
 = 1.1.1 =
 * Minor bug fix with font size for Heading module on mobile devices

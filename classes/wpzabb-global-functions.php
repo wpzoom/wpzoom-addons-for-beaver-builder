@@ -515,7 +515,7 @@ function wpzabb_get_category_term_list( $post_type = 'post' ) {
     }
 
     $terms  = get_terms( $args );
-    $result = wp_list_pluck( $terms, 'name', 'term_id' );
+    $result = wp_list_pluck( $terms, 'name', 'slug' );
 
     return array( 0 => esc_html__( 'All Categories', 'fw' ) ) + $result;
 }
