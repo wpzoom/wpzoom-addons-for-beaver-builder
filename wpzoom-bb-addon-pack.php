@@ -4,7 +4,7 @@
  * Plugin Name: Beaver Builder Addons by WPZOOM
  * Plugin URI: https://www.wpzoom.com/
  * Description: WPZOOM Addons will extend Beaver Builder with several useful extensions that are missing in the Lite version.
- * Version: 1.1.1
+ * Version: 1.2.0
  * Author: WPZOOM
  * Author URI: https://www.wpzoom.com
  * Copyright: (c) 2018 WPZOOM
@@ -18,7 +18,7 @@ if( !class_exists( "WPZOOM_BB_Addon_Pack" ) ) {
 
 	define( 'BB_WPZOOM_ADDON_DIR', plugin_dir_path( __FILE__ ) );
 	define( 'BB_WPZOOM_ADDON_URL', plugins_url( '/', __FILE__ ) );
-	define( 'BB_WPZOOM_ADDON_LITE_VERSION', '1.1.1' );
+	define( 'BB_WPZOOM_ADDON_LITE_VERSION', '1.2.0' );
 	define( 'WPZOOM_REMOVE_wpzabb_FROM_REGISTRATION_LISTING', true );
 	define( 'BB_WPZOOM_ADDON_FILE', trailingslashit( dirname( __FILE__ ) ) . 'wpzoom-bb-addon-pack.php' );
 	define( 'BB_WPZOOM_ADDON_LITE', true );
@@ -66,7 +66,7 @@ if( !class_exists( "WPZOOM_BB_Addon_Pack" ) ) {
 		function check_memory_limit() {
 			$memory_limit  = ini_get( 'memory_limit' );       	// Total Memory.
             $peak_memory   = memory_get_peak_usage( true );   	// Available Memory.
-            $uabb_required = 14999999;                      	// Required Memory for UABB.
+            $wpzabb_required = 14999999;                      	// Required Memory for WPZABB.
 
             if ( '-1' !== $memory_limit ) {
                 if ( preg_match( '/^(\d+)(.)$/', $memory_limit, $matches ) ) {
@@ -87,7 +87,7 @@ if( !class_exists( "WPZOOM_BB_Addon_Pack" ) ) {
                     }
                 }
 
-                if ( $memory_limit - $peak_memory <= $uabb_required ) {
+                if ( $memory_limit - $peak_memory <= $wpzabb_required ) {
                     return true;
                 } else {
                     return false;
@@ -120,7 +120,7 @@ if( !class_exists( "WPZOOM_BB_Addon_Pack" ) ) {
 			), $deactivate_url
 		);
 		echo '<div class="notice notice-error"><p>';
-		echo sprintf( __( "You currently have two versions of <strong>WPZOOM Addons for Beaver Builder</strong> active on this site. Please <a href='%s'>deactivate one</a> before continuing.", 'wpzabb' ), $deactivate_url );
+		echo sprintf( __( "You currently have two versions of <strong>Beaver Builder Addons by WPZOOM</strong> active on this site. Please <a href='%s'>deactivate one</a> before continuing.", 'wpzabb' ), $deactivate_url );
 		echo '</p></div>';
 
 	}
