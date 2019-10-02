@@ -19,8 +19,9 @@
 	background: #000;
 }
 
-.wpzabb-slideshow-slide-outer-wrap {
+.wpzabb-slideshow .wpzabb-slideshow-slide-outer-wrap {
 	position: relative;
+	pointer-events: none;
 	width: 100%;
 }
 
@@ -103,6 +104,7 @@
 .wpzabb-slideshow .wpzabb-slideshow-slide-video .wpzabb-slideshow-slide-video-controls a {
 	display: block;
 	cursor: pointer;
+	pointer-events: auto;
 	font: normal 400 1.5em/1 dashicons;
 	text-decoration: none !important;
 	-webkit-text-stroke: 2px rgba(0, 0, 0, 0.5);
@@ -137,6 +139,10 @@
 	text-stroke: 2px rgba(0, 0, 0, 0.5);
 	paint-order: stroke fill;
 	color: #fff;
+}
+
+.wpzabb-slideshow .wpzabb-slideshow-slide-details .wpzabb-slideshow-slide-details-wrap {
+	pointer-events: auto;
 }
 
 .wpzabb-slideshow .wpzabb-slideshow-slide-details .wpzabb-slideshow-slide-title {
