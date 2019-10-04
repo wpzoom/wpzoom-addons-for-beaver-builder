@@ -51,6 +51,7 @@
 
 .wpzabb-slideshow .wpzabb-slideshow-slide-image img {
 	display: block;
+	object-fit: cover;
 	padding: 0;
 	border: 0;
 	margin: 0;
@@ -89,6 +90,7 @@
 .wpzabb-slideshow .wpzabb-slideshow-slide-video video {
 	height: 100%;
 	width: 100%;
+	object-fit: cover;
 	border: 0;
 	margin: 0;
 }
