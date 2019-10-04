@@ -17,6 +17,7 @@
 	justify-content: stretch;
 	position: relative;
 	background: #000;
+	min-height: 100% !important;
 }
 
 .wpzabb-slideshow .wpzabb-slideshow-slide-outer-wrap {
