@@ -91,11 +91,11 @@ class WPZABBSlideshowModule extends FLBuilderModule {
 	 */
 	public function get_classes( $slide ) {
 		$classes = array( 'wpzabb-photo-img' );
-		
+
 		if ( $slide->image_source == 'library' ) {
 			if ( ! empty( $slide->image ) ) {
 				$data = self::get_data( $slide );
-				
+
 				if ( is_object( $data ) ) {
 					$classes[] = 'wp-image-' . $data->id;
 
@@ -110,7 +110,7 @@ class WPZABBSlideshowModule extends FLBuilderModule {
 				}
 			}
 		}
-		
+
 		return implode( ' ', $classes );
 	}
 
@@ -422,12 +422,12 @@ FLBuilder::register_module( 'WPZABBSlideshowModule', array(
 						'type'          => 'unit',
 						'label'         => __( 'Transition Speed', 'wpzabb' ),
 						'help'          => __( 'The duration (in miliseconds) of the slideshow transitions.', 'wpzabb' ),
-						'default'       => 1000,
+						'default'       => 300,
 						'responsive'    => array(
 							'default'         => array(
-								'default'    => 1000,
-								'medium'     => 1000,
-								'responsive' => 1000
+								'default'    => 300,
+								'medium'     => 300,
+								'responsive' => 300
 							)
 						),
 						'units'         => array( 'ms' ),
@@ -637,8 +637,8 @@ FLBuilder::register_module( 'WPZABBSlideshowModule', array(
 						'label'         => '',
 						'default'       => array(
 							'type'            => 'linear',
-							'colors'          => array( 'rgba(0, 0, 0, 0.9)', 'rgba(0, 0, 0, 0)' ),
-							'stops'           => array( 40, 100 ),
+							'colors'          => array( 'rgba(0, 0, 0, 0.5)', 'rgba(0, 0, 0, 0.3)' ),
+							'stops'           => array( 0, 100 ),
 							'angle'           => 0
 						),
 						'preview'       => array(
@@ -657,7 +657,7 @@ FLBuilder::register_module( 'WPZABBSlideshowModule', array(
 						'type'          => 'typography',
 						'label'         => __( 'Font', 'wpzabb' ),
 						'default'       => array(
-							'font_family'     => 'Roboto',
+							'font_family'     => '',
 							'font_weight'     => 700,
 							'font_size'       => array(
 								'length'     => '30',
@@ -773,7 +773,7 @@ FLBuilder::register_module( 'WPZABBSlideshowModule', array(
 					'slide_button_background_color' => array(
 						'type'          => 'color',
 						'label'         => __( 'Background Color', 'wpzabb' ),
-						'default'       => 'rgba(255, 255, 255, 0.3)',
+						'default'       => 'rgba(255, 255, 255, 0.0)',
 						'show_alpha'    => true,
 						'preview'       => array(
 							'type'            => 'css',
@@ -788,10 +788,10 @@ FLBuilder::register_module( 'WPZABBSlideshowModule', array(
 							'style'           => 'solid',
 							'color'           => 'ffffff',
 							'width'           => array(
-								'top'          => 0,
-								'left'         => 0,
-								'right'        => 0,
-								'bottom'       => 0
+								'top'          => 2,
+								'left'         => 2,
+								'right'        => 2,
+								'bottom'       => 2
 							),
 							'radius'          => array(
 								'top_left'     => 0,
@@ -878,10 +878,10 @@ FLBuilder::register_module( 'WPZABBSlideshowModule', array(
 							'style'           => 'solid',
 							'color'           => 'ffffff',
 							'width'           => array(
-								'top'          => 0,
-								'left'         => 0,
-								'right'        => 0,
-								'bottom'       => 0
+								'top'          => 2,
+								'left'         => 2,
+								'right'        => 2,
+								'bottom'       => 2
 							),
 							'radius'          => array(
 								'top_left'     => 0,

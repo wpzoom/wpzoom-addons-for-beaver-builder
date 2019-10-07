@@ -12,12 +12,24 @@
 }
 
 .wpzabb-slideshow .wpzabb-slideshow-slide {
-	display: flex !important;
+	/*display: none !important;*/
 	align-items: stretch;
 	justify-content: stretch;
 	position: relative;
 	background: #000;
 	min-height: 100% !important;
+}
+
+.wpzabb-slideshow .wpzabb-slideshow-slides > li {
+    display: none !important;
+}
+
+.wpzabb-slideshow .wpzabb-slideshow-slides > li:first-child {
+    display: flex !important;
+}
+
+.wpzabb-slideshow .flex-viewport .wpzabb-slideshow-slides > li {
+    display: flex !important;
 }
 
 .wpzabb-slideshow .wpzabb-slideshow-slide-outer-wrap {
@@ -110,9 +122,6 @@
 	pointer-events: auto;
 	font: normal 400 1.5em/1 dashicons;
 	text-decoration: none !important;
-	-webkit-text-stroke: 2px rgba(0, 0, 0, 0.5);
-	text-stroke: 2px rgba(0, 0, 0, 0.5);
-	paint-order: stroke fill;
 	color: rgba(255, 255, 255, 0.5);
 	height: auto;
 	width: auto;
@@ -138,9 +147,6 @@
 	z-index: 4;
 	display: flex;
 	justify-content: center;
-	-webkit-text-stroke: 2px rgba(0, 0, 0, 0.5);
-	text-stroke: 2px rgba(0, 0, 0, 0.5);
-	paint-order: stroke fill;
 	color: #fff;
 }
 
@@ -152,6 +158,10 @@
 	font-size: 30px;
 	line-height: 1.5;
 	margin: 0 0 15px;
+}
+
+.wpzabb-slideshow .wpzabb-slideshow-slide-details .wpzabb-slideshow-slide-title a {
+    text-decoration: none;
 }
 
 .wpzabb-slideshow .wpzabb-slideshow-slide-details .wpzabb-slideshow-slide-content {
@@ -182,7 +192,6 @@
 	color: #fff;
 	background: rgba(255, 255, 255, 0.3);
 	padding: 10px 20px;
-	box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.5);
 	margin: 0;
 	-webkit-transition: all 0.3s ease-in-out;
 	-moz-transition: all 0.3s ease-in-out;
@@ -193,8 +202,6 @@
 
 .wpzabb-slideshow .wpzabb-slideshow-slide-details .wpzabb-slideshow-slide-button a:hover,
 .wpzabb-slideshow .wpzabb-slideshow-slide-details .wpzabb-slideshow-slide-button a:active {
-	-webkit-text-stroke: 0;
-	text-stroke: 0;
 	color: #000;
 	background: #fff;
 }
@@ -204,6 +211,13 @@
 	top: 0;
 	left: 0;
 	right: 0;
+    margin: 0;
+    padding: 0;
+    cursor: grab;
+}
+
+.wpzabb-slideshow .flex-direction-nav li {
+    list-style-type: none;
 }
 
 .wpzabb-slideshow .flex-direction-nav a {
@@ -235,11 +249,8 @@
 	display: block;
 	font: normal 400 3.5em/1 dashicons;
 	text-decoration: none !important;
-	-webkit-text-stroke: 2px rgba(0, 0, 0, 0.5);
-	text-stroke: 2px rgba(0, 0, 0, 0.5);
 	color: rgba(255, 255, 255, 0.5);
 	opacity: 1;
-	paint-order: stroke fill;
 	-webkit-transition: all 0.3s ease-in-out;
 	-moz-transition: all 0.3s ease-in-out;
 	-ms-transition: all 0.3s ease-in-out;
@@ -270,20 +281,23 @@
 	position: absolute;
 	left: 0;
 	right: 0;
-	bottom: 11px;
+	bottom: 50px;
 	z-index: 3;
 	line-height: 11px;
+    margin: 0;
+    padding: 0;
 }
 
 .wpzabb-slideshow .flex-control-nav.flex-control-paging li {
 	line-height: 11px;
+    list-style-type: none;
 }
 
 .wpzabb-slideshow .flex-control-nav.flex-control-paging a {
 	background-color: rgba(255, 255, 255, 0.5);
 	height: 12px;
 	width: 12px;
-	box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.5);
+	/*box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.5);*/
 	-webkit-transition: all 0.3s ease-in-out;
 	-moz-transition: all 0.3s ease-in-out;
 	-ms-transition: all 0.3s ease-in-out;
@@ -294,7 +308,7 @@
 .wpzabb-slideshow .flex-control-nav.flex-control-paging a.flex-active,
 .wpzabb-slideshow .flex-control-nav.flex-control-paging a:hover {
 	background-color: #fff;
-	box-shadow: 0 0 0 1px #fff, 0 0 0 3px rgba(0, 0, 0, 0.5);
+	/*box-shadow: 0 0 0 1px #fff, 0 0 0 3px rgba(0, 0, 0, 0.5);*/
 }
 
 .wpzabb-slideshow .flex-control-nav.flex-control-paging a:focus {
