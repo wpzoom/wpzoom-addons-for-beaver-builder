@@ -30,9 +30,10 @@ class WPZABBSlideshowModule extends FLBuilderModule {
 
 		$this->add_css( 'dashicons' );
 		$this->add_js( 'vimeo-api', 'https://player.vimeo.com/api/player.js' );
-		$this->add_js( 'touch-events',  $this->url . 'js/touchevents.polyfill.js', array( 'jquery' ), '1.0' );
-		$this->add_css( 'jquery-flexslider', $this->url . 'css/jquery.flexslider.css', array( 'dashicons' ), '1.0' );
-		$this->add_js( 'jquery-flexslider', $this->url . 'js/jquery.flexslider.js', array( 'jquery', 'touch-events', 'vimeo-api' ), '1.0' );
+		$this->add_css( 'flickity-style', $this->url . 'css/flickity.css', array(), '2.2.1' );
+		$this->add_css( 'flickity-fade-style', $this->url . 'css/flickity-fade.css', array( 'flickity-style' ), '1.0.0' );
+		$this->add_js( 'flickity-script', $this->url . 'js/flickity.js', array( 'jquery' ), '2.2.1' );
+		$this->add_js( 'flickity-fade-script', $this->url . 'js/flickity-fade.js', array( 'flickity-script' ), '1.0.0' );
 
 		FLBuilderAJAX::add_action( 'wpzabb_slideshow_get_thumb', array( $this, 'ajax_get_thumbnail' ), array( 'post_id', 'source', 'dat', 'element_num' ) );
 	}
@@ -403,56 +404,35 @@ FLBuilder::register_module( 'WPZABBSlideshowModule', array(
 						'type'          => 'select',
 						'label'         => __( 'Slide Transition', 'wpzabb' ),
 						'help'          => __( 'The effect used to transition between each slide.', 'wpzabb' ),
-						'default'       => 'slide-horizontal',
+						'default'       => 'slide',
 						'responsive'    => array(
 							'default'         => array(
-								'default'    => 'slide-horizontal',
-								'medium'     => 'slide-horizontal',
-								'responsive' => 'slide-horizontal'
+								'default'    => 'slide',
+								'medium'     => 'slide',
+								'responsive' => 'slide'
 							)
 						),
 						'options'       => array(
-							'none'             => __( 'None', 'wpzabb' ),
 							'fade'             => __( 'Fade', 'wpzabb' ),
-							'slide-horizontal' => __( 'Horizontal Slide', 'wpzabb' ),
-							'slide-vertical'   => __( 'Vertical Slide', 'wpzabb' )
+							'slide'            => __( 'Slide', 'wpzabb' )
 						)
 					),
 					'slideshow_transition_speed' => array(
 						'type'          => 'unit',
 						'label'         => __( 'Transition Speed', 'wpzabb' ),
-						'help'          => __( 'The duration (in miliseconds) of the slideshow transitions.', 'wpzabb' ),
-						'default'       => 300,
+						'help'          => __( 'The speed of the slideshow transitions.', 'wpzabb' ),
+						'default'       => 0.28,
 						'responsive'    => array(
 							'default'         => array(
-								'default'    => 300,
-								'medium'     => 300,
-								'responsive' => 300
+								'default'    => 0.28,
+								'medium'     => 0.28,
+								'responsive' => 0.28
 							)
 						),
-						'units'         => array( 'ms' ),
-						'default_unit'  => 'ms',
 						'slider'        => array(
 							'min'             => 0,
-							'max'             => 60000,
-							'step'            => 1
-						)
-					),
-					'slideshow_direction'    => array(
-						'type'          => 'select',
-						'label'         => __( 'Slideshow Direction', 'wpzabb' ),
-						'help'          => __( 'The direction the slideshow moves in.', 'wpzabb' ),
-						'default'       => 'forward',
-						'responsive'    => array(
-							'default'         => array(
-								'default'    => 'forward',
-								'medium'     => 'forward',
-								'responsive' => 'forward'
-							)
-						),
-						'options'       => array(
-							'forward' => __( 'Forward', 'wpzabb' ),
-							'backward'   => __( 'Backward', 'wpzabb' )
+							'max'             => 1,
+							'step'            => 0.001
 						)
 					),
 					'slideshow_shuffle'      => array(
@@ -492,7 +472,7 @@ FLBuilder::register_module( 'WPZABBSlideshowModule', array(
 					'slideshow_hoverpause'   => array(
 						'type'          => 'button-group',
 						'label'         => __( 'Pause On Hover', 'wpzabb' ),
-						'help'          => __( 'Whether the slideshow should pause when a pointing device hovers over it.', 'wpzabb' ),
+						'help'          => __( 'Whether the slideshow should pause when a pointing device hovers over it. <em>(Only if the <strong>Autoplay Slideshow</strong> option is enabled)</em>', 'wpzabb' ),
 						'default'       => 'yes',
 						'responsive'    => array(
 							'default'         => array(

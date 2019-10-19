@@ -5,9 +5,11 @@ $auto_height_max = intval( $settings->slideshow_autoheight_max );
 ?>
 
 <?php if ( $auto_height ) : ?>
-	.fl-node-<?php echo $id; ?> .wpzabb-slideshow .flex-viewport,
 	.fl-node-<?php echo $id; ?> .wpzabb-slideshow .wpzabb-slideshow-slides,
-	.fl-node-<?php echo $id; ?> .wpzabb-slideshow .wpzabb-slideshow-slide {
+	.fl-node-<?php echo $id; ?> .wpzabb-slideshow .wpzabb-slideshow-slides .flickity-viewport,
+	.fl-node-<?php echo $id; ?> .wpzabb-slideshow .wpzabb-slideshow-slides .flickity-slider,
+	.fl-node-<?php echo $id; ?> .wpzabb-slideshow .wpzabb-slideshow-slides .wpzabb-slideshow-slide,
+	.fl-node-<?php echo $id; ?> .wpzabb-slideshow .wpzabb-slideshow-slides .wpzabb-slideshow-slide-outer-wrap {
 		height: <?php echo $auto_height_size; ?>vh;
 		max-height: <?php echo $auto_height_max; ?>px;
 	}
