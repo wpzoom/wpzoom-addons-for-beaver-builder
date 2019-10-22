@@ -13,6 +13,21 @@ $auto_height_max = intval( $settings->slideshow_autoheight_max );
 		height: <?php echo $auto_height_size; ?>vh;
 		max-height: <?php echo $auto_height_max; ?>px;
 	}
+
+	<?php if ( $auto_height_size >= 100 ) : ?>
+		.fl-node-<?php echo $id; ?> .wpzabb-slideshow .wpzabb-slideshow-slide-video iframe {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			height: 56.25vw;
+			min-height: 100vh;
+			width: 100vw;
+			min-width: 177.77vh;
+			-webkit-transform: translate(-50%, -50%);
+			-ms-transform: translate(-50%, -50%);
+			transform: translate(-50%, -50%);
+		}
+	<?php endif; ?>
 <?php endif; ?>
 
 .fl-node-<?php echo $id; ?> .wpzabb-slideshow .wpzabb-slideshow-slide {
