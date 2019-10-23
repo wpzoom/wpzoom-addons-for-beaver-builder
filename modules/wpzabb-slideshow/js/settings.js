@@ -13,6 +13,12 @@
 
 				video_source.trigger( 'change' );
 			} );
+
+			var slidesrc = $( '#fl-field-slides_source select[name="slides_source"]' );
+			slidesrc.parent().find( '.fl-field-description' ).toggle( 'posts' == slidesrc.val() );
+			slidesrc.on( 'change', function() {
+				$( this ).parent().find( '.fl-field-description' ).toggle( 'posts' == $( this ).val() );
+			} );
 		},
 
 		onTabClick: function() {
@@ -20,7 +26,8 @@
 			    id   = tab.attr( 'href' ).split( '#' ).pop(),
 			    form = $( '#' + id );
 
-			if ( 'fl-builder-settings-tab-slides' == id && form.length > 0 && !form.hasClass( 'initd' ) ) {
+			if ( 'fl-builder-settings-tab-slides' == id && form.length > 0 && !form.hasClass( 'initd' ) &&
+			     'custom' == $( '#fl-field-slides_source select[name="slides_source"]' ).val() ) {
 				var trs = form.find( '#fl-field-slides > tr' ),
 				    slides = form.find( '#fl-field-slides > tr > .fl-field-control > .fl-field-control-wrapper > .fl-form-field' );
 
@@ -43,20 +50,19 @@
 
 								if ( is_vid || is_img ) {
 									if ( is_vid ) {
-										FLBuilder.ajax(
+										$.post(
+											wpzabb_slideshow_ajax.url,
 											{
 												action: 'wpzabb_slideshow_get_thumb',
+												nonce: wpzabb_slideshow_ajax.nonce,
+												post_id: FLBuilderConfig.postId,
 												source: ( is_vid ? json.video_source : json.image_source + '-image' ),
 												dat: ( is_vid ? vid : img ),
 												element_num: $( this ).closest( 'tr' ).index()
 											},
 											function( r ) {
-												if ( false !== r ) {
-													var response;
-
-													try {
-														response = JSON.parse( r );
-													} catch( e ) {}
+												if ( false !== r && typeof r.data !== 'undefined' ) {
+													var response = r.data;
 
 													if ( typeof response !== 'undefined' ) {
 														var type = response.type,

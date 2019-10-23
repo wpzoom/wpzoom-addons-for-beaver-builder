@@ -35,7 +35,14 @@ class WPZABBSlideshowModule extends FLBuilderModule {
 		$this->add_js( 'flickity-script', $this->url . 'js/flickity.js', array( 'jquery' ), '2.2.1' );
 		$this->add_js( 'flickity-fade-script', $this->url . 'js/flickity-fade.js', array( 'flickity-script' ), '1.0.0' );
 
-		FLBuilderAJAX::add_action( 'wpzabb_slideshow_get_thumb', array( $this, 'ajax_get_thumbnail' ), array( 'post_id', 'source', 'dat', 'element_num' ) );
+		//FLBuilderAJAX::add_action( 'wpzabb_slideshow_get_thumb', array( $this, 'ajax_get_thumbnail' ), array( 'post_id', 'source', 'dat', 'element_num' ) );
+
+		wp_localize_script( 'flickity-script', 'wpzabb_slideshow_ajax', array(
+			'url' => admin_url( 'admin-ajax.php' ),
+			'nonce' => wp_create_nonce( 'wpzabb-slideshow-ajax-nonce' )
+		) );
+
+		add_action( 'wp_ajax_wpzabb_slideshow_get_thumb', array( $this, 'ajax_get_thumbnail' ) );
 	}
 
 	/**
@@ -279,27 +286,27 @@ class WPZABBSlideshowModule extends FLBuilderModule {
 
 	/**
 	 * AJAX callback to return the thumbnail of a given video or image URL.
-	 *
-	 * @param  string       $post_id     The ID of the post this AJAX request came from.
-	 * @param  string       $source      The source of the video or image (either library, url, or image).
-	 * @param  string       $dat         The URL (for videos/images hosted elsewhere) or ID (for videos/images from the local media library) of the video/image.
-	 * @param  string       $element_num The element number for use on the JS side.
-	 * @return string|false              The URL of the thumbnail, or false othewrwise.
 	 */
-	public function ajax_get_thumbnail( $post_id, $source, $dat, $element_num ) {
+	public function ajax_get_thumbnail() {
+		check_ajax_referer( 'wpzabb-slideshow-ajax-nonce', 'nonce' );
+
+		$result = false;
+		$post_id = isset( $_POST[ 'post_id' ] ) ? intval( $_POST[ 'post_id' ] ) : -1;
+		$source = isset( $_POST[ 'source' ] ) ? $_POST[ 'source' ] : 'none';
+		$dat = isset( $_POST[ 'dat' ] ) ? $_POST[ 'dat' ] : '';
+		$element_num = isset( $_POST[ 'element_num' ] ) ? intval( $_POST[ 'element_num' ] ) : -1;
+
 		if ( 'library' == $source || 'library-image' == $source ) {
 			$url = wp_get_attachment_url( $dat );
-
-			return false !== $url ? array( 'type' => $source, 'url' => $url, 'element_num' => intval( $element_num ) ) : false;
+			$result = false !== $url ? array( 'type' => $source, 'url' => $url, 'element_num' => $element_num ) : false;
 		} elseif ( 'url' == $source ) {
 			$url = $this->fetch_video_thumbnail( $dat );
-
-			return false !== $url ? array( 'type' => $source, 'url' => $url, 'element_num' => intval( $element_num ) ) : false;
+			$result = false !== $url ? array( 'type' => $source, 'url' => $url, 'element_num' => $element_num ) : false;
 		} elseif ( 'url-image' == $source ) {
-			return array( 'type' => $source, 'url' => $dat, 'element_num' => intval( $element_num ) );
-		} else {
-			return false;
+			$result = array( 'type' => $source, 'url' => $dat, 'element_num' => $element_num );
 		}
+
+		wp_send_json_success( $result );
 	}
 
 	/**
@@ -341,7 +348,28 @@ FLBuilder::register_module( 'WPZABBSlideshowModule', array(
 			'items'                  => array( // Section
 				'title'     => '', // Section Title
 				'fields'    => array( // Section Fields
-					'slides'             => array(
+					'slides_source'      => array(
+						'type'          => 'select',
+						'label'         => __( 'Slides Source', 'wpzabb' ),
+						'description'   => __( 'You can customize which posts are included in the slideshow on the <strong>Posts</strong> tab.', 'wpzabb' ),
+						'help'          => __( 'The source for slides in the slideshow. (i.e. Custom slides, WordPress posts)', 'wpzabb' ),
+						'default'       => 'custom',
+						'options'       => array(
+							'custom'           => __( 'Custom Slides', 'wpzabb' ),
+							'posts'            => __( 'WordPress Posts', 'wpzabb' )
+						),
+						'toggle'        => array(
+							'custom'             => array(
+								'tabs'   => array(),
+								'fields' => array( 'slides' )
+							),
+							'posts'              => array(
+								'tabs'   => array( 'loop' ),
+								'fields' => array()
+							)
+						)
+					),
+					'slides'      => array(
 						'type'          => 'form',
 						'label'         => __( 'Slide', 'wpzabb' ),
 						'form'          => 'slides_form', // ID from registered form below
@@ -350,6 +378,10 @@ FLBuilder::register_module( 'WPZABBSlideshowModule', array(
 				)
 			)
 		)
+	),
+	'loop' => array(
+		'title'    => __( 'Posts', 'wpzabb' ),
+		'file'     => FL_BUILDER_DIR . 'includes/loop-settings.php'
 	),
 	'general'    => array( // Tab
 		'title'    => __( 'General', 'wpzabb' ), // Tab title

@@ -1,3 +1,19 @@
+#fl-builder-settings-section-items .fl-form-table tbody:first-child::after {
+	content: ' ';
+	display: block;
+	height: 10px;
+}
+
+#fl-field-slides {
+	border-top: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+#fl-field-slides::before {
+	content: ' ';
+	display: block;
+	height: 30px;
+}
+
 #fl-field-slides .fl-form-field .fl-form-field-edit {
 	display: block;
 	text-align: center;
