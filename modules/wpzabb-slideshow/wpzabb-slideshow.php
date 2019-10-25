@@ -35,12 +35,15 @@ class WPZABBSlideshowModule extends FLBuilderModule {
 		$this->add_js( 'flickity-script', $this->url . 'js/flickity.js', array( 'jquery' ), '2.2.1' );
 		$this->add_js( 'flickity-fade-script', $this->url . 'js/flickity-fade.js', array( 'flickity-script' ), '1.0.0' );
 
-		//FLBuilderAJAX::add_action( 'wpzabb_slideshow_get_thumb', array( $this, 'ajax_get_thumbnail' ), array( 'post_id', 'source', 'dat', 'element_num' ) );
-
 		wp_localize_script( 'flickity-script', 'wpzabb_slideshow_ajax', array(
 			'url' => admin_url( 'admin-ajax.php' ),
 			'nonce' => wp_create_nonce( 'wpzabb-slideshow-ajax-nonce' )
 		) );
+
+		if ( 'wpzoom' == wp_get_theme()->get( 'TextDomain' ) ) {
+			add_action( 'fl_builder_loop_settings_after_form', array( $this, 'loop_settings_after_form' ) );
+			add_filter( 'fl_builder_loop_query_args', array( $this, 'loop_query_args' ) );
+		}
 
 		add_action( 'wp_ajax_wpzabb_slideshow_get_thumb', array( $this, 'ajax_get_thumbnail' ) );
 	}
@@ -335,6 +338,41 @@ class WPZABBSlideshowModule extends FLBuilderModule {
 		}
 
 		return false;
+	}
+
+	/**
+	 * Adds an extra field to the loop settings in the builder.
+	 */
+	public function loop_settings_after_form( $settings ) {
+		if ( is_object( $settings ) && property_exists( $settings, 'slides_source' ) ) {
+			?><div id="fl-builder-settings-section-wpzabb_featured_posts_only" class="fl-loop-data-wpzabb-featured-posts-only fl-builder-settings-section">
+				<table class="fl-form-table">
+					<?php
+					FLBuilder::render_settings_field( 'wpzabb_featured_posts_only', array(
+						'type'    => 'select',
+						'label'   => __( '<strong>[WPZOOM]</strong> Only Show Featured Posts', 'wpzabb' ),
+						'default' => 'no',
+						'options' => array(
+							'yes' => __( 'Yes', 'fl-builder' ),
+							'no'  => __( 'No', 'fl-builder' )
+						)
+					), $settings );
+					?>
+				</table>
+			</div><?php
+		}
+	}
+
+	/**
+	 * Filters the query args for the loop in the builder.
+	 */
+	public function loop_query_args( $args ) {
+		if ( isset( $args[ 'settings' ] ) && is_object( $args[ 'settings' ] ) && property_exists( $args[ 'settings' ], 'slides_source' ) &&
+		     property_exists( $args[ 'settings' ], 'wpzabb_featured_posts_only' ) && 'yes' == $args[ 'settings' ]->wpzabb_featured_posts_only ) {
+			$args[ 'meta_key' ] = 'wpzoom_is_featured';
+		}
+
+		return $args;
 	}
 }
 
