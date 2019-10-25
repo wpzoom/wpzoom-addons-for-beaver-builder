@@ -1,6 +1,73 @@
 <div class="wpzabb-slideshow">
 	<?php
-	$slides = $settings->slides;
+	$slides = array();
+
+	if ( 'posts' == $settings->slides_source ) {
+		$query = FLBuilderLoop::query( $settings );
+
+		if ( $query->have_posts() ) {
+			$h = 0;
+
+			while ( $query->have_posts() ) {
+				$query->the_post();
+
+				$slide = new stdClass();
+				$slide->title = the_title( '', '', false );
+				$slide->link = get_permalink();
+				$slide->link_target = '_self';
+				$slide->link_nofollow = 'no';
+				$slide->content = apply_filters( 'the_excerpt', get_the_excerpt() );
+				$slide->button = false;
+				$slide->button_label = '';
+				$slide->button_url = '';
+				$slide->button_url_target = '_self';
+				$slide->button_url_nofollow = 'no';
+				$slide->image_source = 'library';
+				$slide->image = get_post_thumbnail_id();
+				$slide->image_src = false !== ( $imgsrc = get_the_post_thumbnail_url() ) ? $imgsrc : '';
+				$slide->image_url = '';
+				$slide->video_source = 'url';
+				$slide->video = -1;
+				$slide->video_url = '';
+				$slide->playpause = true;
+				$slide->muteunmute = true;
+				$slide->startmuted = true;
+				$slide->autoplay = true;
+				$slide->loop = true;
+
+				if ( 'wpzoom' == wp_get_theme()->get( 'TextDomain' ) && metadata_exists( 'post', get_the_ID(), 'wpzoom_posts_single_post_video_type' ) ) {
+					$video_type = get_post_meta( get_the_ID(), 'wpzoom_posts_single_post_video_type', true );
+
+					if ( 'self_hosted' == $video_type && metadata_exists( 'post', get_the_ID(), 'wpzoom_posts_single_post_video_bg_url_mp4' ) ) {
+						$video_url = get_post_meta( get_the_ID(), 'wpzoom_posts_single_post_video_bg_url_mp4', true );
+					} elseif ( 'external_hosted' == $video_type && metadata_exists( 'post', get_the_ID(), 'wpzoom_posts_single_post_video_external_url' ) ) {
+						$video_url = get_post_meta( get_the_ID(), 'wpzoom_posts_single_post_video_external_url', true );
+					} elseif ( 'vimeo_pro' == $video_type && metadata_exists( 'post', get_the_ID(), 'wpzoom_posts_single_post_video_vimeo_pro' ) ) {
+						$video_url = get_post_meta( get_the_ID(), 'wpzoom_posts_single_post_video_vimeo_pro', true );
+					} else {
+						$video_url = '';
+					}
+
+					$slide->video_url = $video_url;
+
+					$slide->playpause = metadata_exists( 'post', get_the_ID(), 'wpzoom_posts_single_post_video_play_button' ) ? get_post_meta( get_the_ID(), 'wpzoom_posts_single_post_video_play_button', true ) : true;
+					$slide->muteunmute = metadata_exists( 'post', get_the_ID(), 'wpzoom_posts_single_post_video_mute_button' ) ? get_post_meta( get_the_ID(), 'wpzoom_posts_single_post_video_mute_button', true ) : true;
+					$slide->startmuted = metadata_exists( 'post', get_the_ID(), 'wpzoom_posts_single_post_video_mute' ) ? get_post_meta( get_the_ID(), 'wpzoom_posts_single_post_video_mute', true ) : true;
+					$slide->autoplay = metadata_exists( 'post', get_the_ID(), 'wpzoom_posts_single_post_video_autoplay' ) ? get_post_meta( get_the_ID(), 'wpzoom_posts_single_post_video_autoplay', true ) : true;
+					$slide->loop = metadata_exists( 'post', get_the_ID(), 'wpzoom_posts_single_post_video_loop' ) ? get_post_meta( get_the_ID(), 'wpzoom_posts_single_post_video_loop', true ) : true;
+				}
+
+				$slides[ $h ] = $slide;
+
+				$h++;
+			}
+		}
+
+		wp_reset_postdata();
+	} else {
+		$slides = $settings->slides;
+	}
+
 	$slides_amount = count( $slides );
 
 	if ( 0 < $slides_amount ) :
