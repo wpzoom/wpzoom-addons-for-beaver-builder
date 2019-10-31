@@ -16,7 +16,7 @@ define( 'WPZABB_SLIDESHOW_DEBUG', 0 );
 		contain: true,
 		draggable: '>1',
 		dragThreshold: 3,
-		fade: <?php echo 'slide-horizontal' == $settings->slideshow_transition || 'slide-vertical' == $settings->slideshow_transition ? 'false' : 'true'; ?>,
+		fade: <?php echo 'slide' == $settings->slideshow_transition ? 'false' : 'true'; ?>,
 		freeScroll: false,
 		friction: <?php echo floatval( $settings->slideshow_transition_speed ); ?>,
 		groupCells: false,
@@ -168,7 +168,7 @@ define( 'WPZABB_SLIDESHOW_DEBUG', 0 );
 
 			if ( vid.length > 0 ) {
 				var playr = YT.get( vid.attr( 'id' ) );
-				
+
 				if ( typeof playr !== 'undefined' ) {
 					playr.playVideo();
 
@@ -183,7 +183,7 @@ define( 'WPZABB_SLIDESHOW_DEBUG', 0 );
 
 			if ( vid.length > 0 ) {
 				var playr = new Vimeo.Player( vid );
-				
+
 				if ( typeof playr !== 'undefined' ) {
 					playr.play();
 
@@ -225,7 +225,7 @@ define( 'WPZABB_SLIDESHOW_DEBUG', 0 );
 
 				if ( vid.length > 0 ) {
 					var playr = YT.get( vid.attr( 'id' ) );
-					
+
 					if ( typeof playr !== 'undefined' ) {
 						playr.pauseVideo();
 
@@ -240,7 +240,7 @@ define( 'WPZABB_SLIDESHOW_DEBUG', 0 );
 
 				if ( vid.length > 0 ) {
 					var playr = new Vimeo.Player( vid );
-					
+
 					if ( typeof playr !== 'undefined' ) {
 						playr.pause();
 
@@ -278,7 +278,7 @@ define( 'WPZABB_SLIDESHOW_DEBUG', 0 );
 
 			if ( vid.length > 0 ) {
 				var playr = YT.get( vid.attr( 'id' ) );
-				
+
 				if ( typeof playr !== 'undefined' ) {
 					playr.setVolume( 0 );
 					playr.mute();
@@ -294,7 +294,7 @@ define( 'WPZABB_SLIDESHOW_DEBUG', 0 );
 
 			if ( vid.length > 0 ) {
 				var playr = new Vimeo.Player( vid );
-				
+
 				if ( typeof playr !== 'undefined' ) {
 					playr.setVolume( 0 );
 					playr.setMuted( true );
@@ -333,7 +333,7 @@ define( 'WPZABB_SLIDESHOW_DEBUG', 0 );
 
 			if ( vid.length > 0 ) {
 				var playr = YT.get( vid.attr( 'id' ) );
-				
+
 				if ( typeof playr !== 'undefined' ) {
 					playr.unMute();
 					playr.setVolume( 100 );
@@ -349,7 +349,7 @@ define( 'WPZABB_SLIDESHOW_DEBUG', 0 );
 
 			if ( vid.length > 0 ) {
 				var playr = new Vimeo.Player( vid );
-				
+
 				if ( typeof playr !== 'undefined' ) {
 					playr.setMuted( false );
 					playr.setVolume( 1 );
