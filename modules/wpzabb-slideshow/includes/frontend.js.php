@@ -28,9 +28,14 @@ define( 'WPZABB_SLIDESHOW_DEBUG', 0 );
 		prevNextButtons: <?php echo 'yes' == $settings->slideshow_arrows ? 'true' : 'false'; ?>,
 		pageDots: <?php echo 'dots' == $settings->slideshow_navigation ? 'true' : 'false'; ?>,
 		resize: true,
-		rightToLeft: <?php echo 'backward' == $settings->slideshow_direction ? 'true' : 'false'; ?>,
 		setGallerySize: true,
 		watchCSS: false,
+        arrowShape: {
+          x0: 10,
+          x1: 60, y1: 50,
+          x2: 65, y2: 45,
+          x3: 20
+        },
 		wrapAround: <?php echo 'yes' == $settings->slideshow_loop ? 'true' : 'false'; ?>
 	} );
 

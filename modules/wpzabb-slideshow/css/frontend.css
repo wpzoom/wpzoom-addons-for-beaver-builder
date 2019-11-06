@@ -157,21 +157,21 @@
 
 .wpzabb-slideshow .wpzabb-slideshow-slide-details {
 	position: absolute;
-	left: 0;
-	right: 0;
-	bottom: 60px;
 	z-index: 4;
-	display: flex;
-	justify-content: center;
+
+    top: 50%;
+    transform: translateY(-50%);
 	color: #fff;
 }
 
 .wpzabb-slideshow .wpzabb-slideshow-slide-details .wpzabb-slideshow-slide-details-wrap {
 	pointer-events: auto;
+    margin: 0 15%;
 }
 
 .wpzabb-slideshow .wpzabb-slideshow-slide-details .wpzabb-slideshow-slide-title {
 	font-size: 30px;
+    font-weight: 600;
 	line-height: 1.5;
 	margin: 0 0 15px;
 }
@@ -223,8 +223,8 @@
 }
 
 .wpzabb-slideshow .flickity-prev-next-button {
-	height: 80px;
-	width: 80px;
+	height: 60px;
+	width: 60px;
 }
 
 .wpzabb-slideshow .wpzabb-slideshow-thumbs-nav .flickity-prev-next-button {
