@@ -17,9 +17,9 @@
 				$slide->link_target = '_self';
 				$slide->link_nofollow = 'no';
 				$slide->content = apply_filters( 'the_excerpt', get_the_excerpt() );
-				$slide->button = false;
-				$slide->button_label = '';
-				$slide->button_url = '';
+				$slide->button = property_exists( $settings, 'wpzabb_read_more' ) && 'yes' == $settings->wpzabb_read_more;
+				$slide->button_label = __( 'Read More', 'wpzabb' );
+				$slide->button_url = get_permalink();
 				$slide->button_url_target = '_self';
 				$slide->button_url_nofollow = 'no';
 				$slide->image_source = 'library';
@@ -93,9 +93,7 @@
 				<div class="wpzabb-slideshow-slide wpzabb-slideshow-slide-<?php echo $i + 1; ?>"<?php echo $thumb; ?>>
 					<div class="wpzabb-slideshow-slide-outer-wrap">
 						<?php if ( !empty( $img ) ) : ?>
-							<div class="wpzabb-slideshow-slide-image" itemscope itemtype="http://schema.org/ImageObject">
-								<img class="<?php echo esc_attr( $classes ); ?>" src="<?php echo esc_url( $img ); ?>" />
-							</div>
+							<div class="wpzabb-slideshow-slide-image" itemscope itemtype="http://schema.org/ImageObject" style="background-image:url('<?php echo esc_url( $img ); ?>')"></div>
 						<?php endif; ?>
 
 						<?php if ( false !== $vid && ! empty( $vid ) ) : ?>

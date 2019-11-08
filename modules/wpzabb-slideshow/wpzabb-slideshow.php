@@ -353,8 +353,24 @@ class WPZABBSlideshowModule extends FLBuilderModule {
 						'label'   => __( '<strong>[WPZOOM]</strong> Only Show Featured Posts', 'wpzabb' ),
 						'default' => 'no',
 						'options' => array(
-							'yes' => __( 'Yes', 'fl-builder' ),
-							'no'  => __( 'No', 'fl-builder' )
+							'yes' => __( 'Yes', 'wpzabb' ),
+							'no'  => __( 'No', 'wpzabb' )
+						)
+					), $settings );
+					?>
+				</table>
+			</div>
+
+			<div id="fl-builder-settings-section-wpzabb_read_more" class="fl-loop-data-wpzabb-read-more fl-builder-settings-section">
+				<table class="fl-form-table">
+					<?php
+					FLBuilder::render_settings_field( 'wpzabb_read_more', array(
+						'type'    => 'select',
+						'label'   => __( 'Show Read More Button', 'wpzabb' ),
+						'default' => 'no',
+						'options' => array(
+							'yes' => __( 'Yes', 'wpzabb' ),
+							'no'  => __( 'No', 'wpzabb' )
 						)
 					), $settings );
 					?>
