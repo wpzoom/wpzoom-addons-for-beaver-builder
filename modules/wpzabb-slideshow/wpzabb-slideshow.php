@@ -371,7 +371,21 @@ class WPZABBSlideshowModule extends FLBuilderModule {
 						'options' => array(
 							'yes' => __( 'Yes', 'wpzabb' ),
 							'no'  => __( 'No', 'wpzabb' )
+						),
+						'toggle'  => array(
+							'yes' => array(
+								'fields' => array( 'wpzabb_read_more_label' )
+							),
+							'no'  => array(
+								'fields' => array( '' )
+							)
 						)
+					), $settings );
+
+					FLBuilder::render_settings_field( 'wpzabb_read_more_label', array(
+						'type'    => 'text',
+						'label'   => __( 'Read More Button Label', 'wpzabb' ),
+						'default' => __( 'Read More', 'wpzabb' )
 					), $settings );
 					?>
 				</table>
@@ -634,6 +648,11 @@ FLBuilder::register_module( 'WPZABBSlideshowModule', array(
 							'max'             => 5000,
 							'step'            => 1
 						)
+					),
+					'slideshow_image_size'   => array(
+						'type'    => 'photo-sizes',
+						'label'   => __( 'Image Size', 'wpzabb' ),
+						'default' => 'large'
 					),
 					'slideshow_arrows'       => array(
 						'type'          => 'button-group',
