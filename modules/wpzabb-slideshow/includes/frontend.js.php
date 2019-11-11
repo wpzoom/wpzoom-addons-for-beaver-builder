@@ -1,7 +1,4 @@
-<?php
-define( 'WPZABB_SLIDESHOW_DEBUG', 0 );
-
-?>( function( $ ) {
+( function( $ ) {
 	var slider = $( '.fl-node-<?php echo $id; ?> .wpzabb-slideshow .wpzabb-slideshow-slides' );
 
 	slider.on( 'ready.flickity', onSlideshowStart );
@@ -81,7 +78,8 @@ define( 'WPZABB_SLIDESHOW_DEBUG', 0 );
 
 	function onSlideshowStart() {
 		var slides = $( '.fl-node-<?php echo $id; ?> .wpzabb-slideshow .wpzabb-slideshow-slides .wpzabb-slideshow-slide' ),
-		    slideVideoControls = slides.find( '.wpzabb-slideshow-slide-video .wpzabb-slideshow-slide-video-controls' );
+		    slideVideoControls = slides.find( '.wpzabb-slideshow-slide-video .wpzabb-slideshow-slide-video-controls' ),
+		    maxSlidesHeight = -1;
 
 		slideVideoControls.find( '.play-video' ).on( 'click', playVideo );
 		slideVideoControls.find( '.pause-video' ).on( 'click', pauseVideo );
@@ -89,7 +87,8 @@ define( 'WPZABB_SLIDESHOW_DEBUG', 0 );
 		slideVideoControls.find( '.unmute-video' ).on( 'click', unmuteVideo );
 
 		$( slides ).each( function() {
-			var video = $( this ).find( '.wpzabb-slideshow-slide-video' );
+			var video = $( this ).find( '.wpzabb-slideshow-slide-video' ),
+			    detailsHeight = $( this ).find( '.wpzabb-slideshow-slide-details' ).height();
 
 			if ( video.length > 0 ) {
 <?php if ( 1 == WPZABB_SLIDESHOW_DEBUG ) : ?>
@@ -102,7 +101,22 @@ define( 'WPZABB_SLIDESHOW_DEBUG', 0 );
 				togglePlayPauseButtons( 'true' == video.attr( 'data-autoplay' ), video );
 				toggleMuteUnmuteButtons( 'true' == video.attr( 'data-muted' ), video );
 			}
+
+<?php if ( 'no' == $settings->slideshow_autoheight ) : ?>
+			if ( detailsHeight > maxSlidesHeight ) {
+				maxSlidesHeight = detailsHeight;
+			}
+<?php endif; ?>
 		} );
+
+<?php if ( 'no' == $settings->slideshow_autoheight ) : ?>
+		var tree = $( slides ).add( $( slides ).closest( '.wpzabb-slideshow-slides' ) )
+		                      .add( $( slides ).closest( '.flickity-viewport' ) )
+		                      .add( $( slides ).closest( '.flickity-slider' ) )
+		                      .add( $( slides ).find( '.wpzabb-slideshow-slide-outer-wrap' ) );
+
+		tree.height( maxSlidesHeight );
+<?php endif; ?>
 	}
 
 	function onSlideshowChange() {

@@ -27,7 +27,7 @@
 			    form = $( '#' + id );
 
 			if ( 'fl-builder-settings-tab-slides' == id && form.length > 0 && !form.hasClass( 'initd' ) &&
-			     'custom' == $( '#fl-field-slides_source select[name="slides_source"]' ).val() ) {
+			     'custom' == form.find( '#fl-field-slides_source select[name="slides_source"]' ).val() ) {
 				var trs = form.find( '#fl-field-slides > tr' ),
 				    slides = form.find( '#fl-field-slides > tr > .fl-field-control > .fl-field-control-wrapper > .fl-form-field' );
 

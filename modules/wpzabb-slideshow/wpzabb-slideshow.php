@@ -1,4 +1,8 @@
 <?php
+if ( ! defined( 'WPZABB_SLIDESHOW_DEBUG' ) ) {
+	define( 'WPZABB_SLIDESHOW_DEBUG', 0 );
+}
+
 /**
  * @class WPZABBSlideshowModule
  */
