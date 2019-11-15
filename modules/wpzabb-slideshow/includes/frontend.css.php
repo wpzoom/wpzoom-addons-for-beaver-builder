@@ -78,7 +78,7 @@ $auto_height_max = intval( $settings->slideshow_autoheight_max );
 <?php echo FLBuilderCSS::typography_field_rule( array(
 	'settings' => $settings,
 	'setting_name' => 'slide_button_font',
-	'selector' => ".fl-node-$id .wpzabb-slideshow .wpzabb-slideshow-slide-details .wpzabb-slideshow-slide-button"
+	'selector' => ".fl-node-$id .wpzabb-slideshow .wpzabb-slideshow-slide-details .wpzabb-slideshow-slide-button a"
 ) ); ?>
 
 .fl-node-<?php echo $id; ?> .wpzabb-slideshow .wpzabb-slideshow-slide-details .wpzabb-slideshow-slide-button a:hover {
