@@ -161,6 +161,7 @@
 .wpzabb-slideshow .wpzabb-slideshow-slide-details {
 	position: absolute;
 	z-index: 4;
+    width: 100%;
 
     top: 50%;
     transform: translateY(-50%);
@@ -177,6 +178,7 @@
     font-weight: 600;
 	line-height: 1.5;
 	margin: 0 0 15px;
+    text-align: center;
 }
 
 .wpzabb-slideshow .wpzabb-slideshow-slide-details .wpzabb-slideshow-slide-title a {
@@ -187,6 +189,7 @@
 	font-size: 20px;
 	line-height: 1.5;
 	margin: 0 0 15px;
+    text-align: center;
 }
 
 .wpzabb-slideshow .wpzabb-slideshow-slide-details .wpzabb-slideshow-slide-content > * {
@@ -200,7 +203,8 @@
 .wpzabb-slideshow .wpzabb-slideshow-slide-details .wpzabb-slideshow-slide-button {
 	font-size: 20px;
 	line-height: 1;
-	margin: 30px 0 0;
+    margin-top: 30px;
+    text-align: center;
 }
 
 .wpzabb-slideshow .wpzabb-slideshow-slide-details .wpzabb-slideshow-slide-button a {

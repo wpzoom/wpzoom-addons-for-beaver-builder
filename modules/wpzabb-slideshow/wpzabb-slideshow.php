@@ -594,12 +594,12 @@ FLBuilder::register_module( 'WPZABBSlideshowModule', array(
 						'type'          => 'button-group',
 						'label'         => __( 'Automatic Height', 'wpzabb' ),
 						'help'          => __( 'Whether the slideshow should have an automatic height based on the browser/viewport height.', 'wpzabb' ),
-						'default'       => 'no',
+						'default'       => 'yes',
 						'responsive'    => array(
 							'default'         => array(
-								'default'    => 'no',
-								'medium'     => 'no',
-								'responsive' => 'no'
+								'default'    => 'yes',
+								'medium'     => 'yes',
+								'responsive' => 'yes'
 							)
 						),
 						'options'       => array(
@@ -637,12 +637,12 @@ FLBuilder::register_module( 'WPZABBSlideshowModule', array(
 						'type'          => 'unit',
 						'label'         => __( 'Automatic Height Max', 'wpzabb' ),
 						'help'          => __( 'The maximum height (in pixels) the slideshow should ever be allowed to grow to.', 'wpzabb' ),
-						'default'       => 800,
+						'default'       => 550,
 						'responsive'    => array(
 							'default'         => array(
-								'default'    => 800,
-								'medium'     => 800,
-								'responsive' => 800
+								'default'    => 550,
+								'medium'     => 550,
+								'responsive' => 550
 							)
 						),
 						'units'         => array( 'px' ),
@@ -935,7 +935,7 @@ FLBuilder::register_module( 'WPZABBSlideshowModule', array(
 						'responsive'    => true,
 						'preview'       => array(
 							'type'            => 'css',
-							'selector'        => '.wpzabb-slideshow .wpzabb-slideshow-slide-details .wpzabb-slideshow-slide-button a'
+							'selector'        => '.wpzabb-slideshow .wpzabb-slideshow-slide-details .wpzabb-slideshow-slide-button'
 						)
 					),
 					'slide_button_color'     => array(
