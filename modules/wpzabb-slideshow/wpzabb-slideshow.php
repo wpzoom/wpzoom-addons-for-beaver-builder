@@ -349,7 +349,25 @@ class WPZABBSlideshowModule extends FLBuilderModule {
 	 */
 	public function loop_settings_after_form( $settings ) {
 		if ( is_object( $settings ) && property_exists( $settings, 'slides_source' ) ) {
-			?><div id="fl-builder-settings-section-wpzabb_featured_posts_only" class="fl-loop-data-wpzabb-featured-posts-only fl-builder-settings-section">
+			?><div id="fl-builder-settings-section-wpzabb_posts_amount" class="fl-loop-data-wpzabb-posts-amount fl-builder-settings-section">
+				<table class="fl-form-table">
+					<?php
+					FLBuilder::render_settings_field( 'wpzabb_posts_amount', array(
+						'type'    => 'unit',
+						'label'   => __( 'Posts Limit', 'wpzabb' ),
+						'help'    => __( 'The maximum amount of posts to display', 'wpzabb' ),
+						'default' => 10,
+						'slider' => array(
+							'min'  => 1,
+							'max'  => 100,
+							'step' => 1
+						)
+					), $settings );
+					?>
+				</table>
+			</div>
+
+			<div id="fl-builder-settings-section-wpzabb_featured_posts_only" class="fl-loop-data-wpzabb-featured-posts-only fl-builder-settings-section">
 				<table class="fl-form-table">
 					<?php
 					FLBuilder::render_settings_field( 'wpzabb_featured_posts_only', array(
@@ -868,6 +886,17 @@ FLBuilder::register_module( 'WPZABBSlideshowModule', array(
 							'type'            => 'css',
 							'selector'        => '.wpzabb-slideshow .wpzabb-slideshow-slide-details .wpzabb-slideshow-slide-button a',
 							'property'        => 'background-color'
+						)
+					),
+					'slide_button_align' => array(
+						'type'          => 'align',
+						'label'         => __( 'Alignment', 'wpzabb' ),
+						'default'       => 'left',
+						'show_alpha'    => true,
+						'preview'       => array(
+							'type'            => 'css',
+							'selector'        => '.wpzabb-slideshow .wpzabb-slideshow-slide-details .wpzabb-slideshow-slide-button',
+							'property'        => 'text-align'
 						)
 					),
 					'slide_button_border'    => array(

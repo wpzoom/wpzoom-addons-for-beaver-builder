@@ -3,6 +3,11 @@
 	$slides = array();
 
 	if ( 'posts' == $settings->slides_source ) {
+		wp_reset_postdata();
+
+		$settings->posts_per_page = property_exists( $settings, 'wpzabb_posts_amount' ) ? $settings->wpzabb_posts_amount : 10;
+		$settings->no_found_rows = true;
+
 		$query = FLBuilderLoop::query( $settings );
 
 		if ( $query->have_posts() ) {
