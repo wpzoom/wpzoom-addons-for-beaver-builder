@@ -893,6 +893,7 @@ FLBuilder::register_module( 'WPZABBSlideshowModule', array(
 						'label'         => __( 'Alignment', 'wpzabb' ),
 						'default'       => 'left',
 						'show_alpha'    => true,
+                        'responsive'    => true,
 						'preview'       => array(
 							'type'            => 'css',
 							'selector'        => '.wpzabb-slideshow .wpzabb-slideshow-slide-details .wpzabb-slideshow-slide-button',

@@ -29,15 +29,15 @@
 	padding: 10px;
 }
 
-.wpzabb-slideshow .wpzabb-slideshow-slides > li {
+.wpzabb-slideshow .wpzabb-slideshow-slides > div {
 	display: none !important;
 }
 
-.wpzabb-slideshow .wpzabb-slideshow-slides > li:first-child {
+.wpzabb-slideshow .wpzabb-slideshow-slides > div:first-child {
 	display: flex !important;
 }
 
-.wpzabb-slideshow .flex-viewport .wpzabb-slideshow-slides > li {
+.wpzabb-slideshow .wpzabb-slideshow-slides.flickity-enabled > div {
 	display: flex !important;
 }
 
@@ -289,7 +289,6 @@
 	height: 12px;
 	width: 12px;
 	border-radius: 50%;
-	box-shadow: 0 0 0 1px #000;
 	-webkit-transition: all 0.3s ease-in-out;
 	-moz-transition: all 0.3s ease-in-out;
 	-ms-transition: all 0.3s ease-in-out;
