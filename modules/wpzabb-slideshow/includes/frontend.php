@@ -31,36 +31,6 @@
 				$slide->image = get_post_thumbnail_id();
 				$slide->image_src = false !== ( $imgsrc = get_the_post_thumbnail_url( get_the_ID(), $settings->slideshow_image_size ) ) ? $imgsrc : '';
 				$slide->image_url = '';
-				$slide->video_source = 'url';
-				$slide->video = -1;
-				$slide->video_url = '';
-				$slide->playpause = true;
-				$slide->muteunmute = true;
-				$slide->startmuted = true;
-				$slide->autoplay = true;
-				$slide->loop = true;
-
-				if ( 'wpzoom' == wp_get_theme()->get( 'TextDomain' ) && metadata_exists( 'post', get_the_ID(), 'wpzoom_posts_single_post_video_type' ) ) {
-					$video_type = get_post_meta( get_the_ID(), 'wpzoom_posts_single_post_video_type', true );
-
-					if ( 'self_hosted' == $video_type && metadata_exists( 'post', get_the_ID(), 'wpzoom_posts_single_post_video_bg_url_mp4' ) ) {
-						$video_url = get_post_meta( get_the_ID(), 'wpzoom_posts_single_post_video_bg_url_mp4', true );
-					} elseif ( 'external_hosted' == $video_type && metadata_exists( 'post', get_the_ID(), 'wpzoom_posts_single_post_video_external_url' ) ) {
-						$video_url = get_post_meta( get_the_ID(), 'wpzoom_posts_single_post_video_external_url', true );
-					} elseif ( 'vimeo_pro' == $video_type && metadata_exists( 'post', get_the_ID(), 'wpzoom_posts_single_post_video_vimeo_pro' ) ) {
-						$video_url = get_post_meta( get_the_ID(), 'wpzoom_posts_single_post_video_vimeo_pro', true );
-					} else {
-						$video_url = '';
-					}
-
-					$slide->video_url = $video_url;
-
-					$slide->playpause = metadata_exists( 'post', get_the_ID(), 'wpzoom_posts_single_post_video_play_button' ) ? get_post_meta( get_the_ID(), 'wpzoom_posts_single_post_video_play_button', true ) : true;
-					$slide->muteunmute = metadata_exists( 'post', get_the_ID(), 'wpzoom_posts_single_post_video_mute_button' ) ? get_post_meta( get_the_ID(), 'wpzoom_posts_single_post_video_mute_button', true ) : true;
-					$slide->startmuted = metadata_exists( 'post', get_the_ID(), 'wpzoom_posts_single_post_video_mute' ) ? get_post_meta( get_the_ID(), 'wpzoom_posts_single_post_video_mute', true ) : true;
-					$slide->autoplay = metadata_exists( 'post', get_the_ID(), 'wpzoom_posts_single_post_video_autoplay' ) ? get_post_meta( get_the_ID(), 'wpzoom_posts_single_post_video_autoplay', true ) : true;
-					$slide->loop = metadata_exists( 'post', get_the_ID(), 'wpzoom_posts_single_post_video_loop' ) ? get_post_meta( get_the_ID(), 'wpzoom_posts_single_post_video_loop', true ) : true;
-				}
 
 				$slides[ $h ] = $slide;
 
@@ -89,42 +59,12 @@
 				$slide   = $slides[ $i ];
 				$classes = $module->get_classes( $slide );
 				$img     = trim( $module->get_src( $slide ) );
-				$thumb = !empty( $img ) ? ' data-thumb="' . esc_url( $img ) . '"' : '';
-				$vid = $module->get_video_embed( $slide );
-				$vid_id = $module->get_video_id( $slide );
-				$vid_url = $module->get_video_url( $slide );
-				$vid_type = $module->get_video_type( $slide ); ?>
+				$thumb = !empty( $img ) ? ' data-thumb="' . esc_url( $img ) . '"' : ''; ?>
 
 				<div class="wpzabb-slideshow-slide wpzabb-slideshow-slide-<?php echo $i + 1; ?>"<?php echo $thumb; ?>>
 					<div class="wpzabb-slideshow-slide-outer-wrap">
 						<?php if ( !empty( $img ) ) : ?>
 							<div class="wpzabb-slideshow-slide-image" itemscope itemtype="http://schema.org/ImageObject" style="background-image:url('<?php echo esc_url( $img ); ?>')"></div>
-						<?php endif; ?>
-
-						<?php if ( false !== $vid && ! empty( $vid ) ) : ?>
-							<div class="wpzabb-slideshow-slide-video" itemscope itemtype="http://schema.org/VideoObject"
-							     data-type="<?php echo $vid_type; ?>"
-							     data-id="<?php echo $vid_id; ?>"
-							     data-url="<?php echo esc_url( $vid_url ); ?>"
-							     data-autoplay="<?php echo 'yes' == $slide->autoplay ? 'true' : 'false'; ?>"
-							     data-loop="<?php echo 'yes' == $slide->loop ? 'true' : 'false'; ?>"
-							     data-startmuted="<?php echo 'yes' == $slide->startmuted ? 'true' : 'false'; ?>"
-							     data-playing="<?php echo 'yes' == $slide->autoplay ? 'true' : 'false'; ?>"
-							     data-muted="<?php echo 'yes' == $slide->startmuted ? 'true' : 'false'; ?>">
-								<?php echo $vid; ?>
-
-								<div class="wpzabb-slideshow-slide-video-controls">
-									<?php if ( 'yes' == $slide->playpause ) : ?>
-										<a title="<?php _e( 'Play', 'wpzabb' ); ?>" class="play-video dashicons dashicons-controls-play"></a>
-										<a title="<?php _e( 'Pause', 'wpzabb' ); ?>" class="pause-video dashicons dashicons-controls-pause"></a>
-									<?php endif; ?>
-
-									<?php if ( 'yes' == $slide->muteunmute ) : ?>
-										<a title="<?php _e( 'Mute', 'wpzabb' ); ?>" class="mute-video dashicons dashicons-controls-volumeon"></a>
-										<a title="<?php _e( 'Unmute', 'wpzabb' ); ?>" class="unmute-video dashicons dashicons-controls-volumeoff"></a>
-									<?php endif; ?>
-								</div>
-							</div>
 						<?php endif; ?>
 
 						<div class="wpzabb-slideshow-slide-details">

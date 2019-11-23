@@ -33,7 +33,6 @@ class WPZABBSlideshowModule extends FLBuilderModule {
 		) );
 
 		$this->add_css( 'dashicons' );
-		$this->add_js( 'vimeo-api', 'https://player.vimeo.com/api/player.js' );
 		$this->add_css( 'flickity-style', $this->url . 'css/flickity.css', array(), '2.2.1' );
 		$this->add_css( 'flickity-fade-style', $this->url . 'css/flickity-fade.css', array( 'flickity-style' ), '1.0.0' );
 		$this->add_js( 'flickity-script', $this->url . 'js/flickity.js', array( 'jquery' ), '2.2.1' );
@@ -193,106 +192,7 @@ class WPZABBSlideshowModule extends FLBuilderModule {
 	}
 
 	/**
-	 * @method get_video_type
-	 * @param $slide {object}
-	 */
-	public function get_video_type( $slide ) {
-		$url = trim( $slide->video_url );
-
-		if ( 'library' == $slide->video_source ) {
-			return 'html';
-		} elseif ( preg_match( '%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url ) ) {
-			return 'youtube';
-		} elseif ( preg_match( '/(https?:\/\/)?(www\.)?(player\.)?vimeo\.com\/([a-z]*\/)*([0-9]{6,11})[?]?.*/', $url ) ) {
-			return 'vimeo';
-		} else {
-			return 'unknown';
-		}
-	}
-
-	/**
-	 * @method get_video_url
-	 * @param $slide {object}
-	 */
-	public function get_video_url( $slide ) {
-		if ( 'library' == $slide->video_source ) {
-			$url = wp_get_attachment_url( $slide->video );
-
-			return false !== $url && !empty( $url ) ? trim( $url ) : '';
-		} elseif ( 'url' == $slide->video_source ) {
-			$url = trim( $slide->video_url );
-
-			return !empty( $url ) ? $url : '';
-		} else {
-			return '';
-		}
-	}
-
-	/**
-	 * @method get_video_id
-	 * @param $slide {object}
-	 */
-	public function get_video_id( $slide ) {
-		if ( 'library' == $slide->video_source ) {
-			return $slide->video;
-		} elseif ( 'url' == $slide->video_source ) {
-			$url = trim( $slide->video_url );
-
-			return !empty( $url ) ? $this->_try_get_id( $url ) : -1;
-		} else {
-			return -1;
-		}
-	}
-
-	/**
-	 * @method _try_get_id
-	 * @param $url {string}
-	 * @protected
-	 */
-	protected function _try_get_id( $url ) {
-		if ( preg_match( '%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url, $match ) ) {
-			return $match[ 1 ];
-		} elseif ( preg_match( '/(https?:\/\/)?(www\.)?(player\.)?vimeo\.com\/([a-z]*\/)*([0-9]{6,11})[?]?.*/', $url, $match ) ) {
-			return $match[ 5 ];
-		} else {
-			return $url;
-		}
-	}
-
-	/**
-	 * @method get_video_embed
-	 * @param $slide {object}
-	 */
-	public function get_video_embed( $slide ) {
-		if ( 'library' == $slide->video_source ) {
-			$url = wp_get_attachment_url( $slide->video );
-
-			return false !== $url && !empty( $url ) ? '<div class="video-embed">' . do_shortcode( '[video src="' . $url . '"]' ) . '</div>' : false;
-		} elseif ( 'url' == $slide->video_source ) {
-			$url = trim( $slide->video_url );
-
-			return !empty( $url ) ? $this->_try_get_embed( $url ) : false;
-		} else {
-			return false;
-		}
-	}
-
-	/**
-	 * @method _try_get_embed
-	 * @param $url {string}
-	 * @protected
-	 */
-	protected function _try_get_embed( $url ) {
-		if ( preg_match( '%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url ) ||
-		     preg_match( '/(https?:\/\/)?(www\.)?(player\.)?vimeo\.com\/([a-z]*\/)*([0-9]{6,11})[?]?.*/', $url ) ) {
-			return '<div class="video-embed"></div>';
-		} else {
-			return '<iframe src="' . esc_url( $url ) . '" class="video-embed" frameborder="0"></iframe>';
-		}
-	}
-
-	/**
-	 * AJAX callback to return the thumbnail of a given video or image URL.
+	 * AJAX callback to return the thumbnail of a given image URL.
 	 */
 	public function ajax_get_thumbnail() {
 		check_ajax_referer( 'wpzabb-slideshow-ajax-nonce', 'nonce' );
@@ -306,42 +206,11 @@ class WPZABBSlideshowModule extends FLBuilderModule {
 		if ( 'library' == $source || 'library-image' == $source ) {
 			$url = wp_get_attachment_url( $dat );
 			$result = false !== $url ? array( 'type' => $source, 'url' => $url, 'element_num' => $element_num ) : false;
-		} elseif ( 'url' == $source ) {
-			$url = $this->fetch_video_thumbnail( $dat );
-			$result = false !== $url ? array( 'type' => $source, 'url' => $url, 'element_num' => $element_num ) : false;
 		} elseif ( 'url-image' == $source ) {
 			$result = array( 'type' => $source, 'url' => $dat, 'element_num' => $element_num );
 		}
 
 		wp_send_json_success( $result );
-	}
-
-	/**
-	 * Attempts to fetch the thumbnail URL of a given video URL using oEmbed.
-	 *
-	 * @param  string       $url The URL of the video to fetch the thumbnail of.
-	 * @return string|false      URL for the thumbnail of the given video URL, or false otherwise.
-	 */
-	public function fetch_video_thumbnail( $url ) {
-		$url = trim( $url );
-
-		if ( !empty( $url ) && false !== filter_var( $url, FILTER_VALIDATE_URL ) ) {
-			require_once( ABSPATH . WPINC . '/class-oembed.php' );
-
-			$oembed = _wp_oembed_get_object();
-
-			$provider = $oembed->get_provider( $url );
-
-			if ( $provider ) {
-				$data = $oembed->fetch( $provider, $url );
-
-				if ( $data ) {
-					return isset( $data->thumbnail_url ) && !empty( $data->thumbnail_url ) ? $data->thumbnail_url : false;
-				}
-			}
-		}
-
-		return false;
 	}
 
 	/**
@@ -1098,34 +967,6 @@ FLBuilder::register_module( 'WPZABBSlideshowModule', array(
 						)
 					)
 				)
-			),
-			'style_slide_video_controls' => array( // Section
-				'title'     => __( 'Slide Video Controls', 'wpzabb' ), // Section Title
-				'collapsed' => true,
-				'fields'    => array( // Section Fields
-					'slide_video_controls_color' => array(
-						'type'          => 'color',
-						'label'         => __( 'Color', 'wpzabb' ),
-						'default'       => 'rgba(255, 255, 255, 0.5)',
-						'show_alpha'    => true,
-						'preview'       => array(
-							'type'            => 'css',
-							'selector'        => '.wpzabb-slideshow .wpzabb-slideshow-slide-video .wpzabb-slideshow-slide-video-controls a',
-							'property'        => 'color'
-						)
-					),
-					'slide_video_controls_hover_color' => array(
-						'type'          => 'color',
-						'label'         => __( 'Hover Color', 'wpzabb' ),
-						'default'       => 'ffffff',
-						'show_alpha'    => true,
-						'preview'       => array(
-							'type'            => 'css',
-							'selector'        => '.wpzabb-slideshow .wpzabb-slideshow-slide-video .wpzabb-slideshow-slide-video-controls a:hover',
-							'property'        => 'color'
-						)
-					)
-				)
 			)
 		)
 	)
@@ -1271,137 +1112,6 @@ FLBuilder::register_settings_form( 'slides_form', array(
 							'show_target'   => true,
 							'show_nofollow'	=> true,
 							'responsive'    => true
-						),
-						'video_source' => array(
-							'type'          => 'select',
-							'label'         => __( 'Video', 'wpzabb' ),
-							'help'          => __( 'The video shown in the background of the slide. <em>(Optional)</em>', 'wpzabb' ),
-							'default'       => 'none',
-							'options'       => array(
-								'none'        => __( 'None', 'wpzabb' ),
-								'library'     => __( 'From Media Library', 'wpzabb' ),
-								'url'         => __( 'From URL', 'wpzabb' )
-							),
-							'toggle'        => array(
-								'none'        => array(
-									'fields' => array()
-								),
-								'library'     => array(
-									'fields' => array( 'video', 'playpause', 'muteunmute', 'startmuted', 'autoplay', 'loop' )
-								),
-								'url'         => array(
-									'fields' => array( 'video_url', 'playpause', 'muteunmute', 'startmuted', 'autoplay', 'loop' )
-								)
-							),
-							'responsive'    => array(
-								'default'         => array(
-									'default'    => 'none',
-									'medium'     => 'none',
-									'responsive' => 'none'
-								)
-							)
-						),
-						'video'       => array(
-							'type'          => 'video',
-							'label'         => ' ',
-							'show_remove'	=> true,
-							'connections'   => array( 'video' ),
-							'responsive'    => true
-						),
-						'video_url'   => array(
-							'type'          => 'link',
-							'label'         => ' ',
-							'placeholder'   => 'e.g. https://youtu.be/0Yr1ezjBKuo',
-							'preview'       => array( 'type' => 'none' ),
-							'connections'	=> array( 'url' ),
-							'show_target'   => false,
-							'show_nofollow'	=> false,
-							'responsive'    => true
-						),
-						'playpause'   => array(
-							'type'          => 'button-group',
-							'label'         => __( 'Video Play/Pause Buttons', 'wpzabb' ),
-							'help'          => __( 'Whether to show the Play and Pause buttons that control the video playback on this slide.', 'wpzabb' ),
-							'default'       => 'yes',
-							'responsive'    => array(
-								'default'         => array(
-									'default'    => 'yes',
-									'medium'     => 'yes',
-									'responsive' => 'yes'
-								)
-							),
-							'options'       => array(
-								'yes'             => __( 'Yes', 'wpzabb' ),
-								'no'              => __( 'No', 'wpzabb' )
-							)
-						),
-						'muteunmute'   => array(
-							'type'          => 'button-group',
-							'label'         => __( 'Video Mute/Unmute Buttons', 'wpzabb' ),
-							'help'          => __( 'Whether to show the Mute and Unmute buttons that control the audio in the video on this slide.', 'wpzabb' ),
-							'default'       => 'yes',
-							'responsive'    => array(
-								'default'         => array(
-									'default'    => 'yes',
-									'medium'     => 'yes',
-									'responsive' => 'yes'
-								)
-							),
-							'options'       => array(
-								'yes'             => __( 'Yes', 'wpzabb' ),
-								'no'              => __( 'No', 'wpzabb' )
-							)
-						),
-						'startmuted'   => array(
-							'type'          => 'button-group',
-							'label'         => __( 'Start Video Muted', 'wpzabb' ),
-							'help'          => __( 'Whether the video should start already muted.<br/> <em>This is recommended as some browsers may block autoplay in videos with sound enabled, especially on mobile devices.</em>', 'wpzabb' ),
-							'default'       => 'yes',
-							'responsive'    => array(
-								'default'         => array(
-									'default'    => 'yes',
-									'medium'     => 'yes',
-									'responsive' => 'yes'
-								)
-							),
-							'options'       => array(
-								'yes'             => __( 'Yes', 'wpzabb' ),
-								'no'              => __( 'No', 'wpzabb' )
-							)
-						),
-						'autoplay'   => array(
-							'type'          => 'button-group',
-							'label'         => __( 'Auto-Play Video', 'wpzabb' ),
-							'help'          => __( 'Whether the video playback should start immediately when the page loads without user interaction.', 'wpzabb' ),
-							'default'       => 'yes',
-							'responsive'    => array(
-								'default'         => array(
-									'default'    => 'yes',
-									'medium'     => 'yes',
-									'responsive' => 'yes'
-								)
-							),
-							'options'       => array(
-								'yes'             => __( 'Yes', 'wpzabb' ),
-								'no'              => __( 'No', 'wpzabb' )
-							)
-						),
-						'loop'   => array(
-							'type'          => 'button-group',
-							'label'         => __( 'Loop Video', 'wpzabb' ),
-							'help'          => __( 'Whether the video should loop infinitely.', 'wpzabb' ),
-							'default'       => 'yes',
-							'responsive'    => array(
-								'default'         => array(
-									'default'    => 'yes',
-									'medium'     => 'yes',
-									'responsive' => 'yes'
-								)
-							),
-							'options'       => array(
-								'yes'             => __( 'Yes', 'wpzabb' ),
-								'no'              => __( 'No', 'wpzabb' )
-							)
 						)
 					)
 				)

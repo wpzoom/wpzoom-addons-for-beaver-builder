@@ -59,8 +59,7 @@
 	height: 100%;
 }
 
-.wpzabb-slideshow .wpzabb-slideshow-slide-image::after,
-.wpzabb-slideshow .wpzabb-slideshow-slide-video::after {
+.wpzabb-slideshow .wpzabb-slideshow-slide-image::after {
 	content: '';
 	position: absolute;
 	top: 0;
@@ -87,75 +86,6 @@
 	cursor: pointer;
 	min-height: 100%;
 	min-width: 100%;
-}
-
-.wpzabb-slideshow .wpzabb-slideshow-slide-video {
-	display: flex;
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	z-index: 2;
-	justify-content: center;
-	align-items: center;
-}
-
-.wpzabb-slideshow .wpzabb-slideshow-slide-video .wp-video,
-.wpzabb-slideshow .wpzabb-slideshow-slide-video .wp-video-shortcode,
-.wpzabb-slideshow .wpzabb-slideshow-slide-video .mejs-inner {
-	height: 100% !important;
-	width: 100% !important;
-}
-
-.wpzabb-slideshow .wpzabb-slideshow-slide-video .mejs-mediaelement {
-	position: relative;
-}
-
-.wpzabb-slideshow .wpzabb-slideshow-slide-video .mejs-layers,
-.wpzabb-slideshow .wpzabb-slideshow-slide-video .mejs-controls {
-	display: none;
-}
-
-.wpzabb-slideshow .wpzabb-slideshow-slide-video .video-embed,
-.wpzabb-slideshow .wpzabb-slideshow-slide-video iframe,
-.wpzabb-slideshow .wpzabb-slideshow-slide-video video {
-	height: 100%;
-	width: 100%;
-	object-fit: cover;
-	border: 0;
-	margin: 0;
-}
-
-.wpzabb-slideshow .wpzabb-slideshow-slide-video .wpzabb-slideshow-slide-video-controls {
-	position: absolute;
-	right: 10px;
-	bottom: 10px;
-	z-index: 5;
-	display: flex;
-}
-
-.wpzabb-slideshow .wpzabb-slideshow-slide-video .wpzabb-slideshow-slide-video-controls a {
-	display: block;
-	cursor: pointer;
-	pointer-events: auto;
-	font: normal 400 1.5em/1 dashicons;
-	text-decoration: none !important;
-	color: rgba(255, 255, 255, 0.5);
-	height: auto;
-	width: auto;
-	box-shadow: none !important;
-	margin: 0 3px 0;
-	-webkit-transition: all 0.3s ease-in-out;
-	-moz-transition: all 0.3s ease-in-out;
-	-ms-transition: all 0.3s ease-in-out;
-	-o-transition: all 0.3s ease-in-out;
-	transition: all 0.3s ease-in-out;
-}
-
-.wpzabb-slideshow .wpzabb-slideshow-slide-video .wpzabb-slideshow-slide-video-controls a:hover,
-.wpzabb-slideshow .wpzabb-slideshow-slide-video .wpzabb-slideshow-slide-video-controls a:active {
-	color: #fff;
 }
 
 .wpzabb-slideshow .wpzabb-slideshow-slide-details {

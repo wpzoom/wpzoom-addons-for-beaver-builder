@@ -24,37 +24,27 @@
 }
 
 #fl-field-image_source th,
-#fl-field-image_source td,
-#fl-field-video_source th,
-#fl-field-video_source td {
+#fl-field-image_source td {
 	padding-bottom: 0 !important;
 }
 
 #fl-field-image th,
-#fl-field-image_url th,
-#fl-field-video th,
-#fl-field-video_url th {
+#fl-field-image_url th {
 	height: 0;
 }
 
-#fl-field-image_source select,
-#fl-field-video_source select {
+#fl-field-image_source select {
 	width: 100%;
 }
 
 #fl-field-image th,
 #fl-field-image td,
 #fl-field-image_url th,
-#fl-field-image_url td,
-#fl-field-video th,
-#fl-field-video td,
-#fl-field-video_url th,
-#fl-field-video_url td {
+#fl-field-image_url td {
 	padding-top: 0 !important;
 }
 
-#fl-field-image_url .fl-link-field-select,
-#fl-field-video_url .fl-link-field-select {
+#fl-field-image_url .fl-link-field-select {
 	display: none;
 }
 

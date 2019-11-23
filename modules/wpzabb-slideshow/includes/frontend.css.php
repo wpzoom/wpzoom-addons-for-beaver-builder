@@ -14,29 +14,13 @@ $button_align = 'right' == $settings->slide_button_align ? 'right' : ( 'center' 
 		height: <?php echo $auto_height_size; ?>vh;
 		max-height: <?php echo $auto_height_max; ?>px;
 	}
-
-	<?php if ( $auto_height_size >= 100 ) : ?>
-		.fl-node-<?php echo $id; ?> .wpzabb-slideshow .wpzabb-slideshow-slide-video iframe {
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			height: 56.25vw;
-			min-height: 100vh;
-			width: 100vw;
-			min-width: 177.77vh;
-			-webkit-transform: translate(-50%, -50%);
-			-ms-transform: translate(-50%, -50%);
-			transform: translate(-50%, -50%);
-		}
-	<?php endif; ?>
 <?php endif; ?>
 
 .fl-node-<?php echo $id; ?> .wpzabb-slideshow .wpzabb-slideshow-slide {
 	background-color: <?php echo WPZABB_Helper::maybe_prepend_hash( $settings->slide_background_color ); ?>;
 }
 
-.fl-node-<?php echo $id; ?> .wpzabb-slideshow .wpzabb-slideshow-slide-image::after,
-.fl-node-<?php echo $id; ?> .wpzabb-slideshow .wpzabb-slideshow-slide-video::after {
+.fl-node-<?php echo $id; ?> .wpzabb-slideshow .wpzabb-slideshow-slide-image::after {
 	background-image: <?php echo FLBuilderColor::gradient( $settings->slide_overlay_gradient ); ?>;
 }
 
@@ -113,12 +97,4 @@ $button_align = 'right' == $settings->slide_button_align ? 'right' : ( 'center' 
 .fl-node-<?php echo $id; ?> .wpzabb-slideshow .flex-direction-nav a:hover::before,
 .fl-node-<?php echo $id; ?> .wpzabb-slideshow .flex-direction-nav a:active::before {
 	color: <?php echo WPZABB_Helper::maybe_prepend_hash( $settings->slide_navigation_hover_color ); ?>;
-}
-
-.fl-node-<?php echo $id; ?> .wpzabb-slideshow .wpzabb-slideshow-slide-video .wpzabb-slideshow-slide-video-controls a {
-	color: <?php echo WPZABB_Helper::maybe_prepend_hash( $settings->slide_video_controls_color ); ?>;
-}
-
-.fl-node-<?php echo $id; ?> .wpzabb-slideshow .wpzabb-slideshow-slide-video .wpzabb-slideshow-slide-video-controls a:hover {
-	color: <?php echo WPZABB_Helper::maybe_prepend_hash( $settings->slide_video_controls_hover_color ); ?>;
 }
