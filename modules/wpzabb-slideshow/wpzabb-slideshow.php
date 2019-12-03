@@ -252,6 +252,22 @@ class WPZABBSlideshowModule extends FLBuilderModule {
 				</table>
 			</div>
 
+			<div id="fl-builder-settings-section-wpzabb_show_excerpt" class="fl-loop-data-wpzabb-show-excerpt fl-builder-settings-section">
+				<table class="fl-form-table">
+					<?php
+					FLBuilder::render_settings_field( 'wpzabb_show_excerpt', array(
+						'type'    => 'select',
+						'label'   => __( 'Show Excerpt', 'wpzabb' ),
+						'default' => 'yes',
+						'options' => array(
+							'yes' => __( 'Yes', 'wpzabb' ),
+							'no'  => __( 'No', 'wpzabb' )
+						)
+					), $settings );
+					?>
+				</table>
+			</div>
+
 			<div id="fl-builder-settings-section-wpzabb_read_more" class="fl-loop-data-wpzabb-read-more fl-builder-settings-section">
 				<table class="fl-form-table">
 					<?php

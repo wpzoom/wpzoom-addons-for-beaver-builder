@@ -21,7 +21,7 @@
 				$slide->link = get_permalink();
 				$slide->link_target = '_self';
 				$slide->link_nofollow = 'no';
-				$slide->content = apply_filters( 'the_excerpt', get_the_excerpt() );
+				$slide->content = property_exists( $settings, 'wpzabb_show_excerpt' ) && 'yes' == $settings->wpzabb_show_excerpt ? apply_filters( 'the_excerpt', get_the_excerpt() ) : '';
 				$slide->button = property_exists( $settings, 'wpzabb_read_more' ) && 'yes' == $settings->wpzabb_read_more;
 				$slide->button_label = property_exists( $settings, 'wpzabb_read_more_label' ) ? $settings->wpzabb_read_more_label : __( 'Read More', 'wpzabb' );
 				$slide->button_url = get_permalink();
@@ -81,9 +81,11 @@
 									<?php endif; ?>
 								</h4>
 
-								<div class="wpzabb-slideshow-slide-content">
-									<?php echo wp_kses_post( $slide->content ); ?>
-								</div>
+								<?php if ( ! empty( $slide->content ) ) : ?>
+									<div class="wpzabb-slideshow-slide-content">
+										<?php echo wp_kses_post( $slide->content ); ?>
+									</div>
+								<?php endif; ?>
 
 								<?php if ( 'yes' == $slide->button ) : ?>
 									<div class="wpzabb-slideshow-slide-button">

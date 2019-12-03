@@ -2,7 +2,9 @@
 $auto_height = 'yes' == $settings->slideshow_autoheight;
 $auto_height_size = intval( $settings->slideshow_autoheight_size );
 $auto_height_max = intval( $settings->slideshow_autoheight_max );
-$button_align = 'right' == $settings->slide_button_align ? 'right' : ( 'center' == $settings->slide_button_align ? 'center' : 'left' );
+$button_align_dsk = property_exists( $settings, 'slide_button_align' ) ? ( 'right' == $settings->slide_button_align ? 'right' : ( 'center' == $settings->slide_button_align ? 'center' : 'left' ) ) : 'left';
+$button_align_tab = property_exists( $settings, 'slide_button_align_medium' ) ? ( 'right' == $settings->slide_button_align_medium ? 'right' : ( 'center' == $settings->slide_button_align_medium ? 'center' : 'left' ) ) : 'left';
+$button_align_mob = property_exists( $settings, 'slide_button_align_responsive' ) ? ( 'right' == $settings->slide_button_align_responsive ? 'right' : ( 'center' == $settings->slide_button_align_responsive ? 'center' : 'left' ) ) : 'left';
 ?>
 
 <?php if ( $auto_height ) : ?>
@@ -50,7 +52,19 @@ $button_align = 'right' == $settings->slide_button_align ? 'right' : ( 'center' 
 }
 
 .fl-node-<?php echo $id; ?> .wpzabb-slideshow .wpzabb-slideshow-slide-details .wpzabb-slideshow-slide-button {
-	text-align: <?php echo $button_align; ?>;
+	text-align: <?php echo $button_align_dsk; ?>;
+}
+
+@media screen and (max-width: 768px) {
+	.fl-node-<?php echo $id; ?> .wpzabb-slideshow .wpzabb-slideshow-slide-details .wpzabb-slideshow-slide-button {
+		text-align: <?php echo $button_align_tab; ?>;
+	}
+}
+
+@media screen and (max-width: 460px) {
+	.fl-node-<?php echo $id; ?> .wpzabb-slideshow .wpzabb-slideshow-slide-details .wpzabb-slideshow-slide-button {
+		text-align: <?php echo $button_align_mob; ?>;
+	}
 }
 
 .fl-node-<?php echo $id; ?> .wpzabb-slideshow .wpzabb-slideshow-slide-details .wpzabb-slideshow-slide-button a {
