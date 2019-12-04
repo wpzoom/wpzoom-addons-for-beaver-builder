@@ -26,16 +26,13 @@
     position: relative;
 	height: 100%;
 	width: 100%;
-	-webkit-transition: all 0.2s ease-in-out;
-	-moz-transition: all 0.2s ease-in-out;
-	-ms-transition: all 0.2s ease-in-out;
-	-o-transition: all 0.2s ease-in-out;
-	transition: all 0.2s ease-in-out;
+    transition: .3s ease all;
+
 }
 
 .wpzabb-image-grid .wpzabb-image-grid-items .wpzabb-image-grid-item a:hover,
 .wpzabb-image-grid .wpzabb-image-grid-items .wpzabb-image-grid-item a:active {
-	transform: scale(1.1);
+	transform: scale(1.03);
 }
 
 .wpzabb-image-grid .wpzabb-image-grid-items .wpzabb-image-grid-item a:after {
@@ -49,6 +46,10 @@
     left: 0;
     background-image: linear-gradient(to bottom,rgba(0,0,0,.2) 30%,rgba(0,0,0,.3) 100%);
     background-repeat: repeat-x;
+}
+
+.wpzabb-image-grid .wpzabb-image-grid-items .wpzabb-image-grid-item a:hover:after {
+    background-image: linear-gradient(to bottom,rgba(0,0,0,.4) 30%,rgba(0,0,0,.5) 100%);
 }
 
 .wpzabb-image-grid .wpzabb-image-grid-items .wpzabb-image-grid-item .wpzabb-image-grid-item-image {
