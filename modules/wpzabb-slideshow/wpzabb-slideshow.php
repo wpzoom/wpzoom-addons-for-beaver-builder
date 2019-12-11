@@ -713,7 +713,7 @@ FLBuilder::register_module( 'WPZABBSlideshowModule', array(
 						'type'          => 'typography',
 						'label'         => __( 'Font', 'wpzabb' ),
 						'default'       => array(
-							'font_family'     => 'Roboto',
+							'font_family'     => '',
 							'font_weight'     => 400,
 							'font_size'       => array(
 								'length'     => '20',
@@ -776,7 +776,7 @@ FLBuilder::register_module( 'WPZABBSlideshowModule', array(
 					'slide_button_align' => array(
 						'type'          => 'align',
 						'label'         => __( 'Alignment', 'wpzabb' ),
-						'default'       => 'left',
+						'default'       => 'center',
 						'show_alpha'    => true,
                         'responsive'    => true,
 						'preview'       => array(
@@ -821,7 +821,7 @@ FLBuilder::register_module( 'WPZABBSlideshowModule', array(
 						'type'          => 'typography',
 						'label'         => __( 'Font', 'wpzabb' ),
 						'default'       => array(
-							'font_family'     => 'Roboto',
+							'font_family'     => '',
 							'font_weight'     => 400,
 							'font_size'       => array(
 								'length'     => '20',
@@ -911,7 +911,7 @@ FLBuilder::register_module( 'WPZABBSlideshowModule', array(
 						'type'          => 'typography',
 						'label'         => __( 'Hover Font', 'wpzabb' ),
 						'default'       => array(
-							'font_family'     => 'Roboto',
+							'font_family'     => '',
 							'font_weight'     => 400,
 							'font_size'       => array(
 								'length'     => '20',
