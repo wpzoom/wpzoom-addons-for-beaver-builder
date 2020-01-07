@@ -12,7 +12,7 @@
 
 	<?php if ( 'grid' == $settings->layout ) : ?>
 	$(window).on('load', function() {
-		$('.fl-node-<?php echo $id; ?> .wpzabb-post-<?php echo $settings->layout; ?>').masonry().masonry('reloadItems');
+		$('.fl-node-<?php echo $id; ?> .wpzabb-post-<?php echo $settings->layout; ?>').masonry('reloadItems');
 	});
 	<?php endif; ?>
 
