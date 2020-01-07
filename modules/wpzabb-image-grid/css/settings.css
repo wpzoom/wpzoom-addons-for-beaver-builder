@@ -32,6 +32,6 @@
 	display: none;
 }
 
-.fl-builder-settings[data-form-id="items_form"] #fl-field-link .fl-link-field-select::after {
+.fl-builder-settings[data-form-id="image_grid_form"] #fl-field-link .fl-link-field-select::after {
 	content: ' Post';
 }

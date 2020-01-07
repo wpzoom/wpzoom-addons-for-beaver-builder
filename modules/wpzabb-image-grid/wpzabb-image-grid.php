@@ -229,7 +229,7 @@ FLBuilder::register_module( 'WPZABBImageGridModule', array(
 					'items'             => array(
 						'type'          => 'form',
 						'label'         => __( 'Item', 'wpzabb' ),
-						'form'          => 'items_form', // ID from registered form below
+						'form'          => 'image_grid_form', // ID from registered form below
 						'multiple'      => true
 					)
 				)
@@ -241,7 +241,7 @@ FLBuilder::register_module( 'WPZABBImageGridModule', array(
 /**
  * Register a settings form to use in the "form" field type above.
  */
-FLBuilder::register_settings_form( 'items_form', array(
+FLBuilder::register_settings_form( 'image_grid_form', array(
 	'title' => __( 'Add Item', 'wpzabb' ),
 	'tabs'  => array(
 		'general' => array( // Tab

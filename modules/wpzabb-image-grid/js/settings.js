@@ -29,7 +29,7 @@
 							if ( typeof json !== 'undefined' ) {
 								var img = json.image_src;
 
-								if ( false !== img && '' !== img ) {
+								if ( typeof img !== 'undefined' && '' !== img ) {
 									$( this ).find( '> .fl-form-field-edit' ).html( '<img src="' + img + '" />' );
 								}
 							}
