@@ -49,7 +49,7 @@ You can see multiple pages created using **Beaver Builder** and our **Inspiro** 
 == Changelog ==
 
 = 1.3.1 =
-* Fixed conflict with 3rd party plugin causing an issue with the Beaver Builder Tab module
+* Fixed multiple bugs
 
 = 1.3.0 =
 * New Module: Slideshow

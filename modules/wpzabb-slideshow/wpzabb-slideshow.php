@@ -33,7 +33,7 @@ class WPZABBSlideshowModule extends FLBuilderModule {
 		) );
 
 		$this->add_css( 'dashicons' );
-		$this->add_css( 'flickity-style', $this->url . 'css/flickity.css', array(), '2.2.1' );
+		$this->add_css( 'flickity-style', $this->url . 'css/flickity.css', array(), '1.3.1' );
 		$this->add_css( 'flickity-fade-style', $this->url . 'css/flickity-fade.css', array( 'flickity-style' ), '1.0.0' );
 		$this->add_js( 'flickity-script', $this->url . 'js/flickity.js', array( 'jquery' ), '2.2.1' );
 		$this->add_js( 'flickity-fade-script', $this->url . 'js/flickity-fade.js', array( 'flickity-script' ), '1.0.0' );
