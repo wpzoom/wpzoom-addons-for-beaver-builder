@@ -48,6 +48,10 @@ You can see multiple pages created using **Beaver Builder** and our **Inspiro** 
 
 == Changelog ==
 
+= 1.3.2 =
+* Added filter `wpzabb_food_menu_price_units` for currencies in Food Menu module
+* Added option Currency Position in General tab of Food Menu module
+
 = 1.3.1 =
 * Fixed multiple bugs
 
