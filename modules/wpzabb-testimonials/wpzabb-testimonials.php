@@ -267,6 +267,15 @@ FLBuilder::register_module('WPZABBTestimonialsModule', array(
 			'slider'       => array( // Section
 				'title'         => __( 'Slider Settings', 'wpzabb' ), // Section Title
 				'fields'        => array( // Section Fields
+					'order'     => array(
+						'type'          => 'select',
+						'label'         => __( 'Slides order', 'wpzabb' ),
+						'default'       => 'default',
+						'options'       => array(
+							'default'            => __( 'Default', 'wpzabb' ),
+							'random'             => __( 'Random', 'wpzabb' ),
+						),
+					),
 					'auto_play'     => array(
 						'type'          => 'select',
 						'label'         => __( 'Auto Play', 'wpzabb' ),
