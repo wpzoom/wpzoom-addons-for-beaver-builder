@@ -4,7 +4,7 @@ Donate link: http://paypal.me/wpzm/10usd
 Tags: wpzoom, beaver builder, inspiro, video, posts, clients, testimonials
 Requires at least: 4.6
 Requires PHP: 5.6
-Tested up to: 5.3
+Tested up to: 5.5.1
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -47,6 +47,9 @@ You can see multiple pages created using **Beaver Builder** and our **Inspiro** 
 1. Included modules
 
 == Changelog ==
+
+= 1.3.3 =
+* Added new option in the Testimonials module to display items in a random order.
 
 = 1.3.2 =
 * Added filter `wpzabb_food_menu_price_units` for currencies in Food Menu module
