@@ -1,3 +1,10 @@
+.fl-node-<?php echo $id; ?> .wpzabb-image-grid .wpzabb-image-grid-items .wpzabb-image-grid-item a::after {
+    background-image: <?php echo FLBuilderColor::gradient( $settings->image_grid_overlay_gradient ); ?>;
+}
+.fl-node-<?php echo $id; ?> .wpzabb-image-grid .wpzabb-image-grid-items .wpzabb-image-grid-item a:hover::after {
+    background-image: <?php echo FLBuilderColor::gradient( $settings->image_grid_overlay_gradient_hover ); ?>;
+}
+
 <?php if ( $global_settings->responsive_enabled ) : ?>
 
 @media ( min-width: <?php echo $global_settings->medium_breakpoint . 'px'; ?> ) {

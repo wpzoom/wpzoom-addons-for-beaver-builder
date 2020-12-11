@@ -262,7 +262,54 @@ FLBuilder::register_module( 'WPZABBImageGridModule', array(
 				)
 			)
 		)
-	)
+	),
+	'style'	=> array( // Tab
+		'title'    => __( 'Style', 'wpzabb' ), // Tab title
+		'sections' => array( // Tab Sections
+			'style_image_grid_overlay' => array( // Section
+				'title'     => __( 'Background Overlay', 'wpzabb' ), // Section Title
+				'collapsed' => false, // opened by default
+				'fields'    => array( // Section Fields
+					'image_grid_overlay_gradient' => array(
+						'type'          => 'gradient',
+						'label'         => '',
+						'default'       => array(
+							'type'            => 'linear',
+							'colors'          => array( 'rgba(0, 0, 0, 0.2)', 'rgba(0, 0, 0, 0.3)' ),
+							'stops'           => array( 30, 100 ),
+							'angle'           => 180 //to bottom
+						),
+						'preview'       => array(
+							'type'            => 'css',
+							'selector'        => '.wpzabb-image-grid .wpzabb-image-grid-items .wpzabb-image-grid-item a::after',
+							'property'        => 'background-image'
+						)
+					)
+				)
+			),
+			'style_image_grid_overlay_hover' => array( // Section
+				'title'     => __( 'Background Overlay on Hover', 'wpzabb' ), // Section Title
+				'collapsed' => true,
+				'fields'    => array( // Section Fields
+					'image_grid_overlay_gradient_hover' => array(
+						'type'          => 'gradient',
+						'label'         => '',
+						'default'       => array(
+							'type'            => 'linear',
+							'colors'          => array( 'rgba(0, 0, 0, 0.4)', 'rgba(0, 0, 0, 0.5)' ),
+							'stops'           => array( 30, 100 ),
+							'angle'           => 180 //to bottom
+						),
+						'preview'       => array(
+							'type'            => 'css',
+							'selector'        => '.wpzabb-image-grid .wpzabb-image-grid-items .wpzabb-image-grid-item a:hover::after',
+							'property'        => 'background-image'
+						)
+					)
+				)
+			),
+		),
+	),
 ) );
 
 /**
