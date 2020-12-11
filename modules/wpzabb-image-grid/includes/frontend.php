@@ -1,4 +1,20 @@
-<div class="wpzabb-image-grid">
+<?php
+	$columns = [];
+	$class_names = ['wpzabb-image-grid'];
+
+	if ( count( $settings->items ) > 0 ) {
+		$columns['desktop'] = min( max( absint( $settings->columns ), 1 ), 6 );
+		$columns['tablet'] = min( max( absint( $settings->columns_medium ), 1 ), 6 );
+		$columns['mobile'] = min( max( absint( $settings->columns_responsive ), 1 ), 6 );
+	}
+
+	if ( ! empty( $columns ) ) {
+		$class_names[] = 'columns-desktop-' . absint( $columns['desktop'] );
+		$class_names[] = 'columns-tablet-' . absint( $columns['tablet'] );
+		$class_names[] = 'columns-phone-' . absint( $columns['mobile'] );
+	}
+?>
+<div class="<?php echo implode( ' ', $class_names ); ?>">
 
 	<ul class="wpzabb-image-grid-items">
 		<?php

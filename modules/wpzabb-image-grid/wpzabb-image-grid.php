@@ -235,6 +235,33 @@ FLBuilder::register_module( 'WPZABBImageGridModule', array(
 				)
 			)
 		)
+	),
+	'layout' => array(
+		'title' => __( 'Layout', 'wpzabb' ),
+		'sections' => array(
+			'style' => array(
+				'title'  => '',
+				'fields' => array(
+					'columns'        => array(
+						'type'       => 'unit',
+						'label'      => __( 'Amount of Columns', 'wpzabb' ),
+						'default'    => 4,
+						'slider'     => array(
+							'min'  	 => 1,
+							'max'  	 => 6,
+							'step' 	 => 1
+						),
+						'responsive' => array(
+							'default' => array(
+								'default'    =>  4,
+								'medium'     =>  2,
+								'responsive' =>  1
+							)
+						)
+					)
+				)
+			)
+		)
 	)
 ) );
 
