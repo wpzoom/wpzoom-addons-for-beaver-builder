@@ -7,6 +7,10 @@ $testimonials_class = 'wpzabb-testimonials-wrap wpzabb-testimonials-align-' . $s
 	<ul class="wpzabb-testimonials">
 		<?php
 
+		if ( 'random' === $settings->order ) {
+			shuffle( $settings->testimonials );
+		}
+
 		for ( $i = 0; $i < count( $settings->testimonials ); $i++ ) :
 
 			if ( ! is_object( $settings->testimonials[ $i ] ) ) {

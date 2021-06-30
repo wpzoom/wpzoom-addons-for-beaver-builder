@@ -98,7 +98,9 @@ if( !class_exists( "WPZOOM_BB_Addon_Pack_Helper" ) ) {
 				'posts'            	=> 'Posts',
 				'clients'           => 'Clients',
 				'food-menu'         => 'Food Menu',
-				'woocommerce'       => 'WooCommerce'
+				'woocommerce'       => 'WooCommerce',
+				'slideshow'         => 'Slideshow',
+				'image-grid'        => 'Image Grid'
 			);
 			
 			return self::prefix_modules( $modules_array );

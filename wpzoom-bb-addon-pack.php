@@ -4,7 +4,7 @@
  * Plugin Name: Beaver Builder Addons by WPZOOM
  * Plugin URI: https://www.wpzoom.com/
  * Description: WPZOOM Addons will extend Beaver Builder with several useful extensions that are missing in the Lite version.
- * Version: 1.2.0
+ * Version: 1.3.4
  * Author: WPZOOM
  * Author URI: https://www.wpzoom.com
  * Copyright: (c) 2018 WPZOOM
@@ -18,7 +18,7 @@ if( !class_exists( "WPZOOM_BB_Addon_Pack" ) ) {
 
 	define( 'BB_WPZOOM_ADDON_DIR', plugin_dir_path( __FILE__ ) );
 	define( 'BB_WPZOOM_ADDON_URL', plugins_url( '/', __FILE__ ) );
-	define( 'BB_WPZOOM_ADDON_LITE_VERSION', '1.2.0' );
+	define( 'BB_WPZOOM_ADDON_LITE_VERSION', '1.3.4' );
 	define( 'WPZOOM_REMOVE_wpzabb_FROM_REGISTRATION_LISTING', true );
 	define( 'BB_WPZOOM_ADDON_FILE', trailingslashit( dirname( __FILE__ ) ) . 'wpzoom-bb-addon-pack.php' );
 	define( 'BB_WPZOOM_ADDON_LITE', true );

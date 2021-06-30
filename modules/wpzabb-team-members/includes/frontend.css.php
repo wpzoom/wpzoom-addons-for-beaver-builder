@@ -135,8 +135,8 @@
 <?php /* Info font settings */ ?>
 .fl-node-<?php echo $id; ?> .wpzabb-team-members-wrap .wpzabb-member-info {
 
-	<?php if( !empty($settings->info_font) && $settings->info_font['family'] != 'Default' ) : ?>
-		<?php WPZABB_Helper::wpzabb_font_css( $settings->finfo_ont ); ?>
+	<?php if( !empty($settings->info_font_family) && $settings->info_font_family != 'Default' ) : ?>
+		<?php WPZABB_Helper::wpzabb_font_css( $settings->info_font_family ); ?>
 	<?php endif; ?>
 
 	<?php if( isset( $settings->info_font_size_unit ) && $settings->info_font_size_unit != '' ) : ?>

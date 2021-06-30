@@ -46,7 +46,13 @@
 
 						<div class="wpzabb-food-menu-item-price">
 
-							<?php echo preg_replace( '/[^$¢£€¥]/i', '', $menu_item->price_unit ) . filter_var( $menu_item->price, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION ); ?>
+							<?php
+								if ( $settings->currency_position == 'before' ) {
+									echo $menu_item->price_unit . filter_var( $menu_item->price, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION );
+								} else {
+									echo filter_var( $menu_item->price, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION ) . $menu_item->price_unit;
+								}
+							?>
 
 						</div>
 

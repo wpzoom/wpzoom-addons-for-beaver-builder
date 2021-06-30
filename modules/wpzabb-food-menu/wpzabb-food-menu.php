@@ -28,6 +28,25 @@ class WPZABBFoodMenuModule extends FLBuilderModule
             'url'           	=> BB_WPZOOM_ADDON_URL . 'modules/' . WPZABB_PREFIX . 'food-menu/',
             'partial_refresh'	=> true
 		) );
+
+		add_filter( 'wpzabb_food_menu_price_units', array( $this, 'food_menu_price_units' ) );
+	}
+
+	public function food_menu_price_units( $price_units ) {
+		$price_units[] = 'лв';
+		$price_units[] = 'CHF';
+		$price_units[] = 'Kč';
+		$price_units[] = 'kr';
+		$price_units[] = 'kn';
+		$price_units[] = '₾';
+		$price_units[] = 'ft';
+		$price_units[] = 'zł';
+		$price_units[] = '₽';
+		$price_units[] = 'lei';
+		$price_units[] = '₺';
+		$price_units[] = '₴';
+
+		return $price_units;
 	}
 
 	/**
@@ -247,6 +266,15 @@ FLBuilder::register_module( 'WPZABBFoodMenuModule', array(
 						'label'         => __( 'Menu Title', 'wpzabb' ),
 						'placeholder'   => __( 'The title of the menu...', 'wpzabb' ),
 						'default'       => 'Our Menu'
+					),
+					'currency_position' => array(
+						'type'          => 'select',
+						'label'         => __( 'Currency Position', 'wpzabb' ),
+						'default'       => 'before',
+						'options'       => array(
+							'before'     => __( 'Before - $10', 'wpzabb' ),
+							'after'      => __( 'After - 10$', 'wpzabb' )
+						)
 					),
 					'menu_button'            => array(
 						'type'          => 'select',
@@ -834,7 +862,7 @@ FLBuilder::register_settings_form( 'food_menu_form', array(
 							'label'         => __( 'Price', 'wpzabb' ),
 							'placeholder'   => __( '0.00', 'wpzabb' ),
 							'default'       => '',
-							'units'         => array( '$', '¢', '£', '€', '¥' ),
+							'units'         => apply_filters( 'wpzabb_food_menu_price_units', array( '$', '¢', '£', '€', '¥' ) ),
 							'default_unit'  => '$',
 							'connections'   => array( 'number' )
 						),
