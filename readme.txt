@@ -4,7 +4,7 @@ Donate link: http://paypal.me/wpzm/10usd
 Tags: wpzoom, beaver builder, inspiro, video, posts, clients, testimonials
 Requires at least: 4.6
 Requires PHP: 5.6
-Tested up to: 5.6
+Tested up to: 6.0
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
