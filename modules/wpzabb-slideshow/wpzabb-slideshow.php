@@ -307,6 +307,7 @@ class WPZABBSlideshowModule extends FLBuilderModule {
 		if ( isset( $args[ 'settings' ] ) && is_object( $args[ 'settings' ] ) && property_exists( $args[ 'settings' ], 'slides_source' ) &&
 		     property_exists( $args[ 'settings' ], 'wpzabb_featured_posts_only' ) && 'yes' == $args[ 'settings' ]->wpzabb_featured_posts_only ) {
 			$args[ 'meta_key' ] = 'wpzoom_is_featured';
+			$args[ 'meta_value' ] = '1';
 		}
 
 		return $args;
