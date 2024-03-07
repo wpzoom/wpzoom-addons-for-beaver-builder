@@ -27,9 +27,9 @@
 
 	<<?php echo $settings->tag; ?> class="wpzabb-heading">
 		<?php if( !empty( $settings->link ) ) : ?>
-			<a href="<?php echo $settings->link; ?>" title="<?php echo $settings->heading; ?>" target="<?php echo $settings->link_target; ?>" <?php WPZOOM_BB_Addon_Pack_Helper::get_link_rel( $settings->link_target, 0, 1 ); ?>>
+			<a href="<?php echo esc_url( $settings->link ); ?>" title="<?php echo esc_attr( $settings->heading ); ?>" target="<?php echo esc_attr( $settings->link_target ); ?>" <?php WPZOOM_BB_Addon_Pack_Helper::get_link_rel( $settings->link_target, 0, 1 ); ?>>
 			<?php endif; ?>
-			<span class="wpzabb-heading-text"><?php echo $settings->heading; ?></span>
+			<span class="wpzabb-heading-text"><?php echo wp_kses_post( $settings->heading ); ?></span>
 			<?php if( !empty( $settings->link ) ) : ?>
 			</a>
 		<?php endif; ?>
@@ -61,7 +61,7 @@
 
 	<?php if( $settings->description != '' ) : ?>
 		<div class="wpzabb-subheading wpzabb-text-editor">
-			<?php echo $settings->description; ?>
+			<?php echo wp_kses_post( $settings->description ); ?>
 		</div>
 	<?php endif; ?>
 

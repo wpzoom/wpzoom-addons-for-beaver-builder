@@ -19,10 +19,10 @@
 		?>
 		<li id="wpzabb-client-<?php echo $i ?>" class="wpzabb-client">
 			<?php if( !empty( $client->link ) ) : ?>
-				<a href="<?php echo $client->link; ?>" title="<?php echo $client->name; ?>" target="<?php echo $client->link_target; ?>" <?php WPZOOM_BB_Addon_Pack_Helper::get_link_rel( $client->link_target, 0, 1 ); ?>>
+				<a href="<?php echo esc_url( $client->link ); ?>" title="<?php echo esc_attr( $client->name ); ?>" target="<?php echo esc_attr( $client->link_target ); ?>" <?php WPZOOM_BB_Addon_Pack_Helper::get_link_rel( $client->link_target, 0, 1 ); ?>>
 			<?php endif; ?>
 			<div class="wpzabb-client-image" itemscope itemtype="http://schema.org/ImageObject">
-				<img class="<?php echo $classes; ?>" src="<?php echo $src; ?>" alt="<?php echo $alt; ?>" itemprop="image"/>
+				<img class="<?php echo esc_attr( $classes ); ?>" src="<?php echo esc_url( $src ); ?>" alt="<?php echo esc_attr( $alt ); ?>" itemprop="image"/>
 			</div>
 			<?php if( !empty( $client->link ) ) : ?>
 				</a>

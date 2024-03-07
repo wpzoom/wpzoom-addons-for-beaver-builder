@@ -12,10 +12,10 @@
 		?>
 		<figure class="wpzabb-image" style="<?php echo $bg_image; ?>">
 			<?php if( !empty( $settings->link ) ) : ?>
-				<a href="<?php echo $settings->link; ?>" class="wpzabb-image-overlay-link" title="<?php echo $settings->heading; ?>" target="<?php echo $settings->link_target; ?>" <?php WPZOOM_BB_Addon_Pack_Helper::get_link_rel( $settings->link_target, 0, 1 ); ?>></a>
+				<a href="<?php echo esc_url( $settings->link ); ?>" class="wpzabb-image-overlay-link" title="<?php echo esc_attr( $settings->heading ); ?>" target="<?php echo $settings->link_target; ?>" <?php WPZOOM_BB_Addon_Pack_Helper::get_link_rel( $settings->link_target, 0, 1 ); ?>></a>
 			<?php endif; ?>
 			<div class="wpzabb-image-image hidden" itemscope itemtype="http://schema.org/ImageObject">
-				<img class="<?php echo $classes; ?>" src="<?php echo $src; ?>" alt="<?php echo $alt; ?>" itemprop="image"/>
+				<img class="<?php echo $classes; ?>" src="<?php echo esc_url( $src ); ?>" alt="<?php echo esc_attr( $alt ); ?>" itemprop="image"/>
 			</div>
 			<figcaption class="wpzabb-image-caption">
 				<<?php echo $settings->tag; ?> class="wpzabb-image-heading"><?php echo $settings->heading ?></<?php echo $settings->tag; ?>>

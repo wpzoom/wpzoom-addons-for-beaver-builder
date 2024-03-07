@@ -19,10 +19,10 @@
 		?>
 		<figure class="wpzabb-member">
 			<?php if( !empty( $member->link ) ) : ?>
-				<a href="<?php echo $member->link; ?>" title="<?php echo $member->name; ?>" target="<?php echo $member->link_target; ?>" <?php WPZOOM_BB_Addon_Pack_Helper::get_link_rel( $member->link_target, 0, 1 ); ?>>
+				<a href="<?php echo esc_url( $member->link ); ?>" title="<?php echo esc_attr( $member->name ); ?>" target="<?php echo $member->link_target; ?>" <?php WPZOOM_BB_Addon_Pack_Helper::get_link_rel( $member->link_target, 0, 1 ); ?>>
 			<?php endif; ?>
 			<div class="wpzabb-member-avatar" itemscope itemtype="http://schema.org/ImageObject">
-				<img class="<?php echo $classes; ?>" src="<?php echo $src; ?>" alt="<?php echo $alt; ?>" itemprop="image"/>
+				<img class="<?php echo $classes; ?>" src="<?php echo esc_url( $src ); ?>" alt="<?php echo esc_attr( $alt ); ?>" itemprop="image"/>
 			</div>
 			<?php if( !empty( $member->link ) ) : ?>
 				</a>
@@ -30,7 +30,7 @@
 			<figcaption class="wpzabb-member-caption">
 				<<?php echo $settings->tag; ?> class="wpzabb-member-name">
 				<?php if( !empty( $member->link ) ) : ?>
-					<a href="<?php echo $member->link; ?>" title="<?php echo $member->name; ?>" target="<?php echo $member->link_target; ?>" <?php WPZOOM_BB_Addon_Pack_Helper::get_link_rel( $member->link_target, 0, 1 ); ?>>
+					<a href="<?php echo esc_url( $member->link ); ?>" title="<?php echo esc_attr( $member->name ); ?>" target="<?php echo $member->link_target; ?>" <?php WPZOOM_BB_Addon_Pack_Helper::get_link_rel( $member->link_target, 0, 1 ); ?>>
 				<?php endif; ?>
 				<span class="wpzabb-member-name-text"><?php echo $member->name ?></span>
 				<?php if( !empty( $member->link ) ) : ?>

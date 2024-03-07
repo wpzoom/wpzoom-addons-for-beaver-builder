@@ -124,8 +124,8 @@ class WPZABBButtonModule extends FLBuilderModule {
 		$attributes = array();
 		$output = '';
 
-		$attributes['href'] 	= $this->settings->link;
-		$attributes['target'] 	= $this->settings->link_target;
+		$attributes['href'] 	= esc_url( $this->settings->link );
+		$attributes['target'] 	= esc_attr( $this->settings->link_target );
 		$attributes['role'] 	= 'button';
 
 		$attributes['class'][] = 'wpzabb-button';
@@ -145,7 +145,7 @@ class WPZABBButtonModule extends FLBuilderModule {
 		if ( 'lightbox' === $this->settings->click_action ) {
 			if ( 'external_link' === $this->settings->lightbox_video_type ) {
 				$attributes['data-popup-type'] 	= 'iframe';
-				$attributes['href'] 			= $this->settings->lightbox_video_link;
+				$attributes['href'] 			= esc_url( $this->settings->lightbox_video_link );
 				$attributes['target'] 			= '_self';
 				$attributes['rel'] 				= '';
 				$attributes['class'][] 			= 'wpzabb-button-popup-video';
@@ -183,6 +183,7 @@ class WPZABBButtonModule extends FLBuilderModule {
 		$output = '';
 
 		if ( 'self_hosted' === $this->settings->lightbox_video_type ) {
+			$this->settings->lightbox_video_self_link = esc_url( $this->settings->lightbox_video_self_link );
 			$output = "<div id=\"zoom-popup-{$this->post->ID}\" class=\"animated slow mfp-hide\" data-src=\"{$this->settings->lightbox_video_self_link}\">
 
 			    <div class=\"mfp-iframe-scaler\">" .

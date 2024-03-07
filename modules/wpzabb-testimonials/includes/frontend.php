@@ -31,7 +31,7 @@ $testimonials_class = 'wpzabb-testimonials-wrap wpzabb-testimonials-align-' . $s
 			<div class="wpzabb-testimonial-footer">
 				<div class="wpzabb-testimonial-author">
 					<?php if( !empty( $testimonial->author_link ) ) : ?>
-						<a href="<?php echo $testimonial->author_link; ?>" title="<?php echo $testimonial->author_name; ?>" target="<?php echo $testimonial->author_link_target; ?>" <?php WPZOOM_BB_Addon_Pack_Helper::get_link_rel( $testimonial->author_link_target, 0, 1 ); ?>>
+						<a href="<?php echo esc_url( $testimonial->author_link ); ?>" title="<?php echo esc_attr( $testimonial->author_name ); ?>" target="<?php echo $testimonial->author_link_target; ?>" <?php WPZOOM_BB_Addon_Pack_Helper::get_link_rel( $testimonial->author_link_target, 0, 1 ); ?>>
 					<?php endif; ?>
 					<?php if ( !empty( $src ) ): ?>
 						<div class="wpzabb-testimonial-author-avatar" itemscope itemtype="http://schema.org/ImageObject">
@@ -44,12 +44,12 @@ $testimonials_class = 'wpzabb-testimonials-wrap wpzabb-testimonials-align-' . $s
 				</div>
 				<div class="wpzabb-testimonial-author-info">
 					<?php if( !empty( $testimonial->author_link ) ) : ?>
-						<a href="<?php echo $testimonial->author_link; ?>" title="<?php echo $testimonial->author_name; ?>" target="<?php echo $testimonial->author_link_target; ?>" <?php WPZOOM_BB_Addon_Pack_Helper::get_link_rel( $testimonial->author_link_target, 0, 1 ); ?>>
+						<a href="<?php echo esc_url( $testimonial->author_link ); ?>" title="<?php echo esc_attr( $testimonial->author_name ); ?>" target="<?php echo $testimonial->author_link_target; ?>" <?php WPZOOM_BB_Addon_Pack_Helper::get_link_rel( $testimonial->author_link_target, 0, 1 ); ?>>
 					<?php endif; ?>
 					<h4 class="author-name"><?php echo $testimonial->author_name; ?></h4>
 					<?php if ( !empty( $testimonial->author_company ) ): ?>
 						<?php if ( !empty( $testimonial->author_company_link ) ): ?>
-							<a href="<?php echo $testimonial->author_company_link ?>" title="<?php echo $testimonial->author_company ?>" target="_blank">
+							<a href="<?php echo esc_url( $testimonial->author_company_link ); ?>" title="<?php echo esc_attr( $testimonial->author_company ); ?>" target="_blank">
 						<?php endif ?>
 						<span class="author-company"><?php echo $testimonial->author_company; ?></span>
 						<?php if ( !empty( $testimonial->author_company_link ) ): ?>
