@@ -4,7 +4,7 @@ Donate link: http://paypal.me/wpzm/10usd
 Tags: wpzoom, beaver builder, inspiro, video, posts, clients, testimonials
 Requires at least: 4.6
 Requires PHP: 5.6
-Tested up to: 6.1
+Tested up to: 6.5
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -47,6 +47,9 @@ You can see multiple pages created using **Beaver Builder** and our **Inspiro** 
 1. Included modules
 
 == Changelog ==
+
+= 1.3.5 =
+* Multiple fixes
 
 = 1.3.4 =
 * Added a new option to change the number of columns in the Image Grid module
