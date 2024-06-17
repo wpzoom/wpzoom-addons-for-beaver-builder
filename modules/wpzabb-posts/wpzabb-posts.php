@@ -61,7 +61,9 @@ class WPZABBPostsModule extends FLBuilderModule {
 	 * @return string
 	 */
 	public function get_layout_slug() {
-		return $this->settings->layout;
+
+		$layout = isset( $this->settings->layout ) ? sanitize_file_name( $this->settings->layout ) : 'grid';
+		return $layout;
 	}
 
 	/**
