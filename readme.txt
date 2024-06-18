@@ -48,6 +48,9 @@ You can see multiple pages created using **Beaver Builder** and our **Inspiro** 
 
 == Changelog ==
 
+= 1.3.6 =
+* Bug fix with the Posts widget
+
 = 1.3.5 =
 * Multiple fixes
 
