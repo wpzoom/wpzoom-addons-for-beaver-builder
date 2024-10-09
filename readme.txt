@@ -13,7 +13,7 @@ A suite of useful addons for Beaver Builder for WPZOOM themes.
 
 == Description ==
 
-This plugin will extend [Beaver Builder](https://www.wpbeaverbuilder.com/?fla=463) with several useful extensions that are missing in the Lite version.
+This plugin will extend [Beaver Builder](https://www.wpbeaverbuilder.com/) with several useful extensions that are missing in the Lite version.
 
 == Included modules: ==
 
