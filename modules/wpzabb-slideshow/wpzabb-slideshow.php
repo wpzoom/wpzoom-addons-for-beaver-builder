@@ -199,15 +199,15 @@ class WPZABBSlideshowModule extends FLBuilderModule {
 
 		$result = false;
 		$post_id = isset( $_POST[ 'post_id' ] ) ? intval( $_POST[ 'post_id' ] ) : -1;
-		$source = isset( $_POST[ 'source' ] ) ? $_POST[ 'source' ] : 'none';
-		$dat = isset( $_POST[ 'dat' ] ) ? $_POST[ 'dat' ] : '';
+		$source = isset( $_POST[ 'source' ] ) ? sanitize_text_field( $_POST[ 'source' ] ) : 'none';
+		$dat = isset( $_POST[ 'dat' ] ) ? sanitize_text_field( $_POST[ 'dat' ] ) : '';
 		$element_num = isset( $_POST[ 'element_num' ] ) ? intval( $_POST[ 'element_num' ] ) : -1;
 
 		if ( 'library' == $source || 'library-image' == $source ) {
-			$url = wp_get_attachment_url( $dat );
+			$url = wp_get_attachment_url( absint( $dat ) );
 			$result = false !== $url ? array( 'type' => $source, 'url' => $url, 'element_num' => $element_num ) : false;
 		} elseif ( 'url-image' == $source ) {
-			$result = array( 'type' => $source, 'url' => $dat, 'element_num' => $element_num );
+			$result = array( 'type' => $source, 'url' => esc_url_raw( $dat ), 'element_num' => $element_num );
 		}
 
 		wp_send_json_success( $result );

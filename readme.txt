@@ -49,7 +49,8 @@ You can see multiple pages created using **Beaver Builder** and our **Inspiro** 
 == Changelog ==
 
 = 1.3.7 =
-* Minor bug fixes
+* Security: Fixed input sanitization in attachment link saving
+* Security: Improved AJAX parameter sanitization in slideshow module
 
 = 1.3.6 =
 * Bug fix with the Posts widget

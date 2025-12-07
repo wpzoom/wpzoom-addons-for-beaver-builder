@@ -47,7 +47,7 @@ if( !class_exists( "WPZABB_Attachment" ) ) {
 
 			function wpzabb_attachment_field_cta_save( $post, $attachment ) {
 				if( isset( $attachment['wpzabb-cta-link'] ) )
-					update_post_meta( $post['ID'], 'wpzabb-cta-link', $attachment['wpzabb-cta-link'] );
+					update_post_meta( $post['ID'], 'wpzabb-cta-link', esc_url_raw( $attachment['wpzabb-cta-link'] ) );
 
 				return $post;
 			}
