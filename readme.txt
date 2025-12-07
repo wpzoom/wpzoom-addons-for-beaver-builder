@@ -1,10 +1,10 @@
-=== Beaver Builder Addons by WPZOOM ===
+=== WPZOOM Addons for Beaver Builder ===
 Contributors: WPZOOM
 Donate link: http://paypal.me/wpzm/10usd
-Tags: wpzoom, beaver builder, inspiro, video, posts, clients, testimonials
-Requires at least: 4.6
-Requires PHP: 5.6
-Tested up to: 6.5
+Tags: wpzoom, beaver builder, page builder, addons, inspiro
+Requires at least: 6.0
+Requires PHP: 7.4
+Tested up to: 6.9
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -37,9 +37,9 @@ You can see multiple pages created using **Beaver Builder** and our **Inspiro** 
 
 == Installation ==
 
-1. Install Beaver Builder Addons by WPZOOM either via the Plugins > Add New page in your WordPress Dashboard, or by downloading the plugin and uploading the file in Plugins > Add New.
+1. Install WPZOOM Addons for Beaver Builder either via the Plugins > Add New page in your WordPress Dashboard, or by downloading the plugin and uploading the file in Plugins > Add New.
 
-2. After activating Beaver Builder Addons by WPZOOM, several new widgets will be available in the Page Builder.
+2. After activating WPZOOM Addons for Beaver Builder, several new widgets will be available in the Page Builder.
 
 
 == Screenshots ==
@@ -47,6 +47,9 @@ You can see multiple pages created using **Beaver Builder** and our **Inspiro** 
 1. Included modules
 
 == Changelog ==
+
+= 1.3.7 =
+* Minor bug fixes
 
 = 1.3.6 =
 * Bug fix with the Posts widget
