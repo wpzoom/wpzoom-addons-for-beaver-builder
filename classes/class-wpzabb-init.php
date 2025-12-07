@@ -59,9 +59,6 @@ class WPZABB_Init {
 		require_once BB_WPZOOM_ADDON_DIR . 'classes/helper.php';
 		require_once BB_WPZOOM_ADDON_DIR . 'classes/class-ui-panel.php';
 
-		// Load the appropriate text-domain
-		$this->load_plugin_textdomain();
-
 	}
 
 	/**
@@ -90,29 +87,21 @@ class WPZABB_Init {
 
 	function init() {
 
+		// Load the appropriate text-domain
+		load_plugin_textdomain( 'wpzabb', false, dirname( plugin_basename( BB_WPZOOM_ADDON_FILE ) ) . '/languages' );
+
+		// Define WPZABB_CAT after translations are loaded (for backwards compatibility)
+		if ( ! defined( 'WPZABB_CAT' ) ) {
+			$branding_name = defined( 'WPZABB_BRANDNAME' ) ? WPZABB_BRANDNAME : 'WPZABB';
+			if ( $branding_name !== 'WPZABB' ) {
+				define( 'WPZABB_CAT', sprintf( __( '%s Modules', 'wpzabb' ), $branding_name ) );
+			} else {
+				define( 'WPZABB_CAT', __( 'WPZOOM Modules', 'wpzabb' ) );
+			}
+		}
+
 		// WPZOOM Addons Pack Modules
 		$this->load_modules();
-	}
-
-	function load_plugin_textdomain() {
-		//Traditional WordPress plugin locale filter
-		$locale = apply_filters( 'plugin_locale', get_locale(), 'wpzabb' );
-
-		//Setup paths to current locale file
-		$mofile_global = trailingslashit( WP_LANG_DIR ) . 'plugins/wpzoom-bb-addon-pack/' . $locale . '.mo';
-		$mofile_local  = trailingslashit( BB_WPZOOM_ADDON_DIR ) . 'languages/' . $locale . '.mo';
-
-		if ( file_exists( $mofile_global ) ) {
-			//Look in global /wp-content/languages/plugins/wpzoom-bb-addon-pack/ folder
-			return load_textdomain( 'wpzabb', $mofile_global );
-		}
-		else if ( file_exists( $mofile_local ) ) {
-			//Look in local /wp-content/plugins/wpzoom-bb-addon-pack/languages/ folder
-			return load_textdomain( 'wpzabb', $mofile_local );
-		} 
-
-		//Nothing found
-		return false;
 	}
 
 	function load_scripts() {

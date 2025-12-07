@@ -22,7 +22,6 @@ if( !class_exists( "WPZOOM_BB_Addon_Pack_Helper" ) ) {
 			$branding         = WPZOOM_BB_Addon_Pack_Helper::get_builder_wpzabb_branding();
 			$branding_prefix  = 'wpzabb-';
 			$branding_name    = 'WPZABB';
-			$branding_modules = __('WPZOOM Modules', 'wpzabb');
 
 			//	Branding - %s
 			if (
@@ -33,18 +32,12 @@ if( !class_exists( "WPZOOM_BB_Addon_Pack_Helper" ) ) {
 				$branding_name = $branding['wpzabb-plugin-short-name'];
 			}
 
-			//	Branding - %s Modules
-			if ( $branding_name != 'WPZABB') {
-				$branding_modules = sprintf( __( '%s Modules', 'wpzabb' ), $branding_name );
-			}
-
 			define( 'WPZABB_PREFIX', $branding_prefix );
 			define( 'WPZABB_BRANDNAME', $branding_name );
-			define( 'WPZABB_CAT', $branding_modules );			
 		}
 		
 		static public function module_cat( $cat = '' ) {
-		    return ( class_exists( 'FLBuilderUIContentPanel' ) && ! empty($cat) ) ? $cat : WPZABB_CAT;
+			return ( class_exists( 'FLBuilderUIContentPanel' ) && ! empty( $cat ) ) ? $cat : WPZABB_CAT;
 		}
 
 		static public function get_builder_wpzabb_branding( $request_key = '' ) {

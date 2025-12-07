@@ -1,0 +1,2563 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: WPZOOM Addons for Beaver Builder\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-12-07 19:14+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.8.0; wp-6.9; php-8.3.14\n"
+"X-Domain: wpzabb"
+
+#: modules/wpzabb-posts/includes/post-meta.php:30
+msgid "% Comments"
+msgstr ""
+
+#: classes/class-wpzabb-helper.php:38
+#, php-format
+msgid "%s Modules"
+msgstr ""
+
+#: modules/wpzabb-posts/includes/post-meta.php:10
+#, php-format
+msgctxt "%s stands for author name."
+msgid "By %s"
+msgstr ""
+
+#: modules/wpzabb-posts/includes/post-meta.php:30
+msgid "0 Comments"
+msgstr ""
+
+#: modules/wpzabb-food-menu/wpzabb-food-menu.php:863
+msgid "0.00"
+msgstr ""
+
+#: modules/wpzabb-team-members/wpzabb-team-members.php:237
+#: modules/wpzabb-clients/wpzabb-clients.php:249
+msgid "1 column"
+msgstr ""
+
+#: modules/wpzabb-posts/includes/post-meta.php:30
+msgid "1 Comment"
+msgstr ""
+
+#: modules/wpzabb-map/wpzabb-map.php:38
+msgid "1865 Winchester Blvd #202 Campbell, CA 95008"
+msgstr ""
+
+#: modules/wpzabb-team-members/wpzabb-team-members.php:238
+#: modules/wpzabb-clients/wpzabb-clients.php:250
+msgid "2 columns"
+msgstr ""
+
+#: modules/wpzabb-team-members/wpzabb-team-members.php:239
+#: modules/wpzabb-clients/wpzabb-clients.php:251
+msgid "3 columns"
+msgstr ""
+
+#: modules/wpzabb-button/wpzabb-button.php:387
+msgid "3D"
+msgstr ""
+
+#: modules/wpzabb-team-members/wpzabb-team-members.php:240
+#: modules/wpzabb-clients/wpzabb-clients.php:252
+msgid "4 columns"
+msgstr ""
+
+#: modules/wpzabb-clients/wpzabb-clients.php:253
+msgid "5 columns"
+msgstr ""
+
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:244
+msgid "<strong>[WPZOOM]</strong> Only Show Featured Posts"
+msgstr ""
+
+#: modules/wpzabb-separator/wpzabb-separator.php:15
+msgid "A divider line to separate content."
+msgstr ""
+
+#: modules/wpzabb-food-menu/wpzabb-food-menu.php:25
+msgid "A menu of food items."
+msgstr ""
+
+#: modules/wpzabb-button/wpzabb-button.php:20
+msgid "A simple call to action button."
+msgstr ""
+
+#: modules/wpzabb-spacer-gap/wpzabb-spacer-gap.php:12
+msgid "A totally awesome module!"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:486
+#: modules/wpzabb-posts/wpzabb-posts.php:495
+#: modules/wpzabb-posts/wpzabb-posts.php:574
+#: modules/wpzabb-posts/wpzabb-posts.php:583
+msgid "Above Content"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:485
+#: modules/wpzabb-posts/wpzabb-posts.php:494
+#: modules/wpzabb-posts/wpzabb-posts.php:573
+#: modules/wpzabb-posts/wpzabb-posts.php:582
+msgid "Above Title"
+msgstr ""
+
+#: modules/wpzabb-image-box/wpzabb-image-box.php:25
+msgid "Add an image with some text over."
+msgstr ""
+
+#: modules/wpzabb-clients/wpzabb-clients.php:399
+msgid "Add Client"
+msgstr ""
+
+#: modules/wpzabb-image-grid/wpzabb-image-grid.php:319
+msgid "Add Item"
+msgstr ""
+
+#: modules/wpzabb-team-members/wpzabb-team-members.php:715
+msgid "Add Member"
+msgstr ""
+
+#: modules/wpzabb-food-menu/wpzabb-food-menu.php:837
+msgid "Add Menu Item"
+msgstr ""
+
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:997
+msgid "Add Slide"
+msgstr ""
+
+#: modules/wpzabb-testimonials/wpzabb-testimonials.php:407
+msgid "Add Testimonial"
+msgstr ""
+
+#: modules/wpzabb-woocommerce/wpzabb-woocommerce.php:90
+msgid "Add to Cart Button"
+msgstr ""
+
+#: modules/wpzabb-map/wpzabb-map.php:37
+msgid "Address"
+msgstr ""
+
+#: modules/wpzabb-food-menu/wpzabb-food-menu.php:276
+msgid "After - 10$"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:1036
+#: modules/wpzabb-image-box/wpzabb-image-box.php:979
+#: modules/wpzabb-button/wpzabb-button.php:461
+msgid "After Text"
+msgstr ""
+
+#: modules/wpzabb-separator/wpzabb-separator.php:80
+msgid "Align the border."
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:123
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:779
+#: modules/wpzabb-image-icon/wpzabb-image-icon.php:429
+#: modules/wpzabb-image-icon/wpzabb-image-icon.php:483
+#: modules/wpzabb-food-menu/wpzabb-food-menu.php:588
+#: modules/wpzabb-separator/wpzabb-separator.php:68
+#: modules/wpzabb-image-box/wpzabb-image-box.php:1111
+#: modules/wpzabb-button/wpzabb-button.php:612
+msgid "Alignment"
+msgstr ""
+
+#: modules/wpzabb-woocommerce/wpzabb-woocommerce.php:109
+#: modules/wpzabb-image-grid/wpzabb-image-grid.php:247
+msgid "Amount of Columns"
+msgstr ""
+
+#: modules/wpzabb-testimonials/wpzabb-testimonials.php:25
+msgid "An animated tesimonials area."
+msgstr ""
+
+#: modules/wpzabb-button/wpzabb-button.php:428
+msgid "Animate Bottom"
+msgstr ""
+
+#: modules/wpzabb-button/wpzabb-button.php:427
+msgid "Animate Top"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:1022
+#: modules/wpzabb-image-box/wpzabb-image-box.php:960
+#: modules/wpzabb-button/wpzabb-button.php:442
+msgid "Appear Icon From Bottom"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:1020
+#: modules/wpzabb-image-box/wpzabb-image-box.php:958
+#: modules/wpzabb-button/wpzabb-button.php:440
+msgid "Appear Icon From Left"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:1019
+#: modules/wpzabb-image-box/wpzabb-image-box.php:957
+#: modules/wpzabb-button/wpzabb-button.php:439
+msgid "Appear Icon From Right"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:1021
+#: modules/wpzabb-image-box/wpzabb-image-box.php:959
+#: modules/wpzabb-button/wpzabb-button.php:441
+msgid "Appear Icon From Top"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:1087
+#: modules/wpzabb-image-box/wpzabb-image-box.php:1035
+#: modules/wpzabb-button/wpzabb-button.php:536
+msgid "Apply Hover Color To"
+msgstr ""
+
+#: modules/wpzabb-button/wpzabb-button.php:723
+msgid "Apply Text Decoration on Hover"
+msgstr ""
+
+#: modules/wpzabb-testimonials/wpzabb-testimonials.php:345
+#: modules/wpzabb-clients/wpzabb-clients.php:337
+msgid "Arrow Color"
+msgstr ""
+
+#: modules/wpzabb-testimonials/wpzabb-testimonials.php:327
+#: modules/wpzabb-clients/wpzabb-clients.php:319
+msgid "Arrows"
+msgstr ""
+
+#: modules/wpzabb-woocommerce/wpzabb-woocommerce.php:75
+msgid "Ascending"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:588
+msgid "Author"
+msgstr ""
+
+#: modules/wpzabb-testimonials/wpzabb-testimonials.php:259
+msgid "Author Image Size"
+msgstr ""
+
+#: modules/wpzabb-testimonials/wpzabb-testimonials.php:281
+#: modules/wpzabb-clients/wpzabb-clients.php:273
+msgid "Auto Play"
+msgstr ""
+
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:499
+msgid "Automatic Height"
+msgstr ""
+
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:542
+msgid "Automatic Height Max"
+msgstr ""
+
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:522
+msgid "Automatic Height Size"
+msgstr ""
+
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:393
+msgid "Autoplay Interval"
+msgstr ""
+
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:370
+msgid "Autoplay Slideshow"
+msgstr ""
+
+#: modules/wpzabb-testimonials/wpzabb-testimonials.php:438
+#: modules/wpzabb-team-members/wpzabb-team-members.php:742
+msgid "Avatar"
+msgstr ""
+
+#: modules/wpzabb-testimonials/wpzabb-testimonials.php:421
+#: modules/wpzabb-team-members/wpzabb-team-members.php:725
+msgid "Avatar Source"
+msgstr ""
+
+#: modules/wpzabb-testimonials/wpzabb-testimonials.php:444
+#: modules/wpzabb-team-members/wpzabb-team-members.php:748
+msgid "Avatar URL"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:1091
+#: modules/wpzabb-image-box/wpzabb-image-box.php:1039
+#: modules/wpzabb-button/wpzabb-button.php:540
+msgid "Background"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:1056
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:768
+#: modules/wpzabb-image-icon/wpzabb-image-icon.php:767
+#: modules/wpzabb-image-icon/wpzabb-image-icon.php:831
+#: modules/wpzabb-food-menu/wpzabb-food-menu.php:337
+#: modules/wpzabb-food-menu/wpzabb-food-menu.php:727
+#: modules/wpzabb-image-box/wpzabb-image-box.php:1004
+#: modules/wpzabb-button/wpzabb-button.php:505
+msgid "Background Color"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:1070
+#: modules/wpzabb-image-icon/wpzabb-image-icon.php:781
+#: modules/wpzabb-image-icon/wpzabb-image-icon.php:845
+#: modules/wpzabb-image-box/wpzabb-image-box.php:1018
+#: modules/wpzabb-button/wpzabb-button.php:519
+msgid "Background Hover Color"
+msgstr ""
+
+#: modules/wpzabb-image-grid/wpzabb-image-grid.php:270
+msgid "Background Overlay"
+msgstr ""
+
+#: modules/wpzabb-image-box/wpzabb-image-box.php:899
+msgid "Background Overlay Color"
+msgstr ""
+
+#: modules/wpzabb-image-box/wpzabb-image-box.php:913
+msgid "Background Overlay Hover Color"
+msgstr ""
+
+#: modules/wpzabb-image-grid/wpzabb-image-grid.php:291
+msgid "Background Overlay on Hover"
+msgstr ""
+
+#: modules/wpzabb-image-icon/wpzabb-image-icon.php:537
+#: modules/wpzabb-image-icon/wpzabb-image-icon.php:653
+msgid "Background Size"
+msgstr ""
+
+#: modules/wpzabb-food-menu/wpzabb-food-menu.php:275
+msgid "Before - $10"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:1035
+#: modules/wpzabb-image-box/wpzabb-image-box.php:978
+#: modules/wpzabb-button/wpzabb-button.php:460
+msgid "Before Text"
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:196
+msgid "Between Heading & Description"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:1090
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:791
+#: modules/wpzabb-food-menu/wpzabb-food-menu.php:796
+#: modules/wpzabb-image-box/wpzabb-image-box.php:1038
+#: modules/wpzabb-button/wpzabb-button.php:539
+msgid "Border"
+msgstr ""
+
+#: modules/wpzabb-image-icon/wpzabb-image-icon.php:800
+#: modules/wpzabb-image-icon/wpzabb-image-icon.php:864
+msgid "Border Color"
+msgstr ""
+
+#: modules/wpzabb-image-icon/wpzabb-image-icon.php:806
+#: modules/wpzabb-image-icon/wpzabb-image-icon.php:870
+msgid "Border Hover Color"
+msgstr ""
+
+#: modules/wpzabb-image-icon/wpzabb-image-icon.php:595
+#: modules/wpzabb-image-icon/wpzabb-image-icon.php:716
+msgid "Border Radius"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:1183
+#: modules/wpzabb-image-box/wpzabb-image-box.php:945
+#: modules/wpzabb-button/wpzabb-button.php:392
+msgid "Border Size"
+msgstr ""
+
+#: modules/wpzabb-image-icon/wpzabb-image-icon.php:548
+#: modules/wpzabb-image-icon/wpzabb-image-icon.php:670
+msgid "Border Style"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:767
+msgctxt "Border type."
+msgid "Dashed"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:764
+msgctxt "Border type."
+msgid "Default"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:768
+msgctxt "Border type."
+msgid "Dotted"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:769
+msgctxt "Border type."
+msgid "Double"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:765
+msgctxt "Border type."
+msgid "None"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:766
+msgctxt "Border type."
+msgid "Solid"
+msgstr ""
+
+#: modules/wpzabb-image-icon/wpzabb-image-icon.php:580
+#: modules/wpzabb-image-icon/wpzabb-image-icon.php:702
+msgid "Border Width"
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:198
+#: modules/wpzabb-food-menu/wpzabb-food-menu.php:594
+msgid "Bottom"
+msgstr ""
+
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:1045
+#: modules/wpzabb-image-box/wpzabb-image-box.php:789
+#: modules/wpzabb-button/wpzabb-button.php:19
+msgid "Button"
+msgstr ""
+
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:1069
+#: modules/wpzabb-image-box/wpzabb-image-box.php:326
+msgid "Button Label"
+msgstr ""
+
+#: modules/wpzabb-button/wpzabb-button.php:638
+msgid "Button Settings"
+msgstr ""
+
+#: modules/wpzabb-image-box/wpzabb-image-box.php:931
+msgid "Button Style"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:1000
+msgid "Button Text"
+msgstr ""
+
+#: modules/wpzabb-button/wpzabb-button.php:270
+msgid "Button Type"
+msgstr ""
+
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:1082
+msgid "Button URL"
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:449
+#: modules/wpzabb-heading/wpzabb-heading.php:587
+#: modules/wpzabb-posts/wpzabb-posts.php:1143
+#: modules/wpzabb-team-members/wpzabb-team-members.php:350
+#: modules/wpzabb-team-members/wpzabb-team-members.php:489
+#: modules/wpzabb-team-members/wpzabb-team-members.php:627
+#: modules/wpzabb-image-box/wpzabb-image-box.php:433
+#: modules/wpzabb-image-box/wpzabb-image-box.php:571
+#: modules/wpzabb-image-box/wpzabb-image-box.php:709
+#: modules/wpzabb-image-box/wpzabb-image-box.php:847
+#: modules/wpzabb-button/wpzabb-button.php:696
+msgid "Capitalize"
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:127
+#: modules/wpzabb-heading/wpzabb-heading.php:143
+#: modules/wpzabb-posts/wpzabb-posts.php:462
+#: modules/wpzabb-testimonials/wpzabb-testimonials.php:253
+#: modules/wpzabb-team-members/wpzabb-team-members.php:248
+#: modules/wpzabb-clients/wpzabb-clients.php:261
+#: modules/wpzabb-image-icon/wpzabb-image-icon.php:433
+#: modules/wpzabb-image-icon/wpzabb-image-icon.php:487
+#: modules/wpzabb-separator/wpzabb-separator.php:71
+#: modules/wpzabb-image-box/wpzabb-image-box.php:1114
+#: modules/wpzabb-image-box/wpzabb-image-box.php:1124
+#: modules/wpzabb-button/wpzabb-button.php:615
+#: modules/wpzabb-button/wpzabb-button.php:625
+msgid "Center"
+msgstr ""
+
+#: modules/wpzabb-image-icon/wpzabb-image-icon.php:623
+msgid "Circle"
+msgstr ""
+
+#: modules/wpzabb-image-icon/wpzabb-image-icon.php:620
+msgid "Circle and Square style will crop your image in 1:1 ratio"
+msgstr ""
+
+#: modules/wpzabb-image-icon/wpzabb-image-icon.php:505
+msgid "Circle Background"
+msgstr ""
+
+#: modules/wpzabb-image-box/wpzabb-image-box.php:327
+#: modules/wpzabb-button/wpzabb-button.php:261
+msgid "Click Here"
+msgstr ""
+
+#: modules/wpzabb-clients/wpzabb-clients.php:383
+msgid "Client"
+msgstr ""
+
+#: modules/wpzabb-clients/wpzabb-clients.php:436
+msgid "Client Image"
+msgstr ""
+
+#: modules/wpzabb-clients/wpzabb-clients.php:419
+msgid "Client Image Source"
+msgstr ""
+
+#: modules/wpzabb-clients/wpzabb-clients.php:442
+msgid "Client Image URL"
+msgstr ""
+
+#: modules/wpzabb-clients/wpzabb-clients.php:409
+msgid "Client Name"
+msgstr ""
+
+#: modules/wpzabb-clients/wpzabb-clients.php:24
+#: modules/wpzabb-clients/wpzabb-clients.php:376
+msgid "Clients"
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:338
+#: modules/wpzabb-heading/wpzabb-heading.php:629
+#: modules/wpzabb-team-members/wpzabb-team-members.php:531
+#: modules/wpzabb-team-members/wpzabb-team-members.php:669
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:687
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:751
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:966
+#: modules/wpzabb-image-grid/wpzabb-image-grid.php:390
+#: modules/wpzabb-food-menu/wpzabb-food-menu.php:401
+#: modules/wpzabb-food-menu/wpzabb-food-menu.php:454
+#: modules/wpzabb-food-menu/wpzabb-food-menu.php:518
+#: modules/wpzabb-food-menu/wpzabb-food-menu.php:571
+#: modules/wpzabb-food-menu/wpzabb-food-menu.php:702
+#: modules/wpzabb-food-menu/wpzabb-food-menu.php:774
+#: modules/wpzabb-separator/wpzabb-separator.php:39
+#: modules/wpzabb-image-box/wpzabb-image-box.php:613
+#: modules/wpzabb-image-box/wpzabb-image-box.php:751
+msgid "Color"
+msgstr ""
+
+#: modules/wpzabb-image-icon/wpzabb-image-icon.php:732
+#: modules/wpzabb-image-icon/wpzabb-image-icon.php:826
+#: modules/wpzabb-image-box/wpzabb-image-box.php:985
+#: modules/wpzabb-button/wpzabb-button.php:486
+msgid "Colors"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:408
+msgid "Columns"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:627
+#: modules/wpzabb-posts/wpzabb-posts.php:636
+msgid "Comments"
+msgstr ""
+
+#: modules/wpzabb-testimonials/wpzabb-testimonials.php:476
+msgid "Company"
+msgstr ""
+
+#: modules/wpzabb-testimonials/wpzabb-testimonials.php:482
+msgid "Company Link"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:689
+#: modules/wpzabb-posts/wpzabb-posts.php:693
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:1025
+msgid "Content"
+msgstr ""
+
+#: modules/wpzabb-team-members/wpzabb-team-members.php:245
+#: modules/wpzabb-clients/wpzabb-clients.php:258
+msgid "Content Align"
+msgstr ""
+
+#: modules/wpzabb-testimonials/wpzabb-testimonials.php:249
+msgid "Content Alignment"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:921
+msgid "Content Color"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:926
+msgid "Content Font Size"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:711
+msgid "Content Length"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:702
+msgid "Content Type"
+msgstr ""
+
+#: modules/wpzabb-food-menu/wpzabb-food-menu.php:272
+msgid "Currency Position"
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:463
+#: modules/wpzabb-heading/wpzabb-heading.php:601
+#: modules/wpzabb-posts/wpzabb-posts.php:1152
+#: modules/wpzabb-team-members/wpzabb-team-members.php:364
+#: modules/wpzabb-team-members/wpzabb-team-members.php:503
+#: modules/wpzabb-team-members/wpzabb-team-members.php:641
+#: modules/wpzabb-image-box/wpzabb-image-box.php:447
+#: modules/wpzabb-image-box/wpzabb-image-box.php:585
+#: modules/wpzabb-image-box/wpzabb-image-box.php:723
+#: modules/wpzabb-image-box/wpzabb-image-box.php:861
+#: modules/wpzabb-image-box/wpzabb-image-box.php:1056
+#: modules/wpzabb-button/wpzabb-button.php:557
+#: modules/wpzabb-button/wpzabb-button.php:736
+msgid "Custom"
+msgstr ""
+
+#: modules/wpzabb-image-box/wpzabb-image-box.php:1080
+#: modules/wpzabb-button/wpzabb-button.php:581
+msgid "Custom Height"
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:473
+#: modules/wpzabb-heading/wpzabb-heading.php:611
+#: modules/wpzabb-posts/wpzabb-posts.php:1162
+#: modules/wpzabb-team-members/wpzabb-team-members.php:374
+#: modules/wpzabb-team-members/wpzabb-team-members.php:513
+#: modules/wpzabb-team-members/wpzabb-team-members.php:651
+#: modules/wpzabb-image-box/wpzabb-image-box.php:457
+#: modules/wpzabb-image-box/wpzabb-image-box.php:595
+#: modules/wpzabb-image-box/wpzabb-image-box.php:733
+#: modules/wpzabb-image-box/wpzabb-image-box.php:871
+#: modules/wpzabb-button/wpzabb-button.php:746
+msgid "Custom Letter Spacing"
+msgstr ""
+
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:334
+msgid "Custom Slides"
+msgstr ""
+
+#: modules/wpzabb-image-box/wpzabb-image-box.php:1072
+#: modules/wpzabb-button/wpzabb-button.php:573
+msgid "Custom Width"
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:325
+#: modules/wpzabb-food-menu/wpzabb-food-menu.php:644
+#: modules/wpzabb-separator/wpzabb-separator.php:88
+msgid "Dashed"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:597
+#: modules/wpzabb-woocommerce/wpzabb-woocommerce.php:64
+msgid "Date"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:611
+msgid "Date Format"
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:462
+#: modules/wpzabb-heading/wpzabb-heading.php:600
+#: modules/wpzabb-posts/wpzabb-posts.php:460
+#: modules/wpzabb-posts/wpzabb-posts.php:614
+#: modules/wpzabb-posts/wpzabb-posts.php:1151
+#: modules/wpzabb-testimonials/wpzabb-testimonials.php:275
+#: modules/wpzabb-team-members/wpzabb-team-members.php:363
+#: modules/wpzabb-team-members/wpzabb-team-members.php:502
+#: modules/wpzabb-team-members/wpzabb-team-members.php:640
+#: modules/wpzabb-image-box/wpzabb-image-box.php:446
+#: modules/wpzabb-image-box/wpzabb-image-box.php:584
+#: modules/wpzabb-image-box/wpzabb-image-box.php:722
+#: modules/wpzabb-image-box/wpzabb-image-box.php:860
+#: modules/wpzabb-button/wpzabb-button.php:735
+msgid "Default"
+msgstr ""
+
+#: modules/wpzabb-testimonials/wpzabb-testimonials.php:290
+#: modules/wpzabb-clients/wpzabb-clients.php:282
+msgid "Delay"
+msgstr ""
+
+#: modules/wpzabb-woocommerce/wpzabb-woocommerce.php:76
+msgid "Descending"
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:107
+#: modules/wpzabb-heading/wpzabb-heading.php:529
+#: modules/wpzabb-food-menu/wpzabb-food-menu.php:871
+#: modules/wpzabb-image-box/wpzabb-image-box.php:322
+#: modules/wpzabb-image-box/wpzabb-image-box.php:651
+msgid "Description"
+msgstr ""
+
+#: modules/wpzabb-image-icon/wpzabb-image-icon.php:507
+#: modules/wpzabb-image-icon/wpzabb-image-icon.php:625
+msgid "Design your own"
+msgstr ""
+
+#: modules/wpzabb-spacer-gap/wpzabb-spacer-gap.php:33
+msgid "Desktop"
+msgstr ""
+
+#: modules/wpzabb-team-members/wpzabb-team-members.php:785
+msgid "Developer"
+msgstr ""
+
+#: modules/wpzabb-map/wpzabb-map.php:14
+msgid "Display a Google map."
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:15
+msgid "Display a title/page heading."
+msgstr ""
+
+#: modules/wpzabb-woocommerce/wpzabb-woocommerce.php:36
+msgid "Display From Category"
+msgstr ""
+
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:567
+msgid "Display Navigation Arrows"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:15
+msgid "Display posts as grid/list layout."
+msgstr ""
+
+#: modules/wpzabb-clients/wpzabb-clients.php:25
+msgid "Displays a list of clients."
+msgstr ""
+
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:27
+msgid "Displays a selection of items in a slideshow format."
+msgstr ""
+
+#: modules/wpzabb-image-grid/wpzabb-image-grid.php:23
+msgid "Displays a selection of linked images in a grid."
+msgstr ""
+
+#: modules/wpzabb-woocommerce/wpzabb-woocommerce.php:15
+msgid "Displays a selection of WooCommerce products."
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:680
+msgid "Div"
+msgstr ""
+
+#: modules/wpzabb-testimonials/wpzabb-testimonials.php:375
+#: modules/wpzabb-clients/wpzabb-clients.php:367
+msgid "Dot Color"
+msgstr ""
+
+#: modules/wpzabb-testimonials/wpzabb-testimonials.php:357
+#: modules/wpzabb-clients/wpzabb-clients.php:349
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:596
+msgid "Dots"
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:326
+#: modules/wpzabb-food-menu/wpzabb-food-menu.php:645
+#: modules/wpzabb-separator/wpzabb-separator.php:89
+msgid "Dotted"
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:327
+#: modules/wpzabb-food-menu/wpzabb-food-menu.php:646
+#: modules/wpzabb-separator/wpzabb-separator.php:90
+msgid "Double"
+msgstr ""
+
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:1016
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:1084
+#: modules/wpzabb-image-grid/wpzabb-image-grid.php:338
+msgid "e.g. http://www.wpzoom.com"
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:77
+msgid "Enter your title here"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:705
+msgid "Excerpt"
+msgstr ""
+
+#: classes/class-wpzabb-helper.php:211
+msgid "Extra Small Device Breakpoint"
+msgstr ""
+
+#: modules/wpzabb-testimonials/wpzabb-testimonials.php:303
+#: modules/wpzabb-clients/wpzabb-clients.php:295
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:424
+msgid "Fade"
+msgstr ""
+
+#: modules/wpzabb-button/wpzabb-button.php:408
+msgid "Fade Background"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:469
+msgid "Featured Image"
+msgstr ""
+
+#: modules/wpzabb-button/wpzabb-button.php:414
+msgid "Fill Background Diagonal"
+msgstr ""
+
+#: modules/wpzabb-button/wpzabb-button.php:410
+msgid "Fill Background From Bottom"
+msgstr ""
+
+#: modules/wpzabb-button/wpzabb-button.php:411
+msgid "Fill Background From Left"
+msgstr ""
+
+#: modules/wpzabb-button/wpzabb-button.php:412
+msgid "Fill Background From Right"
+msgstr ""
+
+#: modules/wpzabb-button/wpzabb-button.php:409
+msgid "Fill Background From Top"
+msgstr ""
+
+#: modules/wpzabb-button/wpzabb-button.php:415
+msgid "Fill Background Horizontal"
+msgstr ""
+
+#: modules/wpzabb-button/wpzabb-button.php:413
+msgid "Fill Background Vertical"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:947
+msgid "Filter"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:1009
+#: modules/wpzabb-image-box/wpzabb-image-box.php:939
+#: modules/wpzabb-button/wpzabb-button.php:384
+msgid "Flat"
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:399
+#: modules/wpzabb-team-members/wpzabb-team-members.php:299
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:651
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:715
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:823
+#: modules/wpzabb-food-menu/wpzabb-food-menu.php:365
+#: modules/wpzabb-food-menu/wpzabb-food-menu.php:418
+#: modules/wpzabb-food-menu/wpzabb-food-menu.php:482
+#: modules/wpzabb-food-menu/wpzabb-food-menu.php:535
+#: modules/wpzabb-food-menu/wpzabb-food-menu.php:738
+#: modules/wpzabb-image-box/wpzabb-image-box.php:383
+msgid "Font"
+msgstr ""
+
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:859
+msgid "Font Color"
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:533
+#: modules/wpzabb-heading/wpzabb-heading.php:687
+#: modules/wpzabb-posts/wpzabb-posts.php:1105
+#: modules/wpzabb-team-members/wpzabb-team-members.php:434
+#: modules/wpzabb-team-members/wpzabb-team-members.php:573
+#: modules/wpzabb-image-box/wpzabb-image-box.php:517
+#: modules/wpzabb-image-box/wpzabb-image-box.php:655
+#: modules/wpzabb-image-box/wpzabb-image-box.php:793
+#: modules/wpzabb-button/wpzabb-button.php:642
+msgid "Font Family"
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:407
+#: modules/wpzabb-heading/wpzabb-heading.php:545
+#: modules/wpzabb-heading/wpzabb-heading.php:699
+#: modules/wpzabb-posts/wpzabb-posts.php:1097
+#: modules/wpzabb-posts/wpzabb-posts.php:1113
+#: modules/wpzabb-team-members/wpzabb-team-members.php:307
+#: modules/wpzabb-team-members/wpzabb-team-members.php:446
+#: modules/wpzabb-team-members/wpzabb-team-members.php:585
+#: modules/wpzabb-image-box/wpzabb-image-box.php:391
+#: modules/wpzabb-image-box/wpzabb-image-box.php:529
+#: modules/wpzabb-image-box/wpzabb-image-box.php:667
+#: modules/wpzabb-image-box/wpzabb-image-box.php:805
+#: modules/wpzabb-button/wpzabb-button.php:654
+msgid "Font Size"
+msgstr ""
+
+#: modules/wpzabb-food-menu/wpzabb-food-menu.php:24
+msgid "Food Menu"
+msgstr ""
+
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:1097
+#: modules/wpzabb-image-grid/wpzabb-image-grid.php:352
+#: modules/wpzabb-food-menu/wpzabb-food-menu.php:882
+msgid "From Media Library"
+msgstr ""
+
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:1098
+#: modules/wpzabb-image-grid/wpzabb-image-grid.php:353
+#: modules/wpzabb-food-menu/wpzabb-food-menu.php:883
+msgid "From URL"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:706
+msgid "Full Text"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:1203
+#: modules/wpzabb-image-box/wpzabb-image-box.php:1055
+#: modules/wpzabb-button/wpzabb-button.php:556
+msgid "Full Width"
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:69
+#: modules/wpzabb-spacer-gap/wpzabb-spacer-gap.php:26
+#: modules/wpzabb-testimonials/wpzabb-testimonials.php:242
+#: modules/wpzabb-testimonials/wpzabb-testimonials.php:410
+#: modules/wpzabb-map/wpzabb-map.php:29
+#: modules/wpzabb-team-members/wpzabb-team-members.php:227
+#: modules/wpzabb-team-members/wpzabb-team-members.php:718
+#: modules/wpzabb-clients/wpzabb-clients.php:239
+#: modules/wpzabb-clients/wpzabb-clients.php:402
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:363
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:1000
+#: modules/wpzabb-woocommerce/wpzabb-woocommerce.php:29
+#: modules/wpzabb-image-grid/wpzabb-image-grid.php:322
+#: modules/wpzabb-image-icon/wpzabb-image-icon.php:384
+#: modules/wpzabb-food-menu/wpzabb-food-menu.php:259
+#: modules/wpzabb-food-menu/wpzabb-food-menu.php:840
+#: modules/wpzabb-separator/wpzabb-separator.php:32
+#: modules/wpzabb-image-box/wpzabb-image-box.php:266
+#: modules/wpzabb-image-box/wpzabb-image-box.php:895
+#: modules/wpzabb-button/wpzabb-button.php:253
+msgid "General"
+msgstr ""
+
+#: modules/wpzabb-image-icon/wpzabb-image-icon.php:814
+#: modules/wpzabb-button/wpzabb-button.php:385
+msgid "Gradient"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:387
+msgid "Grid"
+msgstr ""
+
+#: modules/wpzabb-team-members/wpzabb-team-members.php:25
+msgid "Grid with team members."
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:674
+msgid "H1"
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:675
+msgid "H2"
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:676
+msgid "H3"
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:677
+msgid "H4"
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:678
+msgid "H5"
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:679
+msgid "H6"
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:14
+#: modules/wpzabb-heading/wpzabb-heading.php:76
+#: modules/wpzabb-heading/wpzabb-heading.php:378
+#: modules/wpzabb-image-box/wpzabb-image-box.php:302
+#: modules/wpzabb-image-box/wpzabb-image-box.php:362
+msgid "Heading"
+msgstr ""
+
+#: modules/wpzabb-map/wpzabb-map.php:46
+msgid "Height"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:477
+#: modules/wpzabb-posts/wpzabb-posts.php:592
+#: modules/wpzabb-posts/wpzabb-posts.php:601
+#: modules/wpzabb-posts/wpzabb-posts.php:631
+#: modules/wpzabb-posts/wpzabb-posts.php:640
+#: modules/wpzabb-posts/wpzabb-posts.php:659
+#: modules/wpzabb-posts/wpzabb-posts.php:697
+#: modules/wpzabb-posts/wpzabb-posts.php:723
+#: modules/wpzabb-posts/wpzabb-posts.php:989
+#: modules/wpzabb-woocommerce/wpzabb-woocommerce.php:85
+#: modules/wpzabb-woocommerce/wpzabb-woocommerce.php:94
+msgid "Hide"
+msgstr ""
+
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:870
+msgid "Hover Background Color"
+msgstr ""
+
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:881
+msgid "Hover Border"
+msgstr ""
+
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:698
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:977
+#: modules/wpzabb-food-menu/wpzabb-food-menu.php:465
+#: modules/wpzabb-food-menu/wpzabb-food-menu.php:785
+msgid "Hover Color"
+msgstr ""
+
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:913
+msgid "Hover Font"
+msgstr ""
+
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:949
+msgid "Hover Font Color"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:1015
+#: modules/wpzabb-image-box/wpzabb-image-box.php:953
+#: modules/wpzabb-button/wpzabb-button.php:404
+#: modules/wpzabb-button/wpzabb-button.php:420
+#: modules/wpzabb-button/wpzabb-button.php:435
+msgid "Hover Styles"
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:382
+#: modules/wpzabb-team-members/wpzabb-team-members.php:282
+#: modules/wpzabb-image-box/wpzabb-image-box.php:366
+msgid "HTML Tag"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://www.wpzoom.com"
+msgstr ""
+
+#. URI of the plugin
+msgid "https://www.wpzoom.com/"
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:208
+#: modules/wpzabb-posts/wpzabb-posts.php:1027
+#: modules/wpzabb-image-icon/wpzabb-image-icon.php:394
+#: modules/wpzabb-image-icon/wpzabb-image-icon.php:415
+#: modules/wpzabb-image-box/wpzabb-image-box.php:970
+#: modules/wpzabb-button/wpzabb-button.php:452
+msgid "Icon"
+msgstr ""
+
+#: modules/wpzabb-image-icon/wpzabb-image-icon.php:501
+msgid "Icon Background Style"
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:204
+#: modules/wpzabb-image-icon/wpzabb-image-icon.php:411
+msgid "Icon Basics"
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:227
+#: modules/wpzabb-image-icon/wpzabb-image-icon.php:750
+msgid "Icon Color"
+msgstr ""
+
+#: modules/wpzabb-image-icon/wpzabb-image-icon.php:738
+msgid "Icon Color Presets"
+msgstr ""
+
+#: modules/wpzabb-image-icon/wpzabb-image-icon.php:756
+msgid "Icon Hover Color"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:1032
+#: modules/wpzabb-image-box/wpzabb-image-box.php:975
+#: modules/wpzabb-button/wpzabb-button.php:457
+msgid "Icon Position"
+msgstr ""
+
+#: modules/wpzabb-button/wpzabb-button.php:466
+msgid "Icon Size"
+msgstr ""
+
+#: modules/wpzabb-image-box/wpzabb-image-box.php:966
+#: modules/wpzabb-button/wpzabb-button.php:448
+msgid "Icons"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:473
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:1092
+#: modules/wpzabb-image-grid/wpzabb-image-grid.php:347
+#: modules/wpzabb-food-menu/wpzabb-food-menu.php:879
+#: modules/wpzabb-image-box/wpzabb-image-box.php:290
+msgid "Image"
+msgstr ""
+
+#: modules/wpzabb-image-icon/wpzabb-image-icon.php:25
+#: modules/wpzabb-image-icon/wpzabb-image-icon.php:387
+msgid "Image / Icon"
+msgstr ""
+
+#: modules/wpzabb-image-icon/wpzabb-image-icon.php:26
+msgid "Image / Icon with effect"
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:239
+#: modules/wpzabb-image-icon/wpzabb-image-icon.php:441
+msgid "Image Basics"
+msgstr ""
+
+#: modules/wpzabb-image-box/wpzabb-image-box.php:24
+msgid "Image Box"
+msgstr ""
+
+#: modules/wpzabb-image-grid/wpzabb-image-grid.php:22
+msgid "Image Grid"
+msgstr ""
+
+#: classes/class-wpzabb-attachment.php:30
+msgid "Image Link"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:525
+#: modules/wpzabb-posts/wpzabb-posts.php:557
+msgid "Image Margin Bottom"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:517
+#: modules/wpzabb-posts/wpzabb-posts.php:549
+msgid "Image Margin Top"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:482
+#: modules/wpzabb-posts/wpzabb-posts.php:491
+msgid "Image Position"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:504
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:562
+msgid "Image Size"
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:284
+msgid ""
+"Image size below medium devices. Leave it blank if you want to keep same size"
+msgstr ""
+
+#: modules/wpzabb-image-box/wpzabb-image-box.php:273
+msgid "Image Source"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:509
+#: modules/wpzabb-posts/wpzabb-posts.php:541
+msgid "Image Spacing"
+msgstr ""
+
+#: modules/wpzabb-image-icon/wpzabb-image-icon.php:618
+msgid "Image Style"
+msgstr ""
+
+#: modules/wpzabb-image-icon/wpzabb-image-icon.php:391
+msgid "Image Type"
+msgstr ""
+
+#: modules/wpzabb-image-box/wpzabb-image-box.php:296
+msgid "Image URL"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:533
+msgid "Image Width"
+msgstr ""
+
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:465
+msgid "Infinite Loop"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:570
+#: modules/wpzabb-posts/wpzabb-posts.php:579
+msgid "Info Meta Position"
+msgstr ""
+
+#: modules/wpzabb-image-grid/wpzabb-image-grid.php:231
+msgid "Item"
+msgstr ""
+
+#: modules/wpzabb-image-grid/wpzabb-image-grid.php:330
+msgid "Item title..."
+msgstr ""
+
+#: modules/wpzabb-image-grid/wpzabb-image-grid.php:224
+msgid "Items"
+msgstr ""
+
+#: modules/wpzabb-testimonials/wpzabb-testimonials.php:451
+#: modules/wpzabb-team-members/wpzabb-team-members.php:755
+msgid "John Doe"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:377
+#: modules/wpzabb-posts/wpzabb-posts.php:384
+#: modules/wpzabb-woocommerce/wpzabb-woocommerce.php:102
+#: modules/wpzabb-image-grid/wpzabb-image-grid.php:240
+msgid "Layout"
+msgstr ""
+
+#: modules/wpzabb-team-members/wpzabb-team-members.php:234
+#: modules/wpzabb-clients/wpzabb-clients.php:246
+msgid "Layout Columns"
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:126
+#: modules/wpzabb-heading/wpzabb-heading.php:142
+#: modules/wpzabb-posts/wpzabb-posts.php:461
+#: modules/wpzabb-posts/wpzabb-posts.php:496
+#: modules/wpzabb-testimonials/wpzabb-testimonials.php:252
+#: modules/wpzabb-team-members/wpzabb-team-members.php:249
+#: modules/wpzabb-clients/wpzabb-clients.php:262
+#: modules/wpzabb-image-icon/wpzabb-image-icon.php:432
+#: modules/wpzabb-image-icon/wpzabb-image-icon.php:486
+#: modules/wpzabb-food-menu/wpzabb-food-menu.php:592
+#: modules/wpzabb-separator/wpzabb-separator.php:72
+#: modules/wpzabb-image-box/wpzabb-image-box.php:1115
+#: modules/wpzabb-image-box/wpzabb-image-box.php:1125
+#: modules/wpzabb-button/wpzabb-button.php:616
+#: modules/wpzabb-button/wpzabb-button.php:626
+msgid "Left"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:497
+msgid "Left Content"
+msgstr ""
+
+#: modules/wpzabb-testimonials/wpzabb-testimonials.php:321
+#: modules/wpzabb-clients/wpzabb-clients.php:313
+msgid "Left To Right"
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:459
+#: modules/wpzabb-heading/wpzabb-heading.php:597
+#: modules/wpzabb-posts/wpzabb-posts.php:1148
+#: modules/wpzabb-team-members/wpzabb-team-members.php:360
+#: modules/wpzabb-team-members/wpzabb-team-members.php:499
+#: modules/wpzabb-team-members/wpzabb-team-members.php:637
+#: modules/wpzabb-image-box/wpzabb-image-box.php:443
+#: modules/wpzabb-image-box/wpzabb-image-box.php:581
+#: modules/wpzabb-image-box/wpzabb-image-box.php:719
+#: modules/wpzabb-image-box/wpzabb-image-box.php:857
+#: modules/wpzabb-button/wpzabb-button.php:732
+msgid "Letter Spacing"
+msgstr ""
+
+#: modules/wpzabb-button/wpzabb-button.php:288
+msgid "Lightbox Content"
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:167
+msgid "Line"
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:425
+#: modules/wpzabb-heading/wpzabb-heading.php:563
+#: modules/wpzabb-heading/wpzabb-heading.php:717
+#: modules/wpzabb-posts/wpzabb-posts.php:1125
+#: modules/wpzabb-team-members/wpzabb-team-members.php:326
+#: modules/wpzabb-team-members/wpzabb-team-members.php:465
+#: modules/wpzabb-team-members/wpzabb-team-members.php:603
+#: modules/wpzabb-image-box/wpzabb-image-box.php:409
+#: modules/wpzabb-image-box/wpzabb-image-box.php:547
+#: modules/wpzabb-image-box/wpzabb-image-box.php:685
+#: modules/wpzabb-image-box/wpzabb-image-box.php:823
+#: modules/wpzabb-button/wpzabb-button.php:672
+msgid "Line Height"
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:317
+msgid "Line Style"
+msgstr ""
+
+#: modules/wpzabb-button/wpzabb-button.php:712
+msgid "Line Through"
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:168
+msgid "Line With Icon"
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:169
+msgid "Line With Image"
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:170
+msgid "Line With Text"
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:86
+#: modules/wpzabb-testimonials/wpzabb-testimonials.php:456
+#: modules/wpzabb-team-members/wpzabb-team-members.php:764
+#: modules/wpzabb-clients/wpzabb-clients.php:448
+#: modules/wpzabb-image-grid/wpzabb-image-grid.php:337
+#: modules/wpzabb-food-menu/wpzabb-food-menu.php:854
+#: modules/wpzabb-image-box/wpzabb-image-box.php:336
+#: modules/wpzabb-button/wpzabb-button.php:273
+#: modules/wpzabb-button/wpzabb-button.php:332
+#: modules/wpzabb-button/wpzabb-button.php:336
+msgid "Link"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:934
+msgid "Link Color"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:939
+msgid "Link Hover Color"
+msgstr ""
+
+#: modules/wpzabb-button/wpzabb-button.php:358
+msgid "Link No Follow"
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:94
+#: modules/wpzabb-testimonials/wpzabb-testimonials.php:464
+#: modules/wpzabb-team-members/wpzabb-team-members.php:772
+#: modules/wpzabb-clients/wpzabb-clients.php:457
+#: modules/wpzabb-image-box/wpzabb-image-box.php:344
+#: modules/wpzabb-button/wpzabb-button.php:346
+msgid "Link Target"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:388
+msgid "List"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:1001
+msgid "Load More"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:963
+#: modules/wpzabb-posts/wpzabb-posts.php:996
+msgid "Load More Button"
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:448
+#: modules/wpzabb-heading/wpzabb-heading.php:586
+#: modules/wpzabb-posts/wpzabb-posts.php:1142
+#: modules/wpzabb-team-members/wpzabb-team-members.php:349
+#: modules/wpzabb-team-members/wpzabb-team-members.php:488
+#: modules/wpzabb-team-members/wpzabb-team-members.php:626
+#: modules/wpzabb-image-box/wpzabb-image-box.php:432
+#: modules/wpzabb-image-box/wpzabb-image-box.php:570
+#: modules/wpzabb-image-box/wpzabb-image-box.php:708
+#: modules/wpzabb-image-box/wpzabb-image-box.php:846
+#: modules/wpzabb-button/wpzabb-button.php:695
+msgid "Lowercase"
+msgstr ""
+
+#: modules/wpzabb-map/wpzabb-map.php:13
+msgid "Map"
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:515
+#: modules/wpzabb-heading/wpzabb-heading.php:653
+#: modules/wpzabb-posts/wpzabb-posts.php:859
+#: modules/wpzabb-team-members/wpzabb-team-members.php:416
+#: modules/wpzabb-team-members/wpzabb-team-members.php:555
+#: modules/wpzabb-team-members/wpzabb-team-members.php:693
+#: modules/wpzabb-image-box/wpzabb-image-box.php:499
+#: modules/wpzabb-image-box/wpzabb-image-box.php:637
+#: modules/wpzabb-image-box/wpzabb-image-box.php:775
+msgid "Margin Bottom"
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:502
+#: modules/wpzabb-heading/wpzabb-heading.php:640
+#: modules/wpzabb-posts/wpzabb-posts.php:846
+#: modules/wpzabb-team-members/wpzabb-team-members.php:403
+#: modules/wpzabb-team-members/wpzabb-team-members.php:542
+#: modules/wpzabb-team-members/wpzabb-team-members.php:680
+#: modules/wpzabb-image-box/wpzabb-image-box.php:486
+#: modules/wpzabb-image-box/wpzabb-image-box.php:624
+#: modules/wpzabb-image-box/wpzabb-image-box.php:762
+msgid "Margin Top"
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:246
+#: modules/wpzabb-testimonials/wpzabb-testimonials.php:424
+#: modules/wpzabb-team-members/wpzabb-team-members.php:728
+#: modules/wpzabb-clients/wpzabb-clients.php:422
+#: modules/wpzabb-image-icon/wpzabb-image-icon.php:448
+#: modules/wpzabb-image-box/wpzabb-image-box.php:276
+msgid "Media Library"
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:311
+msgid "Medium & Small Devices"
+msgstr ""
+
+#: modules/wpzabb-spacer-gap/wpzabb-spacer-gap.php:42
+msgid "Medium Device ( Tabs )"
+msgstr ""
+
+#: modules/wpzabb-team-members/wpzabb-team-members.php:569
+msgid "Member Info"
+msgstr ""
+
+#: modules/wpzabb-food-menu/wpzabb-food-menu.php:332
+msgid "Menu Background"
+msgstr ""
+
+#: modules/wpzabb-food-menu/wpzabb-food-menu.php:722
+msgid "Menu Button"
+msgstr ""
+
+#: modules/wpzabb-food-menu/wpzabb-food-menu.php:297
+msgid "Menu Button Label"
+msgstr ""
+
+#: modules/wpzabb-food-menu/wpzabb-food-menu.php:302
+msgid "Menu Button URL"
+msgstr ""
+
+#: modules/wpzabb-food-menu/wpzabb-food-menu.php:320
+msgid "Menu Item"
+msgstr ""
+
+#: modules/wpzabb-food-menu/wpzabb-food-menu.php:530
+msgid "Menu Item Description"
+msgstr ""
+
+#: modules/wpzabb-food-menu/wpzabb-food-menu.php:872
+msgid "Menu item description..."
+msgstr ""
+
+#: modules/wpzabb-food-menu/wpzabb-food-menu.php:583
+msgid "Menu Item Image"
+msgstr ""
+
+#: modules/wpzabb-food-menu/wpzabb-food-menu.php:413
+msgid "Menu Item Name"
+msgstr ""
+
+#: modules/wpzabb-food-menu/wpzabb-food-menu.php:848
+msgid "Menu item name..."
+msgstr ""
+
+#: modules/wpzabb-food-menu/wpzabb-food-menu.php:477
+msgid "Menu Item Price"
+msgstr ""
+
+#: modules/wpzabb-food-menu/wpzabb-food-menu.php:634
+msgid "Menu Item Separator"
+msgstr ""
+
+#: modules/wpzabb-food-menu/wpzabb-food-menu.php:313
+msgid "Menu Items"
+msgstr ""
+
+#: modules/wpzabb-food-menu/wpzabb-food-menu.php:266
+#: modules/wpzabb-food-menu/wpzabb-food-menu.php:360
+msgid "Menu Title"
+msgstr ""
+
+#: modules/wpzabb-image-box/wpzabb-image-box.php:1121
+#: modules/wpzabb-button/wpzabb-button.php:622
+msgid "Mobile Alignment"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:719
+msgid "More Link"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:733
+msgid "More Link Text"
+msgstr ""
+
+#: modules/wpzabb-button/wpzabb-button.php:423
+msgid "Move Down"
+msgstr ""
+
+#: modules/wpzabb-button/wpzabb-button.php:425
+msgid "Move Left"
+msgstr ""
+
+#: modules/wpzabb-button/wpzabb-button.php:426
+msgid "Move Right"
+msgstr ""
+
+#: modules/wpzabb-button/wpzabb-button.php:424
+msgid "Move Up"
+msgstr ""
+
+#: modules/wpzabb-testimonials/wpzabb-testimonials.php:450
+#: modules/wpzabb-team-members/wpzabb-team-members.php:754
+#: modules/wpzabb-food-menu/wpzabb-food-menu.php:847
+msgid "Name"
+msgstr ""
+
+#: modules/wpzabb-team-members/wpzabb-team-members.php:278
+msgid "Name Heading"
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:98
+#: modules/wpzabb-testimonials/wpzabb-testimonials.php:468
+#: modules/wpzabb-team-members/wpzabb-team-members.php:776
+#: modules/wpzabb-clients/wpzabb-clients.php:461
+#: modules/wpzabb-image-box/wpzabb-image-box.php:348
+#: modules/wpzabb-button/wpzabb-button.php:350
+msgid "New Window"
+msgstr ""
+
+#: modules/wpzabb-testimonials/wpzabb-testimonials.php:284
+#: modules/wpzabb-testimonials/wpzabb-testimonials.php:334
+#: modules/wpzabb-testimonials/wpzabb-testimonials.php:364
+#: modules/wpzabb-clients/wpzabb-clients.php:276
+#: modules/wpzabb-clients/wpzabb-clients.php:326
+#: modules/wpzabb-clients/wpzabb-clients.php:356
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:248
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:264
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:280
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:382
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:460
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:477
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:494
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:511
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:579
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:1050
+#: modules/wpzabb-woocommerce/wpzabb-woocommerce.php:56
+#: modules/wpzabb-image-icon/wpzabb-image-icon.php:817
+#: modules/wpzabb-food-menu/wpzabb-food-menu.php:285
+#: modules/wpzabb-button/wpzabb-button.php:362
+#: modules/wpzabb-button/wpzabb-button.php:726
+msgid "No"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:980
+msgid "No Results Message"
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:166
+#: modules/wpzabb-heading/wpzabb-heading.php:309
+#: modules/wpzabb-heading/wpzabb-heading.php:446
+#: modules/wpzabb-heading/wpzabb-heading.php:584
+#: modules/wpzabb-posts/wpzabb-posts.php:1018
+#: modules/wpzabb-posts/wpzabb-posts.php:1140
+#: modules/wpzabb-team-members/wpzabb-team-members.php:347
+#: modules/wpzabb-team-members/wpzabb-team-members.php:486
+#: modules/wpzabb-team-members/wpzabb-team-members.php:624
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:595
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:1096
+#: modules/wpzabb-image-grid/wpzabb-image-grid.php:351
+#: modules/wpzabb-food-menu/wpzabb-food-menu.php:642
+#: modules/wpzabb-image-box/wpzabb-image-box.php:430
+#: modules/wpzabb-image-box/wpzabb-image-box.php:568
+#: modules/wpzabb-image-box/wpzabb-image-box.php:706
+#: modules/wpzabb-image-box/wpzabb-image-box.php:844
+#: modules/wpzabb-image-box/wpzabb-image-box.php:956
+#: modules/wpzabb-button/wpzabb-button.php:407
+#: modules/wpzabb-button/wpzabb-button.php:438
+#: modules/wpzabb-button/wpzabb-button.php:693
+#: modules/wpzabb-button/wpzabb-button.php:709
+msgid "None"
+msgstr ""
+
+#: modules/wpzabb-woocommerce/wpzabb-woocommerce.php:42
+msgid "Number of Products"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:961
+msgid "Numbers"
+msgstr ""
+
+#: modules/wpzabb-woocommerce/wpzabb-woocommerce.php:52
+msgid "Only Include Featured Products"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:1062
+#: modules/wpzabb-posts/wpzabb-posts.php:1079
+#: modules/wpzabb-image-icon/wpzabb-image-icon.php:773
+#: modules/wpzabb-image-icon/wpzabb-image-icon.php:790
+#: modules/wpzabb-image-icon/wpzabb-image-icon.php:837
+#: modules/wpzabb-image-icon/wpzabb-image-icon.php:854
+#: modules/wpzabb-image-box/wpzabb-image-box.php:905
+#: modules/wpzabb-image-box/wpzabb-image-box.php:922
+#: modules/wpzabb-image-box/wpzabb-image-box.php:1010
+#: modules/wpzabb-image-box/wpzabb-image-box.php:1027
+#: modules/wpzabb-button/wpzabb-button.php:511
+#: modules/wpzabb-button/wpzabb-button.php:528
+msgid "Opacity"
+msgstr ""
+
+#: modules/wpzabb-woocommerce/wpzabb-woocommerce.php:61
+msgid "Order By"
+msgstr ""
+
+#: modules/wpzabb-woocommerce/wpzabb-woocommerce.php:72
+msgid "Order Direction"
+msgstr ""
+
+#: modules/wpzabb-food-menu/wpzabb-food-menu.php:348
+msgid "Outline Color"
+msgstr ""
+
+#: modules/wpzabb-button/wpzabb-button.php:711
+msgid "Overline"
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:681
+msgid "p"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:1175
+#: modules/wpzabb-image-box/wpzabb-image-box.php:1096
+#: modules/wpzabb-button/wpzabb-button.php:597
+msgid "Padding Left/Right"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:1167
+#: modules/wpzabb-image-box/wpzabb-image-box.php:1088
+#: modules/wpzabb-button/wpzabb-button.php:589
+msgid "Padding Top/Bottom"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:951
+#: modules/wpzabb-posts/wpzabb-posts.php:954
+msgid "Pagination"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:958
+msgid "Pagination Style"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:964
+msgctxt "Pagination style."
+msgid "None"
+msgstr ""
+
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:482
+msgid "Pause On Hover"
+msgstr ""
+
+#: modules/wpzabb-food-menu/wpzabb-food-menu.php:614
+msgid "Percent of menu item width"
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:260
+#: modules/wpzabb-image-icon/wpzabb-image-icon.php:395
+#: modules/wpzabb-image-icon/wpzabb-image-icon.php:462
+msgid "Photo"
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:243
+#: modules/wpzabb-image-icon/wpzabb-image-icon.php:445
+msgid "Photo Source"
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:266
+#: modules/wpzabb-image-icon/wpzabb-image-icon.php:468
+msgid "Photo URL"
+msgstr ""
+
+#: modules/wpzabb-testimonials/wpzabb-testimonials.php:490
+#: modules/wpzabb-team-members/wpzabb-team-members.php:430
+#: modules/wpzabb-team-members/wpzabb-team-members.php:784
+msgid "Position"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:457
+msgid "Post Alignment"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:748
+msgid "Post Background Color"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:753
+msgid "Post Background Opacity"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:788
+msgid "Post Border Color"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:793
+msgid "Post Border Size"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:761
+msgid "Post Border Type"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:566
+msgid "Post Info"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:872
+msgid "Post Info Color"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:887
+msgid "Post Info Font Size"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:877
+msgid "Post Info Link Color"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:882
+msgid "Post Info Link Hover Color"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:908
+msgid "Post Info Margin Bottom"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:895
+msgid "Post Info Margin Top"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:435
+#: modules/wpzabb-posts/wpzabb-posts.php:449
+msgid "Post Padding"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:419
+#: modules/wpzabb-posts/wpzabb-posts.php:427
+msgid "Post Spacing"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:670
+msgid "Posted in "
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:14
+#: modules/wpzabb-posts/wpzabb-posts.php:404
+#: modules/wpzabb-posts/wpzabb-posts.php:744
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:359
+msgid "Posts"
+msgstr ""
+
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:226
+msgid "Posts Limit"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:974
+msgid "Posts Per Page"
+msgstr ""
+
+#: modules/wpzabb-image-icon/wpzabb-image-icon.php:741
+msgid "Preset 1"
+msgstr ""
+
+#: modules/wpzabb-image-icon/wpzabb-image-icon.php:745
+msgid ""
+"Preset 1 => Icon : White, Background : Theme </br>Preset 2 => Icon : Theme, "
+"Background : #f3f3f3"
+msgstr ""
+
+#: modules/wpzabb-image-icon/wpzabb-image-icon.php:742
+msgid "Preset 2"
+msgstr ""
+
+#: modules/wpzabb-woocommerce/wpzabb-woocommerce.php:65
+#: modules/wpzabb-food-menu/wpzabb-food-menu.php:862
+msgid "Price"
+msgstr ""
+
+#: modules/wpzabb-woocommerce/wpzabb-woocommerce.php:81
+msgid "Product Price"
+msgstr ""
+
+#: modules/wpzabb-testimonials/wpzabb-testimonials.php:276
+#: modules/wpzabb-woocommerce/wpzabb-woocommerce.php:66
+msgid "Random"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:734
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:295
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:1071
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:1074
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:1075
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:1076
+#: modules/wpzabb-slideshow/includes/frontend.php:26
+msgid "Read More"
+msgstr ""
+
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:294
+msgid "Read More Button Label"
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:139
+msgid "Responsive Alignment"
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:305
+msgid "Responsive Compatibility"
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:280
+msgid "Responsive Size"
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:128
+#: modules/wpzabb-heading/wpzabb-heading.php:144
+#: modules/wpzabb-posts/wpzabb-posts.php:463
+#: modules/wpzabb-posts/wpzabb-posts.php:498
+#: modules/wpzabb-testimonials/wpzabb-testimonials.php:254
+#: modules/wpzabb-team-members/wpzabb-team-members.php:250
+#: modules/wpzabb-clients/wpzabb-clients.php:263
+#: modules/wpzabb-image-icon/wpzabb-image-icon.php:434
+#: modules/wpzabb-image-icon/wpzabb-image-icon.php:488
+#: modules/wpzabb-food-menu/wpzabb-food-menu.php:593
+#: modules/wpzabb-separator/wpzabb-separator.php:73
+#: modules/wpzabb-image-box/wpzabb-image-box.php:1116
+#: modules/wpzabb-image-box/wpzabb-image-box.php:1126
+#: modules/wpzabb-button/wpzabb-button.php:617
+#: modules/wpzabb-button/wpzabb-button.php:627
+msgid "Right"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:499
+msgid "Right Content"
+msgstr ""
+
+#: modules/wpzabb-testimonials/wpzabb-testimonials.php:320
+#: modules/wpzabb-clients/wpzabb-clients.php:312
+msgid "Right To Left"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:1191
+#: modules/wpzabb-image-box/wpzabb-image-box.php:1104
+#: modules/wpzabb-button/wpzabb-button.php:605
+msgid "Round Corners"
+msgstr ""
+
+#: modules/wpzabb-woocommerce/wpzabb-woocommerce.php:67
+msgid "Sales"
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:97
+#: modules/wpzabb-testimonials/wpzabb-testimonials.php:467
+#: modules/wpzabb-team-members/wpzabb-team-members.php:775
+#: modules/wpzabb-clients/wpzabb-clients.php:460
+#: modules/wpzabb-image-box/wpzabb-image-box.php:347
+#: modules/wpzabb-button/wpzabb-button.php:349
+msgid "Same Window"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:962
+msgid "Scroll"
+msgstr ""
+
+#: modules/wpzabb-button/wpzabb-button.php:320
+msgid "Self Hosted Video Link"
+msgstr ""
+
+#: modules/wpzabb-button/wpzabb-button.php:296
+msgid "Self-Hosted File (MP4)"
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:156
+#: modules/wpzabb-heading/wpzabb-heading.php:159
+#: modules/wpzabb-posts/wpzabb-posts.php:645
+msgid "Separator"
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:193
+msgid "Separator Position"
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:163
+msgid "Separator Style"
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:667
+msgid "Separator Text Typography"
+msgstr ""
+
+#: modules/wpzabb-team-members/wpzabb-team-members.php:794
+msgid "Short Info"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:476
+#: modules/wpzabb-posts/wpzabb-posts.php:591
+#: modules/wpzabb-posts/wpzabb-posts.php:600
+#: modules/wpzabb-posts/wpzabb-posts.php:630
+#: modules/wpzabb-posts/wpzabb-posts.php:639
+#: modules/wpzabb-posts/wpzabb-posts.php:658
+#: modules/wpzabb-posts/wpzabb-posts.php:696
+#: modules/wpzabb-posts/wpzabb-posts.php:722
+#: modules/wpzabb-posts/wpzabb-posts.php:988
+#: modules/wpzabb-woocommerce/wpzabb-woocommerce.php:84
+#: modules/wpzabb-woocommerce/wpzabb-woocommerce.php:93
+msgid "Show"
+msgstr ""
+
+#: modules/wpzabb-testimonials/wpzabb-testimonials.php:331
+#: modules/wpzabb-clients/wpzabb-clients.php:323
+msgid "Show Arrows"
+msgstr ""
+
+#: modules/wpzabb-testimonials/wpzabb-testimonials.php:361
+#: modules/wpzabb-clients/wpzabb-clients.php:353
+msgid "Show Dots"
+msgstr ""
+
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:260
+msgid "Show Excerpt"
+msgstr ""
+
+#: modules/wpzabb-food-menu/wpzabb-food-menu.php:281
+msgid "Show Menu Button"
+msgstr ""
+
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:276
+msgid "Show Read More Button"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:985
+msgid "Show Search"
+msgstr ""
+
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:448
+msgid "Shuffle"
+msgstr ""
+
+#: modules/wpzabb-image-icon/wpzabb-image-icon.php:504
+#: modules/wpzabb-image-icon/wpzabb-image-icon.php:622
+msgid "Simple"
+msgstr ""
+
+#: modules/wpzabb-separator/wpzabb-separator.php:14
+msgid "Simple Separator"
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:213
+#: modules/wpzabb-heading/wpzabb-heading.php:271
+#: modules/wpzabb-image-icon/wpzabb-image-icon.php:421
+#: modules/wpzabb-image-icon/wpzabb-image-icon.php:474
+#: modules/wpzabb-food-menu/wpzabb-food-menu.php:613
+#: modules/wpzabb-food-menu/wpzabb-food-menu.php:664
+msgid "Size"
+msgstr ""
+
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:350
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:425
+msgid "Slide"
+msgstr ""
+
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:608
+msgid "Slide Background"
+msgstr ""
+
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:763
+msgid "Slide Button"
+msgstr ""
+
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:710
+msgid "Slide Content"
+msgstr ""
+
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:1026
+msgid "Slide content..."
+msgstr ""
+
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:584
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:961
+msgid "Slide Navigation"
+msgstr ""
+
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:625
+msgid "Slide Overlay"
+msgstr ""
+
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:646
+msgid "Slide Title"
+msgstr ""
+
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:1008
+msgid "Slide title..."
+msgstr ""
+
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:413
+msgid "Slide Transition"
+msgstr ""
+
+#: modules/wpzabb-testimonials/wpzabb-testimonials.php:268
+#: modules/wpzabb-clients/wpzabb-clients.php:269
+msgid "Slider Settings"
+msgstr ""
+
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:322
+msgid "Slides"
+msgstr ""
+
+#: modules/wpzabb-testimonials/wpzabb-testimonials.php:272
+msgid "Slides order"
+msgstr ""
+
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:329
+msgid "Slides Source"
+msgstr ""
+
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:26
+msgid "Slideshow"
+msgstr ""
+
+#: modules/wpzabb-spacer-gap/wpzabb-spacer-gap.php:51
+msgid "Small Device ( Mobile )"
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:310
+msgid "Small Devices"
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:324
+#: modules/wpzabb-food-menu/wpzabb-food-menu.php:643
+#: modules/wpzabb-separator/wpzabb-separator.php:87
+msgid "Solid"
+msgstr ""
+
+#: modules/wpzabb-clients/wpzabb-clients.php:410
+msgid "Some Company"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:981
+msgid "Sorry, we couldn't find any posts. Please try a different search."
+msgstr ""
+
+#: modules/wpzabb-spacer-gap/wpzabb-spacer-gap.php:11
+msgid "Spacer / Gap"
+msgstr ""
+
+#: modules/wpzabb-image-icon/wpzabb-image-icon.php:538
+msgid "Spacing between Icon & Background edge"
+msgstr ""
+
+#: modules/wpzabb-image-icon/wpzabb-image-icon.php:655
+msgid "Spacing between Image edge & Background edge"
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:682
+msgid "span"
+msgstr ""
+
+#: modules/wpzabb-image-icon/wpzabb-image-icon.php:624
+msgid "Square"
+msgstr ""
+
+#: modules/wpzabb-image-icon/wpzabb-image-icon.php:506
+msgid "Square Background"
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:119
+#: modules/wpzabb-image-box/wpzabb-image-box.php:1047
+#: modules/wpzabb-button/wpzabb-button.php:548
+msgid "Structure"
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:321
+#: modules/wpzabb-posts/wpzabb-posts.php:741
+#: modules/wpzabb-posts/wpzabb-posts.php:1005
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:605
+#: modules/wpzabb-image-grid/wpzabb-image-grid.php:267
+#: modules/wpzabb-image-icon/wpzabb-image-icon.php:613
+#: modules/wpzabb-food-menu/wpzabb-food-menu.php:329
+#: modules/wpzabb-food-menu/wpzabb-food-menu.php:639
+#: modules/wpzabb-separator/wpzabb-separator.php:84
+#: modules/wpzabb-image-box/wpzabb-image-box.php:892
+#: modules/wpzabb-image-box/wpzabb-image-box.php:935
+#: modules/wpzabb-button/wpzabb-button.php:373
+#: modules/wpzabb-button/wpzabb-button.php:376
+#: modules/wpzabb-button/wpzabb-button.php:380
+msgid "Style"
+msgstr ""
+
+#: modules/wpzabb-image-box/wpzabb-image-box.php:312
+#: modules/wpzabb-image-box/wpzabb-image-box.php:513
+msgid "Subheading"
+msgstr ""
+
+#: modules/wpzabb-team-members/wpzabb-team-members.php:265
+msgid "Team Member"
+msgstr ""
+
+#: modules/wpzabb-team-members/wpzabb-team-members.php:24
+#: modules/wpzabb-team-members/wpzabb-team-members.php:258
+msgid "Team Members"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:655
+msgid "Terms"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:669
+msgid "Terms Label"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:678
+msgid "Terms Separator"
+msgstr ""
+
+#: modules/wpzabb-testimonials/wpzabb-testimonials.php:391
+msgid "Testimonial"
+msgstr ""
+
+#: modules/wpzabb-testimonials/wpzabb-testimonials.php:24
+#: modules/wpzabb-testimonials/wpzabb-testimonials.php:384
+msgid "Testimonials"
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:292
+#: modules/wpzabb-heading/wpzabb-heading.php:296
+#: modules/wpzabb-posts/wpzabb-posts.php:803
+#: modules/wpzabb-button/wpzabb-button.php:260
+msgid "Text"
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:491
+#: modules/wpzabb-heading/wpzabb-heading.php:735
+#: modules/wpzabb-posts/wpzabb-posts.php:1041
+#: modules/wpzabb-team-members/wpzabb-team-members.php:392
+#: modules/wpzabb-image-box/wpzabb-image-box.php:475
+#: modules/wpzabb-image-box/wpzabb-image-box.php:989
+#: modules/wpzabb-button/wpzabb-button.php:490
+msgid "Text Color"
+msgstr ""
+
+#: modules/wpzabb-button/wpzabb-button.php:706
+msgid "Text Decoration"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:1047
+#: modules/wpzabb-image-box/wpzabb-image-box.php:995
+#: modules/wpzabb-button/wpzabb-button.php:496
+msgid "Text Hover Color"
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:671
+msgid "Text Tag"
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:443
+#: modules/wpzabb-heading/wpzabb-heading.php:581
+#: modules/wpzabb-posts/wpzabb-posts.php:1137
+#: modules/wpzabb-team-members/wpzabb-team-members.php:344
+#: modules/wpzabb-team-members/wpzabb-team-members.php:483
+#: modules/wpzabb-team-members/wpzabb-team-members.php:621
+#: modules/wpzabb-image-box/wpzabb-image-box.php:427
+#: modules/wpzabb-image-box/wpzabb-image-box.php:565
+#: modules/wpzabb-image-box/wpzabb-image-box.php:703
+#: modules/wpzabb-image-box/wpzabb-image-box.php:841
+#: modules/wpzabb-button/wpzabb-button.php:690
+msgid "Text Transform"
+msgstr ""
+
+#: classes/class-wpzabb-init.php:151
+#, php-format
+msgid "The %s plugin requires %s plugin installed and activated."
+msgstr ""
+
+#: modules/wpzabb-image-grid/wpzabb-image-grid.php:391
+msgid "The accent color of the item."
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:149
+msgid "The alignment will apply on Mobile"
+msgstr ""
+
+#: classes/class-wpzabb-helper.php:217
+msgid ""
+"The browser width at which the layout will adjust for extra small devices "
+"such as phones."
+msgstr ""
+
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:414
+msgid "The effect used to transition between each slide."
+msgstr ""
+
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:523
+msgid ""
+"The height (in percents) relative to the browser/viewport the slideshow "
+"should maintain."
+msgstr ""
+
+#: modules/wpzabb-image-grid/wpzabb-image-grid.php:348
+msgid "The image shown for the item."
+msgstr ""
+
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:1093
+msgid "The image shown in the background of the slide. <em>(Optional)</em>"
+msgstr ""
+
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:394
+msgid ""
+"The interval (in miliseconds) at which the slideshow should automatically "
+"rotate."
+msgstr ""
+
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:1070
+msgid "The label of the clickable button on this slide."
+msgstr ""
+
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:227
+msgid "The maximum amount of posts to display"
+msgstr ""
+
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:543
+msgid ""
+"The maximum height (in pixels) the slideshow should ever be allowed to grow "
+"to."
+msgstr ""
+
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:331
+msgid ""
+"The source for slides in the slideshow. (i.e. Custom slides, WordPress posts)"
+msgstr ""
+
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:431
+msgid "The speed of the slideshow transitions."
+msgstr ""
+
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:1027
+msgid "The text content displayed below the slide title. <em>(Optional)</em>"
+msgstr ""
+
+#: modules/wpzabb-image-grid/wpzabb-image-grid.php:331
+msgid "The title of the item. <em>(Optional)</em>"
+msgstr ""
+
+#: modules/wpzabb-food-menu/wpzabb-food-menu.php:267
+msgid "The title of the menu..."
+msgstr ""
+
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:1009
+msgid "The title of the slide. <em>(Optional)</em>"
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:329
+#: modules/wpzabb-separator/wpzabb-separator.php:97
+msgid ""
+"The type of border to use. Double borders must have a height of at least 3px "
+"to render properly."
+msgstr ""
+
+#: modules/wpzabb-image-icon/wpzabb-image-icon.php:550
+#: modules/wpzabb-image-icon/wpzabb-image-icon.php:672
+msgid ""
+"The type of border to use. Double borders must have a width of at least 3px "
+"to render properly."
+msgstr ""
+
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:585
+msgid ""
+"The type of interface used for precise slide navigation.<br/><strong>None:"
+"</strong> No navigation will be shown.<br/><strong>Dots:</strong> Each slide "
+"will be represented by a dot which is clickable to navigate to that slide."
+"<br/><strong>Thumbnails:</strong> Each slide will be represented by a "
+"thumbnail which is clickable to navigate to that slide."
+msgstr ""
+
+#: modules/wpzabb-image-grid/wpzabb-image-grid.php:339
+msgid "The URL that the item links to. <em>(Optional)</em>"
+msgstr ""
+
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:1017
+msgid "The URL that the slide title links to. <em>(Optional)</em>"
+msgstr ""
+
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:1083
+msgid "The URL the clickable button on this slide points to."
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:306
+msgid ""
+"There might be responsive issues for long texts. If you are facing such "
+"issues then select appropriate devices width to make your module responsive."
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:349
+#: modules/wpzabb-separator/wpzabb-separator.php:45
+msgid "Thickness"
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:354
+#: modules/wpzabb-separator/wpzabb-separator.php:56
+msgid "Thickness of Border"
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:130
+msgid "This is the overall alignment and would apply to all Heading elements"
+msgstr ""
+
+#: modules/wpzabb-spacer-gap/wpzabb-spacer-gap.php:38
+msgid "This value will work for all devices."
+msgstr ""
+
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:597
+msgid "Thumbnails"
+msgstr ""
+
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:1007
+#: modules/wpzabb-image-grid/wpzabb-image-grid.php:329
+msgid "Title"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:807
+msgid "Title Color"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:834
+msgid "Title Font"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:838
+msgid "Title Font Size"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:812
+msgid "Title Hover Color"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:817
+msgid "Title HTML Tag"
+msgstr ""
+
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:1015
+msgid "Title Link"
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:197
+#: modules/wpzabb-food-menu/wpzabb-food-menu.php:591
+msgid "Top"
+msgstr ""
+
+#: modules/wpzabb-testimonials/wpzabb-testimonials.php:299
+#: modules/wpzabb-clients/wpzabb-clients.php:291
+msgid "Transition"
+msgstr ""
+
+#: modules/wpzabb-testimonials/wpzabb-testimonials.php:317
+#: modules/wpzabb-clients/wpzabb-clients.php:309
+msgid "Transition Direction"
+msgstr ""
+
+#: modules/wpzabb-testimonials/wpzabb-testimonials.php:308
+#: modules/wpzabb-clients/wpzabb-clients.php:300
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:430
+msgid "Transition Speed"
+msgstr ""
+
+#: modules/wpzabb-testimonials/wpzabb-testimonials.php:302
+#: modules/wpzabb-clients/wpzabb-clients.php:294
+msgctxt "Transition type."
+msgid "Slide"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:1010
+#: modules/wpzabb-image-box/wpzabb-image-box.php:940
+#: modules/wpzabb-button/wpzabb-button.php:386
+msgid "Transparent"
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:375
+#: modules/wpzabb-team-members/wpzabb-team-members.php:275
+#: modules/wpzabb-image-box/wpzabb-image-box.php:359
+#: modules/wpzabb-button/wpzabb-button.php:635
+msgid "Typography"
+msgstr ""
+
+#: modules/wpzabb-button/wpzabb-button.php:710
+msgid "Underline"
+msgstr ""
+
+#: modules/wpzabb-button/wpzabb-button.php:713
+msgid "Underline + Overline"
+msgstr ""
+
+#: wpzoom-bb-addon-pack.php:48
+#, php-format
+msgid ""
+"Unfortunately, the plugin could not be activated as the memory allocated by "
+"your host has almost exhausted. WPZOOM Addons for Beaver Builder plugin "
+"recommends that your site should have 15M PHP memory remaining. <br/><br/><a "
+"class=\"button button-primary\" href=\"%s\">Return to Plugins Page</a>"
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:447
+#: modules/wpzabb-heading/wpzabb-heading.php:585
+#: modules/wpzabb-posts/wpzabb-posts.php:1141
+#: modules/wpzabb-team-members/wpzabb-team-members.php:348
+#: modules/wpzabb-team-members/wpzabb-team-members.php:487
+#: modules/wpzabb-team-members/wpzabb-team-members.php:625
+#: modules/wpzabb-image-box/wpzabb-image-box.php:431
+#: modules/wpzabb-image-box/wpzabb-image-box.php:569
+#: modules/wpzabb-image-box/wpzabb-image-box.php:707
+#: modules/wpzabb-image-box/wpzabb-image-box.php:845
+#: modules/wpzabb-button/wpzabb-button.php:694
+msgid "Uppercase"
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:247
+#: modules/wpzabb-testimonials/wpzabb-testimonials.php:425
+#: modules/wpzabb-team-members/wpzabb-team-members.php:729
+#: modules/wpzabb-clients/wpzabb-clients.php:423
+#: modules/wpzabb-image-icon/wpzabb-image-icon.php:449
+#: modules/wpzabb-image-box/wpzabb-image-box.php:277
+msgid "URL"
+msgstr ""
+
+#: modules/wpzabb-testimonials/wpzabb-testimonials.php:295
+#: modules/wpzabb-testimonials/wpzabb-testimonials.php:313
+#: modules/wpzabb-clients/wpzabb-clients.php:287
+#: modules/wpzabb-clients/wpzabb-clients.php:305
+msgctxt "Value unit for form field of time in seconds. Such as: \"5 seconds\""
+msgid "seconds"
+msgstr ""
+
+#: modules/wpzabb-button/wpzabb-button.php:274
+msgid "Video Lightbox"
+msgstr ""
+
+#: modules/wpzabb-button/wpzabb-button.php:309
+msgid "Video Link"
+msgstr ""
+
+#: modules/wpzabb-button/wpzabb-button.php:292
+msgid "Video Type"
+msgstr ""
+
+#: modules/wpzabb-food-menu/wpzabb-food-menu.php:298
+msgid "View Full Menu"
+msgstr ""
+
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:371
+msgid ""
+"Whether the slideshow should automatically rotate through each slide on an "
+"interval."
+msgstr ""
+
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:500
+msgid ""
+"Whether the slideshow should have an automatic height based on the "
+"browser/viewport height."
+msgstr ""
+
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:466
+msgid ""
+"Whether the slideshow should loop the slides infinitely.<br/><strong>Yes:"
+"</strong> Will rotate past the last slide back to the first one again.<br/>"
+"<strong>No:</strong> Will stop on the last slide and then run back to the "
+"first one."
+msgstr ""
+
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:483
+msgid ""
+"Whether the slideshow should pause when a pointing device hovers over it. "
+"<em>(Only if the <strong>Autoplay Slideshow</strong> option is enabled)</em>"
+msgstr ""
+
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:449
+msgid "Whether the slideshow should show all the slides in a random order."
+msgstr ""
+
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:568
+msgid ""
+"Whether the slideshow should show previous/next arrow buttons for manually "
+"rotating the slides."
+msgstr ""
+
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:1046
+msgid "Whether to show a clickable button on this slide."
+msgstr ""
+
+#: modules/wpzabb-heading/wpzabb-heading.php:364
+#: modules/wpzabb-posts/wpzabb-posts.php:1199
+#: modules/wpzabb-separator/wpzabb-separator.php:60
+#: modules/wpzabb-image-box/wpzabb-image-box.php:1051
+#: modules/wpzabb-button/wpzabb-button.php:552
+msgid "Width"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:1202
+#: modules/wpzabb-image-box/wpzabb-image-box.php:1054
+#: modules/wpzabb-button/wpzabb-button.php:555
+msgctxt "Width."
+msgid "Auto"
+msgstr ""
+
+#: modules/wpzabb-woocommerce/wpzabb-woocommerce.php:14
+msgid "WooCommerce"
+msgstr ""
+
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:335
+msgid "WordPress Posts"
+msgstr ""
+
+#: modules/wpzabb-posts/wpzabb-posts.php:715
+msgid "words"
+msgstr ""
+
+#. Author of the plugin
+msgid "WPZOOM"
+msgstr ""
+
+#. Name of the plugin
+msgid "WPZOOM Addons for Beaver Builder"
+msgstr ""
+
+#. Description of the plugin
+msgid ""
+"WPZOOM Addons will extend Beaver Builder with several useful extensions that "
+"are missing in the Lite version."
+msgstr ""
+
+#: classes/class-wpzabb-helper.php:25
+msgid "WPZOOM Modules"
+msgstr ""
+
+#: modules/wpzabb-testimonials/wpzabb-testimonials.php:285
+#: modules/wpzabb-testimonials/wpzabb-testimonials.php:335
+#: modules/wpzabb-testimonials/wpzabb-testimonials.php:365
+#: modules/wpzabb-clients/wpzabb-clients.php:277
+#: modules/wpzabb-clients/wpzabb-clients.php:327
+#: modules/wpzabb-clients/wpzabb-clients.php:357
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:247
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:263
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:279
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:381
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:459
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:476
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:493
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:510
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:578
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:1049
+#: modules/wpzabb-woocommerce/wpzabb-woocommerce.php:55
+#: modules/wpzabb-image-icon/wpzabb-image-icon.php:818
+#: modules/wpzabb-food-menu/wpzabb-food-menu.php:284
+#: modules/wpzabb-button/wpzabb-button.php:361
+#: modules/wpzabb-button/wpzabb-button.php:727
+msgid "Yes"
+msgstr ""
+
+#: modules/wpzabb-slideshow/wpzabb-slideshow.php:330
+msgid ""
+"You can customize which posts are included in the slideshow on the <strong>"
+"Posts</strong> tab."
+msgstr ""
+
+#: wpzoom-bb-addon-pack.php:123
+#, php-format
+msgid ""
+"You currently have two versions of <strong>Beaver Builder Addons by "
+"WPZOOM</strong> active on this site. Please <a href='%s'>deactivate one</a> "
+"before continuing."
+msgstr ""
+
+#: modules/wpzabb-button/wpzabb-button.php:322
+msgid "Your MP4 videos must have the H.264 encoding."
+msgstr ""
+
+#: modules/wpzabb-button/wpzabb-button.php:295
+msgid "YouTube / Vimeo"
+msgstr ""
