@@ -22,7 +22,7 @@ class WPZABBTestimonialsModule extends FLBuilderModule {
 	public function __construct() {
 		parent::__construct(array(
 			'name'          	=> __( 'Testimonials', 'wpzabb' ),
-			'description'   	=> __( 'An animated tesimonials area.', 'wpzabb' ),
+			'description'   	=> __( 'An animated testimonials area.', 'wpzabb' ),
 			'category'      	=> WPZOOM_BB_Addon_Pack_Helper::module_cat(),
 			'dir'           	=> BB_WPZOOM_ADDON_DIR . 'modules/'. WPZABB_PREFIX .'testimonials/',
             'url'           	=> BB_WPZOOM_ADDON_URL . 'modules/'. WPZABB_PREFIX .'testimonials/',
