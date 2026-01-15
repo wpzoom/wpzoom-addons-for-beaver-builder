@@ -48,19 +48,21 @@ if( !class_exists( 'WPZABB_Helper' ) ) {
 		static public function wpzabb_get_color( $hex, $opacity )
 		{
 		    $rgba = $hex;
+		    // Strip # if present for processing
+		    $hex_clean = ltrim( $hex, '#' );
 		    if( $opacity != '' ) {
-		        if(strlen( $hex ) == 3) {
-		            $r = hexdec(substr($hex,0,1).substr($hex,0,1));
-		            $g = hexdec(substr($hex,1,1).substr($hex,1,1));
-		            $b = hexdec(substr($hex,2,1).substr($hex,2,1));
+		        if(strlen( $hex_clean ) == 3) {
+		            $r = hexdec(substr($hex_clean,0,1).substr($hex_clean,0,1));
+		            $g = hexdec(substr($hex_clean,1,1).substr($hex_clean,1,1));
+		            $b = hexdec(substr($hex_clean,2,1).substr($hex_clean,2,1));
 		        } else {
-		            $r = hexdec(substr($hex,0,2));
-		            $g = hexdec(substr($hex,2,2));
-		            $b = hexdec(substr($hex,4,2));
+		            $r = hexdec(substr($hex_clean,0,2));
+		            $g = hexdec(substr($hex_clean,2,2));
+		            $b = hexdec(substr($hex_clean,4,2));
 		        }
 		        return 'rgba( ' . $r . ', ' . $g . ', ' . $b . ', ' . $opacity . ' )';
 		    } else {
-		        return '#' . $hex;
+		        return '#' . $hex_clean;
 		    }
 		}
 
@@ -75,18 +77,18 @@ if( !class_exists( 'WPZABB_Helper' ) ) {
 		 * @since 	1.0
 		 */
 		static public function wpzabb_hex2rgba($color, $opacity = false, $is_array = false ) {
- 
+
 			$default = $color;
-		 
+
 			//Return default if no color provided
 			if(empty($color))
-		          return $default; 
-		 
-			//Sanitize $color if "#" is provided 
+		          return $default;
+
+			//Sanitize $color if "#" is provided
 	        if ($color[0] == '#' ) {
 	        	$color = substr( $color, 1 );
 	        }
-	 
+
 	        //Check if color has 6 or 3 characters and get values
 	        if (strlen($color) == 6) {
 	                $hex = array( $color[0] . $color[1], $color[2] . $color[3], $color[4] . $color[5] );
@@ -95,10 +97,10 @@ if( !class_exists( 'WPZABB_Helper' ) ) {
 	        } else {
 	                return $default;
 	        }
-	 
+
 	        //Convert hexadec to rgb
 	        $rgb =  array_map('hexdec', $hex);
-	 
+
 	        //Check if opacity is set(rgba or rgb)
 	       if( $opacity !== false && $opacity !== '' ){
 	        	if(abs($opacity) > 1) {
@@ -109,7 +111,7 @@ if( !class_exists( 'WPZABB_Helper' ) ) {
 	        } else {
 	        	$output = 'rgb('.implode(",",$rgb).')';
 	        }
-	 
+
 	 		if ( $is_array ) {
 	        	return $rgb;
 	 		}else{
@@ -127,7 +129,7 @@ if( !class_exists( 'WPZABB_Helper' ) ) {
 		 * @since 	1.0
 		 */
 		static public function wpzabb_colorpicker( $settings, $name = '', $opc = false ) {
-			
+
 			$hex_color = $opacity = '';
 			$hex_color = $settings->$name;
 
@@ -138,9 +140,9 @@ if( !class_exists( 'WPZABB_Helper' ) ) {
 					$rgba 		= self::wpzabb_hex2rgba( $hex_color, $opacity/100  );
 					return $rgba;
 				}
-				
+
 				if ( $hex_color[0] != '#' ) {
-					
+
 					return '#'.$hex_color;
 				}
 			}
@@ -194,19 +196,19 @@ if( !class_exists( 'WPZABB_Helper' ) ) {
 			$angle = abs( $gradient_angle - 450 ) % 360;
 
 			if ( $color1 != '' && $color2 != '' ) {
-				
+
 				$css .= 'background: -webkit-linear-gradient('.$gradient_angle.'deg, '.$color1.' 0%, '.$color2.' 100%);';
 				$css .= 'background: -o-linear-gradient('.$gradient_angle.'deg, '.$color1.' 0%, '.$color2.' 100%);';
 				$css .= 'background: -ms-linear-gradient('.$gradient_angle.'deg, '.$color1.' 0%, '.$color2.' 100%);';
 				$css .= 'background: -moz-linear-gradient('.$gradient_angle.'deg, '.$color1.' 0%, '.$color2.' 100%);';
-				$css .= 'background: linear-gradient('.$angle.'deg, '.$color1.' 0%, '.$color2.' 100%);';			
+				$css .= 'background: linear-gradient('.$angle.'deg, '.$color1.' 0%, '.$color2.' 100%);';
 			}
 			echo $css;
 		}
 
 		/**
 		 * Check is valid hex color code
-		 * 
+		 *
 		 * @param $string  The string to check
 		 * @since 1.1.1
 		 * @return boolean
@@ -218,12 +220,15 @@ if( !class_exists( 'WPZABB_Helper' ) ) {
 
 		/**
 		 * If $string is hex code, then we need to prepend #
-		 * 
+		 *
 		 * @param $string  The string to check
 		 * @since 1.1.1
 		 * @return $string
 		 */
 		static public function maybe_prepend_hash( $string ) {
+			if ( empty( $string ) || strpos( $string, '#' ) === 0 ) {
+				return $string;
+			}
 			return ( self::is_hex_color( $string ) ? '#' : '' ) . $string;
 		}
 	}
