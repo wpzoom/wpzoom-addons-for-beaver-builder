@@ -5,7 +5,7 @@ Tags: wpzoom, beaver builder, page builder, addons, inspiro
 Requires at least: 6.0
 Requires PHP: 7.4
 Tested up to: 6.9
-Stable tag: 1.3.7
+Stable tag: 1.3.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -47,6 +47,9 @@ You can see multiple pages created using **Beaver Builder** and our **Inspiro** 
 1. Included modules
 
 == Changelog ==
+
+= 1.3.8=
+* Minor bug fixes
 
 = 1.3.7 =
 * Security: Fixed input sanitization in attachment link saving
