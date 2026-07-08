@@ -1,22 +1,36 @@
 <?php
-$auto_height = 'yes' == $settings->slideshow_autoheight;
-$auto_height_size = intval( $settings->slideshow_autoheight_size );
-$auto_height_max = intval( $settings->slideshow_autoheight_max );
-$button_align_dsk = property_exists( $settings, 'slide_button_align' ) ? ( 'right' == $settings->slide_button_align ? 'right' : ( 'center' == $settings->slide_button_align ? 'center' : 'left' ) ) : 'left';
-$button_align_tab = property_exists( $settings, 'slide_button_align_medium' ) ? ( 'right' == $settings->slide_button_align_medium ? 'right' : ( 'center' == $settings->slide_button_align_medium ? 'center' : 'left' ) ) : 'left';
-$button_align_mob = property_exists( $settings, 'slide_button_align_responsive' ) ? ( 'right' == $settings->slide_button_align_responsive ? 'right' : ( 'center' == $settings->slide_button_align_responsive ? 'center' : 'left' ) ) : 'left';
-?>
+$auto_height             = array();
+$auto_height['']         = 'yes' == $settings->slideshow_autoheight;
+$auto_height['large']    = empty( $settings->slideshow_autoheight_large ) ? $auto_height[''] : ( 'yes' == $settings->slideshow_autoheight_large );
+$auto_height['medium']   = empty( $settings->slideshow_autoheight_medium ) ? $auto_height['large'] : ( 'yes' == $settings->slideshow_autoheight_medium );
+$auto_height['responsive'] = empty( $settings->slideshow_autoheight_responsive ) ? $auto_height['medium'] : ( 'yes' == $settings->slideshow_autoheight_responsive );
 
-<?php if ( $auto_height ) : ?>
-	.fl-node-<?php echo $id; ?> .wpzabb-slideshow .wpzabb-slideshow-slides,
-	.fl-node-<?php echo $id; ?> .wpzabb-slideshow .wpzabb-slideshow-slides .flickity-viewport,
-	.fl-node-<?php echo $id; ?> .wpzabb-slideshow .wpzabb-slideshow-slides .flickity-slider,
-	.fl-node-<?php echo $id; ?> .wpzabb-slideshow .wpzabb-slideshow-slides .wpzabb-slideshow-slide,
-	.fl-node-<?php echo $id; ?> .wpzabb-slideshow .wpzabb-slideshow-slides .wpzabb-slideshow-slide-outer-wrap {
-		height: <?php echo $auto_height_size; ?>vh;
-		max-height: <?php echo $auto_height_max; ?>px;
-	}
-<?php endif; ?>
+$auto_height_size             = array();
+$auto_height_size['']         = empty( $settings->slideshow_autoheight_size ) ? 100 : intval( $settings->slideshow_autoheight_size );
+$auto_height_size['large']    = empty( $settings->slideshow_autoheight_size_large ) ? $auto_height_size[''] : intval( $settings->slideshow_autoheight_size_large );
+$auto_height_size['medium']   = empty( $settings->slideshow_autoheight_size_medium ) ? $auto_height_size['large'] : intval( $settings->slideshow_autoheight_size_medium );
+$auto_height_size['responsive'] = empty( $settings->slideshow_autoheight_size_responsive ) ? $auto_height_size['medium'] : intval( $settings->slideshow_autoheight_size_responsive );
+
+$auto_height_max             = array();
+$auto_height_max['']         = empty( $settings->slideshow_autoheight_max ) ? 550 : intval( $settings->slideshow_autoheight_max );
+$auto_height_max['large']    = empty( $settings->slideshow_autoheight_max_large ) ? $auto_height_max[''] : intval( $settings->slideshow_autoheight_max_large );
+$auto_height_max['medium']   = empty( $settings->slideshow_autoheight_max_medium ) ? $auto_height_max['large'] : intval( $settings->slideshow_autoheight_max_medium );
+$auto_height_max['responsive'] = empty( $settings->slideshow_autoheight_max_responsive ) ? $auto_height_max['medium'] : intval( $settings->slideshow_autoheight_max_responsive );
+
+foreach ( array( '', 'large', 'medium', 'responsive' ) as $device ) {
+	$key_size = empty( $device ) ? 'slideshow_autoheight_size' : "slideshow_autoheight_size_{$device}";
+	
+	FLBuilderCSS::rule( array(
+		'media'    => $device,
+		'enabled'  => $auto_height[ $device ] && ( empty( $device ) ? true : ! empty( $settings->{ $key_size } ) ),
+		'selector' => ".fl-node-$id .wpzabb-slideshow .wpzabb-slideshow-slides, .fl-node-$id .wpzabb-slideshow .wpzabb-slideshow-slides .flickity-viewport, .fl-node-$id .wpzabb-slideshow .wpzabb-slideshow-slides .flickity-slider, .fl-node-$id .wpzabb-slideshow .wpzabb-slideshow-slides .wpzabb-slideshow-slide, .fl-node-$id .wpzabb-slideshow .wpzabb-slideshow-slides .wpzabb-slideshow-slide-outer-wrap",
+		'props'    => array(
+			'height'    => $auto_height_size[ $device ] . 'vh',
+			'max-height' => $auto_height_max[ $device ] . 'px',
+		),
+	) );
+}
+?>
 
 .fl-node-<?php echo $id; ?> .wpzabb-slideshow .wpzabb-slideshow-slide {
 	background-color: <?php echo WPZABB_Helper::maybe_prepend_hash( $settings->slide_background_color ); ?>;
@@ -51,21 +65,26 @@ $button_align_mob = property_exists( $settings, 'slide_button_align_responsive' 
 	color: <?php echo WPZABB_Helper::maybe_prepend_hash( $settings->slide_content_color ); ?>;
 }
 
-.fl-node-<?php echo $id; ?> .wpzabb-slideshow .wpzabb-slideshow-slide-details .wpzabb-slideshow-slide-button {
-	text-align: <?php echo $button_align_dsk; ?>;
-}
+<?php
+$button_align             = array();
+$button_align['']         = empty( $settings->slide_button_align ) ? 'left' : $settings->slide_button_align;
+$button_align['large']    = empty( $settings->slide_button_align_large ) ? $button_align[''] : $settings->slide_button_align_large;
+$button_align['medium']   = empty( $settings->slide_button_align_medium ) ? $button_align['large'] : $settings->slide_button_align_medium;
+$button_align['responsive'] = empty( $settings->slide_button_align_responsive ) ? $button_align['medium'] : $settings->slide_button_align_responsive;
 
-@media screen and (max-width: 768px) {
-	.fl-node-<?php echo $id; ?> .wpzabb-slideshow .wpzabb-slideshow-slide-details .wpzabb-slideshow-slide-button {
-		text-align: <?php echo $button_align_tab; ?>;
-	}
+foreach ( array( '', 'large', 'medium', 'responsive' ) as $device ) {
+	$key = empty( $device ) ? 'slide_button_align' : "slide_button_align_{$device}";
+	
+	FLBuilderCSS::rule( array(
+		'media'    => $device,
+		'enabled'  => empty( $device ) ? true : ! empty( $settings->{ $key } ),
+		'selector' => ".fl-node-$id .wpzabb-slideshow .wpzabb-slideshow-slide-details .wpzabb-slideshow-slide-button",
+		'props'    => array(
+			'text-align' => $button_align[ $device ],
+		),
+	) );
 }
-
-@media screen and (max-width: 460px) {
-	.fl-node-<?php echo $id; ?> .wpzabb-slideshow .wpzabb-slideshow-slide-details .wpzabb-slideshow-slide-button {
-		text-align: <?php echo $button_align_mob; ?>;
-	}
-}
+?>
 
 .fl-node-<?php echo $id; ?> .wpzabb-slideshow .wpzabb-slideshow-slide-details .wpzabb-slideshow-slide-button a {
 	color: <?php echo WPZABB_Helper::maybe_prepend_hash( $settings->slide_button_color ); ?>;
@@ -101,14 +120,10 @@ $button_align_mob = property_exists( $settings, 'slide_button_align_responsive' 
 	'selector' => ".fl-node-$id .wpzabb-slideshow .wpzabb-slideshow-slide-details .wpzabb-slideshow-slide-button a:hover"
 ) ); ?>
 
-.fl-node-<?php echo $id; ?> .wpzabb-slideshow .flex-direction-nav a,
-.fl-node-<?php echo $id; ?> .wpzabb-slideshow .flex-direction-nav a::before {
-	color: <?php echo WPZABB_Helper::maybe_prepend_hash( $settings->slide_navigation_color ); ?>;
+.fl-node-<?php echo $id; ?> .wpzabb-slideshow .flickity-prev-next-button path {
+	fill: <?php echo WPZABB_Helper::maybe_prepend_hash( $settings->slide_navigation_color ); ?>;
 }
 
-.fl-node-<?php echo $id; ?> .wpzabb-slideshow .flex-direction-nav a:hover,
-.fl-node-<?php echo $id; ?> .wpzabb-slideshow .flex-direction-nav a:active,
-.fl-node-<?php echo $id; ?> .wpzabb-slideshow .flex-direction-nav a:hover::before,
-.fl-node-<?php echo $id; ?> .wpzabb-slideshow .flex-direction-nav a:active::before {
-	color: <?php echo WPZABB_Helper::maybe_prepend_hash( $settings->slide_navigation_hover_color ); ?>;
+.fl-node-<?php echo $id; ?> .wpzabb-slideshow .flickity-prev-next-button:hover path {
+	fill: <?php echo WPZABB_Helper::maybe_prepend_hash( $settings->slide_navigation_hover_color ); ?>;
 }
