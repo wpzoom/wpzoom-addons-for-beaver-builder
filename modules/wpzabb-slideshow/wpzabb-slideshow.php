@@ -494,69 +494,51 @@ FLBuilder::register_module( 'WPZABBSlideshowModule', array(
 							'no'              => __( 'No', 'wpzabb' )
 						)
 					),
-					'slideshow_autoheight' => array(
-						'type'          => 'button-group',
-						'label'         => __( 'Automatic Height', 'wpzabb' ),
-						'help'          => __( 'Whether the slideshow should have an automatic height based on the browser/viewport height.', 'wpzabb' ),
-						'default'       => 'yes',
-						'responsive'    => array(
-							'default'         => array(
-								'default'    => 'yes',
-								'medium'     => 'yes',
-								'responsive' => 'yes'
-							)
-						),
-						'options'       => array(
-							'yes'             => __( 'Yes', 'wpzabb' ),
-							'no'              => __( 'No', 'wpzabb' )
-						),
-						'toggle'        => array(
-							'yes'             => array(
-								'fields'   => array( 'slideshow_autoheight_size', 'slideshow_autoheight_max' )
-							),
-							'no'              => array()
-						)
+				'slideshow_autoheight' => array(
+					'type'          => 'button-group',
+					'label'         => __( 'Automatic Height', 'wpzabb' ),
+					'help'          => __( 'Whether the slideshow should have an automatic height based on the browser/viewport height.', 'wpzabb' ),
+					'default'       => 'yes',
+					'responsive'    => true,
+					'options'       => array(
+						'yes'             => __( 'Yes', 'wpzabb' ),
+						'no'              => __( 'No', 'wpzabb' )
 					),
-					'slideshow_autoheight_size' => array(
-						'type'          => 'unit',
-						'label'         => __( 'Automatic Height Size', 'wpzabb' ),
-						'help'          => __( 'The height (in percents) relative to the browser/viewport the slideshow should maintain.', 'wpzabb' ),
-						'default'       => 100,
-						'responsive'    => array(
-							'default'         => array(
-								'default'    => 100,
-								'medium'     => 100,
-								'responsive' => 100
-							)
+					'toggle'        => array(
+						'yes'             => array(
+							'fields'   => array( 'slideshow_autoheight_size', 'slideshow_autoheight_max' )
 						),
-						'units'         => array( '%' ),
-						'default_unit'  => '%',
-						'slider'        => array(
-							'min'             => 0,
-							'max'             => 100,
-							'step'            => 1
-						)
-					),
-					'slideshow_autoheight_max' => array(
-						'type'          => 'unit',
-						'label'         => __( 'Automatic Height Max', 'wpzabb' ),
-						'help'          => __( 'The maximum height (in pixels) the slideshow should ever be allowed to grow to.', 'wpzabb' ),
-						'default'       => 550,
-						'responsive'    => array(
-							'default'         => array(
-								'default'    => 550,
-								'medium'     => 550,
-								'responsive' => 550
-							)
-						),
-						'units'         => array( 'px' ),
-						'default_unit'  => 'px',
-						'slider'        => array(
-							'min'             => 0,
-							'max'             => 5000,
-							'step'            => 1
-						)
-					),
+						'no'              => array()
+					)
+				),
+				'slideshow_autoheight_size' => array(
+					'type'          => 'unit',
+					'label'         => __( 'Automatic Height Size', 'wpzabb' ),
+					'help'          => __( 'The height (in percents) relative to the browser/viewport the slideshow should maintain.', 'wpzabb' ),
+					'default'       => 100,
+					'responsive'    => true,
+					'units'         => array( '%' ),
+					'default_unit'  => '%',
+					'slider'        => array(
+						'min'             => 0,
+						'max'             => 100,
+						'step'            => 1
+					)
+				),
+				'slideshow_autoheight_max' => array(
+					'type'          => 'unit',
+					'label'         => __( 'Automatic Height Max', 'wpzabb' ),
+					'help'          => __( 'The maximum height (in pixels) the slideshow should ever be allowed to grow to.', 'wpzabb' ),
+					'default'       => 550,
+					'responsive'    => true,
+					'units'         => array( 'px' ),
+					'default_unit'  => 'px',
+					'slider'        => array(
+						'min'             => 0,
+						'max'             => 5000,
+						'step'            => 1
+					)
+				),
 					'slideshow_image_size'   => array(
 						'type'    => 'photo-sizes',
 						'label'   => __( 'Image Size', 'wpzabb' ),
@@ -961,28 +943,28 @@ FLBuilder::register_module( 'WPZABBSlideshowModule', array(
 				'title'     => __( 'Slide Navigation', 'wpzabb' ), // Section Title
 				'collapsed' => true,
 				'fields'    => array( // Section Fields
-					'slide_navigation_color'      => array(
-						'type'          => 'color',
-						'label'         => __( 'Color', 'wpzabb' ),
-						'default'       => 'rgba(255, 255, 255, 0.5)',
-						'show_alpha'    => true,
-						'preview'       => array(
-							'type'            => 'css',
-							'selector'        => '.wpzabb-slideshow .flex-direction-nav a, .wpzabb-slideshow .flex-direction-nav a::before',
-							'property'        => 'color'
-						)
-					),
-					'slide_navigation_hover_color' => array(
-						'type'          => 'color',
-						'label'         => __( 'Hover Color', 'wpzabb' ),
-						'default'       => 'ffffff',
-						'show_alpha'    => true,
-						'preview'       => array(
-							'type'            => 'css',
-							'selector'        => '.wpzabb-slideshow .flex-direction-nav a:hover, .wpzabb-slideshow .flex-direction-nav a:active, .wpzabb-slideshow .flex-direction-nav a:hover::before, .wpzabb-slideshow .flex-direction-nav a:active::before',
-							'property'        => 'color'
-						)
-					)
+			'slide_navigation_color'      => array(
+				'type'          => 'color',
+				'label'         => __( 'Color', 'wpzabb' ),
+				'default'       => 'rgba(255, 255, 255, 0.5)',
+				'show_alpha'    => true,
+				'preview'       => array(
+					'type'            => 'css',
+					'selector'        => '.wpzabb-slideshow .flickity-prev-next-button path',
+					'property'        => 'fill'
+				)
+			),
+			'slide_navigation_hover_color' => array(
+				'type'          => 'color',
+				'label'         => __( 'Hover Color', 'wpzabb' ),
+				'default'       => 'ffffff',
+				'show_alpha'    => true,
+				'preview'       => array(
+					'type'            => 'css',
+					'selector'        => '.wpzabb-slideshow .flickity-prev-next-button:hover path',
+					'property'        => 'fill'
+				)
+			)
 				)
 			)
 		)
