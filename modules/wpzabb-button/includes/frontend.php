@@ -18,9 +18,9 @@
 				$add_class_to_icon = "wpzabb-button-icon-before wpzabb-button-icon-before";
 			}
 			?>
-				<i class="wpzabb-button-icon wpzabb-button-icon <?php echo $add_class_to_icon;?> fa <?php echo $settings->icon; ?>"></i>
+				<i class="wpzabb-button-icon wpzabb-button-icon <?php echo $add_class_to_icon;?> fa <?php echo esc_attr( $settings->icon ); ?>"></i>
 			<?php endif; ?>
-			<span class="wpzabb-button-text wpzabb-button-text"><?php echo $settings->text; ?></span>
+			<span class="wpzabb-button-text wpzabb-button-text"><?php echo esc_html( $settings->text ); ?></span>
 			<?php if ( ! empty( $settings->icon ) && 'after' == $settings->icon_position ) : 
 
 			if ( $settings->style == 'flat' && isset( $settings->flat_button_options ) && ( $settings->flat_button_options == "animate_to_right" || $settings->flat_button_options == "animate_to_left" || $settings->flat_button_options == "animate_from_top" || $settings->flat_button_options == "animate_from_bottom" ) ) {
@@ -29,7 +29,7 @@
 				$add_class_to_icon = "wpzabb-button-icon-after wpzabb-button-icon-after";
 			}
 			?>
-				<i class="wpzabb-button-icon wpzabb-button-icon <?php echo $add_class_to_icon;?> fa <?php echo $settings->icon; ?>"></i>
+				<i class="wpzabb-button-icon wpzabb-button-icon <?php echo $add_class_to_icon;?> fa <?php echo esc_attr( $settings->icon ); ?>"></i>
 			<?php endif; ?>
 
 		</a>
