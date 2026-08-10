@@ -31,6 +31,9 @@ class WPZABB_Init {
 			// Enqueue scripts
 			add_action( 'wp_enqueue_scripts', array( $this, 'load_scripts' ), 100 );
 
+			// Pass translatable strings to the builder UI (priority 12 = after BB enqueues 'fl-builder')
+			add_action( 'fl_builder_ui_enqueue_scripts', array( $this, 'localize_settings_scripts' ), 12 );
+
 			$basename = plugin_basename( BB_WPZOOM_ADDON_FILE );
 			// Filters
 			add_filter( 'plugin_action_links_' . $basename, array( $this, 'wpzabb_render_plugin_action_links' ) );
@@ -124,6 +127,24 @@ class WPZABB_Init {
 			true
 		);
 		
+	}
+
+	/**
+	 * Make strings used inside module settings JS translatable.
+	 *
+	 * Beaver Builder outputs each module's `js/settings.js` as a plain script tag,
+	 * so the strings have to be localized on a handle the builder itself enqueues.
+	 *
+	 * @since 1.4.0
+	 */
+	function localize_settings_scripts() {
+
+		wp_localize_script( 'fl-builder', 'WPZABBPostsStrings', array(
+			'posts'      => __( 'Start typing post names here:', 'wpzabb' ),
+			'categories' => __( 'Start typing category names here:', 'wpzabb' ),
+			'tags'       => __( 'Start typing tag names here:', 'wpzabb' ),
+			'authors'    => __( 'Start typing author names here:', 'wpzabb' ),
+		) );
 	}
 
 	function admin_notices() {

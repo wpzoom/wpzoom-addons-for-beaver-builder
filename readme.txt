@@ -4,8 +4,8 @@ Donate link: http://paypal.me/wpzm/10usd
 Tags: wpzoom, beaver builder, page builder, addons, inspiro
 Requires at least: 6.5
 Requires PHP: 7.4
-Tested up to: 7.0
-Stable tag: 1.3.9
+Tested up to: 7.1
+Stable tag: 1.4.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -47,6 +47,9 @@ You can see multiple pages created using **Beaver Builder** and our **Inspiro** 
 1. Included modules
 
 == Changelog ==
+
+= 1.4.0 =
+* Fixed: Filter tab labels in the Posts module were hard-coded in English and could not be translated
 
 = 1.3.9 =
 * Minor bug fixes
