@@ -988,7 +988,7 @@ FLBuilder::register_module('WPZABBPostsModule', array(
 							'1'             => __( 'Show', 'wpzabb' ),
 							'0'             => __( 'Hide', 'wpzabb' ),
 						),
-						'help'          => __( 'Shows the search form if no posts are found.' ),
+						'help'          => __( 'Shows the search form if no posts are found.', 'wpzabb' ),
 					),
 				),
 			),
